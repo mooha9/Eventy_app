@@ -13,23 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
 
       theme: ThemeData(
-        primarySwatch: Colors.teal
+          primarySwatch: Colors.teal
       ),
-      home: HomePage(),
+      home: MyHomePage(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Sign_in();
-  }
-}
 
 
 class MyHomePage extends StatefulWidget {
@@ -55,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: FancyBottomNavigation(
         tabs: [
-          
+
           TabData(
               iconData: Icons.search,
               title: "Search",
@@ -63,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
               }),
-          
+
           TabData(
               iconData: Icons.question_answer_outlined ,
               title: "Chat",
@@ -71,19 +64,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
               }),
-          
+
           TabData(
               iconData: Icons.festival_sharp,
               title: "Home",
               onclick: () {
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
-               }),
-         
+              }),
+
           TabData(
-            iconData: Icons.favorite_border_outlined, 
-            title: "Favorite",
-            onclick: () {
+              iconData: Icons.favorite_border_outlined,
+              title: "Favorite",
+              onclick: () {
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
               }),
@@ -94,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onclick: () {
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
-              }),  
+              }),
         ],
         initialSelection: 2,
         key: bottomNavigationKey,
@@ -104,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
       ),
-      
+
     );
   }
 
@@ -113,29 +106,29 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0:
         return MaterialApp(
           home:SearchPage(),
-            
-           ) ;
+
+        ) ;
       case 1:
         return MaterialApp(
           home:ChatPage(),
-            
-           ) ;
-          
+
+        ) ;
+
       case 2:
         return MaterialApp(
           home:HomePage(),
-            
-           ) ;
+
+        ) ;
       case 3:
         return MaterialApp(
           home:FavoritePage(),
-            
-           ) ;
+
+        ) ;
       default:
         return MaterialApp(
           home:ProfilePage(),
-            
-           ) ;
+
+        ) ;
     }
   }
 }
@@ -384,14 +377,14 @@ int _selectedPageIndex=0;
           BottomNavigationBarItem(icon:Icon(Icons.search, size: 30),title: Text('part2')),
         ],
       ),
-    ),     
+    ),
     );
 }
-  
-  
-  
-    
-    
+
+
+
+
+
 
 
 }
@@ -406,7 +399,7 @@ int _selectedPageIndex=0;
             Icon(Icons.question_answer_outlined, size: 30),
             Icon(Icons.festival, size: 35),
             Icon(Icons.favorite_border, size: 30),
-            Icon(Icons.person,size: 30), 
+            Icon(Icons.person,size: 30),
           ],
           onTap: (index) {
             setState(() {
@@ -415,7 +408,7 @@ int _selectedPageIndex=0;
           },
         ),
       body: Container(
-          
+
           child: Center(
             child: Column(
               children: <Widget>[
@@ -424,6 +417,6 @@ int _selectedPageIndex=0;
             ),
           ),
         ));
-  } 
+  }
 }
 */
