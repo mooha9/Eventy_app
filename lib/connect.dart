@@ -3,11 +3,10 @@ import 'package:eventy_app/screens/ProfilePage.dart';
 import 'package:eventy_app/screens/chatPage.dart';
 import 'package:eventy_app/screens/favoritePage.dart';
 import 'package:eventy_app/screens/searchPage.dart';
-import 'package:eventy_app/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-import 'package:eventy_app/screens/sign_in.dart';
-void main() => runApp(MyApp());
+
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       theme: ThemeData(
-          primarySwatch: Colors.teal
+          primarySwatch: Colors.teal,
       ),
       home: MyHomePage(),
     );
@@ -41,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
 
       body: Container(
+        
         decoration: BoxDecoration(color: Colors.white),
         child: Center(
           child: _getPage(currentPage),
@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
               iconData: Icons.search,
               title: "Search",
               onclick: () {
+                SearchPage();
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
               }),
@@ -61,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
               iconData: Icons.question_answer_outlined ,
               title: "Chat",
               onclick: () {
+                ChatPage();
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
               }),
@@ -69,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
               iconData: Icons.festival_sharp,
               title: "Home",
               onclick: () {
+                HomePage();
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
               }),
@@ -77,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
               iconData: Icons.favorite_border_outlined,
               title: "Favorite",
               onclick: () {
+                FavoritePage();
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
               }),
@@ -85,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               iconData: Icons.person_outline,
               title: "Profile" ,
               onclick: () {
+                ProfilePage();
                 final FancyBottomNavigationState fState = bottomNavigationKey
                     .currentState as FancyBottomNavigationState;
               }),

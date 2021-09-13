@@ -1,19 +1,20 @@
+
 import 'package:eventy_app/screens/topEvent.dart';
 import 'package:eventy_app/util/data.dart';
 import 'package:flutter/material.dart';
 import 'eventItem.dart';
-
+import 'package:filter_list/filter_list.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
 class _HomePageState extends State<HomePage> {
 
 @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
      backgroundColor: Colors.teal[50],
       appBar: AppBar(
         backgroundColor: Colors.teal[50],
@@ -56,12 +57,14 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.only(right: 20.0),
           ),
-
-          SizedBox(height: 30.0),
-          buildRoomList(),
+          
+          titlenewEvent(),
+          SizedBox(height: 10.0),
+          topEventsList(),
           SizedBox(height: 1.0),
-          buildTitleRow(),
-          buildProductList(),
+          titlenearEvent(),
+          SizedBox(height: 1.0),
+          nearEventsList(),
           SizedBox(height: 10.0),
           
         ],
@@ -72,9 +75,27 @@ class _HomePageState extends State<HomePage> {
   }
 
   }
-  buildRoomList() {
+  titlenewEvent() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+
+        Text(
+          "New Event",
+          
+          style: TextStyle(
+            fontSize: 23,
+            fontWeight: FontWeight.w800,
+           
+          ),
+        ),
+      
+      ],
+    );
+  }
+  topEventsList() {
     return Container(
-      padding: EdgeInsets.only(),
+     
       height: 275,
       width: 300,
       child: ListView.builder(
@@ -92,7 +113,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  buildTitleRow() {
+  titlenearEvent() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -106,16 +127,14 @@ class _HomePageState extends State<HomePage> {
            
           ),
         ),
-      Padding(
-            padding: EdgeInsets.only(top: 5.0),
-      )
+      
       ],
     );
   }
 
-  buildProductList() {
+  nearEventsList() {
     return Container(
-      height:390.0,
+      height:420.0,
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,

@@ -3,18 +3,18 @@ import 'package:eventy_app/connect.dart';
 import 'sign_up.dart';
 import 'package:flutter/material.dart';
 
-class Sign_in extends StatefulWidget {
+class sign_in extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return Sign_inState();
+    return sign_inState();
   }
 }
 
-class Sign_inState extends State<Sign_in> {
+class sign_inState extends State<sign_in> {
   void ChangeScreen(BuildContext context1, int n) {
-    Navigator.of(context1).push(MaterialPageRoute(builder: (_)
+    Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
         {
-            if (n == 1) return Sign_up();
+            if (n == 1) return sign_up();
           return MyHomePage();
     }));
   }
@@ -25,32 +25,28 @@ class Sign_inState extends State<Sign_in> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      
       body: Container(
+            decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/backGround.png"), 
+              fit: BoxFit.cover,
+            ),
+          ),
         child: Column(
           children: <Widget>[
             SizedBox(
-              height: 100,
+              height: 80,
             ),
             Container(
-              child: Text(
-                "EVENTY",
-                style: TextStyle(
-                  fontSize: 50,
-                  color: Colors.teal,
-                  shadows: [
-                    Shadow(
-                      blurRadius: 2.0,
-                      color: Colors.black,
-                      offset: Offset(3.0, 3.0),
-                    ),
-                  ],
-                ),
-              ),
+              child: Image(
+              height: 300,
+              width: 300,
+              image: AssetImage('assets/images/logo.png')
+              
+               )
             ),
-            SizedBox(
-              height: 50,
-            ),
+            
             Center(),
             Container(
               constraints: BoxConstraints.tightFor(width: 300),
@@ -68,10 +64,10 @@ class Sign_inState extends State<Sign_in> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),
                     labelText: "USERNAME",
-                    labelStyle: TextStyle(fontSize: 20),
+                    labelStyle: TextStyle(fontSize: 15),
                     hintText: "ahmed220",
                     //for example name
-                    hintStyle: TextStyle(fontSize: 20),
+                    hintStyle: TextStyle(fontSize: 15),
                     suffixIcon: Icon(Icons.person_outline),
                   ),
                   keyboardType: TextInputType.text,
@@ -94,10 +90,10 @@ class Sign_inState extends State<Sign_in> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),
                     labelText: "PASSWORD",
-                    labelStyle: TextStyle(fontSize: 20),
+                    labelStyle: TextStyle(fontSize: 15),
                     hintText: "ENTER YOUR PASSWORD",
                     //for example name
-                    hintStyle: TextStyle(fontSize: 20),
+                    hintStyle: TextStyle(fontSize: 15),
 
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -138,16 +134,16 @@ class Sign_inState extends State<Sign_in> {
               alignment: Alignment(0.6, 0),
               child: RaisedButton(
                   onPressed: () => ChangeScreen(context, 2),
-                  color: Colors.teal,
+                  color: Color(0xff2f9d80),
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  splashColor: Colors.teal[250],
+                  splashColor: Color(0xff4ABD9F),
                   child: Text(
                     "SIGN IN",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(50.0),
-                    side: BorderSide(color: Colors.teal),
+                    side: BorderSide(color: Color(0xff4ABD9F)),
                   )),
             )),
             SizedBox(
@@ -172,7 +168,7 @@ class Sign_inState extends State<Sign_in> {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.black,
+                        color: Colors.blueAccent,
                         decoration: TextDecoration.underline,
                       ),
                     ),
