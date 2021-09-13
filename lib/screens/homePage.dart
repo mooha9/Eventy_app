@@ -1,4 +1,4 @@
-import 'package:eventy_app/screens/category.dart';
+
 import 'package:eventy_app/screens/topEvent.dart';
 import 'package:eventy_app/util/data.dart';
 import 'package:flutter/material.dart';
