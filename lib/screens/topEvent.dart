@@ -12,7 +12,7 @@ class TopEvent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 20),
+      padding: EdgeInsets.only(right: 15),
       
             
           
@@ -56,56 +56,58 @@ class TopEvent extends StatelessWidget {
                ),
               
               
-               Container(
-                  height: 120.0,
-                  width: 400.0,
-                  child: Row(children: [
+               Center(
+                 child: Container(
+                    height: 120.0,
+                    width: 400.0,
+                    child: Row(children: [
               
-                 Column(
-                 mainAxisAlignment : MainAxisAlignment.center,
-                  crossAxisAlignment : CrossAxisAlignment.center,
-                   
-                   children: [
-                     Text(
-                      
-                      event['name'],
-                       
-                      
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                   Column(
+                   mainAxisAlignment : MainAxisAlignment.center,
+                    crossAxisAlignment : CrossAxisAlignment.center,
+                     
+                     children: [
+                       Text(
                         
-                                          
-                      ),
-                      
-                
+                        event['name'],
+                         
+                        
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          
+                                            
+                        ),
+                        
+                  
               ),
-                   ],
-                 ),
+                     ],
+                   ),
 
-                    
+                      
 
 
-                  ],),
-                   margin: const EdgeInsets.only(top: 150.0,left: 20, right: 20, bottom: 20),
-                  decoration: const BoxDecoration(
-                    
-                     borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(15.0),
-                        bottomRight: Radius.circular(15.0),
-                        topLeft: Radius.circular(15.0),
-                        bottomLeft: Radius.circular(15.0)),
-                    shape: BoxShape.rectangle,
-                    gradient: LinearGradient(
+                    ],),
+                     margin: const EdgeInsets.only(top: 150.0, ),
+                    decoration: const BoxDecoration(
+                      
+                       borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(15.0),
+                          bottomRight: Radius.circular(15.0),
+                          topLeft: Radius.circular(15.0),
+                          bottomLeft: Radius.circular(15.0)),
+                      shape: BoxShape.rectangle,
+                      gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               colors: [
-                Color.fromARGB(230,74, 189, 159),
-                Color.fromARGB(230,74, 155, 198),
+                  Color.fromARGB(230,74, 189, 159),
+                  Color.fromARGB(230,74, 155, 198),
               ],
             )
-                  ),
+                    ),
               ),
+               ),
               
             ],
             

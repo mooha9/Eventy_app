@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(
           primarySwatch: Colors.teal,
+          
       ),
       home: MyHomePage(),
     );
@@ -51,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           TabData(
               iconData: Icons.search,
-              title: "Search",
+              title: " ",
               onclick: () {
                 SearchPage();
                 final FancyBottomNavigationState fState = bottomNavigationKey
@@ -60,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           TabData(
               iconData: Icons.question_answer_outlined ,
-              title: "Chat",
+              title: " ",
               onclick: () {
                 ChatPage();
                 final FancyBottomNavigationState fState = bottomNavigationKey
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           TabData(
               iconData: Icons.festival_sharp,
-              title: "Home",
+              title: " ",
               onclick: () {
                 HomePage();
                 final FancyBottomNavigationState fState = bottomNavigationKey
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           TabData(
               iconData: Icons.favorite_border_outlined,
-              title: "Favorite",
+              title: " ",
               onclick: () {
                 FavoritePage();
                 final FancyBottomNavigationState fState = bottomNavigationKey
@@ -87,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           TabData(
               iconData: Icons.person_outline,
-              title: "Profile" ,
+              title: " " ,
               onclick: () {
                 ProfilePage();
                 final FancyBottomNavigationState fState = bottomNavigationKey

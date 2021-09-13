@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
+import 'eventItem.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -7,18 +8,53 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-     body: (
-        Container(
-          color: Colors.teal[200],
+      backgroundColor: Colors.teal[50],
+      appBar: AppBar(
+        backgroundColor: Colors.teal[100],
+        toolbarHeight: 90,
+        elevation: 10,
+         shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        bottom: Radius.circular(30),
+      ),
+    ),
+
+        title: Row(
+
+          mainAxisAlignment: MainAxisAlignment.center,
+
+          children: [
+            
+            Text(
+              
+              'Search  ',
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 30,
+              ),
+            ),
+            
+            Icon(
+              Icons.search_outlined,
+              color: Color.fromARGB(240,74, 189, 159),
+              size: 40,
+            ),
+            
+          ],
+        ),
+      ),
+      body: Container(
+        
+        child: ListView(
           
-         
-       )
-
-    )
-
-);
+        ),
+      ),
+    );
+  }
 }
-}
+
+
+

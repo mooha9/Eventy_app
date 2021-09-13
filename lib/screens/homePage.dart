@@ -22,14 +22,14 @@ class _HomePageState extends State<HomePage> {
         
         actions: <Widget>[
           Padding(
-            padding: EdgeInsets.only(right: 70.0),
+            padding: EdgeInsets.only(right: 90.0,top: 10),
             child: Text(
               "Good Moorning",
               style: TextStyle(
-                fontSize: 35.0,
+                fontSize: 33.0,
                 fontWeight: FontWeight.bold,
-                height: 1.5,
-                color: Colors.black,
+                
+                color: Colors.black87,
               ),
             ),
             
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
           
           Center(
             child: IconButton(
-              icon: const Icon(Icons.add_alert, color: Colors.black,),
+              icon: const Icon(Icons.add_alert, color: Colors.black45,),
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context)
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
           titlenewEvent(),
           SizedBox(height: 10.0),
           topEventsList(),
-          SizedBox(height: 1.0),
+          SizedBox(height: 5.0),
           titlenearEvent(),
           SizedBox(height: 1.0),
           nearEventsList(),
@@ -86,6 +86,7 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(
             fontSize: 23,
             fontWeight: FontWeight.w800,
+            color: Colors.black87,
            
           ),
         ),
@@ -116,6 +117,7 @@ class _HomePageState extends State<HomePage> {
   titlenearEvent() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      
       children: <Widget>[
 
         Text(
@@ -124,6 +126,7 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(
             fontSize: 23,
             fontWeight: FontWeight.w800,
+            color: Colors.black87,
            
           ),
         ),
@@ -134,10 +137,11 @@ class _HomePageState extends State<HomePage> {
 
   nearEventsList() {
     return Container(
-      height:420.0,
+      height:800.0,
+      margin: new EdgeInsets.symmetric(vertical: 5.0),
       child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
+        
+        
         itemCount: events.length,
         itemBuilder: (BuildContext context, int index) {
           Map event = events[index];
@@ -146,7 +150,7 @@ class _HomePageState extends State<HomePage> {
             event: event,
           );
         },
-      ),
+      )
     );
   }
 

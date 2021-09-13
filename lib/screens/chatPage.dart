@@ -12,7 +12,7 @@ class _ChatPageState extends State<ChatPage> {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
-      primaryColor: Colors.white,
+      primaryColor: Colors.teal,
     ),
     home: HomeScreen(),
   );
@@ -24,12 +24,16 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.teal[50],
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(240, 74, 155, 198),
-        brightness: Brightness.dark,
-        elevation: 20,
-
+         backgroundColor: Colors.teal[100],
+         shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        bottom: Radius.circular(30),
+      ),
+    ),
+        elevation: 10,
+        toolbarHeight: 90,
 
         title: Row(
 
@@ -39,14 +43,14 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Chat  ',
               style: TextStyle(
-                color: Colors.black38,
-                fontSize: 40,
+                color: Colors.black54,
+                fontSize: 30,
               ),
             ),
             Icon(
               Icons.question_answer,
               color: Color.fromARGB(240,74, 189, 159),
-              size: 40,
+              size: 35,
             ),
           ],
         ),
@@ -103,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     child: CircleAvatar(
-                      radius: 35,
+                      radius: 28,
                       backgroundImage: AssetImage(chat.sender.imageUrl),
                     ),
                   ),
@@ -122,7 +126,7 @@ class HomeScreen extends StatelessWidget {
                                 Text(
                                   chat.sender.name,
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
 
                                   ),
@@ -142,10 +146,12 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
+                            
                             Text(
+                              
                               chat.time,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w300,
                                 color: Colors.black54,
                               ),
@@ -155,6 +161,8 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
+                        
+                        
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
@@ -170,12 +178,18 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+               
                 ],
               ),
+          
             ),
+          
           );
+          
         },
+        
       ),
+      
     );
   }
 }
@@ -331,7 +345,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8),
       height: 70,
-      color: Color.fromARGB(240,74, 189, 159),
+      color: Colors.teal[100],
       child: Row(
         children: <Widget>[
           IconButton(
@@ -362,10 +376,10 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF6F6F6),
+      backgroundColor: Colors.teal[100],
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(240, 74, 155, 198),
-        brightness: Brightness.dark,
+        backgroundColor: Colors.teal[100],
+        
         centerTitle: true,
         title: RichText(
           textAlign: TextAlign.center,

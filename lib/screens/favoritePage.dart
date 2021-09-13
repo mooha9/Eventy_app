@@ -12,69 +12,65 @@ class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.teal[50],
       appBar: AppBar(
-        backgroundColor: Colors.teal[50],
-        elevation: 0,
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(),
-            child: Text(
-              "Favorite",
+        backgroundColor: Colors.teal[100],
+        toolbarHeight: 90,
+        elevation: 10,
+         shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        bottom: Radius.circular(30),
+      ),
+    ),
+
+        title: Row(
+
+          mainAxisAlignment: MainAxisAlignment.center,
+
+          children: [
+            Text(
+              'Favorite',
               style: TextStyle(
-                fontSize: 35.0,
-                height: 1.3,
-                color: Colors.black,
+                color: Colors.black54,
+                fontSize: 30,
               ),
             ),
-          ),
-          Center(
-            child: Icon(
-              Icons.favorite_border_outlined,
-              color: Colors.black,
+            Icon(
+              Icons.favorite_border_rounded,
+              color: Color.fromARGB(240,74, 189, 159),
+              size: 33,
             ),
-          ),
-          SizedBox(width: 190.0),
-        ],
+          ],
+        ),
       ),
-      body: ListView(
-        padding: EdgeInsets.only(left: 20.0),
-        children: <Widget>[
-          SizedBox(height: 10.0),
-          Padding(
-            padding: EdgeInsets.only(right: 20.0),
-          ),
-          SizedBox(height: 1.0),
-          buildTitleRow(),
-          buildProductList(),
-          SizedBox(height: 10.0),
-        ],
+      body: Container(
+        
+        child: ListView(
+          
+          padding: EdgeInsets.only(left: 20.0),
+          children: <Widget>[
+            
+            Padding(
+              padding: EdgeInsets.only(right: 20.0),
+            ),
+
+            buildProductList(),
+            
+          ],
+        ),
       ),
     );
   }
 }
 
-buildTitleRow() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-      Text(
-        "Event you like it ",
-        style: TextStyle(
-          fontSize: 23,
-          fontWeight: FontWeight.w800,
-        ),
-      ),
-      Padding(
-        padding: EdgeInsets.only(top: 5.0),
-      )
-    ],
-  );
-}
+
 
 buildProductList() {
   return Container(
-    height: 450.0,
+    height: 740.0,
+    
     child: ListView.builder(
+      
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: events.length,

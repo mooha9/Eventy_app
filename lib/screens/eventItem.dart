@@ -15,7 +15,7 @@ class EventItem extends StatelessWidget {
     var container = Container(
           height: 140,
           width: 140,
-            padding: EdgeInsets.only(top: 5.0),
+            margin: new EdgeInsets.symmetric(vertical: 10.0),
             
 
 
