@@ -1,12 +1,6 @@
-import 'package:eventy_app/screens/HomePage.dart';
-import 'package:eventy_app/screens/ProfilePage.dart';
-import 'package:eventy_app/screens/chatPage.dart';
-import 'package:eventy_app/screens/favoritePage.dart';
-import 'package:eventy_app/screens/searchPage.dart';
 import 'package:eventy_app/screens/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-import 'package:eventy_app/screens/sign_in.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -17,150 +11,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal
       ),
-      home: HomePage(),
+      home: StartPage(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class StartPage extends StatelessWidget {
 
 
   @override
   Widget build(BuildContext context) {
-    return Sign_in();
+    // if (sign_in == true) {
+    //   return MyHomePage();
+    // } else {
+    return sign_in();
+    // }
   }
 }
-
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int currentPage = 2;
-
-  GlobalKey bottomNavigationKey = GlobalKey();
-
-  @override
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-
-      body: Container(
-        decoration: BoxDecoration(color: Colors.white),
-        child: Center(
-          child: _getPage(currentPage),
-        ),
-      ),
-      bottomNavigationBar: FancyBottomNavigation(
-        tabs: [
-          
-          TabData(
-              iconData: Icons.search,
-              title: "Search",
-              onclick: () {
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
-              }),
-          
-          TabData(
-              iconData: Icons.question_answer_outlined ,
-              title: "Chat",
-              onclick: () {
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
-              }),
-          
-          TabData(
-              iconData: Icons.festival_sharp,
-              title: "Home",
-              onclick: () {
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
-               }),
-         
-          TabData(
-            iconData: Icons.favorite_border_outlined, 
-            title: "Favorite",
-            onclick: () {
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
-              }),
-
-          TabData(
-              iconData: Icons.person_outline,
-              title: "Profile" ,
-              onclick: () {
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
-              }),  
-        ],
-        initialSelection: 2,
-        key: bottomNavigationKey,
-        onTabChangedListener: (position) {
-          setState(() {
-            currentPage = position;
-          });
-        },
-      ),
-      
-    );
-  }
-
-  _getPage(int page) {
-    switch (page) {
-      case 0:
-        return MaterialApp(
-          home:SearchPage(),
-            
-           ) ;
-      case 1:
-        return MaterialApp(
-          home:ChatPage(),
-            
-           ) ;
-          
-      case 2:
-        return MaterialApp(
-          home:HomePage(),
-            
-           ) ;
-      case 3:
-        return MaterialApp(
-          home:FavoritePage(),
-            
-           ) ;
-      default:
-        return MaterialApp(
-          home:ProfilePage(),
-            
-           ) ;
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

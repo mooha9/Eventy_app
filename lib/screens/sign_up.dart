@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:eventy_app/connect.dart';
 
 
-class Sign_up extends StatefulWidget {
+class sign_up extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return Sign_upState();
+    return sign_upState();
   }
 }
 
-class Sign_upState extends State<Sign_up> {
+class sign_upState extends State<sign_up> {
   bool passwordVisible = true;
   bool passwordVisible2 = true;
   void ChangeScreen(BuildContext context1, int n) {
-    Navigator.of(context1).push(MaterialPageRoute(builder: (_)
+    Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
     {
-      if (n == 1) return Sign_in();
+      if (n == 1) return sign_in();
       return MyHomePage();
     }));
   }
@@ -26,42 +26,50 @@ class Sign_upState extends State<Sign_up> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          child: SingleChildScrollView(
+        body: Stack(
+              children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/backGround.png"), 
+              fit: BoxFit.cover,
+            ),
+          ),
+          
+        ),
+        
+        Container(
+          child: Positioned(
+            right: 50,
+              child: Image(
+              height: 300,
+              width: 300,
+              image: AssetImage('assets/images/logo.png')
+              
+               )
+          ),
+            ),
+            Container(
+              child: Positioned(
+                top: 200,
+                right: 50,
+              
+          child:SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  height:100,
-                ),
+                
                 Container(
-                  child: Text(
-                    "EVENTY",
-                    style: TextStyle(
-                      fontSize: 50,
-                      color: Colors.teal,
-                      shadows: [
-                        Shadow(
-                          blurRadius: 2.0,
-                          color: Colors.black,
-                          offset: Offset(3.0, 3.0),
-                        ),
-                      ],
-
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
+                  
                   child: Text(
                     "CREATE ACCOUNT",
                     style: TextStyle(
                       fontSize: 20,
+                    
                       color: Colors.black,
                     ),
                   ),
                 ),
+                
 
                 SizedBox(
                   height: 25,
@@ -77,15 +85,15 @@ class Sign_upState extends State<Sign_up> {
                     borderRadius: BorderRadius.circular(32.0),
                     child: TextField(
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(8),
+                        contentPadding: EdgeInsets.all(15),
                         //size Text field
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         labelText: "FIRST NAME",
-                        labelStyle: TextStyle(fontSize: 20),
+                        labelStyle: TextStyle(fontSize: 15),
                         hintText: "SALEH",
                         //for example name
-                        hintStyle: TextStyle(fontSize: 20),
+                        hintStyle: TextStyle(fontSize: 15),
                       ),
                       keyboardType: TextInputType.text,
                     ),
@@ -106,10 +114,10 @@ class Sign_upState extends State<Sign_up> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         labelText: "LAST NAME ",
-                        labelStyle: TextStyle(fontSize: 20),
+                        labelStyle: TextStyle(fontSize: 15),
                         hintText: "AHMAD",
                         //for example name
-                        hintStyle: TextStyle(fontSize: 20),
+                        hintStyle: TextStyle(fontSize: 15),
                       ),
                       keyboardType: TextInputType.text,
                     ),
@@ -130,10 +138,10 @@ class Sign_upState extends State<Sign_up> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         labelText: "EMAIL",
-                        labelStyle: TextStyle(fontSize: 20),
+                        labelStyle: TextStyle(fontSize: 15),
                         hintText: "ah*****-@gmail.com",
                         //for example name
-                        hintStyle: TextStyle(fontSize: 20),
+                        hintStyle: TextStyle(fontSize: 15),
                         suffixIcon: Icon(Icons.alternate_email_outlined),
                       ),
                       keyboardType: TextInputType.emailAddress,
@@ -155,10 +163,10 @@ class Sign_upState extends State<Sign_up> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         labelText: "USERNAME",
-                        labelStyle: TextStyle(fontSize: 20),
+                        labelStyle: TextStyle(fontSize: 15),
                         hintText: "ahmed220",
                         //for example name
-                        hintStyle: TextStyle(fontSize: 20),
+                        hintStyle: TextStyle(fontSize: 15),
                         suffixIcon: Icon(Icons.person_outline),
                       ),
                       keyboardType: TextInputType.text,
@@ -180,10 +188,10 @@ class Sign_upState extends State<Sign_up> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         labelText: "PHONE NUMBER",
-                        labelStyle: TextStyle(fontSize: 20),
+                        labelStyle: TextStyle(fontSize: 15),
                         hintText: "055*******",
                         //for example name
-                        hintStyle: TextStyle(fontSize: 20),
+                        hintStyle: TextStyle(fontSize: 15),
                         suffixIcon: Icon(Icons.phone),
                       ),
                       keyboardType: TextInputType.number,
@@ -205,10 +213,10 @@ class Sign_upState extends State<Sign_up> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         labelText: "PASSWORD",
-                        labelStyle: TextStyle(fontSize: 20),
+                        labelStyle: TextStyle(fontSize: 15),
                         hintText: "ENTER YOUR PASSWORD",
                         //for example name
-                        hintStyle: TextStyle(fontSize: 20),
+                        hintStyle: TextStyle(fontSize: 15),
 
                         suffixIcon: IconButton(
                           icon: Icon(
@@ -244,10 +252,10 @@ class Sign_upState extends State<Sign_up> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         labelText: "CONFIRM PASSWORD",
-                        labelStyle: TextStyle(fontSize: 20),
+                        labelStyle: TextStyle(fontSize: 15),
                         hintText: "CONFIRM YOUR PASSWORD",
                         //for example name
-                        hintStyle: TextStyle(fontSize: 20),
+                        hintStyle: TextStyle(fontSize: 15),
                         suffixIcon: IconButton(
                           icon: Icon(
                             passwordVisible2
@@ -281,7 +289,7 @@ class Sign_upState extends State<Sign_up> {
 
 
                           onPressed: () => ChangeScreen(context, 2),
-                          color: Colors.teal,
+                          color: Color(0xff2f9d80),
                           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                           splashColor: Colors.teal[250],
 
@@ -296,30 +304,47 @@ class Sign_upState extends State<Sign_up> {
                     )
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
-                Text.rich(
-                  TextSpan(
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.teal,
-
-                    ),
-                    children: [
+                Row(
+                  children: [
+                    Text.rich(
                       TextSpan(
-                        text: 'SIGN UP WITH  ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color(0xff2f9d80),
+
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'SIGN UP WITH  ',
+                          ),
+                          
+                        ],
                       ),
-                      WidgetSpan(
-                        child: Icon(Icons.account_box),
+                    ),
+                      ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                      primary: Colors.white, // background
+                      onPrimary: Colors.grey, // foreground
                       ),
-                      WidgetSpan(
-                        child: Icon(Icons.account_balance),
-                      ),
-                    ],
-                  ),
+                      onPressed: () { },
+                      child: 
+                        Image.asset(
+                          'assets/images/Google_icon-icons.com_66793.png',
+                          height: 25.0,
+                       ),),
+
+                  
+                  
+
+                   
+                  ],
+
                 ),
+
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 Container(
 
@@ -341,8 +366,13 @@ class Sign_upState extends State<Sign_up> {
 
             ),
           ),
+              ),
         ),
+              ],
       ),
+    )
+  
     );
   }
+
 }

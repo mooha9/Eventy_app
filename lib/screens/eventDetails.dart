@@ -5,18 +5,26 @@ import 'eventItem.dart';
 
 
 class EventDetails extends StatefulWidget {
+
   @override
   _EventDetailsState createState() => _EventDetailsState();
 }
 
 class _EventDetailsState extends State<EventDetails> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
+            appBar: AppBar(
+        leading: BackButton(
+            color: Colors.black,
+            onPressed: () => Navigator.of(context).pop(),
+        ),),
       
       body: Stack(
+            
         children: <Widget>[
+          
           ListView(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             children: <Widget>[
@@ -74,7 +82,7 @@ class _EventDetailsState extends State<EventDetails> {
               SizedBox(height: 10.0),
             ],
           ),
-          buildFloatingButton(),
+          
         ],
       ),
     );
@@ -98,31 +106,6 @@ class _EventDetailsState extends State<EventDetails> {
     );
   }
 
-  buildFloatingButton() {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Padding(
-        padding: EdgeInsets.only(right: 20.0),
-        child: Container(
-          height: 60.0,
-          width: 60.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Theme.of(context).accentColor,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.orange,
-                offset: Offset(0.0, 10.0),
-                blurRadius: 10,
-              ),
-            ],
-          ),
-          
-          ),
-        ),
-      );
-    
-  }
 
   buildImage() {
     return Container(
@@ -142,6 +125,7 @@ class _EventDetailsState extends State<EventDetails> {
           Positioned(
             right: -10.0,
             bottom: 3.0,
+            
             child: RawMaterialButton(
               onPressed: () {},
               fillColor: Colors.white,

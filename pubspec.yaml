@@ -34,6 +34,7 @@ dependencies:
   fancy_bottom_navigation: ^0.3.3
   build_runner: ^2.1.2
   flutter_launcher_icons: ^0.9.2
+  filter_list: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +58,9 @@ flutter:
     - assets/images/event3.jpg
     - assets/images/event4.jpeg
     - assets/images/event5.jpeg
+    - assets/images/backGround.png
+    - assets/images/logo.png
+    - assets/images/Google_icon-icons.com_66793.png
     
   #   - images/a_dot_ham.jpeg
 
