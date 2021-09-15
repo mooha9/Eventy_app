@@ -64,8 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: " ",
               onclick: () {
                 ChatPage();
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
+
               }),
 
           TabData(
@@ -73,8 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: " ",
               onclick: () {
                 HomePage();
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
+
               }),
 
           TabData(
@@ -82,8 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: " ",
               onclick: () {
                 FavoritePage();
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
+
               }),
 
           TabData(
@@ -91,8 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: " " ,
               onclick: () {
                 ProfilePage();
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
+
               }),
         ],
         initialSelection: 2,

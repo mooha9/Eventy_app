@@ -1,9 +1,9 @@
-
 import 'package:eventy_app/screens/topEvent.dart';
 import 'package:eventy_app/util/data.dart';
 import 'package:flutter/material.dart';
+import 'addEventPage.dart';
 import 'eventItem.dart';
-import 'package:filter_list/filter_list.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context)
-                    .showSnackBar(const SnackBar(content: Text('Nothing')));
+                    .showSnackBar(const SnackBar(content: Text('Nothing'), ));
               },
             ),
           ),
@@ -67,10 +67,22 @@ class _HomePageState extends State<HomePage> {
           nearEventsList(),
           SizedBox(height: 10.0),
           
+          
         ],
        
       ),
-    
+     floatingActionButton: FloatingActionButton(
+        onPressed: () {
+             Navigator.push(
+              context,
+            MaterialPageRoute(builder: (context) => AddEvent()),
+                );
+        },
+        child: const Icon(Icons.add_outlined,size: 35,),
+        backgroundColor: Colors.teal[200],
+        
+
+      ),
     );
   }
 
