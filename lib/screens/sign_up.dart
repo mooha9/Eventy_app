@@ -1,3 +1,5 @@
+import 'package:eventy_app/screens/sign_up2.dart';
+
 import 'sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:eventy_app/connect.dart';
@@ -18,7 +20,7 @@ class sign_upState extends State<sign_up> {
     Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
     {
       if (n == 1) return sign_in();
-      return MyHomePage();
+      return sign_up2();
     }));
   }
 
@@ -293,7 +295,7 @@ class sign_upState extends State<sign_up> {
                           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                           splashColor: Colors.teal[250],
 
-                          child: Text("SIGN UP",
+                          child: Text("NEXT",
                             style: TextStyle(fontSize: 20, color: Colors.white),),
                           shape: RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(50.0),
