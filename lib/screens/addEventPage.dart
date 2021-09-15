@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class AddEvent extends StatefulWidget {
@@ -13,21 +11,18 @@ class _AddEventState extends State<AddEvent> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[100],
+      
       appBar: AppBar(
-       
-         backgroundColor: Colors.teal[100],
-         shape: RoundedRectangleBorder(
+      backgroundColor: Colors.teal[100],
+      shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         bottom: Radius.circular(30),
       ),
     ),
         elevation: 10,
         toolbarHeight: 90,
-
         title: Row(
-
           mainAxisAlignment: MainAxisAlignment.center,
-
           children: [
             Text(
               'Add Event  ',
@@ -42,7 +37,6 @@ class _AddEventState extends State<AddEvent> {
               size: 35,
             ),
           ],
-          
         ),
          leading: BackButton(
             color: Colors.black54,
@@ -51,49 +45,39 @@ class _AddEventState extends State<AddEvent> {
       ),
 
       body:
-       
             Container(
               alignment: Alignment.center,
-              
                decoration: const BoxDecoration(
-                         
                            borderRadius: BorderRadius.only(
                               topRight: Radius.circular(15.0),
                               bottomRight: Radius.circular(15.0),
                               topLeft: Radius.circular(15.0),
-                              bottomLeft: Radius.circular(15.0)),
-                              
+                              bottomLeft: Radius.circular(15.0)), 
                           shape: BoxShape.rectangle,
                           gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                      Color.fromARGB(230,74, 189, 159),
-                      Color.fromARGB(230,74, 155, 198),
-                  ],
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                            colors: [
+                               Color.fromARGB(230,74, 189, 159),
+                              Color.fromARGB(230,74, 155, 198),
+                                ],
                 )
-                        ),
-              
+                ),
                 child:
                 Column(
-                 
                     children: [
                       SizedBox(
                         height: 150,
                       ),
-                      
                       FlatButton(
-                        
                         height: 70,
                         minWidth:310,
                        color: Color.fromARGB(230,74, 155, 198),
-                        
                         splashColor: Colors.black12,
                         onPressed: (){
                         },
                         child: Text(
-                          "Public Event"
-                          ,
+                          "Public Event",
                           style: TextStyle(fontSize: 20,fontWeight:FontWeight.bold),
                         ),
                       ),
@@ -108,19 +92,13 @@ class _AddEventState extends State<AddEvent> {
                         onPressed: (){
                         },
                         child: Text(
-                          "Personal Event"
-                          ,
+                          "Personal Event",
                           style: TextStyle(fontSize: 20,fontWeight:FontWeight.bold),
                         ),
                       ),
                     ],
                   ),
-              
             ),
-            
-            
-          
-        
     );
   }
 }

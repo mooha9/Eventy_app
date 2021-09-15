@@ -1,27 +1,26 @@
 import 'sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:eventy_app/connect.dart';
+import 'package:eventy_app/buttomNavbar.dart';
 import 'package:eventy_app/screens/sign_up2.dart';
 
-class sign_up extends StatefulWidget {
+class Sign_up extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return sign_upState();
+    return Sign_upState();
   }
 }
 
-class sign_upState extends State<sign_up> {
+class Sign_upState extends State<Sign_up> {
   bool passwordVisible = true;
   bool passwordVisible2 = true;
   void ChangeScreen(BuildContext context1, int n) {
     Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
     {
-      if (n == 1) return sign_in();
+      if (n == 1) return Sign_in();
       return sign_up2();
     }));
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,9 +34,7 @@ class sign_upState extends State<sign_up> {
               fit: BoxFit.cover,
             ),
           ),
-          
         ),
-        
         Container(
           child: Positioned(
             right: 50,
@@ -45,32 +42,25 @@ class sign_upState extends State<sign_up> {
               height: 300,
               width: 300,
               image: AssetImage('assets/images/logo.png')
-              
-               )
+                      )
           ),
             ),
             Container(
               child: Positioned(
                 top: 200,
                 right: 50,
-              
-          child:SingleChildScrollView(
+            child:SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                
                 Container(
-                  
                   child: Text(
                     "CREATE ACCOUNT",
                     style: TextStyle(
                       fontSize: 20,
-                    
                       color: Colors.black,
                     ),
                   ),
                 ),
-                
-
                 SizedBox(
                   height: 25,
                 ),
@@ -217,7 +207,6 @@ class sign_upState extends State<sign_up> {
                         hintText: "ENTER YOUR PASSWORD",
                         //for example name
                         hintStyle: TextStyle(fontSize: 15),
-
                         suffixIcon: IconButton(
                           icon: Icon(
                             passwordVisible
@@ -244,7 +233,6 @@ class sign_upState extends State<sign_up> {
                     elevation: 5,//shadow
                     shadowColor: Colors.black,//color shadow
                     borderRadius: BorderRadius.circular(32.0),
-
                     child: TextField(
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(8),
@@ -277,17 +265,11 @@ class sign_upState extends State<sign_up> {
                 SizedBox(
                   height: 10,
                 ),
-
-                Center(
-
-                ),
+                Center(),
                 Container(
-
                     child: Align(
                       alignment: Alignment(0.6, 0),
                       child: RaisedButton(
-
-
                           onPressed: () => ChangeScreen(context, 2),
                           color: Color(0xff2f9d80),
                           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
@@ -299,7 +281,6 @@ class sign_upState extends State<sign_up> {
                             borderRadius: new BorderRadius.circular(50.0),
                             side: BorderSide(color: Colors.teal),
                           )
-
                       ),
                     )
                 ),
@@ -334,20 +315,12 @@ class sign_upState extends State<sign_up> {
                           'assets/images/Google_icon-icons.com_66793.png',
                           height: 25.0,
                        ),),
-
-                  
-                  
-
-                   
                   ],
-
                 ),
-
                 SizedBox(
                   height: 15,
-                ),
+                     ),
                 Container(
-
                     child: InkWell(//InkWell is same textbutton
                         child: Text(
                           "SIGN_IN",
@@ -358,21 +331,15 @@ class sign_upState extends State<sign_up> {
                         ),
                         onTap:()=> ChangeScreen(context,1)
                     )
-
-
                 ),
-
               ],
-
             ),
           ),
-              ),
         ),
-              ],
+        ),
+      ],
       ),
     )
-  
     );
   }
-
 }

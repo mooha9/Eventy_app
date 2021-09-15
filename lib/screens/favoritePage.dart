@@ -1,7 +1,4 @@
-import 'package:eventy_app/screens/topEvent.dart';
-import 'package:eventy_app/util/data.dart';
 import 'package:flutter/material.dart';
-import 'eventItem.dart';
 
 class FavoritePage extends StatefulWidget {
   @override
@@ -22,11 +19,8 @@ class _FavoritePageState extends State<FavoritePage> {
         bottom: Radius.circular(30),
       ),
     ),
-
         title: Row(
-
           mainAxisAlignment: MainAxisAlignment.center,
-
           children: [
             Text(
               'Favorite',
@@ -43,44 +37,6 @@ class _FavoritePageState extends State<FavoritePage> {
           ],
         ),
       ),
-      body: Container(
-        
-        child: ListView(
-          
-          padding: EdgeInsets.only(left: 20.0),
-          children: <Widget>[
-            
-            Padding(
-              padding: EdgeInsets.only(right: 20.0),
-            ),
-
-            buildProductList(),
-            
-          ],
-        ),
-      ),
     );
   }
-}
-
-
-
-buildProductList() {
-  return Container(
-    height: 740.0,
-    
-    child: ListView.builder(
-      
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      itemCount: events.length,
-      itemBuilder: (BuildContext context, int index) {
-        Map event = events[index];
-
-        return EventItem(
-          event: event,
-        );
-      },
-    ),
-  );
 }

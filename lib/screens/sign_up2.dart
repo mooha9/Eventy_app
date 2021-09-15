@@ -1,4 +1,4 @@
-import 'package:eventy_app/connect.dart';
+import 'package:eventy_app/buttomNavbar.dart';
 
 import 'sign_up.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ const deviceTypes3 = ["Buradah", "Unazah", "other"];
 class sign_up2State extends State<sign_up2> {
   void ChangeScreen(BuildContext context1 ,int n) {
     Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_) {
-      if (n == 2)return sign_up();
+      if (n == 2)return Sign_up();
       return MyHomePage();
     }));
   }

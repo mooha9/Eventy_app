@@ -1,22 +1,21 @@
-import 'package:eventy_app/connect.dart';
-
+import 'package:eventy_app/buttomNavbar.dart';
 import 'sign_up.dart';
 import 'package:flutter/material.dart';
 
-class sign_in extends StatefulWidget {
+class Sign_in extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return sign_inState();
+    return Sign_inState();
   }
 }
 
-class sign_inState extends State<sign_in> {
+class Sign_inState extends State<Sign_in> {
   void ChangeScreen(BuildContext context1, int n) {
     Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
         {
-            if (n == 1) return sign_up();
+           if (n == 1) return Sign_up();
           return MyHomePage();
-    }));
+      }));
   }
 
   bool passwordVisible = true;
@@ -119,10 +118,10 @@ class sign_inState extends State<sign_in> {
             Align(
               alignment: Alignment(0.5, 0),
               child: Text(
-                "FORGET PASSWORD",
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
+                      "FORGET PASSWORD",
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
                 ),
               ),
             ),
@@ -164,7 +163,7 @@ class sign_inState extends State<sign_in> {
                   TextButton(
                     onPressed: () => ChangeScreen(context, 1),
                     child: Text(
-                      'SIGN UP',
+                              'SIGN UP',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 14,

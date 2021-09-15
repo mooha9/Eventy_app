@@ -1,29 +1,23 @@
 import 'package:eventy_app/screens/HomePage.dart';
 import 'package:eventy_app/screens/ProfilePage.dart';
-import 'package:eventy_app/screens/chatPage.dart';
+import 'package:eventy_app/screens/cardPage.dart';
 import 'package:eventy_app/screens/favoritePage.dart';
 import 'package:eventy_app/screens/searchPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-
-
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       theme: ThemeData(
           primarySwatch: Colors.teal,
-          
       ),
       home: MyHomePage(),
     );
   }
 }
-
-
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -31,17 +25,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+ 
   int currentPage = 2;
-
   GlobalKey bottomNavigationKey = GlobalKey();
-
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Container(
-        
         decoration: BoxDecoration(color: Colors.white),
         child: Center(
           child: _getPage(currentPage),
@@ -49,46 +39,35 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: FancyBottomNavigation(
         tabs: [
-
           TabData(
               iconData: Icons.search,
               title: " ",
               onclick: () {
                 SearchPage();
-                final FancyBottomNavigationState fState = bottomNavigationKey
-                    .currentState as FancyBottomNavigationState;
               }),
-
           TabData(
-              iconData: Icons.question_answer_outlined ,
+              iconData: Icons.favorite_border_outlined,
               title: " ",
               onclick: () {
-                ChatPage();
-
+                 FavoritePage();
               }),
-
           TabData(
               iconData: Icons.festival_sharp,
               title: " ",
               onclick: () {
                 HomePage();
-
               }),
-
           TabData(
-              iconData: Icons.favorite_border_outlined,
+              iconData: Icons.credit_card_rounded,
               title: " ",
               onclick: () {
-                FavoritePage();
-
+               CardPage();
               }),
-
           TabData(
               iconData: Icons.person_outline,
               title: " " ,
               onclick: () {
                 ProfilePage();
-
               }),
         ],
         initialSelection: 2,
@@ -99,37 +78,35 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
       ),
-
     );
   }
 
   _getPage(int page) {
     switch (page) {
+
       case 0:
         return MaterialApp(
           home:SearchPage(),
-
         ) ;
+
       case 1:
         return MaterialApp(
-          home:ChatPage(),
-
+          home:FavoritePage(),
         ) ;
 
       case 2:
         return MaterialApp(
           home:HomePage(),
-
         ) ;
+      
       case 3:
         return MaterialApp(
-          home:FavoritePage(),
-
+          home:CardPage(),
         ) ;
+      
       default:
         return MaterialApp(
           home:ProfilePage(),
-
         ) ;
     }
   }

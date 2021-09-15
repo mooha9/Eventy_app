@@ -3,15 +3,12 @@ import 'package:eventy_app/util/data.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'eventItem.dart';
 
-
 class EventDetails extends StatefulWidget {
-
   @override
   _EventDetailsState createState() => _EventDetailsState();
 }
 
 class _EventDetailsState extends State<EventDetails> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,15 +25,11 @@ class _EventDetailsState extends State<EventDetails> {
             color: Colors.black54,
             onPressed: () => Navigator.of(context).pop(),
         ),),
-      
-      body: Stack(
-            
+      body: Stack(   
         children: <Widget>[
-          
           Container(
             color: Colors.teal[50],
             child: ListView(
-              
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               children: <Widget>[
                 SizedBox(height: 10.0),
@@ -109,8 +102,7 @@ class _EventDetailsState extends State<EventDetails> {
                 SizedBox(height: 10.0),
               ],
             ),
-          ),
-          
+          ), 
         ],
       ),
     );
@@ -126,7 +118,6 @@ class _EventDetailsState extends State<EventDetails> {
         itemCount: events.length,
         itemBuilder: (BuildContext context, int index) {
           Map event = events.toList()[index];
-
           return EventItem(
             event: event,
           );
@@ -134,7 +125,6 @@ class _EventDetailsState extends State<EventDetails> {
       ),
     );
   }
-
 
   buildImage() {
     return Container(
@@ -166,8 +156,6 @@ class _EventDetailsState extends State<EventDetails> {
                  size: 25.0,
                 color: Colors.teal,
                   ),
-              
-          
             ),
           ),
         ],
