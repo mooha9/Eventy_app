@@ -26,6 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
               //isScrollable: true,
               indicatorColor: Colors.black54,
               indicatorWeight: 4,
+              
               labelColor:Colors.teal,
               tabs: [
                 Tab(icon: Icon(Icons.history_rounded, color: Colors.black54,), text: 'History'),
@@ -35,6 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
             titleSpacing: 20,
           ),
           body: TabBarView(
+            
             children: [
               buildPage1('History'),
               buildPage2('Card'),
