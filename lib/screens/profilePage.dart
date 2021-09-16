@@ -15,28 +15,78 @@ class _ProfilePageState extends State<ProfilePage> {
           backgroundColor: Colors.teal[50],
           appBar: AppBar(
             backgroundColor: Colors.teal[100],
-        toolbarHeight: 300,
-        elevation: 10,
-         shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        bottom: Radius.circular(10),
-      ),
-    ),
+            toolbarHeight: 300,
+            elevation: 10,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(10),
+              ),
+            ),
+            centerTitle: true,
+            title: Column(
+              children: [
+                Container(
+                    decoration: BoxDecoration(),
+                    child: Container(
+                      width: double.infinity,
+                      height: 350.0,
+                      child: Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                "https://ibb.co/PY7DbFs.png",
+                              ),
+                              radius: 50.0,
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            Text(
+                              "Saleh",
+                              style: TextStyle(
+                                  fontSize: 35.0, color: Colors.black),
+                            ),
+                            Text(
+                              "I love a cofee ",
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.black),
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )),
+              ],
+            ),
             bottom: TabBar(
               //isScrollable: true,
               indicatorColor: Colors.black54,
               indicatorWeight: 4,
-              
-              labelColor:Colors.teal,
+
+              labelColor: Colors.teal,
               tabs: [
-                Tab(icon: Icon(Icons.history_rounded, color: Colors.black54,), text: 'History'),
-                Tab(icon: Icon(Icons.credit_card, color: Colors.black54,), text: 'Card'),
+                Tab(
+                    icon: Icon(
+                      Icons.history_rounded,
+                      color: Colors.black54,
+                    ),
+                    text: 'History'),
+                Tab(
+                    icon: Icon(
+                      Icons.credit_card,
+                      color: Colors.black54,
+                    ),
+                    text: 'Card'),
               ],
             ),
             titleSpacing: 20,
           ),
           body: TabBarView(
-            
             children: [
               buildPage1('History'),
               buildPage2('Card'),
@@ -48,34 +98,29 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-      height:800.0,
-      margin: new EdgeInsets.symmetric(vertical: 2.0),
-      child: GridView.builder(
-          itemCount: events.length,
-          itemBuilder: (BuildContext context, int index) {
-            Map event = events[index];
-            return EventItem(
-              event: event,
-            );
-          }, gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent:400,
-            childAspectRatio: 7/8,
-            mainAxisSpacing: 10,
-            crossAxisSpacing:10, 
-            
-            
-             )
-      )
-    ),
+              height: 800.0,
+              margin: new EdgeInsets.symmetric(vertical: 2.0),
+              child: GridView.builder(
+                  itemCount: events.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Map event = events[index];
+                    return EventItem(
+                      event: event,
+                    );
+                  },
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 400,
+                    childAspectRatio: 7 / 8,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                  ))),
         ),
       );
-      Widget buildPage2(String text) => Center(
+  Widget buildPage2(String text) => Center(
         child: Container(
-      height:800.0,
-      margin: new EdgeInsets.symmetric(vertical: 2.0),
-      child: Card(
-          
-      ),
+          height: 800.0,
+          margin: new EdgeInsets.symmetric(vertical: 2.0),
+          child: Card(),
         ),
       );
 }
