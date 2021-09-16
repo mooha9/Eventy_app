@@ -1,3 +1,5 @@
+import 'package:eventy_app/util/data.dart';
+import 'package:eventy_app/widgets/eventItem.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -34,16 +36,44 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           body: TabBarView(
             children: [
-              buildPage('History'),
-              buildPage('Card'),
+              buildPage1('History'),
+              buildPage2('Card'),
             ],
           ),
         ),
       );
-  Widget buildPage(String text) => Center(
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 28),
+  Widget buildPage1(String text) => Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+      height:800.0,
+      margin: new EdgeInsets.symmetric(vertical: 2.0),
+      child: GridView.builder(
+          itemCount: events.length,
+          itemBuilder: (BuildContext context, int index) {
+            Map event = events[index];
+            return EventItem(
+              event: event,
+            );
+          }, gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent:400,
+            childAspectRatio: 7/8,
+            mainAxisSpacing: 10,
+            crossAxisSpacing:10, 
+            
+            
+             )
+      )
+    ),
+        ),
+      );
+      Widget buildPage2(String text) => Center(
+        child: Container(
+      height:800.0,
+      margin: new EdgeInsets.symmetric(vertical: 2.0),
+      child: Card(
+          
+      ),
         ),
       );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/eventDetails.dart';
-import 'eventDetails.dart';
+import '../screens/eventDetails.dart';
 
 class EventItem extends StatelessWidget {
   final Map event;
@@ -11,7 +11,7 @@ class EventItem extends StatelessWidget {
     var container = Container(
           height: 140,
           width: 140,
-            margin: new EdgeInsets.symmetric(vertical: 10.0),
+            margin: new EdgeInsets.symmetric(vertical: 7.0),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Image.asset(

@@ -1,5 +1,4 @@
-import 'package:eventy_app/buttomNavbar.dart';
-
+import 'package:eventy_app/widgets/buttomNavbar.dart';
 import 'sign_up.dart';
 import 'package:flutter/material.dart';
 

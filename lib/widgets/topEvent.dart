@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-
-
-import 'eventDetails.dart';
+import '../screens/eventDetails.dart';
 
 
 class TopEvent extends StatelessWidget {
   final Map event;
-
   TopEvent({required this.event});
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(right: 15),
-
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).push(
@@ -24,7 +19,6 @@ class TopEvent extends StatelessWidget {
             ),
           );
         },
-
         child: Container(
           height: 275,
           width: 285,

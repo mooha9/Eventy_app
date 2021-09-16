@@ -1,6 +1,5 @@
 import 'sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:eventy_app/buttomNavbar.dart';
 import 'package:eventy_app/screens/sign_up2.dart';
 
 class Sign_up extends StatefulWidget {
