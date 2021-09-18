@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 import 'category.dart';
 
 
@@ -9,7 +9,7 @@ const Categories_data = const [
   ),
   Category(
     id: 'c2',
-    title: 'Participate',
+    title: 'Workshops',
   ),
   Category(
     id: 'c3',
@@ -17,11 +17,11 @@ const Categories_data = const [
   ),
   Category(
     id: 'c4',
-    title: 'Workshops',
+    title: 'Conferences',
   ),
   Category(
     id: 'c5',
-    title: 'Conferences',
+    title: 'Sports',
   ),
   Category(
     id: 'c6',

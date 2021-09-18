@@ -22,7 +22,7 @@ class sign_up2State extends State<sign_up2> {
   void ChangeScreen(BuildContext context1 ,int n) {
     Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_) {
       if (n == 2)return Sign_up();
-      return MyHomePage();
+      return BottomNav();
     }));
   }
 

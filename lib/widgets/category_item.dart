@@ -6,7 +6,7 @@ class CategoryItem extends StatelessWidget {
   final String title;
 
   CategoryItem(this.id, this.title);
-
+  int selectCategory =0;
   @override
   Widget build(BuildContext context) {
 

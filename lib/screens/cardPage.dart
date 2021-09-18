@@ -1,4 +1,7 @@
+
 import 'package:flutter/material.dart';
+
+
 
 class CardPage extends StatefulWidget {
   @override
@@ -36,7 +39,24 @@ class _CardPageState extends State<CardPage> {
             ),
           ],
         ),
-      ),  
+      ), 
+      body: Container(
+
+
+      ),
+            floatingActionButton: Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: FloatingActionButton(
+                
+        onPressed: () {
+           
+            
+          },
+        child: const Icon(Icons.qr_code,size: 35,),
+        backgroundColor: Colors.teal[200],
+      ),
+            ),
+
     );
   }
 }

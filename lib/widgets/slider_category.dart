@@ -12,7 +12,6 @@ class Categories extends StatelessWidget {
           bottom: 10,
           right: 20,
         ),
-        
         scrollDirection: Axis.horizontal,
         children: Categories_data.map(
           (categoryData) => CategoryItem(

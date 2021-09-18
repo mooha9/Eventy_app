@@ -14,7 +14,7 @@ class Sign_inState extends State<Sign_in> {
     Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
         {
            if (n == 1) return Sign_up();
-          return MyHomePage();
+          return BottomNav();
       }));
   }
 

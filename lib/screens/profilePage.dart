@@ -37,7 +37,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             CircleAvatar(
                               backgroundImage: NetworkImage(
-                                "https://ibb.co/PY7DbFs.png",
+                                
+                                "https://images.unsplash.com/photo-1582330421788-d54dc81b293a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80",
                               ),
                               radius: 50.0,
                             ),
