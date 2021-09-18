@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class SearchPage extends StatefulWidget {
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -16,10 +15,10 @@ class _SearchPageState extends State<SearchPage> {
         toolbarHeight: 90,
         elevation: 10,
         shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-        bottom: Radius.circular(30),
-      ),
-    ),
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -31,16 +30,36 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
             Icon(
-              Icons.search_outlined,
-              color: Color.fromARGB(240,74, 189, 159),
+              Icons.search_rounded,
+              color: Color.fromARGB(240, 74, 189, 159),
               size: 40,
-            ),  
+            ),
           ],
         ),
       ),
-      );
+      body: Container(
+        constraints: BoxConstraints.tightFor(width: 500),
+        //width text field
+        margin: EdgeInsets.all(10),
+        child: Material(
+          // shadow
+          elevation: 5, //shadow
+          shadowColor: Colors.black, //color shadow
+          borderRadius: BorderRadius.circular(32.0),
+          child: TextField(
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(8),
+              //size Text field
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+              labelText: "Search for the event",
+              labelStyle: TextStyle(fontSize: 20),
+              suffixIcon: Icon(Icons.search),
+            ),
+            keyboardType: TextInputType.text,
+          ),
+        ),
+      ),
+    );
   }
 }
-
-
-
