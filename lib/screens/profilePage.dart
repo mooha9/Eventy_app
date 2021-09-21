@@ -1,4 +1,5 @@
 import 'package:eventy_app/util/data.dart';
+import 'package:eventy_app/widgets/app_drawer.dart';
 import 'package:eventy_app/widgets/eventItem.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             CircleAvatar(
                               backgroundImage: NetworkImage(
-                                
                                 "https://images.unsplash.com/photo-1582330421788-d54dc81b293a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80",
                               ),
                               radius: 50.0,
@@ -87,6 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             titleSpacing: 20,
           ),
+          endDrawer: AppDrawer(),
           body: TabBarView(
             children: [
               buildPage1('History'),
