@@ -1,5 +1,5 @@
+import 'package:eventy_app/util/category.dart';
 import 'package:flutter/material.dart';
-import '/util/app_data.dart';
 import '../widgets/category_item.dart';
 
 class Categories extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:eventy_app/util/data.dart';
+import 'package:eventy_app/util/overViewdata.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../widgets/eventItem.dart';
 

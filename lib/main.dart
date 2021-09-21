@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.teal[400]
         ),
       home: StartPage(),
+      
+
+      
     );
   }
 }

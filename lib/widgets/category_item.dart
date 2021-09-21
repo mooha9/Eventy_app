@@ -1,4 +1,4 @@
-import 'package:eventy_app/screens/categoryEvent.dart';
+
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -10,19 +10,14 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    void selectCategory(BuildContext ctx){
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (c)=>
-      CategoryEvent(),
-      ),
-      );
-    }
+
     return Padding(
       padding: const EdgeInsets.only(
                 top: 10,
                 left: 5,
               ),
       child: InkWell(
-        onTap: ()=>selectCategory(context),
+        onTap: (){},
         splashColor: Colors.black,
         borderRadius: BorderRadius.circular(15),
         child: Row(

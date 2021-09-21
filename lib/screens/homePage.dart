@@ -1,12 +1,14 @@
 import 'package:eventy_app/widgets/slider_category.dart';
 import 'package:eventy_app/widgets/topEvent.dart';
-import 'package:eventy_app/util/data.dart';
+import 'package:eventy_app/util/overViewdata.dart';
 import 'package:flutter/material.dart';
 import '../widgets/../widgets/eventItem.dart';
+import 'notificationPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
+  
 }
 
 class _HomePageState extends State<HomePage> {
@@ -39,13 +41,23 @@ class _HomePageState extends State<HomePage> {
                 Icons.add_alert,
                 color: Colors.black45,
               ),
-              onPressed: () {},
+              onPressed: () {
+               Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return NotificationPage();
+              },
+            ),
+          );
+              },
             ),
           ],
         ),
       ),
-      body: Container(
-        child: ListView(
+      body: Stack(
+        children:[
+
+        ListView(
           padding: EdgeInsets.only(left: 20.0),
           children: <Widget>[
             Padding(
@@ -60,8 +72,10 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 1.0),
             nearEventsList(),
             SizedBox(height: 10.0),
+            
           ],
         ),
+        ] 
       ),
     );
   }
@@ -134,3 +148,5 @@ nearEventsList() {
         },
       ));
 }
+
+

@@ -1,4 +1,4 @@
-import 'package:eventy_app/util/data.dart';
+import 'package:eventy_app/util/overViewdata.dart';
 import 'package:eventy_app/widgets/eventItem.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +8,11 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+ 
+
   @override
   Widget build(BuildContext context) => DefaultTabController(
+        initialIndex :1,
         length: 2,
         child: Scaffold(
           backgroundColor: Colors.teal[50],
@@ -88,6 +91,7 @@ class _ProfilePageState extends State<ProfilePage> {
             titleSpacing: 20,
           ),
           body: TabBarView(
+            
             children: [
               buildPage1('History'),
               buildPage2('Card'),
