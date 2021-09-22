@@ -134,7 +134,7 @@ class _EventDetailsState extends State<EventDetails> {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.asset(
+            child: Image.network(
               "${events[0]["img"]}",
               height: 240.0,
               width: MediaQuery.of(context).size.width,

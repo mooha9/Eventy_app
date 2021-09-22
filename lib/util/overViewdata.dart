@@ -1,11 +1,8 @@
-
-
-
 List events = [
   {
     "name": "Books Event",
     "shortNote": "Only For Men",
-    "imageUrl": "/assets/images/1.jpeg",
+    "img": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
     "location": "Riyadh-Misk",
     "date": "2021-9-12",
     "category":"Teach",
@@ -13,7 +10,7 @@ List events = [
   {
     "name": "Kids Gaming",
     "shortNote": "Only For Kids",
-    "img": "/assets/images/2.jpeg",
+    "img": "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80",
     "location": "Qassim-Al-Bukiryah",
     "date": "2021-4-21",
     "category":"Gaming",
@@ -21,7 +18,7 @@ List events = [
   {
     "name": "Stand Up Comedy",
     "shortNote": "For Free",
-    "img": "/assets/images/3.jpeg",
+    "img": "https://images.unsplash.com/photo-1611956425642-d5a8169abd63?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1211&q=80",
     "location": "Jeddah",
     "date": "2021-2-5",
     "category":"Funny",
@@ -29,7 +26,7 @@ List events = [
   {
    "name": "Tennis Challenge ",
     "shortNote": "Only For Men",
-    "img": "/assets/images/4.jpeg",
+    "img": "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
     "location": "Dammam-Half Moon Beach",
     "date": "2020-8-3",
     "category":"Sports",
@@ -37,7 +34,7 @@ List events = [
     {
     "name": "Graduation Party",
     "shortNote": "Only Qassim University Students",
-    "img": "/assets/images/5.jpeg",
+    "img": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
     "location": "Qassim-University",
     "date": "2021-2-7",
     "category":"Parties",
@@ -45,7 +42,7 @@ List events = [
   {
     "name": "Saudi International Dental Conference",
     "shortNote": "For All",
-    "img": "/assets/images/6.jpeg",
+    "img": "https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
     "location": "Riyadh",
     "date": "2021-4-16",
     "category":"Conferences",
@@ -53,7 +50,7 @@ List events = [
   {
     "name": "Ted Show",
     "shortNote": "Only For Women",
-    "img": "/assets/images/7.jpeg",
+    "img": "https://images.unsplash.com/photo-1574593749297-cb33a69cd8d4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
     "location": "Madeinah",
     "date": "2021-9-12",
     "category":"Teach",
@@ -61,7 +58,7 @@ List events = [
   {
    "name": "Aoud Shop",
     "shortNote": "For All",
-    "img": "/assets/images/8.jpeg",
+    "img": "https://images.unsplash.com/photo-1605752995124-4a2580df5dff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=978&q=80",
     "location": "Riyadh",
     "date": "2021-7-7",
     "category":"Shop",

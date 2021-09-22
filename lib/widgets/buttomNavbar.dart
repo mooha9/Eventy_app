@@ -36,32 +36,23 @@ class _BottomNavState extends State<BottomNav> {
             TabData(
                 iconData: Icons.search,
                 title: " ",
-                onclick: () {
-                 
-                }),
+                onclick: () {  }),
             TabData(
                 iconData: Icons.favorite_border_outlined,
                 title: " ",
-                onclick: () {
-                   
-                }),
+                onclick: () {  }),
             TabData(
                 iconData: Icons.festival_sharp,
                 title: " ",
-                onclick: () {
-                  
-                }),
+                onclick: () {  }),
             TabData(
                 iconData: Icons.credit_card_rounded,
                 title: " ",
-                onclick: () {
-                 
-                }),
+                onclick: () {  }),
             TabData(
                 iconData: Icons.person_outline,
                 title: " " ,
-                onclick: () { 
-                }),
+                onclick: () {  }),
           ], 
           initialSelection: 2,
           key: bottomNavigationKey,

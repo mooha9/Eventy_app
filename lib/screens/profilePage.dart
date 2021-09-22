@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import 'package:eventy_app/util/overViewdata.dart';
-=======
-import 'package:eventy_app/util/data.dart';
+import 'package:eventy_app/util/overViewdata.dart';
 import 'package:eventy_app/widgets/app_drawer.dart';
->>>>>>> a3ecc36aba829e37db7933189abb0998e27703e7
 import 'package:eventy_app/widgets/eventItem.dart';
 import 'package:flutter/material.dart';
 

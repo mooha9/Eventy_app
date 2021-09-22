@@ -22,7 +22,7 @@ class TopEvent extends StatelessWidget {
         children: [
            ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
+                    child: Image.network(
                       "${event["img"]}",
                       height: 260,
                       width: 280,
@@ -56,31 +56,6 @@ class TopEvent extends StatelessWidget {
                                   ),
                                  ),
                              ),
-                             
-                           ),
-                         ),
-                         Expanded(
-                           child: Align(
-                             alignment: Alignment.topRight,
-                             child: Padding(
-                               padding: const EdgeInsets.all(15.0),
-                               child: Text(
-                                event['name'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  shadows:  <Shadow>[
-                                     Shadow(
-                                      offset: Offset(1.0, 1.0),
-                                       blurRadius: 4.0,
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                     ),
-                                  ]
-                                  ),
-                                 ),
-                             ),
-                             
                            ),
                          ),
                          Container(
@@ -123,8 +98,6 @@ class TopEvent extends StatelessWidget {
                                    ),
                                 ),
                              ),
-                             
-                           
                         ]
                          ),
                          ),
@@ -145,12 +118,10 @@ class TopEvent extends StatelessWidget {
                                        ],
                 )
                 ),
-                        ),
+               ),
          )
         ],
-      ),
-       
-                    
+      ),             
       )   
     );
   }

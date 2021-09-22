@@ -7,14 +7,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       theme: ThemeData(
         primaryColor: Colors.teal[400]
         ),
       home: StartPage(),
-      
-
-      
     );
   }
 }
@@ -22,17 +18,17 @@ class MyApp extends StatelessWidget {
 class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // if (sign_in == true) {
-    //   return MyHomePage();
-    // } else {
-    return Sign_in();
-    // }
+       return Sign_in();
   }
 }
 
 
 
-
+    // if (sign_in == true) {
+    //   return MyHomePage();
+    // } else {
+   
+    // }
 
 
 

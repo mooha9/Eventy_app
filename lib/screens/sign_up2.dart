@@ -197,7 +197,6 @@ class sign_up2State extends State<sign_up2> {
             ),
             Container(
               constraints: BoxConstraints.tightFor(width: 300),
-
               //width text field
               margin: EdgeInsets.all(10),
               child: Material(
