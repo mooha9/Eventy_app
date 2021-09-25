@@ -16,6 +16,9 @@ class _ProfilePageState extends State<ProfilePage> {
         initialIndex :1,
         length: 2,
         child: Scaffold(
+          endDrawer: AppDrawer(
+            
+          ),
           backgroundColor: Colors.teal[50],
           appBar: AppBar(
             backgroundColor: Colors.teal[100],
@@ -52,6 +55,14 @@ class _ProfilePageState extends State<ProfilePage> {
                               "Saleh",
                               style: TextStyle(
                                   fontSize: 35.0, color: Colors.black),
+                            ),
+                             Text(
+                              "@saleh1991 ",
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.grey[700]),
+                            ),
+                            SizedBox(
+                              height: 10.0,
                             ),
                             Text(
                               "I love a cofee ",
@@ -90,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             titleSpacing: 20,
           ),
-          endDrawer: AppDrawer(),
+          
           body: TabBarView(
             
             children: [
@@ -115,8 +126,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     );
                   },
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 400,
-                    childAspectRatio: 7 / 8,
+                    maxCrossAxisExtent: 450,
+                    childAspectRatio: 4 / 2,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
                   ))),

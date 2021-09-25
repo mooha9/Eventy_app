@@ -73,7 +73,7 @@ class TopEvent extends StatelessWidget {
           height:10,
         ),
 Container(
-          height: 120.0,
+          height: 100.0,
           width: 280.0,
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -116,70 +116,125 @@ Container(
                                     ],
     )
     ),
-    child: Row(children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            
-          children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 20, 
-                  child: FittedBox(
-                    child: Text(
-                      event['location'],
-                      style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      shadows:  <Shadow>[
-                        Shadow(
-                          offset: Offset(1.0, 1.0),
-                          blurRadius: 4.0,
-                          color: Color.fromARGB(255, 0, 0, 0),
-                          ),
-                    ]
-                              ),
-                          ),
+    child: Center(
+      child: Row(children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              
+            children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 20,
+                     width: MediaQuery.of(context).size.width*.25,
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        event['location'],
+                        style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        shadows:  <Shadow>[
+                          Shadow(
+                            offset: Offset(1.0, 1.0),
+                            blurRadius: 4.0,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                      ]
+                                ),
+                            ),
+                    ),
                   ),
                 ),
-              ),
-                    ],
-                  ),
-            ]
-                      ),
+                      ],
+                    ),
+              ]
+                        ),
+    ),
                       ),
                                 ],
                               ),
                             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+                            Padding(
+              padding: const EdgeInsets.only(top:8.0),
               child: Column(            
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Divider(
-                      height:5,
+                      height:8,
                       color: Colors.amber,
                       thickness: 20,
                     ),
-                  Text(
-                  event['shortNote'],
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13,
-                    color: Colors.white,
-                    shadows:  <Shadow>[
-                        Shadow(
-                        offset: Offset(1.0, 1.0),
-                          blurRadius: 4.0,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        ),
-                    ]
-                    ),
-                    ),
+                  Icon(
+                  Icons.sticky_note_2_outlined,
+                  color: Colors.grey[800],
+                  size: 15.0,
+                  
+                  ),
                     Divider(
-                      height:5,
+                      height:10,
+                    ),
+                    Icon(
+                  Icons.date_range,
+                  color: Colors.grey[800],
+                  size: 15.0,
+                  
+                  ),
+                    Divider(
+                      height:12,
+                    ),
+                     Icon(
+                  Icons.category_outlined,
+                  color: Colors.grey[800],
+                  size: 15.0,
+                  
+                  ),
+                    Divider(
+                      height:10,
+                    ),
+                ],
+            ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top:8.0,left: 8,right: 5),
+              child: Column(            
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Divider(
+                      height:8,
+                      color: Colors.amber,
+                      thickness: 20,
+                    ),
+                  Container(
+                    height: 15,
+                    width: MediaQuery.of(context).size.width*.2,
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                      event['shortNote'],
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                        color: Colors.white,
+                        shadows:  <Shadow>[
+                            Shadow(
+                            offset: Offset(1.0, 1.0),
+                              blurRadius: 4.0,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                        ]
+                        ),
+                        ),
+                    ),
+                  ),
+                    Divider(
+                      height:10,
                     ),
                     Text(
                   event['date'],
@@ -197,7 +252,7 @@ Container(
                     ),
                     ),
                     Divider(
-                      height:5,
+                      height:10,
                     ),
                     Text(
                   event['category'],
@@ -215,7 +270,7 @@ Container(
                     ),
                     ),
                     Divider(
-                      height:5,
+                      height:10,
                     ),
                 ],
             ),
@@ -225,7 +280,22 @@ Container(
                 ),
           ],
         ),
-      ), 
+      ),
+      Positioned(
+        right: -20,
+        bottom: 80,
+        child:RawMaterialButton(
+                 
+                onPressed: () {},
+                fillColor: Colors.teal[100],
+                shape: CircleBorder(),
+                elevation: 3.0,
+                child: Icon(
+                 Icons.favorite_border_rounded,
+                   size: 25.0,
+                  color: Colors.teal,
+                    ),
+              ),), 
   ],
 ),             
 )   
