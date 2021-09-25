@@ -9,11 +9,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
- 
-
   @override
   Widget build(BuildContext context) => DefaultTabController(
-        initialIndex :1,
+        initialIndex: 1,
         length: 2,
         child: Scaffold(
           backgroundColor: Colors.teal[50],
@@ -92,7 +90,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           endDrawer: AppDrawer(),
           body: TabBarView(
-            
             children: [
               buildPage1('History'),
               buildPage2('Card'),
