@@ -33,28 +33,23 @@ class AppDrawer extends StatelessWidget {
             alignment: Alignment.center,
             color: Colors.teal[200],
             child: Text(
-              'Option',
-              style: Theme.of(context).textTheme.headline4,
+              'Options',
+              style: Theme.of(context).textTheme.headline5,
             ),
           ),
-          SizedBox(height: 40),
-          buildListTile(
-            'Manage my profile',
-            Icons.person_pin_circle_outlined,
-            () {
-// here put the target screen
-            },
-          ),
+          SizedBox(height: 20,),
           buildListTile(
             'Manage my card',
             Icons.credit_card,
             () {},
           ),
+          Divider(),
           buildListTile(
             'Manage my event',
             Icons.festival_sharp,
             () {},
           ),
+          Divider(),
         ],
       ),
     );

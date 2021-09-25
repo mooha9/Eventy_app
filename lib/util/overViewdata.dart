@@ -9,7 +9,7 @@ List events = [
   },
   {
     "name": "Kids Gaming",
-    "shortNote": "Only For Kids",
+    "shortNote": "For Kids",
     "img": "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80",
     "location": "Qassim-Al-Bukiryah",
     "date": "2021-4-21",
@@ -25,7 +25,7 @@ List events = [
   },
   {
    "name": "Tennis Challenge ",
-    "shortNote": "Only For Men",
+    "shortNote": "For Men",
     "img": "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
     "location": "Dammam-Half Moon Beach",
     "date": "2020-8-3",
@@ -40,7 +40,7 @@ List events = [
     "category":"Parties",
   },
   {
-    "name": "Saudi International Dental Conference",
+    "name": "Dental Conference",
     "shortNote": "For All",
     "img": "https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
     "location": "Riyadh",
