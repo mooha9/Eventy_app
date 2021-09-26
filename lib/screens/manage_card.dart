@@ -22,17 +22,15 @@ class _ManageCardState extends State<ManageCard> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Manage Card  ',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 30,
+            Padding(
+              padding: const EdgeInsets.only(right:45.0),
+              child: Text(
+                'Manage Card  ',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 28,
+                ),
               ),
-            ),
-            Icon(
-              Icons.credit_card,
-              color: Color.fromARGB(240, 74, 189, 159),
-              size: 40,
             ),
           ],
         ),

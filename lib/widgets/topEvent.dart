@@ -118,13 +118,20 @@ Container(
     ),
     child: Center(
       child: Row(children: [
+         SizedBox(width: 4,),
+        Icon(
+                  Icons.location_pin,
+                  color: Colors.grey[700],
+                  size: 20.0,
+                  
+                  ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               
             children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(3.0),
                   child: Container(
                     height: 20,
                      width: MediaQuery.of(context).size.width*.25,
@@ -170,7 +177,7 @@ Container(
                       thickness: 20,
                     ),
                   Icon(
-                  Icons.sticky_note_2_outlined,
+                  Icons.event_note_outlined,
                   color: Colors.grey[800],
                   size: 15.0,
                   
@@ -179,16 +186,16 @@ Container(
                       height:10,
                     ),
                     Icon(
-                  Icons.date_range,
+                  Icons.category_outlined,
                   color: Colors.grey[800],
                   size: 15.0,
                   
                   ),
                     Divider(
-                      height:12,
+                      height:14,
                     ),
-                     Icon(
-                  Icons.category_outlined,
+                      Icon(
+                  Icons.date_range,
                   color: Colors.grey[800],
                   size: 15.0,
                   
@@ -237,7 +244,7 @@ Container(
                       height:10,
                     ),
                     Text(
-                  event['date'],
+                  event['category'],
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 13,
@@ -252,10 +259,10 @@ Container(
                     ),
                     ),
                     Divider(
-                      height:10,
+                      height:13,
                     ),
                     Text(
-                  event['category'],
+                  event['date'],
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 13,

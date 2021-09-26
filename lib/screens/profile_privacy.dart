@@ -24,31 +24,30 @@ class _ProfilePrivacyState extends State<ProfilePrivacy> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Privacy  ',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 30,
+            Padding(
+               padding: const EdgeInsets.only(right:45.0),
+              child: Text(
+                'Privacy  ',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 25,
+                ),
               ),
             ),
-            Icon(
-              Icons.privacy_tip,
-              color: Color.fromARGB(240, 74, 189, 159),
-              size: 40,
-            ),
+            
           ],
         ),
       ),
       body: Column(
         children: [
           SizedBox(
-            height: 100,
+            height: 50,
           ),
           Center(),
           Container(
             constraints: BoxConstraints.tightFor(width: 300),
             //width text field
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(15),
             child: Material(
               // shadow
               elevation: 5, //shadow
@@ -74,7 +73,7 @@ class _ProfilePrivacyState extends State<ProfilePrivacy> {
           Container(
             constraints: BoxConstraints.tightFor(width: 300),
             //width text field
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(15),
             child: Material(
               // shadow
               elevation: 5, //shadow
@@ -100,7 +99,7 @@ class _ProfilePrivacyState extends State<ProfilePrivacy> {
           Container(
             constraints: BoxConstraints.tightFor(width: 300),
             //width text field
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(15),
             child: Material(
               // shadow
               elevation: 5, //shadow
@@ -136,7 +135,7 @@ class _ProfilePrivacyState extends State<ProfilePrivacy> {
           Container(
             constraints: BoxConstraints.tightFor(width: 300),
             //width text field
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(15),
             child: Material(
               // shadow
               elevation: 5, //shadow
@@ -172,7 +171,7 @@ class _ProfilePrivacyState extends State<ProfilePrivacy> {
           Container(
             constraints: BoxConstraints.tightFor(width: 300),
             //width text field
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(15),
             child: Material(
               // shadow
               elevation: 5, //shadow

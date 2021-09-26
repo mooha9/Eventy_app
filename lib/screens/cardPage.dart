@@ -67,13 +67,12 @@ class _CardPageState extends State<CardPage> {
           ],
         ),
       ),
-      body: SafeArea(
-        child: Column(
+      body: Column(
           children: <Widget>[
             Container(
               constraints: BoxConstraints.tightFor(width: 500),
               //width text field
-              margin: EdgeInsets.all(10),
+              margin: EdgeInsets.all(30),
               child: Material(
                 // shadow
                 elevation: 5, //shadow
@@ -101,12 +100,6 @@ class _CardPageState extends State<CardPage> {
                     textStyle: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold), // optional
-                    onPageChanged: (page) {
-                      // optional
-                    },
-                    onSelectedItem: (index) {
-                      // optional
-                    },
                     initialPage: 0, // optional
                     align: ALIGN.CENTER // optional
                     ),
@@ -114,7 +107,6 @@ class _CardPageState extends State<CardPage> {
             ),
           ],
         ),
-      ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 10),
         child: FloatingActionButton(

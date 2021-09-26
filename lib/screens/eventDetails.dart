@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:eventy_app/util/overViewdata.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../widgets/eventItem.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventDetails extends StatefulWidget {
   @override
@@ -34,7 +33,7 @@ class _EventDetailsState extends State<EventDetails> {
               children: <Widget>[
                 SizedBox(height: 10.0),
                 buildImage(),
-                SizedBox(height: 20.0),
+                SizedBox(height: 10.0),
                 Text(
                   "${events[0]["name"]}",
                   style: TextStyle(
@@ -42,33 +41,57 @@ class _EventDetailsState extends State<EventDetails> {
                     fontWeight: FontWeight.w900,
                   ),
                 ),
-                SizedBox(height: 10.0),
-                RatingBar.builder(
-                      initialRating: 3,
-                       minRating: 1,
-                       direction: Axis.horizontal,
-                       allowHalfRating: true,
-                       itemCount: 5,
-                       itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                     itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                      color: Colors.amber,
-                          ),
-                       onRatingUpdate: (rating) {
-                        print(rating);
-                     },
-                    ),
-                    SizedBox(height: 10.0),
-                Text(
-                  "OnlyFor Men ",
-                  style: TextStyle(
-                    fontSize: 27.0,
-                    fontWeight: FontWeight.w600,
+                SizedBox(height: 5.0),
+                Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                  Icons.sticky_note_2_outlined,
+                  color: Colors.grey[800],
+                  size: 15.0,
+                  
                   ),
+                  SizedBox(width: 10,),
+                  Text(
+                    
+                      "${events[0]["shortNote"]}",
+                      style: TextStyle(
+                        fontSize: 15,
+                         color: Colors.grey[700],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                        ],
+                      ),
+                    ),
+                       Container(
+                        child: Row(
+                          children: [
+                                  Icon(     
+                          Icons.location_pin,
+                          color: Colors.grey[700],
+                          size: 15.0,
+                          
+                          ),
+                             Text(
+                                "${events[0]["location"]}",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey[700],
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                          ],
+                        )),
+                  ],
                 ),
-                SizedBox(height: 30.0),
+                SizedBox(height: 10.0),
                 Text(
-                  "Description",
+                  "Description:",
                   style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
@@ -89,7 +112,8 @@ class _EventDetailsState extends State<EventDetails> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 20.0),
+                Divider(),
+                SizedBox(height: 10.0),
                 Text(
                   "Photos",
                   style: TextStyle(
@@ -98,35 +122,56 @@ class _EventDetailsState extends State<EventDetails> {
                   ),
                 ),
                 SizedBox(height: 10.0),
-                buildProductList(),
+                buildPhotosList(),
                 SizedBox(height: 10.0),
-              ],
+                Divider(),
+])
             ),
-          ), 
+                        Positioned(
+                          bottom: 40,
+                          left: 115,
+                          child: Container(
+                            height: 60,
+                            width: 200,
+                            decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20.0),
+                            bottomRight: Radius.circular(20.0),
+                            topLeft: Radius.circular(20.0),
+                            bottomLeft: Radius.circular(20.0)),
+                            shape: BoxShape.rectangle,
+                            gradient: LinearGradient(
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                              colors: [
+                                    Color.fromARGB(240,78, 197, 241),
+                                  Color.fromARGB(240,13, 242, 201),
+                                        ],
+                            )
+                            ),
+                            child: TextButton(  
+                              onPressed: (){},
+                              child: Text("Register", style: TextStyle(
+                              fontSize: 20.0,
+                               shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(3.0, 2.0),
+                                  blurRadius: 4.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                                
+                              ],
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),)),
+                            ),
+                        )
         ],
       ),
     );
   }
-
-  buildProductList() {
-    return Container(
-      height: 300.0,
-      width: 200,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemCount: events.length,
-        itemBuilder: (BuildContext context, int index) {
-          Map event = events.toList()[index];
-          return EventItem(
-            event: event,
-          );
-        },
-      ),
-    );
-  }
-
-  buildImage() {
+  
+   buildImage() {
     return Container(
       height: 240.0,
       width: MediaQuery.of(context).size.width,
@@ -135,17 +180,15 @@ class _EventDetailsState extends State<EventDetails> {
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Image.network(
-              "${events[0]["img"]}",
+              "${events.toList()[0]["img"]}",
               height: 240.0,
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
             ),
           ),
-          
           Positioned(
             right: -10.0,
             bottom: 3.0,
-            
             child: RawMaterialButton(
               onPressed: () {},
               fillColor: Colors.teal[100],
@@ -158,6 +201,103 @@ class _EventDetailsState extends State<EventDetails> {
                   ),
             ),
           ),
+        ],
+      ),
+    );
+   }
+
+  buildPhotosList() {
+    return Container(
+      height: 300.0,
+      width: 200,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+           children: [
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height: 240.0,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height: 240.0,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height: 240.0,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height: 240.0,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height: 240.0,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height: 240.0,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height: 240.0,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
         ],
       ),
     );

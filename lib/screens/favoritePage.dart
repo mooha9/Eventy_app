@@ -23,18 +23,27 @@ class _FavoritePageState extends State<FavoritePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Favorite',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 30,
-              ),
-            ),
-            Icon(
+            Padding(
+              padding: const EdgeInsets.only(right:5.0),
+              child: Row(
+                children: [
+                  Text(
+                    'Favorite',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 30,
+                    ),
+                  ),
+                  SizedBox(width: 10,),
+                   Icon(
               Icons.favorite_border_rounded,
               color: Color.fromARGB(240,74, 189, 159),
               size: 33,
             ),
+                ],
+              ),
+            ),
+           
           ],
         ),
       ),

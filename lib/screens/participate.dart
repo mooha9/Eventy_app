@@ -22,17 +22,15 @@ class _ParticipateState extends State<Participate> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Participate  ',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 30,
+            Padding(
+               padding: const EdgeInsets.only(right:40.0),
+              child: Text(
+                'Participate  ',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 28,
+                ),
               ),
-            ),
-            Icon(
-              Icons.pan_tool_rounded,
-              color: Color.fromARGB(240, 74, 189, 159),
-              size: 40,
             ),
           ],
         ),

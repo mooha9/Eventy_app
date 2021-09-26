@@ -1,5 +1,6 @@
 import 'package:eventy_app/screens/profile_edit.dart';
 import 'package:eventy_app/screens/profile_privacy.dart';
+import 'package:eventy_app/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class Setting extends StatefulWidget {
@@ -10,38 +11,6 @@ class Setting extends StatefulWidget {
 class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
-    int activeStatus = 0;
-
-    showLogoutDealog() {
-      return showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Logout'),
-              content: Text('Are you sure you want to logout?'),
-              actions: <Widget>[
-                FlatButton(
-                  color: Colors.blueAccent,
-                  child: Text(
-                    'Cancel',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                FlatButton(
-                  child: Text('Logout'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pushReplacementNamed('/');
-                  },
-                ),
-              ],
-            );
-          });
-    }
-
     return Scaffold(
       backgroundColor: Colors.teal[50],
       appBar: AppBar(
@@ -55,18 +24,17 @@ class _SettingState extends State<Setting> {
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Setting  ',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 30,
+            Padding(
+              padding: const EdgeInsets.only(right:55.0),
+              child: Text(
+                'Settings',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 28,
+                ),
               ),
-            ),
-            Icon(
-              Icons.settings,
-              color: Color.fromARGB(240, 74, 189, 159),
-              size: 40,
             ),
           ],
         ),
@@ -83,7 +51,7 @@ class _SettingState extends State<Setting> {
                     radius: 50,
                     backgroundColor: Colors.grey[200],
                     backgroundImage: NetworkImage(
-                        'https://randomuser.me/api/portraits/men/81.jpg'),
+                        'https://images.unsplash.com/photo-1582330421788-d54dc81b293a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80'),
                   ),
                   SizedBox(
                     width: 20,
@@ -118,7 +86,30 @@ class _SettingState extends State<Setting> {
             ),
             SizedBox(
               height: 10,
+            ),            ListTile(
+              title: Text(
+                'Edit Profile',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              leading: Icon(
+                Icons.edit,
+                size: 30,
+                color: Colors.teal[400],
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return ProfileEdit();
+                    },
+                  ),
+                );
+              },
             ),
+            Divider(),
             ListTile(
               title: Text(
                 'Privacy',
@@ -137,30 +128,6 @@ class _SettingState extends State<Setting> {
                   MaterialPageRoute(
                     builder: (BuildContext context) {
                       return ProfilePrivacy();
-                    },
-                  ),
-                );
-              },
-            ),
-            Divider(),
-            ListTile(
-              title: Text(
-                'Edit',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              leading: Icon(
-                Icons.edit,
-                size: 30,
-                color: Colors.teal[400],
-              ),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return ProfileEdit();
                     },
                   ),
                 );
@@ -190,4 +157,35 @@ class _SettingState extends State<Setting> {
       ),
     );
   }
+
+  showLogoutDealog() {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Logout'),
+              content: Text('Are you sure you want to logout?'),
+              actions: <Widget>[
+                FlatButton(
+                  color: Colors.teal,
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                FlatButton(
+                  child: Text('Logout'),
+                  onPressed: () {
+                    
+                  },
+                ),
+              ],
+            );
+          });
+    }
+
 }
+

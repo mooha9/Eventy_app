@@ -22,18 +22,18 @@ class _ProfileEditState extends State<ProfileEdit> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Edit Profile  ',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 30,
+            
+            Padding(
+              padding: const EdgeInsets.only(right:30.0),
+              child: Text(
+                'Edit Profile  ',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 25,
+                ),
               ),
             ),
-            Icon(
-              Icons.edit,
-              color: Color.fromARGB(240, 74, 189, 159),
-              size: 40,
-            ),
+            
           ],
         ),
       ),
@@ -41,6 +41,25 @@ class _ProfileEditState extends State<ProfileEdit> {
         children: [
           SizedBox(
             height: 100,
+          ),
+          CircleAvatar(
+                    radius: 70,
+                    backgroundColor: Colors.grey[200],
+                    backgroundImage: NetworkImage(
+                        'https://images.unsplash.com/photo-1582330421788-d54dc81b293a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80'),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  TextButton(onPressed: (){}, child: Text(
+              'Edit Profile  ',
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 15,
+              ),
+            ), ),
+                  SizedBox(
+            height: 20,
           ),
           Center(),
           Container(
@@ -58,7 +77,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                   //size Text field
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(32.0)),
-                  labelText: "name",
+                  labelText: "change name",
                   labelStyle: TextStyle(fontSize: 15),
                   hintText: "your name",
                   //for example name

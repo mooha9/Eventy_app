@@ -40,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
       body: Container(
         constraints: BoxConstraints.tightFor(width: 500),
         //width text field
-        margin: EdgeInsets.all(10),
+        margin: EdgeInsets.all(30),
         child: Material(
           // shadow
           elevation: 5, //shadow
