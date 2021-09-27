@@ -1,5 +1,7 @@
+import 'package:eventy_app/util/overViewdataCard.dart';
+import 'package:eventy_app/widgets/cardItem.dart';
 import 'package:flutter/material.dart';
-import 'package:vertical_card_pager/vertical_card_pager.dart';
+
 
 class CardPage extends StatefulWidget {
   @override
@@ -9,35 +11,6 @@ class CardPage extends StatefulWidget {
 class _CardPageState extends State<CardPage> {
   @override
   Widget build(BuildContext context) {
-    final List<String> titles = [
-      "CARD 1",
-      "CARD 2",
-      "CARD 3",
-      "CARD 4",
-      "CARD 5",
-      "CARD 6",
-    ];
-
-    final List<Widget> images = [
-      Container(
-        color: Colors.red,
-      ),
-      Container(
-        color: Colors.yellow,
-      ),
-      Container(
-        color: Colors.black,
-      ),
-      Container(
-        color: Colors.cyan,
-      ),
-      Container(
-        color: Colors.blue,
-      ),
-      Container(
-        color: Colors.grey,
-      ),
-    ];
     return Scaffold(
       backgroundColor: Colors.teal[50],
       appBar: AppBar(
@@ -67,9 +40,9 @@ class _CardPageState extends State<CardPage> {
           ],
         ),
       ),
-      body: Column(
-          children: <Widget>[
-            Container(
+      body:Stack(
+        children:[
+        Container(
               constraints: BoxConstraints.tightFor(width: 500),
               //width text field
               margin: EdgeInsets.all(30),
@@ -91,22 +64,24 @@ class _CardPageState extends State<CardPage> {
                   keyboardType: TextInputType.text,
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                child: VerticalCardPager(
-                    titles: titles, // required
-                    images: images, // required
-                    textStyle: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold), // optional
-                    initialPage: 0, // optional
-                    align: ALIGN.CENTER // optional
-                    ),
+            ),  
+        Padding(
+          padding: const EdgeInsets.only(top:80.0),
+          child: ListView(
+            padding: EdgeInsets.only(left: 20.0),
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(right: 20.0),
               ),
-            ),
-          ],
+             SizedBox(height: 10.0),
+              cardList(),
+              SizedBox(height: 10.0),
+            ],
+          ),
         ),
+        ] 
+      ),
+        
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 10),
         child: FloatingActionButton(
@@ -118,6 +93,22 @@ class _CardPageState extends State<CardPage> {
           backgroundColor: Colors.teal[200],
         ),
       ),
+
     );
   }
+}
+
+cardList() {
+  return Container(
+      height: 620.0,
+      margin: new EdgeInsets.symmetric(vertical: 2.0),
+      child: ListView.builder(
+        itemCount: cards.length,
+        itemBuilder: (BuildContext context, int index) {
+          Map card = cards[index];
+          return CardItem(
+            card: card,
+          );
+        },
+      ));
 }

@@ -1,6 +1,5 @@
 import 'package:eventy_app/screens/profile_edit.dart';
 import 'package:eventy_app/screens/profile_privacy.dart';
-import 'package:eventy_app/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class Setting extends StatefulWidget {
@@ -166,6 +165,7 @@ class _SettingState extends State<Setting> {
               title: Text('Logout'),
               content: Text('Are you sure you want to logout?'),
               actions: <Widget>[
+                // ignore: deprecated_member_use
                 FlatButton(
                   color: Colors.teal,
                   child: Text(
@@ -176,6 +176,7 @@ class _SettingState extends State<Setting> {
                     Navigator.of(context).pop();
                   },
                 ),
+                // ignore: deprecated_member_use
                 FlatButton(
                   child: Text('Logout'),
                   onPressed: () {

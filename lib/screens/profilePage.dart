@@ -1,4 +1,4 @@
-import 'package:eventy_app/util/overViewdata.dart';
+import 'package:eventy_app/util/overViewdataEvent.dart';
 import 'package:eventy_app/widgets/app_drawer.dart';
 import 'package:eventy_app/widgets/eventItem.dart';
 import 'package:flutter/material.dart';

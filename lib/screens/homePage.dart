@@ -1,6 +1,6 @@
 import 'package:eventy_app/widgets/slider_category.dart';
 import 'package:eventy_app/widgets/topEvent.dart';
-import 'package:eventy_app/util/overViewdata.dart';
+import 'package:eventy_app/util/overViewdataEvent.dart';
 import 'package:flutter/material.dart';
 import '../widgets/../widgets/eventItem.dart';
 import 'notificationPage.dart';

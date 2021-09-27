@@ -69,6 +69,7 @@ class _AddEventState extends State<AddEvent> {
                       SizedBox(
                         height: 150,
                       ),
+                      // ignore: deprecated_member_use
                       FlatButton(
                         height: 70,
                         minWidth:310,
@@ -84,6 +85,7 @@ class _AddEventState extends State<AddEvent> {
                       SizedBox(
                         height: 20,
                       ),
+                      // ignore: deprecated_member_use
                       FlatButton(
                         height: 70,
                         minWidth:310,

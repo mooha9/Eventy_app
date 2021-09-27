@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-       return Sign_in();
+       return SignIn();
   }
 }
 

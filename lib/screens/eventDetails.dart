@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:eventy_app/util/overViewdata.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:eventy_app/util/overViewdataEvent.dart';
 
 class EventDetails extends StatefulWidget {
   @override
@@ -44,7 +43,7 @@ class _EventDetailsState extends State<EventDetails> {
                 SizedBox(height: 5.0),
                 Divider(),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       child: Row(
@@ -125,6 +124,7 @@ class _EventDetailsState extends State<EventDetails> {
                 buildPhotosList(),
                 SizedBox(height: 10.0),
                 Divider(),
+                
 ])
             ),
                         Positioned(
@@ -159,7 +159,6 @@ class _EventDetailsState extends State<EventDetails> {
                                   blurRadius: 4.0,
                                   color: Color.fromARGB(255, 0, 0, 0),
                                 ),
-                                
                               ],
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

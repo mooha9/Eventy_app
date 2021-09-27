@@ -1,7 +1,6 @@
 import 'package:eventy_app/screens/manage_card.dart';
 import 'package:eventy_app/screens/manage_event.dart';
 import 'package:eventy_app/screens/participate.dart';
-import 'package:eventy_app/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:eventy_app/screens/setting.dart';
 

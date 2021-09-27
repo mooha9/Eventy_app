@@ -2,22 +2,22 @@ import 'sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:eventy_app/screens/sign_up2.dart';
 
-class Sign_up extends StatefulWidget {
+class SignUp extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return Sign_upState();
+    return SignUpState();
   }
 }
 
-class Sign_upState extends State<Sign_up> {
+class SignUpState extends State<SignUp> {
   bool passwordVisible = true;
   bool passwordVisible2 = true;
-  void ChangeScreen(BuildContext context1, int n) {
+  void changeScreen(BuildContext context1, int n) {
     Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
     {
-      if (n == 1) return Sign_in();
-      return sign_up2();
+      if (n == 1) return SignIn();
+      return SignUp2();
     }));
   }
   @override
@@ -268,8 +268,9 @@ class Sign_upState extends State<Sign_up> {
                 Container(
                     child: Align(
                       alignment: Alignment(0.6, 0),
+                      // ignore: deprecated_member_use
                       child: RaisedButton(
-                          onPressed: () => ChangeScreen(context, 2),
+                          onPressed: () => changeScreen(context, 2),
                           color: Color(0xff2f9d80),
                           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                           splashColor: Colors.teal[250],
@@ -328,7 +329,7 @@ class Sign_upState extends State<Sign_up> {
                             color: Colors.blue,
                           ),
                         ),
-                        onTap:()=> ChangeScreen(context,1)
+                        onTap:()=> changeScreen(context,1)
                     )
                 ),
               ],

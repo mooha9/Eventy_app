@@ -2,18 +2,18 @@ import 'package:eventy_app/widgets/buttomNavbar.dart';
 import 'sign_up.dart';
 import 'package:flutter/material.dart';
 
-class Sign_in extends StatefulWidget {
+class SignIn extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return Sign_inState();
+    return SignInState();
   }
 }
 
-class Sign_inState extends State<Sign_in> {
-  void ChangeScreen(BuildContext context1, int n) {
+class SignInState extends State<SignIn> {
+  void changeScreen(BuildContext context1, int n) {
     Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
         {
-           if (n == 1) return Sign_up();
+           if (n == 1) return SignUp();
           return BottomNav();
       }));
   }
@@ -131,8 +131,9 @@ class Sign_inState extends State<Sign_in> {
             Container(
                 child: Align(
               alignment: Alignment(0.6, 0),
+              // ignore: deprecated_member_use
               child: RaisedButton(
-                  onPressed: () => ChangeScreen(context, 2),
+                  onPressed: () => changeScreen(context, 2),
                   color: Color(0xff2f9d80),
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                   splashColor: Color(0xff4ABD9F),
@@ -161,7 +162,7 @@ class Sign_inState extends State<Sign_in> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () => ChangeScreen(context, 1),
+                    onPressed: () => changeScreen(context, 1),
                     child: Text(
                               'SIGN UP',
                       textAlign: TextAlign.left,

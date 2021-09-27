@@ -2,15 +2,15 @@ import 'package:eventy_app/widgets/buttomNavbar.dart';
 import 'sign_up.dart';
 import 'package:flutter/material.dart';
 
-class sign_up2 extends StatefulWidget {
+class SignUp2 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return sign_up2State();
+    return SignUp2State();
   }
 }
 
 var currentSelectedValue;
-const deviceTypes = ["MALE", "FEMALE"];
+const deviceTypes = ["MALE", "FEMALE","NOT SAY"];
 var currentSelectedValue1; //contry
 const deviceTypes1 = ["Saudi Arabia", "Other"];
 var currentSelectedValue2; //state
@@ -18,10 +18,10 @@ const deviceTypes2 = ["Qassim", "Other"];
 var currentSelectedValue3; //city
 const deviceTypes3 = ["Buradah", "Unazah", "other"];
 
-class sign_up2State extends State<sign_up2> {
-  void ChangeScreen(BuildContext context1 ,int n) {
+class SignUp2State extends State<SignUp2> {
+  void changeScreen(BuildContext context1 ,int n) {
     Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_) {
-      if (n == 2)return Sign_up();
+      if (n == 2)return SignUp();
       return BottomNav();
     }));
   }
@@ -122,7 +122,7 @@ class sign_up2State extends State<sign_up2> {
                   )),
             ),
             Container(
-              margin: EdgeInsets.all(10),
+              margin: EdgeInsets.all(5),
               padding: EdgeInsets.symmetric(horizontal: 55),
               child: Material(
                 // shadow
@@ -207,7 +207,7 @@ class sign_up2State extends State<sign_up2> {
                 child: TextField(
                   decoration: InputDecoration(
                     contentPadding:
-                    EdgeInsets.symmetric(vertical: 22, horizontal: 55),
+                    EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                     //size Text field
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),
@@ -229,14 +229,15 @@ class sign_up2State extends State<sign_up2> {
             Container(
                 child: Align(
                   alignment: Alignment(0.6, 0),
+                  // ignore: deprecated_member_use
                   child: RaisedButton(
-                      onPressed: () => ChangeScreen(context, 1),
+                      onPressed: () => changeScreen(context, 1),
                       color: Color(0xff2f9d80),
                       padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                       splashColor: Color(0xff4ABD9F),
                       child: Text(
                         "SIGN UP",
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: TextStyle(fontSize: 15, color: Colors.white),
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(50.0),
@@ -246,26 +247,7 @@ class sign_up2State extends State<sign_up2> {
             SizedBox(
               height: 20,
             ),
-            Align(
-              alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                    onPressed: () => ChangeScreen(context,2),
-                    child: Text(
-                      'GO BACK SIGN UP',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.blueAccent,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          
           ],
         ),
       ),
