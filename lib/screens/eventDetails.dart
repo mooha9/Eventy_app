@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:eventy_app/util/overViewdataEvent.dart';
+import 'package:flutter/rendering.dart';
 
 class EventDetails extends StatefulWidget {
   @override
@@ -56,8 +57,7 @@ class _EventDetailsState extends State<EventDetails> {
                   ),
                   SizedBox(width: 10,),
                   Text(
-                    
-                      "${events[0]["shortNote"]}",
+                     "${events[0]["shortNote"]}",
                       style: TextStyle(
                         fontSize: 15,
                          color: Colors.grey[700],
@@ -74,7 +74,6 @@ class _EventDetailsState extends State<EventDetails> {
                           Icons.location_pin,
                           color: Colors.grey[700],
                           size: 15.0,
-                          
                           ),
                              Text(
                                 "${events[0]["location"]}",
@@ -89,6 +88,80 @@ class _EventDetailsState extends State<EventDetails> {
                   ],
                 ),
                 SizedBox(height: 10.0),
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                  Icons.timer,
+                  color: Colors.grey[800],
+                  size: 15.0,
+                  
+                  ),
+                  SizedBox(width: 10,),
+                  Text(
+                     "${events[0]["time"]}",
+                      style: TextStyle(
+                        fontSize: 15,
+                         color: Colors.grey[700],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                        ],
+                      ),
+                    ),
+                       Container(
+                        child: Row(
+                          children: [
+                                  Icon(     
+                          Icons.calendar_view_day_outlined,
+                          color: Colors.grey[700],
+                          size: 15.0,
+                          ),
+                             Text(
+                                "${events[0]["duration"]}",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey[700],
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                          ],
+                        )),
+                  ],
+                ),
+                SizedBox(height: 10.0),
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                  Icons.date_range,
+                  color: Colors.grey[800],
+                  size: 15.0,
+                  
+                  ),
+                  SizedBox(width: 10,),
+                  Text(
+                     "${events[0]["date"]}",
+                      style: TextStyle(
+                        fontSize: 15,
+                         color: Colors.grey[700],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                        ],
+                      ),
+                    ),
+                       
+                  ],
+                ),
+                Divider(),
+                SizedBox(height: 5.0),
                 Text(
                   "Description:",
                   style: TextStyle(
@@ -112,7 +185,7 @@ class _EventDetailsState extends State<EventDetails> {
                   ),
                 ),
                 Divider(),
-                SizedBox(height: 10.0),
+                SizedBox(height: 5.0),
                 Text(
                   "Photos",
                   style: TextStyle(
@@ -120,9 +193,43 @@ class _EventDetailsState extends State<EventDetails> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 5.0),
                 buildPhotosList(),
                 SizedBox(height: 10.0),
+                Divider(),
+                SizedBox(height: 5.0),
+                comments(),
+                SizedBox(height: 10.0),
+                Divider(),
+                 Text(
+                  "Service Provider:",
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                buildUsersList(),
+                SizedBox(height: 10.0),
+                Divider(),
+                 Text(
+                  "Activity Owner:",
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                buildUsersList(),
+                SizedBox(height: 10.0),
+                Divider(),
+                 Text(
+                  "Official Sponsors:",
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                 buildUsersList(),
+                SizedBox(height: 80.0),
                 Divider(),
                 
 ])
@@ -302,3 +409,160 @@ class _EventDetailsState extends State<EventDetails> {
     );
   }
 }
+
+comments() {
+  return Row(
+    children: [
+      Container(
+                  constraints: BoxConstraints.tightFor(width: 300),
+                  //width text field
+                  margin: EdgeInsets.all(10),
+                  child: Material(
+                    // shadow
+                    elevation: 5, //shadow
+                    shadowColor: Colors.black, //color shadow
+                    borderRadius: BorderRadius.circular(32.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        contentPadding:
+                        EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                        //size Text field
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(32.0)),
+                        labelText: "write your comment...",
+                        labelStyle: TextStyle(
+                          fontSize: 15,
+                        ),
+                        
+                        //for example name
+                        hintStyle: TextStyle(fontSize: 15),
+                      ),
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                ),
+               Ink(
+          decoration: const ShapeDecoration(
+            color: Colors.lightBlue,
+            shape: CircleBorder(),
+          ),
+          child: IconButton(
+            icon: const Icon(Icons.send),
+            color: Colors.blue,
+            onPressed: () {},
+          ),
+        ),
+    ],
+  
+  );
+}
+
+buildUsersList() {
+  return Container(
+      height: 80.0,
+      width: 200,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+           children: [
+             InkWell(
+               onTap: (){
+
+               },
+               child: Container(
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                         borderRadius: BorderRadius.circular(100),
+                         child: Image.network(
+                "${events.toList()[0]["img"]}",
+                height:100,
+                width: 60,
+                fit: BoxFit.cover,
+                         ),
+                       ),
+               ),
+             ),
+
+            Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height:100,
+              width: 60,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height:100,
+              width: 60,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height:100,
+              width: 60,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height:100,
+              width: 60,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height:100,
+              width: 60,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+
+             Container(
+               margin: EdgeInsets.all(10),
+              child:ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Image.network(
+              "${events.toList()[0]["img"]}",
+              height:100,
+              width: 60,
+              fit: BoxFit.cover,
+            ),
+          ),
+             ),
+
+           ],
+           )
+      );
+}
+

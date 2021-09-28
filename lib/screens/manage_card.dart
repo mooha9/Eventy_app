@@ -35,6 +35,23 @@ class _ManageCardState extends State<ManageCard> {
           ],
         ),
       ),
+      body: 
+      Container(
+        child: Center(
+          child: Text("You Don't Have Any Card", style: TextStyle(fontSize: 15),),
+        ),
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(
+            Icons.add,
+            size: 35,
+          ),
+          backgroundColor: Colors.teal[200],
+        ),
+      ),
     );
   }
 }
