@@ -1,3 +1,4 @@
+import 'package:eventy_app/screens/selectPlan.dart';
 import 'package:flutter/material.dart';
 
 class ManageEvent extends StatefulWidget {
@@ -44,7 +45,15 @@ class _ManageEventState extends State<ManageEvent> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 10),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+             Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return SelectPlan();
+              },
+            ),
+          );
+          },
           child: const Icon(
             Icons.add,
             size: 35,

@@ -1,3 +1,4 @@
+import 'package:eventy_app/screens/createCard.dart';
 import 'package:flutter/material.dart';
 
 class ManageCard extends StatefulWidget {
@@ -25,7 +26,7 @@ class _ManageCardState extends State<ManageCard> {
             Padding(
               padding: const EdgeInsets.only(right:45.0),
               child: Text(
-                'Manage Card  ',
+                'Manage Card',
                 style: TextStyle(
                   color: Colors.black54,
                   fontSize: 28,
@@ -44,7 +45,15 @@ class _ManageCardState extends State<ManageCard> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 10),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+             Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return CreateCard();
+              },
+            ),
+          );
+          },
           child: const Icon(
             Icons.add,
             size: 35,
