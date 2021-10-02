@@ -26,7 +26,7 @@ class _ManageEventState extends State<ManageEvent> {
             Padding(
                padding: const EdgeInsets.only(right:45.0),
               child: Text(
-                'Manage My Event  ',
+                'Manage Event  ',
                 style: TextStyle(
                   color: Colors.black54,
                   fontSize: 28,

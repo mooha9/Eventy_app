@@ -28,7 +28,7 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              'Manage my card',
+              'Manage card',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             title: Text(
-              'Manage my event',
+              'Manage event',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

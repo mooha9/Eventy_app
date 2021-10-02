@@ -1,8 +1,10 @@
 
+import 'package:eventy_app/screens/saveCard.dart';
 import 'package:eventy_app/screens/sharePlane.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 
 
@@ -12,8 +14,13 @@ class CreateCard extends StatefulWidget {
 }
 
 class _CreateCardState extends State<CreateCard> {
-
+final name = TextEditingController();
   @override
+   void dispose() {
+    // Clean up the controller when the widget is disposed.
+    name.dispose();
+    super.dispose();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
             appBar: AppBar(
@@ -58,7 +65,11 @@ class _CreateCardState extends State<CreateCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Divider(),
+                    SelectCategory(),
+                    SizedBox(height: 3,),
+                  Divider(),
                     TextField(
+                      controller: name,
                     minLines: 1, // any number you need (It works as the rows for the textarea)
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
@@ -246,7 +257,7 @@ class _CreateCardState extends State<CreateCard> {
                                  Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (BuildContext context) {
-                                      return SharePlan();
+                                      return SaveCard();
                                     },
                                   ),
                                 );
@@ -273,7 +284,6 @@ class _CreateCardState extends State<CreateCard> {
    cardArea() {
     return Container(
       height: 240.0,
-      
        decoration: BoxDecoration(
          borderRadius: BorderRadius.circular(15),
          color: Colors.teal[300],
@@ -290,8 +300,85 @@ class _CreateCardState extends State<CreateCard> {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: <Widget>[
+        
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child:
+            
+             Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            
+              children: [
+                
+                Text(name.text),
+                QrImage(
+                    data: "1234567890",
+                    version: QrVersions.auto,
+                    foregroundColor: Colors.white,
+                    size: 100.0,
+                  ),
+              ],
+            ),
+          ),
         ],
       ),
     );
    }
   }
+
+  class SelectCategory extends StatefulWidget {
+  const SelectCategory({Key? key}) : super(key: key);
+
+  @override
+  State<SelectCategory> createState() => _SelectCategoryState();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _SelectCategoryState extends State<SelectCategory> {
+  String dropdownValue = 'Service Provider';
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+            "Category:",
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        DropdownButton<String>(
+          value: dropdownValue,
+          icon: const Icon(Icons.arrow_drop_down),
+          iconSize: 24,
+          elevation: 16,
+          style: const TextStyle(color: Colors.black87),
+          underline: Container(
+            height: 2,
+            color: Colors.teal,
+          ),
+          onChanged: (String? newValue) {
+            setState(() {
+              dropdownValue = newValue!;
+            });
+          },
+          items: <String>['Service Provider', 'Activity Owner', 'Official Sponser']
+              .map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        ),
+        SizedBox(
+            width: 50,
+          ),
+      ],
+    );
+  }
+}

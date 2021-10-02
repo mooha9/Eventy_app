@@ -1,8 +1,12 @@
+import 'package:eventy_app/screens/choosParaticipate.dart';
+import 'package:eventy_app/screens/creator_notification.dart';
 import 'package:eventy_app/screens/sharePlane.dart';
 import 'package:flutter/material.dart';
 import 'package:eventy_app/util/overViewdataEvent.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
+
+import 'notificationPage.dart';
 
 
 class PublicEvent extends StatefulWidget {
@@ -23,7 +27,7 @@ class _PublicEventState extends State<PublicEvent> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-               padding: const EdgeInsets.only(right:45.0),
+               padding: const EdgeInsets.only(right:30.0),
               child: Text(
                 'Public Event',
                 style: TextStyle(
@@ -32,6 +36,21 @@ class _PublicEventState extends State<PublicEvent> {
                   
                 ),
               ),
+            ),
+             IconButton(
+              icon: const Icon(
+                Icons.add_alert,
+                color: Colors.black45,
+              ),
+              onPressed: () {
+               Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return CreatorNotification();
+              },
+            ),
+          );
+              },
             ),
           ],
         ),
@@ -266,7 +285,7 @@ class _PublicEventState extends State<PublicEvent> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                buildUsersList(),
+                buildUsersList(context),
                 SizedBox(height: 10.0),
                 Divider(),
                  Text(
@@ -276,7 +295,7 @@ class _PublicEventState extends State<PublicEvent> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                buildUsersList(),
+                buildUsersList(context),
                 SizedBox(height: 10.0),
                 Divider(),
                  Text(
@@ -286,13 +305,13 @@ class _PublicEventState extends State<PublicEvent> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                 buildUsersList(),
+                 buildUsersList(context),
                 SizedBox(height: 80.0),
                 Divider(),
 ])
-            ), Positioned(
+            ),Positioned(
                           bottom: 40,
-                          left: 110,
+                          left: 20,
                           child: Container(
                             height: 60,
                             width: 200,
@@ -322,7 +341,52 @@ class _PublicEventState extends State<PublicEvent> {
                                   ),
                                 );
                               },
-                              child: Text("Next", style: TextStyle(
+                              child: Text("Save As Draft", style: TextStyle(
+                              fontSize: 20.0,
+                               shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(3.0, 2.0),
+                                  blurRadius: 4.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ],
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),)),
+                            ),
+                        ), Positioned(
+                          bottom: 40,
+                          left: 250,
+                          child: Container(
+                            height: 60,
+                            width: 150,
+                            decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20.0),
+                            bottomRight: Radius.circular(20.0),
+                            topLeft: Radius.circular(20.0),
+                            bottomLeft: Radius.circular(20.0)),
+                            shape: BoxShape.rectangle,
+                            gradient: LinearGradient(
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                              colors: [
+                                  Color.fromARGB(240,78, 192, 241),
+                                  Color.fromARGB(240,0, 217, 206),
+                                  ],
+                            )
+                            ),
+                            child: TextButton(  
+                              onPressed: (){
+                                 Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) {
+                                      return SharePlan();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Text("Submit", style: TextStyle(
                               fontSize: 20.0,
                                shadows: <Shadow>[
                                 Shadow(
@@ -442,7 +506,7 @@ class _PublicEventState extends State<PublicEvent> {
 }
   
 
-buildUsersList() {
+buildUsersList(context) {
   return Container(
       height: 80.0,
       width: 200,
@@ -456,94 +520,17 @@ buildUsersList() {
                },
                child: Container(
                  margin: EdgeInsets.all(10),
-                child:ClipRRect(
-                         borderRadius: BorderRadius.circular(100),
-                         child: Image.network(
-                "${events.toList()[0]["img"]}",
-                height:100,
-                width: 60,
-                fit: BoxFit.cover,
-                         ),
-                       ),
+                 child: IconButton(icon: Icon(Icons.add_circle_outline ,size: 40, color: Colors.grey,), onPressed: () { 
+                   Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) {
+                                      return ChooseParticipate();
+                                    },
+                                  ),
+                                );
+                  },),
+                   
                ),
-             ),
-
-            Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
              ),
 
            ],
