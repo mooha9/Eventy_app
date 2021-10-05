@@ -72,6 +72,12 @@ class _SettingState extends State<Setting> {
                       ),
                     ],
                   ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                     
+                    ],
+                  ),
                 ],
               ),
             ),

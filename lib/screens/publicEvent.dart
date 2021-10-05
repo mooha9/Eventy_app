@@ -6,8 +6,6 @@ import 'package:eventy_app/util/overViewdataEvent.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'notificationPage.dart';
-
 
 class PublicEvent extends StatefulWidget {
   @override
@@ -24,10 +22,10 @@ class _PublicEventState extends State<PublicEvent> {
     return Scaffold(
             appBar: AppBar(
               title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-               padding: const EdgeInsets.only(right:30.0),
+               padding: const EdgeInsets.only(left:60.0),
               child: Text(
                 'Public Event',
                 style: TextStyle(
@@ -333,13 +331,7 @@ class _PublicEventState extends State<PublicEvent> {
                             ),
                             child: TextButton(  
                               onPressed: (){
-                                 Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) {
-                                      return SharePlan();
-                                    },
-                                  ),
-                                );
+                                 
                               },
                               child: Text("Save As Draft", style: TextStyle(
                               fontSize: 20.0,
@@ -378,13 +370,7 @@ class _PublicEventState extends State<PublicEvent> {
                             ),
                             child: TextButton(  
                               onPressed: (){
-                                 Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) {
-                                      return SharePlan();
-                                    },
-                                  ),
-                                );
+                                showSubmitDialog();
                               },
                               child: Text("Submit", style: TextStyle(
                               fontSize: 20.0,
@@ -404,7 +390,36 @@ class _PublicEventState extends State<PublicEvent> {
       ),
     );
   }
-  
+  showSubmitDialog(){
+    return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Submit'),
+              content: Text('Are you sure you want to share your event?'),
+              actions: <Widget>[
+                // ignore: deprecated_member_use
+                FlatButton(
+                  color: Colors.teal,
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                // ignore: deprecated_member_use
+                FlatButton(
+                  child: Text('yes, Share'),
+                  onPressed: () {
+                    
+                  },
+                ),
+              ],
+            );
+          });
+  }
    uploadImage() {
     return Container(
       height: 240.0,
