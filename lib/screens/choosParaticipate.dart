@@ -1,6 +1,5 @@
-import 'package:eventy_app/screens/manage_event.dart';
 import 'package:flutter/material.dart';
-import 'package:vertical_card_pager/vertical_card_pager.dart';
+import 'package:flutter_spinbox/material.dart'; // or flutter_spinbox.dart for both
 
 class ChooseParticipate extends StatefulWidget {
   @override
@@ -20,7 +19,7 @@ class _ChooseParticipateState extends State<ChooseParticipate> {
           elevation: 10,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(30),
+              bottom: Radius.circular(10),
             ),
           ),
           title: Row(
@@ -46,13 +45,13 @@ class _ChooseParticipateState extends State<ChooseParticipate> {
             tabs: [
               Tab(
                   icon: Icon(
-                    Icons.format_list_numbered_rounded,
+                    Icons.note_alt_outlined,
                     color: Colors.black54,
                   ),
                   text: 'Register by ID'),
               Tab(
                   icon: Icon(
-                    Icons.people_outline,
+                    Icons.person_add,
                     color: Colors.black54,
                   ),
                   text: 'Search for Participate'),
@@ -74,44 +73,124 @@ class _ChooseParticipateState extends State<ChooseParticipate> {
 }
 
 byID() {
-  return Stack(children: <Widget>[
-    Container(
-        color: Colors.teal[50],
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-            ),
-            Text(
-              'Put the ID :',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 18,
+  return 
+    Padding(
+      padding: const EdgeInsets.only(top:20.0,left: 20,right: 20),
+      child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Person ID :',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+              SizedBox(height: 10,),
+              TextField(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Insert Person ID',
+                prefixIcon: const Icon(
+                      Icons.person_pin_rounded ,
+                      color: Colors.teal,
+                    ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
+            SizedBox(height: 20,),
+            
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // ignore: deprecated_member_use
+                FlatButton(  
+                  height: 50,
+                  shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(10),
+              top: Radius.circular(10),
             ),
-            TextField(
-              minLines:
-                  1, // any number you need (It works as the rows for the textarea)
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              textAlignVertical: TextAlignVertical.top,
-              decoration: new InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey, width: 0.0),
-                ),
-                border: OutlineInputBorder(
-                    borderSide: new BorderSide(color: Colors.teal)),
-                hintText: '',
-              ),
-            ),
-          ],
-        ))
-  ]);
+          ),
+                    child: Text('Add ', style: TextStyle(fontSize: 20.0),),  
+                    color: Colors.teal,  
+                    textColor: Colors.white,  
+                    onPressed: () {},  
+                  ),
+                  SizedBox(width: 20,),
+              ],
+            ),  
+            ],
+          )),
+   
+  
+    );
 }
 
-selectParticipate() {}
+selectParticipate() {
+  return Padding(
+      padding: const EdgeInsets.only(top:20.0,left: 20,right: 20),
+      child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Select what you need from other \nto participate you :',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+              SizedBox(height: 10,),
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Insert service ',
+                      prefixIcon: const Icon(
+                            Icons.person_pin_rounded ,
+                            color: Colors.teal,
+                          ),
+                    ),
+                  ),
+                ),  
+                Container(
+                  height: 50,
+                  width: 120,
+                  child: SpinBox(
+                    cursorColor:Colors.teal,
+                    showCursor: false,
+                    min: 0,
+                    max: 10,
+                    value: 0,
+                    onChanged: (value) => print(value),
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  
+                  child: IconButton(
+                    onPressed: (){},
+                    icon:Icon(Icons.add_circle),
+                    color: Colors.teal,
+                    iconSize: 50,
+                    splashRadius: 30,
+                    
+                    )),
+                    SizedBox(height: 10,),
+                    // ignore: deprecated_member_use
+                    Center(
+                      // ignore: deprecated_member_use
+                      child: FlatButton(  
+                  height: 50,
+                  shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(10),
+              top: Radius.circular(10),
+            ),
+          ),
+                      child: Text('Share to participate ', style: TextStyle(fontSize: 20.0),),  
+                      color: Colors.teal,  
+                      textColor: Colors.white,  
+                      onPressed: () {},  
+                  ),
+                    ),
+                
+              
+            ],
+          )),
+   
+  
+    );
+}

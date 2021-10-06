@@ -1,5 +1,4 @@
-import 'package:eventy_app/screens/manage_event.dart';
-import 'package:eventy_app/screens/profilePage.dart';
+
 import 'package:flutter/material.dart';
 
 class SaveCard extends StatefulWidget {

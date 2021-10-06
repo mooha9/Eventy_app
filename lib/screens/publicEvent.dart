@@ -1,6 +1,5 @@
 import 'package:eventy_app/screens/choosParaticipate.dart';
 import 'package:eventy_app/screens/creator_notification.dart';
-import 'package:eventy_app/screens/sharePlane.dart';
 import 'package:flutter/material.dart';
 import 'package:eventy_app/util/overViewdataEvent.dart';
 import 'package:flutter/rendering.dart';
@@ -396,7 +395,7 @@ class _PublicEventState extends State<PublicEvent> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text('Submit'),
-              content: Text('Are you sure you want to share your event?'),
+              content: Text('Are you sure to share your event?'),
               actions: <Widget>[
                 // ignore: deprecated_member_use
                 FlatButton(
@@ -535,7 +534,7 @@ buildUsersList(context) {
                },
                child: Container(
                  margin: EdgeInsets.all(10),
-                 child: IconButton(icon: Icon(Icons.add_circle_outline ,size: 40, color: Colors.grey,), onPressed: () { 
+                 child: IconButton(splashRadius: 40,icon: Icon(Icons.add_circle_outline ,size: 40, color: Colors.teal, ), onPressed: () { 
                    Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (BuildContext context) {
