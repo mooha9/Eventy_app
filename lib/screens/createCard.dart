@@ -112,8 +112,8 @@ class _CreateCardState extends State<CreateCard> {
                               border: OutlineInputBorder(
                                   borderSide:
                                       new BorderSide(color: Colors.teal)),
-                              hintText: 'Category',
-                              helperText: 'Which filed include.',
+                              hintText: ' Work Type',
+                              helperText: 'Which filed you work with e.g.Food Truck',
                               prefixIcon: const Icon(
                                 Icons.category_rounded,
                                 color: Colors.teal,
@@ -172,8 +172,8 @@ class _CreateCardState extends State<CreateCard> {
                               border: OutlineInputBorder(
                                   borderSide:
                                       new BorderSide(color: Colors.teal)),
-                              hintText: 'Location',
-                              helperText: 'Insert location.',
+                              hintText: 'City',
+                              helperText: 'Insert city name.',
                               prefixIcon: const Icon(
                                 Icons.location_pin,
                                 color: Colors.teal,
@@ -202,7 +202,7 @@ class _CreateCardState extends State<CreateCard> {
                               border: OutlineInputBorder(
                                   borderSide:
                                       new BorderSide(color: Colors.teal)),
-                              hintText: 'Link',
+                              hintText: 'URL',
                               helperText: 'Link for your work.',
                               prefixIcon: const Icon(
                                 Icons.link,
