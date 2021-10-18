@@ -1,13 +1,12 @@
 
-
 import 'package:eventy_app/screens/manage_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http ;
 import 'dart:async';
+import 'dart:convert';
 import 'package:eventy_app/database/card.dart';
-
 
 // ignore: must_be_immutable
 class CreateCard extends StatefulWidget {
@@ -26,14 +25,29 @@ class _CreateCardState extends State<CreateCard> {
     if (card.id == ' '){
        await http.post(Uri.parse("http://localhost:1337/card/"),
        headers:<String,String>{'Context-Type':'application/json;charset=UTF-8'},
-       body:<String,String>{'name':card.name,'category':card.category,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,});
+       body:<String,String>{'category':card.category,'name':card.name,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,});
     }
     else{
        await http.put(Uri.parse("http://localhost:1337/card/${card.id}"), 
        headers:{'Context-Type':'application/json;charset=UTF-8'},
-        body:{'name':card.name,'category':card.category,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,}); 
+        body:{'category':card.category,'name':card.name,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,}); 
     }
    Navigator.push(context, new MaterialPageRoute(builder: (context)=>ManageCard(this.id)));
+  }
+
+  void initState() {
+    super.initState();
+    if(this.id !=''){
+      getOne();
+    }
+    
+  }
+  void getOne() async{
+   var data = await http.get(Uri.parse("http://localhost:1337/card/${this.id}"));
+   var c = json.decode(data.body);
+   setState(() {
+        card = DBCard (c['id'],c['category'],c['name'],c['workType'],c['city'],c['url_work'],c['tagLine'],c['email'],c['phoneNumber'],);
+   });
   }
   @override
   
@@ -157,37 +171,37 @@ class _CreateCardState extends State<CreateCard> {
                           SizedBox(
                             height: 3,
                           ),
-                          TextField(
+                          // TextField(
                             
-                            minLines:
-                                1, // any number you need (It works as the rows for the textarea)
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
-                            textAlignVertical: TextAlignVertical.top,
-                            decoration: new InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 0.0),
-                              ),
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      new BorderSide(color: Colors.teal)),
-                              hintText: 'Logo',
-                              helperText: 'Insert png logo.',
-                              prefixIcon: const Icon(
-                                Icons.stream_rounded,
-                                color: Colors.teal,
-                              ),
-                              prefixText: ' ',
-                            ),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Divider(),
-                          SizedBox(
-                            height: 3,
-                          ),
+                          //   minLines:
+                          //       1, // any number you need (It works as the rows for the textarea)
+                          //   keyboardType: TextInputType.multiline,
+                          //   maxLines: null,
+                          //   textAlignVertical: TextAlignVertical.top,
+                          //   decoration: new InputDecoration(
+                          //     enabledBorder: const OutlineInputBorder(
+                          //       borderSide: const BorderSide(
+                          //           color: Colors.grey, width: 0.0),
+                          //     ),
+                          //     border: OutlineInputBorder(
+                          //         borderSide:
+                          //             new BorderSide(color: Colors.teal)),
+                          //     hintText: 'Logo',
+                          //     helperText: 'Insert png logo.',
+                          //     prefixIcon: const Icon(
+                          //       Icons.stream_rounded,
+                          //       color: Colors.teal,
+                          //     ),
+                          //     prefixText: ' ',
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   height: 3,
+                          // ),
+                          // Divider(),
+                          // SizedBox(
+                          //   height: 3,
+                          // ),
                           TextField(
                             controller: TextEditingController(text:card.city),
                             onChanged: (val){
@@ -283,6 +297,40 @@ class _CreateCardState extends State<CreateCard> {
                               ),
                               prefixText: ' ',
                             ),
+                          ), SizedBox(
+                            height: 3,
+                          ),
+                          Divider(),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          TextField(
+                            controller: TextEditingController(text:card.phoneNumber),
+                            onChanged: (val){
+                              card.phoneNumber= val;
+                            },
+                            minLines:
+                                1, // any number you need (It works as the rows for the textarea)
+                            keyboardType: TextInputType.number,
+                            maxLines: null,
+                            textAlignVertical: TextAlignVertical.top,
+                            decoration: new InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Colors.grey, width: 0.0),
+                              ),
+                              border: OutlineInputBorder(
+                                  borderSide:
+                                      new BorderSide(color: Colors.teal)),
+                              hintText: 'Email',
+                              helperText: 'Insert email.',
+                              prefixIcon: const Icon(
+                                Icons.alternate_email,
+                                color: Colors.teal,
+                              ),
+                              prefixText: ' ',
+                            ),
+                          
                           ),
                           SizedBox(
                             height: 3,
@@ -372,7 +420,7 @@ class _CreateCardState extends State<CreateCard> {
 
 class SelectCategory extends StatefulWidget {
   const SelectCategory({Key? key}) : super(key: key);
-
+ 
   @override
   State<SelectCategory> createState() => _SelectCategoryState();
 }
@@ -468,6 +516,7 @@ class _SelectCategoryState extends State<SelectCategory> {
               width: 10,
             ),
             DropdownButton<String>(
+              
               value: dropdownValue,
               icon: const Icon(Icons.arrow_drop_down),
               iconSize: 24,
@@ -480,6 +529,7 @@ class _SelectCategoryState extends State<SelectCategory> {
               onChanged: (String? newValue) {
                 setState(() {
                   dropdownValue = newValue!;
+
                 });
               },
               items: <String>[

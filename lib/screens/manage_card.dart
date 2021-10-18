@@ -37,7 +37,7 @@ class _ManageCardState extends State<ManageCard> {
     Navigator.push(context, new MaterialPageRoute(builder: (context)=> CreateCard(this.id)));
   }
   void delete() async{
-
+    await http.delete(Uri.parse("http://localhost:1337/cards/${this.id}"));
   }
 
 
@@ -149,7 +149,9 @@ class _ManageCardState extends State<ManageCard> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                 TextButton(onPressed: edit, child: Text("Edit")),
-                                TextButton(onPressed: delete, child: Text("Delete", style:TextStyle(color: Colors.red,)))
+                                TextButton( onPressed: (){
+                                showDeleteDialog(delete);
+                              }, child: Text("Delete", style:TextStyle(color: Colors.red,)))
                               ],
                   ),
                 )),
@@ -161,7 +163,8 @@ class _ManageCardState extends State<ManageCard> {
           }
       )
       ),
-                  
+
+                 
                
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 10),
@@ -170,7 +173,7 @@ class _ManageCardState extends State<ManageCard> {
              Navigator.of(context).push(
             MaterialPageRoute(
               builder: (BuildContext context) {
-                return CreateCard('');
+                return CreateCard(this.id);
               },
             ),
           );
@@ -184,4 +187,34 @@ class _ManageCardState extends State<ManageCard> {
       ),
     );
   }
+  showDeleteDialog(delete){
+    return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Delete'),
+              content: Text('Are you sure to delete this card?'),
+              actions: <Widget>[
+                // ignore: deprecated_member_use
+                FlatButton(
+                  color: Colors.teal,
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                // ignore: deprecated_member_use
+                FlatButton(
+                  child: Text('yes, Delete'),
+                  onPressed: delete ,
+                ),
+              ],
+            );
+          });
+  }
 }
+
+
