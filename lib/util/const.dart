@@ -14,11 +14,13 @@ class Constants {
   static ThemeData lightTheme = ThemeData(
     backgroundColor: lightBG,
     primaryColor: lightPrimary,
+    // ignore: deprecated_member_use
     accentColor: lightAccent,
     
     scaffoldBackgroundColor: lightBG,
     appBarTheme: AppBarTheme(
       elevation: 0,
+      // ignore: deprecated_member_use
       textTheme: TextTheme(
         headline6: TextStyle(
           color: darkBG,
@@ -33,11 +35,13 @@ class Constants {
     brightness: Brightness.dark,
     backgroundColor: darkBG,
     primaryColor: darkPrimary,
+    // ignore: deprecated_member_use
     accentColor: darkAccent,
     scaffoldBackgroundColor: darkBG,
     
     appBarTheme: AppBarTheme(
       elevation: 0,
+      // ignore: deprecated_member_use
       textTheme: TextTheme(
         headline6: TextStyle(
           color: lightBG,
