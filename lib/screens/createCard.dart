@@ -1,23 +1,42 @@
-import 'package:eventy_app/screens/saveCard.dart';
+
+
+import 'package:eventy_app/screens/manage_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:qr_flutter/qr_flutter.dart';
+import 'package:http/http.dart' as http ;
+import 'dart:async';
+import 'package:eventy_app/database/card.dart';
 
+
+// ignore: must_be_immutable
 class CreateCard extends StatefulWidget {
+  String id ;
+  CreateCard(this.id);
   @override
-  _CreateCardState createState() => _CreateCardState();
+  _CreateCardState createState() => _CreateCardState(this.id);
 }
 
 class _CreateCardState extends State<CreateCard> {
-  final name = TextEditingController();
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    name.dispose();
-    super.dispose();
+  String id ;
+  _CreateCardState(this.id);
+  DBCard card = DBCard('','','','','','','','','');
+  
+  Future save() async{
+    if (card.id == ' '){
+       await http.post(Uri.parse("http://localhost:1337/card/"),
+       headers:<String,String>{'Context-Type':'application/json;charset=UTF-8'},
+       body:<String,String>{'name':card.name,'category':card.category,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,});
+    }
+    else{
+       await http.put(Uri.parse("http://localhost:1337/card/${card.id}"), 
+       headers:{'Context-Type':'application/json;charset=UTF-8'},
+        body:{'name':card.name,'category':card.category,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,}); 
+    }
+   Navigator.push(context, new MaterialPageRoute(builder: (context)=>ManageCard(this.id)));
   }
-
+  @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -61,6 +80,9 @@ class _CreateCardState extends State<CreateCard> {
                     Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Visibility(
+                            visible: false,
+                            child: TextField(controller: TextEditingController(text:card.id),)),
                           Divider(),
                           SelectCategory(),
                           SizedBox(
@@ -68,7 +90,10 @@ class _CreateCardState extends State<CreateCard> {
                           ),
                           Divider(),
                           TextField(
-                            controller: name,
+                            controller: TextEditingController(text:card.name),
+                            onChanged: (val){
+                              card.name= val;
+                            },
                             minLines:
                                 1, // any number you need (It works as the rows for the textarea)
                             keyboardType: TextInputType.multiline,
@@ -99,6 +124,10 @@ class _CreateCardState extends State<CreateCard> {
                             height: 3,
                           ),
                           TextField(
+                            controller: TextEditingController(text:card.workType),
+                            onChanged: (val){
+                              card.workType= val;
+                            },
                             minLines:
                                 1, // any number you need (It works as the rows for the textarea)
                             keyboardType: TextInputType.multiline,
@@ -129,6 +158,7 @@ class _CreateCardState extends State<CreateCard> {
                             height: 3,
                           ),
                           TextField(
+                            
                             minLines:
                                 1, // any number you need (It works as the rows for the textarea)
                             keyboardType: TextInputType.multiline,
@@ -159,6 +189,10 @@ class _CreateCardState extends State<CreateCard> {
                             height: 3,
                           ),
                           TextField(
+                            controller: TextEditingController(text:card.city),
+                            onChanged: (val){
+                              card.city= val;
+                            },
                             minLines:
                                 1, // any number you need (It works as the rows for the textarea)
                             keyboardType: TextInputType.multiline,
@@ -189,6 +223,10 @@ class _CreateCardState extends State<CreateCard> {
                             height: 3,
                           ),
                           TextField(
+                            controller: TextEditingController(text:card.url_work),
+                            onChanged: (val){
+                              card.url_work= val;
+                            },
                             minLines:
                                 1, // any number you need (It works as the rows for the textarea)
                             keyboardType: TextInputType.multiline,
@@ -219,6 +257,10 @@ class _CreateCardState extends State<CreateCard> {
                             height: 3,
                           ),
                           TextField(
+                            controller: TextEditingController(text:card.tagLine),
+                            onChanged: (val){
+                              card.tagLine= val;
+                            },
                             minLines:
                                 1, // any number you need (It works as the rows for the textarea)
                             keyboardType: TextInputType.multiline,
@@ -250,9 +292,13 @@ class _CreateCardState extends State<CreateCard> {
                             height: 3,
                           ),
                           TextField(
+                            controller: TextEditingController(text:card.phoneNumber),
+                            onChanged: (val){
+                              card.phoneNumber= val;
+                            },
                             minLines:
                                 1, // any number you need (It works as the rows for the textarea)
-                            keyboardType: TextInputType.multiline,
+                            keyboardType: TextInputType.number,
                             maxLines: null,
                             textAlignVertical: TextAlignVertical.top,
                             decoration: new InputDecoration(
@@ -271,6 +317,7 @@ class _CreateCardState extends State<CreateCard> {
                               ),
                               prefixText: ' ',
                             ),
+                          
                           ),
                           SizedBox(
                             height: 120,
@@ -299,15 +346,7 @@ class _CreateCardState extends State<CreateCard> {
                     ],
                   )),
               child: TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) {
-                          return SaveCard();
-                        },
-                      ),
-                    );
-                  },
+                  onPressed: save ,
                   child: Text(
                     "Save",
                     style: TextStyle(
@@ -364,20 +403,7 @@ class _SelectCategoryState extends State<SelectCategory> {
             width: MediaQuery.of(context).size.width,
             child: Stack(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      QrImage(
-                        data: "1234567890",
-                        version: QrVersions.auto,
-                        foregroundColor: Colors.white,
-                        size: 100.0,
-                      ),
-                    ],
-                  ),
-                ),
+               
               ],
             ),
           ),
@@ -399,20 +425,7 @@ class _SelectCategoryState extends State<SelectCategory> {
             width: MediaQuery.of(context).size.width,
             child: Stack(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      QrImage(
-                        data: "1234567890",
-                        version: QrVersions.auto,
-                        foregroundColor: Colors.white,
-                        size: 100.0,
-                      ),
-                    ],
-                  ),
-                ),
+                
               ],
             ),
           ),
@@ -434,20 +447,7 @@ class _SelectCategoryState extends State<SelectCategory> {
             width: MediaQuery.of(context).size.width,
             child: Stack(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      QrImage(
-                        data: "1234567890",
-                        version: QrVersions.auto,
-                        foregroundColor: Colors.white,
-                        size: 100.0,
-                      ),
-                    ],
-                  ),
-                ),
+                
               ],
             ),
           ),

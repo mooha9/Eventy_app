@@ -76,7 +76,10 @@ class _PublicEventState extends State<PublicEvent> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    
+                    Divider(),
+                    SelectCategory(),
+                    SizedBox(height: 3,),
+                  
                     Divider(),
                     
                     TextField(
@@ -138,7 +141,31 @@ class _PublicEventState extends State<PublicEvent> {
                     ),
                     border:OutlineInputBorder(
                     borderSide: new BorderSide(color: Colors.teal)),
-                    hintText: 'Location',
+                    hintText: 'Location Name',
+                    helperText: 'Insert name of the location.',
+                    prefixIcon: const Icon(
+                      Icons.location_pin,
+                      color: Colors.teal,
+                    ),
+                    prefixText: ' ',
+                    
+                    ),
+                  ),
+                  SizedBox(height: 3,),
+                  Divider(),
+                  SizedBox(height: 3,),
+                    TextField(
+                    minLines: 1, // any number you need (It works as the rows for the textarea)
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    textAlignVertical: TextAlignVertical.top,
+                    decoration: new InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey, width: 0.0),
+                    ),
+                    border:OutlineInputBorder(
+                    borderSide: new BorderSide(color: Colors.teal)),
+                    hintText: 'Location URL',
                     helperText: 'Insert your location from google map.',
                     prefixIcon: const Icon(
                       Icons.location_pin,
@@ -162,8 +189,32 @@ class _PublicEventState extends State<PublicEvent> {
                     ),
                     border:OutlineInputBorder(
                     borderSide: new BorderSide(color: Colors.teal)),
-                    hintText: 'Time',
+                    hintText: 'Time Start',
                     helperText: 'When will start your event.',
+                    prefixIcon: const Icon(
+                      Icons.timer_rounded,
+                      color: Colors.teal,
+                    ),
+                    prefixText: ' ',
+                    
+                    ),
+                  ),
+                  SizedBox(height: 3,),
+                  Divider(),
+                  SizedBox(height: 3,),
+                    TextField(
+                    minLines: 1, // any number you need (It works as the rows for the textarea)
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    textAlignVertical: TextAlignVertical.top,
+                    decoration: new InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey, width: 0.0),
+                    ),
+                    border:OutlineInputBorder(
+                    borderSide: new BorderSide(color: Colors.teal)),
+                    hintText: 'Time End',
+                    helperText: 'When will end your event.',
                     prefixIcon: const Icon(
                       Icons.timer_rounded,
                       color: Colors.teal,
@@ -198,9 +249,9 @@ class _PublicEventState extends State<PublicEvent> {
                   ),
                   SizedBox(height: 3,),
                   Divider(),
-                  SelectCategory(),
                   SizedBox(height: 3,),
-                  Divider(),
+                  
+                    
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
