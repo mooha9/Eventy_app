@@ -1,5 +1,5 @@
-import 'package:eventy_app/screens/HomePage.dart';
-import 'package:eventy_app/screens/ProfilePage.dart';
+import 'package:eventy_app/views/pages/home/home.dart';
+import 'package:eventy_app/views/pages/home/profile.dart';
 import 'package:eventy_app/views/pages/home/cards.dart';
 import 'package:eventy_app/views/pages/home/favorites.dart';
 import 'package:eventy_app/views/pages/home/search.dart';
