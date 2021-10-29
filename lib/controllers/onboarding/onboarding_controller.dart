@@ -1,5 +1,7 @@
 import 'package:eventy_app/models/onboarding/onboardingInfo.dart';
+import 'package:eventy_app/views/pages/signup/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/utils.dart';
 class OnboardingController extends GetxController {
@@ -14,12 +16,13 @@ class OnboardingController extends GetxController {
   forwardAction (){
     if (isLastPage){
       //go to home page 
+      Get.toNamed("/SignUp");
+
     }else{
 
     pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
 
     }
-
   }
   List<OnboardingInfo> onboardingPages = [
     OnboardingInfo('assets/images/onboarding1.png', 'Explore Events', 'Register events and Explore to visit easily '),

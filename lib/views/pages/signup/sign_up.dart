@@ -1,29 +1,12 @@
-import 'package:eventy_app/views/pages/signin/sign_in.dart';
+import 'package:eventy_app/controllers/signup/signup_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:eventy_app/views/pages/signup/sign_up2.dart';
 
-class SignUp extends StatefulWidget {
 
-  @override
-  State<StatefulWidget> createState() {
-    return SignUpState();
-  }
-}
-
-class SignUpState extends State<SignUp> {
-  bool passwordVisible = true;
-  bool passwordVisible2 = true;
-  void changeScreen(BuildContext context1, int n) {
-    Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
-    {
-      if (n == 1) return SignIn();
-      return SignUp2();
-    }));
-  }
+class SignUp extends StatelessWidget {
+final _controller = SignUpController();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         body: Stack(
               children: <Widget>[
         Container(
@@ -48,7 +31,9 @@ class SignUpState extends State<SignUp> {
               child: Positioned(
                 top: 200,
                 right: 50,
+            
             child:SingleChildScrollView(
+
             child: Column(
               children: <Widget>[
                 Container(
@@ -60,9 +45,11 @@ class SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
+
                 SizedBox(
                   height: 25,
                 ),
+
                 Container(
                   constraints: BoxConstraints.tightFor(width: 300),
                   //width text field
@@ -88,6 +75,7 @@ class SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
+
                 Container(
                   constraints: BoxConstraints.tightFor(width: 300),
                   //width text field
@@ -112,6 +100,7 @@ class SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
+
                 Container(
                   constraints: BoxConstraints.tightFor(width: 300),
                   //width text field
@@ -137,6 +126,7 @@ class SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
+
                 Container(
                   constraints: BoxConstraints.tightFor(width: 300),
                   //width text field
@@ -162,6 +152,7 @@ class SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
+
                 Container(
                   constraints: BoxConstraints.tightFor(width: 300),
                   //width text field
@@ -187,6 +178,7 @@ class SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
+
                 Container(
                   constraints: BoxConstraints.tightFor(width: 300),
                   //width text field
@@ -206,24 +198,29 @@ class SignUpState extends State<SignUp> {
                         hintText: "ENTER YOUR PASSWORD",
                         //for example name
                         hintStyle: TextStyle(fontSize: 15),
+                        
                         suffixIcon: IconButton(
                           icon: Icon(
-                            passwordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
+                             _controller.isHidden
+                                 ? Icons.visibility
+                                 : Icons.visibility_off,
                           ),
-                          onPressed: () {
-                            setState(() {
-                              passwordVisible = !passwordVisible;
-                            });
-                          },
-                        ),
-                      ),
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: passwordVisible,
-                    ),
+                          onPressed:  _controller.passwordVisible
+
+                      //       setState(() {
+                      //         passwordVisible = !passwordVisible;
+                      //       });
+                      //     },
+                      //   ),
+                      // ),
+                     
+                    ),),
+                     keyboardType: TextInputType.visiblePassword,
+                      // obscureText: passwordVisible,
                   ),
                 ),
+                ),
+
                 Container(
                   constraints: BoxConstraints.tightFor(width: 300),
                   //width text field
@@ -243,34 +240,38 @@ class SignUpState extends State<SignUp> {
                         hintText: "CONFIRM YOUR PASSWORD",
                         //for example name
                         hintStyle: TextStyle(fontSize: 15),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            passwordVisible2
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              passwordVisible2 = !passwordVisible2;
-                            });
-                          },
-                        ),
-                      ),
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: passwordVisible2,
+                      //   suffixIcon: IconButton(
+                      //     icon: Icon(
+                      //       passwordVisible2
+                      //           ? Icons.visibility
+                      //           : Icons.visibility_off,
+                      //     ),
+                      //     onPressed: () {
+                      //       setState(() {
+                      //         passwordVisible2 = !passwordVisible2;
+                      //       });
+                      //     },
+                      //   ),
+                      // ),
+                      // keyboardType: TextInputType.visiblePassword,
+                      // obscureText: passwordVisible2,
                     ),
                   ),
                 ),
+                ),
+
                 SizedBox(
                   height: 10,
                 ),
+
                 Center(),
+
                 Container(
                     child: Align(
                       alignment: Alignment(0.6, 0),
                       // ignore: deprecated_member_use
                       child: RaisedButton(
-                          onPressed: () => changeScreen(context, 2),
+                          onPressed: _controller.forward(),
                           color: Color(0xff2f9d80),
                           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                           splashColor: Colors.teal[250],
@@ -280,13 +281,16 @@ class SignUpState extends State<SignUp> {
                           shape: RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(50.0),
                             side: BorderSide(color: Colors.teal),
-                          )
+                          ),
+                           
                       ),
                     )
                 ),
+
                 SizedBox(
                   height: 20,
                 ),
+
                 Row(
                   children: [
                     Text.rich(
@@ -317,9 +321,11 @@ class SignUpState extends State<SignUp> {
                        ),),
                   ],
                 ),
+
                 SizedBox(
                   height: 15,
                      ),
+
                 Container(
                     child: InkWell(//InkWell is same textbutton
                         child: Text(
@@ -329,9 +335,10 @@ class SignUpState extends State<SignUp> {
                             color: Colors.blue,
                           ),
                         ),
-                        onTap:()=> changeScreen(context,1)
+                        onTap: (){}
                     )
                 ),
+                
               ],
             ),
           ),
@@ -339,7 +346,7 @@ class SignUpState extends State<SignUp> {
         ),
       ],
       ),
-    )
+  
     );
   }
 }

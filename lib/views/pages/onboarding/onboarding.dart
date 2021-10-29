@@ -62,7 +62,7 @@ class OnboardingPage extends StatelessWidget {
                 onPressed: _controller.forwardAction,
                 backgroundColor: Colors.teal,
                 child: Obx((){
-                  return Text(_controller.isLastPage ?"Start" : "Next");
+                  return Text(_controller.isLastPage ? "Sign Up" : "Next", textAlign: TextAlign.center,);
                   }),
                 )),
             Positioned(
