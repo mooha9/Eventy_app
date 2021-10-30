@@ -60,9 +60,9 @@ class OnboardingPage extends StatelessWidget {
               child: FloatingActionButton(
                 elevation: 0,
                 onPressed: _controller.forwardAction,
-                backgroundColor: Colors.teal,
+                
                 child: Obx((){
-                  return Text(_controller.isLastPage ? "Sign Up" : "Next", textAlign: TextAlign.center,);
+                  return Text(_controller.isLastPage ? "Start" : "Next", textAlign: TextAlign.center,);
                   }),
                 )),
             Positioned(

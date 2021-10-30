@@ -1,31 +1,17 @@
-import 'package:eventy_app/views/widgets/buttom_navbar.dart';
-import 'sign_up.dart';
+import 'package:eventy_app/controllers/signup/signup2_controller.dart';
 import 'package:flutter/material.dart';
 
-class SignUp2 extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return SignUp2State();
-  }
-}
+// ignore: must_be_immutable
+class SignUp2 extends StatelessWidget {
 
-var currentSelectedValue;
-const deviceTypes = ["MALE", "FEMALE","NOT SAY"];
-var currentSelectedValue1; //contry
-const deviceTypes1 = ["Saudi Arabia", "Other"];
-var currentSelectedValue2; //state
-const deviceTypes2 = ["Qassim", "Other"];
-var currentSelectedValue3; //city
-const deviceTypes3 = ["Buradah", "Unazah", "other"];
+  var currentSelectedValue;
+  static const genderTypes = ["MALE", "FEMALE","NOT SAY"];
+  var currentSelectedValue1; //contry
+  static const country = ["Saudi Arabia", "Other"];
+  var currentSelectedValue2; //city
+  static const cities = ["Buradah", "Unazah", "other"];
 
-class SignUp2State extends State<SignUp2> {
-  void changeScreen(BuildContext context1 ,int n) {
-    Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_) {
-      if (n == 2)return SignUp();
-      return BottomNav();
-    }));
-  }
-
+  final _controller = SignUp2Controller();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +32,14 @@ class SignUp2State extends State<SignUp2> {
                     height: 300,
                     width: 300,
                     image: AssetImage('assets/images/logo.png'))),
-            Center(),
+            
             Container(
+            child:SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
               margin: EdgeInsets.all(10),
-              padding: EdgeInsets.symmetric(horizontal: 55),
+              padding: EdgeInsets.symmetric(horizontal: 40,),
               child: Material(
                 // shadow
                   elevation: 5, //shadow
@@ -63,16 +53,16 @@ class SignUp2State extends State<SignUp2> {
                                 borderRadius: BorderRadius.circular(32))),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
-                            hint: Text("SELECT COUNTREY"),
+                            hint: Text("SELECT COUNTRY"),
                             value: currentSelectedValue1,
                             isDense: true,
                             onChanged: (newValue) {
-                              setState(() {
-                                currentSelectedValue1 = newValue;
-                              });
+                              // setState(() {
+                              //   currentSelectedValue1 = newValue;
+                              // });
                               print(currentSelectedValue1);
                             },
-                            items: deviceTypes1.map((String value) {
+                            items: country.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -84,46 +74,10 @@ class SignUp2State extends State<SignUp2> {
                     },
                   )),
             ),
+            
             Container(
               margin: EdgeInsets.all(10),
-              padding: EdgeInsets.symmetric(horizontal: 55),
-              child: Material(
-                // shadow
-                  elevation: 5, //shadow
-                  shadowColor: Colors.black, //color shadow
-                  borderRadius: BorderRadius.circular(32.0),
-                  child: FormField<String>(
-                    builder: (FormFieldState<String> state) {
-                      return InputDecorator(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(32))),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            hint: Text("SELECT STATE"),
-                            value: currentSelectedValue2,
-                            isDense: true,
-                            onChanged: (newValue) {
-                              setState(() {
-                                currentSelectedValue2 = newValue;
-                              });
-                              print(currentSelectedValue2);
-                            },
-                            items: deviceTypes2.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                          ),
-                        ),
-                      );
-                    },
-                  )),
-            ),
-            Container(
-              margin: EdgeInsets.all(5),
-              padding: EdgeInsets.symmetric(horizontal: 55),
+              padding: EdgeInsets.symmetric(horizontal: 40,),
               child: Material(
                 // shadow
                   elevation: 5, //shadow
@@ -138,15 +92,15 @@ class SignUp2State extends State<SignUp2> {
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             hint: Text("SELECT CITY"),
-                            value: currentSelectedValue3,
+                            value: currentSelectedValue2,
                             isDense: true,
                             onChanged: (newValue) {
-                              setState(() {
-                                currentSelectedValue3 = newValue;
-                              });
-                              print(currentSelectedValue3);
+                              // setState(() {
+                              //   currentSelectedValue2 = newValue;
+                              // });
+                              print(currentSelectedValue2);
                             },
-                            items: deviceTypes3.map((String value) {
+                            items: cities.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -160,7 +114,7 @@ class SignUp2State extends State<SignUp2> {
             ),
             Container(
               margin: EdgeInsets.all(10),
-              padding: EdgeInsets.symmetric(horizontal: 55),
+              padding: EdgeInsets.symmetric(horizontal: 40,),
               child: Material(
                 // shadow
                   elevation: 5, //shadow
@@ -175,15 +129,15 @@ class SignUp2State extends State<SignUp2> {
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             hint: Text("SELECT Gender"),
-                            value: currentSelectedValue,
+                            value: currentSelectedValue2,
                             isDense: true,
                             onChanged: (newValue) {
-                              setState(() {
-                                currentSelectedValue = newValue;
-                              });
-                              print(currentSelectedValue);
+                              // setState(() {
+                              //   currentSelectedValue2 = newValue;
+                              // });
+                              print(currentSelectedValue2);
                             },
-                            items: deviceTypes.map((String value) {
+                            items: genderTypes.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -196,9 +150,9 @@ class SignUp2State extends State<SignUp2> {
                   )),
             ),
             Container(
-              constraints: BoxConstraints.tightFor(width: 300),
-              //width text field
               margin: EdgeInsets.all(10),
+              padding: EdgeInsets.symmetric(horizontal: 40,),
+              
               child: Material(
                 // shadow
                 elevation: 10, //shadow
@@ -207,7 +161,7 @@ class SignUp2State extends State<SignUp2> {
                 child: TextField(
                   decoration: InputDecoration(
                     contentPadding:
-                    EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                    EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                     //size Text field
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),
@@ -224,33 +178,35 @@ class SignUp2State extends State<SignUp2> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             Container(
-                child: Align(
-                  alignment: Alignment(0.6, 0),
+
                   // ignore: deprecated_member_use
-                  child: RaisedButton(
-                      onPressed: () => changeScreen(context, 1),
-                      color: Color(0xff2f9d80),
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                      splashColor: Color(0xff4ABD9F),
-                      child: Text(
-                        "SIGN UP",
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(50.0),
-                        side: BorderSide(color: Color(0xff4ABD9F)),
-                      )),
-                )),
+                             child: RaisedButton(
+                              onPressed:_controller.next,
+                             
+                              padding: EdgeInsets.fromLTRB(50, 15, 50, 15),
+                              splashColor: Colors.teal[250],
+
+                              child: Text("SIGN UP",
+                                style: TextStyle(fontSize: 20, color: Colors.white),),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(50.0),
+                                side: BorderSide(color: Colors.teal),
+                              ),
+                             ),
+            ),                        
+                       
             SizedBox(
               height: 20,
             ),
           
           ],
-        ),
-      ),
-    );
-  }
-}
+        ), ),),
+          ]
+      ),),);
+          
+    
+  
+}}

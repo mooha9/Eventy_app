@@ -1,9 +1,12 @@
+
 import 'package:eventy_app/controllers/signup/signup_controller.dart';
 import 'package:flutter/material.dart';
 
 
 class SignUp extends StatelessWidget {
-final _controller = SignUpController();
+
+  final _controller = SignUpController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,25 +20,27 @@ final _controller = SignUpController();
             ),
           ),
         ),
-        Container(
-          child: Positioned(
-            right: 50,
-              child: Image(
-              height: 300,
-              width: 300,
-              image: AssetImage('assets/images/logo.png')
-                      )
-          ),
-            ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
             Container(
-              child: Positioned(
-                top: 200,
-                right: 50,
-            
+              child: Center(
+                  child: Image(
+                  height: 300,
+                  width: 300,
+                  image: AssetImage('assets/images/logo.png')
+                          )
+              ),
+                ),
+          ],
+        ),
+            Container(
             child:SingleChildScrollView(
-
             child: Column(
               children: <Widget>[
+                          SizedBox(
+                  height: 180,
+                ),
                 Container(
                   child: Text(
                     "CREATE ACCOUNT",
@@ -47,7 +52,7 @@ final _controller = SignUpController();
                 ),
 
                 SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
 
                 Container(
@@ -60,6 +65,7 @@ final _controller = SignUpController();
                     shadowColor: Colors.black,//color shadow
                     borderRadius: BorderRadius.circular(32.0),
                     child: TextField(
+
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(15),
                         //size Text field
@@ -202,8 +208,8 @@ final _controller = SignUpController();
                         suffixIcon: IconButton(
                           icon: Icon(
                              _controller.isHidden
-                                 ? Icons.visibility
-                                 : Icons.visibility_off,
+                                 ? Icons.visibility_off
+                                 : Icons.visibility
                           ),
                           onPressed:  _controller.passwordVisible
 
@@ -261,89 +267,38 @@ final _controller = SignUpController();
                 ),
 
                 SizedBox(
-                  height: 10,
-                ),
-
-                Center(),
-
-                Container(
-                    child: Align(
-                      alignment: Alignment(0.6, 0),
-                      // ignore: deprecated_member_use
-                      child: RaisedButton(
-                          onPressed: _controller.forward(),
-                          color: Color(0xff2f9d80),
-                          padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                          splashColor: Colors.teal[250],
-
-                          child: Text("NEXT",
-                            style: TextStyle(fontSize: 20, color: Colors.white),),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(50.0),
-                            side: BorderSide(color: Colors.teal),
-                          ),
-                           
-                      ),
-                    )
-                ),
-
-                SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
 
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text.rich(
-                      TextSpan(
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Color(0xff2f9d80),
+                  
+                    Container(
+                      
+                          // ignore: deprecated_member_use
+                          child: RaisedButton(
+                            
+                              onPressed:_controller.next,
+                              padding: EdgeInsets.fromLTRB(50, 15, 50, 15),
+                              splashColor: Colors.teal[250],
 
-                        ),
-                        children: [
-                          TextSpan(
-                            text: 'SIGN UP WITH  ',
+                              child: Text("NEXT",
+                                style: TextStyle(fontSize: 20, color: Colors.white),),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(50.0),
+                                side: BorderSide(color: Colors.teal),
+                              ),
+                               
                           ),
-                          
-                        ],
-                      ),
-                    ),
-                      ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                      primary: Colors.white, // background
-                      onPrimary: Colors.grey, // foreground
-                      ),
-                      onPressed: () { },
-                      child: 
-                        Image.asset(
-                          'assets/images/Google_icon-icons.com_66793.png',
-                          height: 25.0,
-                       ),),
+                    ),  
                   ],
                 ),
-
-                SizedBox(
-                  height: 15,
-                     ),
-
-                Container(
-                    child: InkWell(//InkWell is same textbutton
-                        child: Text(
-                          "SIGN_IN",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        onTap: (){}
-                    )
-                ),
-                
               ],
             ),
           ),
         ),
-        ),
+      
       ],
       ),
   

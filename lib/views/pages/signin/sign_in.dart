@@ -1,30 +1,15 @@
-import 'package:eventy_app/views/widgets/buttom_navbar.dart';
-import 'package:eventy_app/views/pages/signup/sign_up.dart';
+import 'package:eventy_app/controllers/signin/signin_controller.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return SignInState();
-  }
-}
-
-class SignInState extends State<SignIn> {
-  void changeScreen(BuildContext context1, int n) {
-    Navigator.of(context1).pushReplacement(MaterialPageRoute(builder: (_)
-        {
-           if (n == 1) return SignUp();
-          return BottomNav();
-      }));
-  }
-
-  bool passwordVisible = true;
-  bool passwordVisible2 = true;
-
+class SignIn extends StatelessWidget {
+ 
+  final bool passwordVisible = true;
+  final bool passwordVisible2 = true;
+  final _controller = SignInController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Container(
             decoration: BoxDecoration(
             image: DecorationImage(
@@ -46,35 +31,42 @@ class SignInState extends State<SignIn> {
                )
             ),
             
-            Center(),
-            Container(
-              constraints: BoxConstraints.tightFor(width: 300),
-              //width text field
-              margin: EdgeInsets.all(10),
-              child: Material(
-                // shadow
-                elevation: 5, //shadow
-                shadowColor: Colors.black, //color shadow
-                borderRadius: BorderRadius.circular(32.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(8),
-                    //size Text field
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                    labelText: "USERNAME",
-                    labelStyle: TextStyle(fontSize: 15),
-                    hintText: "ahmed220",
-                    //for example name
-                    hintStyle: TextStyle(fontSize: 15),
-                    suffixIcon: Icon(Icons.person_outline),
+            SingleChildScrollView(
+              child: Column(
+                children:[
+                  Container(
+                  constraints: BoxConstraints.tightFor(width: 350),
+                  //width text field
+                  margin: EdgeInsets.all(10),
+                  child: Material(
+                    // shadow
+                    elevation: 5, //shadow
+                    shadowColor: Colors.black, //color shadow
+                    borderRadius: BorderRadius.circular(32.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(8),
+                        //size Text field
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(32.0)),
+                        labelText: "USERNAME",
+                        labelStyle: TextStyle(fontSize: 15),
+                        hintText: "ahmed220",
+                        //for example name
+                        hintStyle: TextStyle(fontSize: 15),
+                        suffixIcon: Icon(Icons.person_outline),
+                      ),
+                      keyboardType: TextInputType.text,
+                    ),
                   ),
-                  keyboardType: TextInputType.text,
                 ),
-              ),
+              
+            
+            SizedBox(
+              height: 30,
             ),
             Container(
-              constraints: BoxConstraints.tightFor(width: 300),
+              constraints: BoxConstraints.tightFor(width: 350),
               //width text field
               margin: EdgeInsets.all(10),
               child: Material(
@@ -97,13 +89,13 @@ class SignInState extends State<SignIn> {
                     suffixIcon: IconButton(
                       icon: Icon(
                         passwordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+                            ? Icons.visibility_off
+                            : Icons.visibility ,
                       ),
                       onPressed: () {
-                        setState(() {
-                          passwordVisible = !passwordVisible;
-                        });
+                        // setState(() {
+                        //   passwordVisible = !passwordVisible;
+                        // });
                       },
                     ),
                   ),
@@ -113,29 +105,36 @@ class SignInState extends State<SignIn> {
               ),
             ),
             SizedBox(
-              height: 20,
-            ),
-            Align(
-              alignment: Alignment(0.5, 0),
-              child: Text(
-                      "FORGET PASSWORD",
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                ),
-              ),
-            ),
+              height: 5,
+            ),Row(
+               mainAxisAlignment: MainAxisAlignment.start,
+               children: [
+                SizedBox(
+                      width: 50,
+                    ),
+                 TextButton(
+                   onPressed: (){},
+                   child: Text( "FORGET PASSWORD?",
+                        style: TextStyle(
+                            fontSize: 13,
+                            color:  Colors.grey[800],
+                      ),
+                    ),
+                 ),
+                  
+               ],
+             ),
             SizedBox(
-              height: 25,
+              height: 40,
             ),
+             
             Container(
-                child: Align(
-              alignment: Alignment(0.6, 0),
               // ignore: deprecated_member_use
               child: RaisedButton(
-                  onPressed: () => changeScreen(context, 2),
+                elevation: 20,
+                  onPressed: _controller.nextAction,
                   color: Color(0xff2f9d80),
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  padding: EdgeInsets.fromLTRB(50, 15, 50, 15),
                   splashColor: Color(0xff4ABD9F),
                   child: Text(
                     "SIGN IN",
@@ -145,13 +144,14 @@ class SignInState extends State<SignIn> {
                     borderRadius: new BorderRadius.circular(50.0),
                     side: BorderSide(color: Color(0xff4ABD9F)),
                   )),
-            )),
-            SizedBox(
-              height: 40,
             ),
-            Align(
-              alignment: Alignment.center,
-              child: Row(
+                
+
+             SizedBox(
+              height: 100,
+            ),
+            
+               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -162,7 +162,7 @@ class SignInState extends State<SignIn> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () => changeScreen(context, 1),
+                    onPressed: _controller.signUp,
                     child: Text(
                               'SIGN UP',
                       textAlign: TextAlign.left,
@@ -175,7 +175,10 @@ class SignInState extends State<SignIn> {
                   ),
                 ],
               ),
-            ),
+              
+              ],
+                ),
+                ),
           ],
         ),
       ),

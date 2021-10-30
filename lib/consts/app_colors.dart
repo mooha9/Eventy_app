@@ -2,26 +2,29 @@ import 'package:flutter/material.dart';
 
 class Constants {
   
-
   //Colors for theme
   static Color lightPrimary = Color(0xfffcfcff);
   static Color darkPrimary = Colors.black;
-  static Color lightAccent = Colors.orange;
-  static Color darkAccent = Colors.orangeAccent;
-  static Color lightBG = Color(0xfffcfcff);
+  static Color lightAccent = Colors.teal;
+  static Color? darkAccent = Colors.teal[50];
+  static Color? lightBG = Colors.teal[200];
   static Color darkBG = Colors.black;
 
+
+  static Color buttonPrimary = Colors.teal;
 
   //light theme
 
   static ThemeData lightTheme = ThemeData(
     backgroundColor: lightBG,
-    primaryColor: lightPrimary,
+    primaryColor: lightAccent,
     // ignore: deprecated_member_use
-    accentColor: lightAccent,
+    accentColor: buttonPrimary,
     // ignore: deprecated_member_use
     cursorColor: lightAccent,
     scaffoldBackgroundColor: lightBG,
+    // ignore: deprecated_member_use
+    buttonColor : buttonPrimary ,
     appBarTheme: AppBarTheme(
       elevation: 0,
       // ignore: deprecated_member_use
