@@ -1,11 +1,14 @@
 import 'package:eventy_app/controllers/signin/signin_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class SignIn extends StatelessWidget {
  
-  final bool passwordVisible = true;
-  final bool passwordVisible2 = true;
-  final _controller = SignInController();
+  
+  final _controller = Get.put(SignInController());
   
   @override
   Widget build(BuildContext context) {
@@ -32,14 +35,19 @@ class SignIn extends StatelessWidget {
             ),
             
             SingleChildScrollView(
-              child: Column(
+              child:  GetBuilder<SignInController>(
+    init: SignInController(),
+    builder: (controller) => 
+ Column(
                 children:[
+                  
                   Container(
                   constraints: BoxConstraints.tightFor(width: 350),
                   //width text field
                   margin: EdgeInsets.all(10),
                   child: Material(
                     // shadow
+                    
                     elevation: 5, //shadow
                     shadowColor: Colors.black, //color shadow
                     borderRadius: BorderRadius.circular(32.0),
@@ -54,7 +62,8 @@ class SignIn extends StatelessWidget {
                         hintText: "ahmed220",
                         //for example name
                         hintStyle: TextStyle(fontSize: 15),
-                        suffixIcon: Icon(Icons.person_outline),
+                        // suffixIcon: Icon(Icons.person_outline),
+                        
                       ),
                       keyboardType: TextInputType.text,
                     ),
@@ -74,34 +83,28 @@ class SignIn extends StatelessWidget {
                 elevation: 5, //shadow
                 shadowColor: Colors.black, //color shadow
                 borderRadius: BorderRadius.circular(32.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(8),
-                    //size Text field
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                    labelText: "PASSWORD",
-                    labelStyle: TextStyle(fontSize: 15),
-                    hintText: "ENTER YOUR PASSWORD",
-                    //for example name
-                    hintStyle: TextStyle(fontSize: 15),
-
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        passwordVisible
-                            ? Icons.visibility_off
-                            : Icons.visibility ,
-                      ),
-                      onPressed: () {
-                        // setState(() {
-                        //   passwordVisible = !passwordVisible;
-                        // });
-                      },
+                child:  TextField(
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(8),
+                      //size Text field
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(32.0)),
+                      labelText: "PASSWORD",
+                      labelStyle: TextStyle(fontSize: 15),
+                      hintText: "ENTER YOUR PASSWORD",
+                      //for example name
+                      hintStyle: TextStyle(fontSize: 15),
+                      suffixIcon: IconButton(
+                         onPressed:  _controller.toggleHiddenStatus,
+                            icon: Icon(
+                               _controller.isHidden? Icons.visibility_off : Icons.visibility
+                            ),
+                      )
                     ),
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: _controller.isHidden,
                   ),
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: passwordVisible,
-                ),
+                
               ),
             ),
             SizedBox(
@@ -178,7 +181,7 @@ class SignIn extends StatelessWidget {
               
               ],
                 ),
-                ),
+                ),),
           ],
         ),
       ),

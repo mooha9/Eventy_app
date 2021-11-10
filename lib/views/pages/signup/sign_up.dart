@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 
 class SignUp extends StatelessWidget {
-
+  final bool passwordVisible = true;
+  final bool passwordVisible2 = true;
   final _controller = SignUpController();
   
   @override
@@ -205,13 +206,13 @@ class SignUp extends StatelessWidget {
                         //for example name
                         hintStyle: TextStyle(fontSize: 15),
                         
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                             _controller.isHidden
-                                 ? Icons.visibility_off
-                                 : Icons.visibility
-                          ),
-                          onPressed:  _controller.passwordVisible
+                        // suffixIcon: IconButton(
+                        //   icon: Icon(
+                        //      _controller.isHidden
+                        //          ? Icons.visibility_off
+                        //          : Icons.visibility
+                        //   ),
+                        //   onPressed:  _controller.passwordVisible
 
                       //       setState(() {
                       //         passwordVisible = !passwordVisible;
@@ -220,9 +221,10 @@ class SignUp extends StatelessWidget {
                       //   ),
                       // ),
                      
-                    ),),
+                    // ),
+                    ),
                      keyboardType: TextInputType.visiblePassword,
-                      // obscureText: passwordVisible,
+                       obscureText: passwordVisible,
                   ),
                 ),
                 ),
@@ -258,12 +260,11 @@ class SignUp extends StatelessWidget {
                       //       });
                       //     },
                       //   ),
-                      // ),
+                      ),
                       // keyboardType: TextInputType.visiblePassword,
-                      // obscureText: passwordVisible2,
+                      obscureText: passwordVisible2,
                     ),
                   ),
-                ),
                 ),
 
                 SizedBox(
