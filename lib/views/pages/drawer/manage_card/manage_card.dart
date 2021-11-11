@@ -17,11 +17,13 @@ class _ManageCardState extends State<ManageCard> {
   _ManageCardState(this.id);
   List<DBCard> cards = [];
   Future getAll() async{
-    var data = await http.get(Uri.parse("http://localhost:1337/cards"));
+    var data = await http.get(Uri.parse("https://eventy1.herokuapp.com/cards"));
     var jsonData = json.decode(data.body);
     for (var c in jsonData)
     { 
-      cards.add(DBCard(c['id'],
+      cards.add(DBCard(
+      // c['userName'],
+      c['id'],
       c['name'],
       c['category'],
       c['workType'],
@@ -37,7 +39,7 @@ class _ManageCardState extends State<ManageCard> {
     Navigator.push(context, new MaterialPageRoute(builder: (context)=> CreateCard(this.id)));
   }
   void delete() async{
-    await http.delete(Uri.parse("http://localhost:1337/cards/${this.id}"));
+    await http.delete(Uri.parse("https://eventy1.herokuapp.com/cards/${this.id}"));
   }
 
 

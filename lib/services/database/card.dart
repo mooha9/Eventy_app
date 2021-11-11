@@ -1,6 +1,7 @@
 
 class DBCard {
   String id ;
+  // String userName;
   String category;
   String name;
   String workType;
@@ -11,6 +12,8 @@ class DBCard {
   String email;
   String phoneNumber;
 
-  DBCard(this.id,this.category,this.name,this.workType,this.city,this.url_work,this.tagLine,this.email,this.phoneNumber);
+  DBCard(
+    // this.userName,
+    this.id,this.category,this.name,this.workType,this.city,this.url_work,this.tagLine,this.email,this.phoneNumber);
 }
 

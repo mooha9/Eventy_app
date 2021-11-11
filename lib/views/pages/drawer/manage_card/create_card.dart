@@ -19,18 +19,22 @@ class CreateCard extends StatefulWidget {
 class _CreateCardState extends State<CreateCard> {
   String id ;
   _CreateCardState(this.id);
-  DBCard card = DBCard('','','','','','','','','');
+  DBCard card = DBCard(/*'',*/'','','','','','','','','');
   
   Future save() async{
     if (card.id == ' '){
-       await http.post(Uri.parse("http://localhost:1337/card/"),
+       await http.post(Uri.parse("https://eventy1.herokuapp.com/cards/"),
        headers:<String,String>{'Context-Type':'application/json;charset=UTF-8'},
-       body:<String,String>{'category':card.category,'name':card.name,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,});
+       body:<String,String>{
+        //  'userName':card.userName,
+         'category':card.category,'name':card.name,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,});
     }
     else{
-       await http.put(Uri.parse("http://localhost:1337/card/${card.id}"), 
+       await http.put(Uri.parse("https://eventy1.herokuapp.com/cards/${card.id}"), 
        headers:{'Context-Type':'application/json;charset=UTF-8'},
-        body:{'category':card.category,'name':card.name,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,}); 
+        body:{
+          // 'userName':card.userName,
+        'category':card.category,'name':card.name,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,}); 
     }
    Navigator.push(context, new MaterialPageRoute(builder: (context)=>ManageCard(this.id)));
   }
@@ -43,10 +47,12 @@ class _CreateCardState extends State<CreateCard> {
     
   }
   void getOne() async{
-   var data = await http.get(Uri.parse("http://localhost:1337/card/${this.id}"));
+   var data = await http.get(Uri.parse("https://eventy1.herokuapp.com/cards/${this.id}"));
    var c = json.decode(data.body);
    setState(() {
-        card = DBCard (c['id'],c['category'],c['name'],c['workType'],c['city'],c['url_work'],c['tagLine'],c['email'],c['phoneNumber'],);
+        card = DBCard (
+          // c['userName'],
+        c['id'],c['category'],c['name'],c['workType'],c['city'],c['url_work'],c['tagLine'],c['email'], c['phoneNumber'],);
    });
   }
   @override
