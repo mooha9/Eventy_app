@@ -1,5 +1,5 @@
 import 'package:eventy_app/util/over_viewdata_card.dart';
-import 'package:eventy_app/views/widgets/card_item.dart';
+import 'package:eventy_app/views/pages/home/card_item.dart';
 import 'package:flutter/material.dart';
 
 

@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http ;
 import 'dart:async';
 import 'dart:convert';
-import 'package:eventy_app/services/database/card.dart';
+import 'package:eventy_app/models/create_card/card.dart';
 
 // ignore: must_be_immutable
 class CreateCard extends StatefulWidget {

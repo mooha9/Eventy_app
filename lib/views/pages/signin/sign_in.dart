@@ -1,4 +1,5 @@
-import 'package:eventy_app/controllers/signin/signin_controller.dart';
+import 'package:eventy_app/controllers/auth/signin/signin_controller.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
@@ -7,7 +8,9 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class SignIn extends StatelessWidget {
  
-  
+  SignIn ({Key? key}) : super(key: key);
+  final loginFormKey = GlobalKey<FormState>();
+
   final _controller = Get.put(SignInController());
   
   @override
@@ -39,6 +42,7 @@ class SignIn extends StatelessWidget {
     init: SignInController(),
     builder: (controller) => 
  Column(
+   key: loginFormKey,
                 children:[
                   
                   Container(
@@ -51,7 +55,10 @@ class SignIn extends StatelessWidget {
                     elevation: 5, //shadow
                     shadowColor: Colors.black, //color shadow
                     borderRadius: BorderRadius.circular(32.0),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: null,
+                      validator: (v) {},
+                      onSaved: (v) {},
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(8),
                         //size Text field
@@ -83,7 +90,11 @@ class SignIn extends StatelessWidget {
                 elevation: 5, //shadow
                 shadowColor: Colors.black, //color shadow
                 borderRadius: BorderRadius.circular(32.0),
-                child:  TextField(
+                child:  TextFormField(
+                  
+                  controller: null,
+                      validator: (v) {},
+                      onSaved: (v) {},
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(8),
                       //size Text field

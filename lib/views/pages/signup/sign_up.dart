@@ -1,5 +1,6 @@
 
-import 'package:eventy_app/controllers/signup/signup_controller.dart';
+import 'package:eventy_app/controllers/auth/signup/signup_controller.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';

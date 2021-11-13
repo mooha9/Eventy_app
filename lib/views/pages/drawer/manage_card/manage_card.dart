@@ -2,7 +2,7 @@ import 'package:eventy_app/views/pages/drawer/manage_card/create_card.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:eventy_app/services/database/card.dart';
+import 'package:eventy_app/models/create_card/card.dart';
 import 'package:http/http.dart' as http;
 // ignore: must_be_immutable
 class ManageCard extends StatefulWidget {

@@ -1,8 +1,8 @@
-import 'package:eventy_app/views/widgets/slider_category.dart';
-import 'package:eventy_app/views/widgets/top_event.dart';
+import 'package:eventy_app/views/pages/home/slider_category.dart';
+import 'package:eventy_app/views/pages/home/top_event.dart';
 import 'package:eventy_app/util/over_viewdata_event.dart';
 import 'package:flutter/material.dart';
-import '../../widgets/event_item.dart';
+import 'event_item.dart';
 import 'notifications.dart';
 
 class HomePage extends StatefulWidget {

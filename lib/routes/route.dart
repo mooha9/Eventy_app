@@ -21,7 +21,7 @@ import 'package:eventy_app/views/pages/signin/sign_in.dart';
 import 'package:eventy_app/views/pages/signup/sign_up.dart';
 import 'package:eventy_app/views/pages/signup/sign_up2.dart';
 import 'package:eventy_app/views/pages/onboarding/onboarding.dart';
-import 'package:eventy_app/views/widgets/buttom_navbar.dart';
+import 'package:eventy_app/views/pages/home/buttom_navbar.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 

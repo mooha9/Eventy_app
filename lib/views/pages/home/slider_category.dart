@@ -1,6 +1,6 @@
 import 'package:eventy_app/util/category.dart';
 import 'package:flutter/material.dart';
-import '../widgets/category_item.dart';
+import 'category_item.dart';
 
 class Categories extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:eventy_app/util/over_viewdata_event.dart';
-import 'package:eventy_app/views/widgets/app_drawer.dart';
-import 'package:eventy_app/views/widgets/event_item.dart';
+import 'package:eventy_app/views/pages/drawer/app_drawer.dart';
+import 'package:eventy_app/views/pages/home/event_item.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {

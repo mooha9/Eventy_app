@@ -1,14 +1,15 @@
 import 'package:eventy_app/views/pages/home/event_details.dart';
 import 'package:flutter/material.dart';
-import '../pages/home/event_details.dart';
+import 'event_details.dart';
 
-class TopEvent extends StatelessWidget {
+class EventItem extends StatelessWidget {
   final Map event;
-  TopEvent({required this.event});
+  EventItem({required this.event});
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 10),
+      padding: EdgeInsets.only(right: 20, bottom: 10),
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).push(
@@ -19,19 +20,19 @@ class TopEvent extends StatelessWidget {
             ),
           );
         },
-  child:Stack(
+        child:Stack(
   children: [
       ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Image.network(
                 "${event["img"]}",
-                height: 260,
-                width: 280,
+                height: 150,
+                width: 400,
                 fit: BoxFit.cover,            
               ),
             ),
             Container(
-            height: 350,
+            height: 150,
             alignment: Alignment.bottomCenter,
             padding: EdgeInsets.symmetric(
               vertical: 30,
@@ -40,13 +41,13 @@ class TopEvent extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+                begin: Alignment.centerRight,
+                end: Alignment.centerLeft,
                 colors: [
                   Colors.black.withOpacity(0),
                   Colors.black.withOpacity(0.9),
                 ],
-                stops: [0.1, 1],
+                stops: [0.2, 1],
               ),),
               
               ),
@@ -74,11 +75,11 @@ class TopEvent extends StatelessWidget {
           height:10,
         ),
 Container(
-          height: 100.0,
-          width: 280.0,
+          height: 110.0,
+          width: 270.0,
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
-                topRight: Radius.circular(15.0),
+                topRight: Radius.circular(50.0),
                 bottomRight: Radius.circular(15.0),
                 topLeft: Radius.circular(15.0),
                 bottomLeft: Radius.circular(15.0)),
@@ -95,11 +96,11 @@ Container(
           child: Row(
             children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top:15 ,left: 5, right: 5),
                   child: Column(
                     children: [
                       Container(
-                        height: 80,
+                        height: 60,
                         width: 140,
                         decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
@@ -119,8 +120,8 @@ Container(
     ),
     child: Center(
       child: Row(children: [
-         SizedBox(width: 4,),
-        Icon(
+        SizedBox(width: 4,),
+        Icon(     
                   Icons.location_pin,
                   color: Colors.grey[700],
                   size: 20.0,
@@ -131,6 +132,7 @@ Container(
               crossAxisAlignment: CrossAxisAlignment.center,
               
             children: [
+                
                 Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: Container(
@@ -173,7 +175,7 @@ Container(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Divider(
-                      height:8,
+                      height:20,
                       color: Colors.amber,
                       thickness: 20,
                     ),
@@ -193,14 +195,14 @@ Container(
                   
                   ),
                     Divider(
-                      height:14,
+                      height:12,
                     ),
-                      Icon(
+                    Icon(
                   Icons.date_range,
                   color: Colors.grey[800],
                   size: 15.0,
                   
-                  ),
+                  ), 
                     Divider(
                       height:10,
                     ),
@@ -214,7 +216,7 @@ Container(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Divider(
-                      height:8,
+                      height:22,
                       color: Colors.amber,
                       thickness: 20,
                     ),
@@ -260,7 +262,7 @@ Container(
                     ),
                     ),
                     Divider(
-                      height:13,
+                      height:10,
                     ),
                     Text(
                   event['date'],
@@ -288,10 +290,10 @@ Container(
                 ),
           ],
         ),
-      ),
+      ), 
       Positioned(
-        right: -20,
-        bottom: 80,
+        right: 0,
+        bottom: 0,
         child:RawMaterialButton(
                  
                 onPressed: () {},
@@ -303,10 +305,10 @@ Container(
                    size: 25.0,
                   color: Colors.teal,
                     ),
-              ),), 
+              ),),
   ],
 ),             
-)   
-);
-}
+      ),
+      );
+  }
 }

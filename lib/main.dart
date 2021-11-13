@@ -1,7 +1,7 @@
-import 'package:eventy_app/consts/app_colors.dart';
 import 'package:eventy_app/routes/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'helpers/consts/app_colors.dart';
 
 
 void main() => runApp(MyApp());
