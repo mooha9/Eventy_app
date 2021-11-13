@@ -56,7 +56,6 @@ class HomeViewController extends GetxController {
     try {
       await homeService.getEventsWithFilter(catId).then((value) {
         _eventsListFilter.clear();
-
         _eventsListFilter = value!.map((element) => Event.fromJson(element)).toList();
         _eventsListFilter.forEach((Event element) {
           // Logger().d("${element.eventImages!.length}");

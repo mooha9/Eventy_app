@@ -1,26 +1,27 @@
 import 'dart:io';
 
+import 'package:eventy_app/controllers/auth/signin_controller.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
-import 'package:mazad_app/Bindings/Routers.dart';
-import 'package:mazad_app/controllers/AuthController/LoginController.dart';
-import 'package:mazad_app/controllers/HomeController/HomeController.dart';
-import 'package:mazad_app/models/Ad.dart';
-import 'package:mazad_app/models/NewAd.dart';
-import 'package:mazad_app/models/UploadModel.dart';
-import 'package:mazad_app/services/NewAddService.dart';
-import 'package:mazad_app/utils/alerts.dart';
-import 'package:mazad_app/utils/app_state.dart';
+import 'package:eventy_app/routes/route.dart';
+import 'package:eventy_app/controllers/auth/signin/signin_controller.dart';
+import 'package:eventy_app/controllers/home/home_controller.dart';
+import 'package:eventy_app/models/event.dart';
+import 'package:eventy_app/models/new_event.dart';
+import 'package:eventy_app/models/UploadModel.dart';
+import 'package:eventy_app/services/new_event.dart';
+import 'package:eventy_app/util/alerts.dart';
+import 'package:eventy_app/util/app_state.dart';
 
 class NewAdController extends GetxController {
 
   static NewAdController to = Get.find();
   var logger = Logger();
 
-  NewAdService newAddService = NewAdService();
+  NewEventService newAddService = NewEventService();
 
   final HomeViewController homeViewController =
       Get.put<HomeViewController>(HomeViewController());
@@ -167,15 +168,15 @@ class NewAdController extends GetxController {
       try {
         appState.value = AppState.LOADING;
 
-        var newAd = await adFromInput();
-        var mapFromObject = newAd.toJson(); //todo uncommit
+        var newEvent = await eventFromInput();
+        var mapFromObject = newEvent.toJson(); //todo uncommit
         // logger.d(mapFromObject.length);
-        await newAddService.createNewAd(mapFromObject);
+        await newAddService.createNewEvent(mapFromObject);
         appState.value = AppState.DONE;
 
         // await showOkMessage();
         // Get.back();
-        await Get.offAndToNamed(Routers.initialRoute);
+        await Get.offAndToNamed('');
       } on Exception catch (_) {
         await Alerts.showNotOkMessage();
 
@@ -188,8 +189,8 @@ class NewAdController extends GetxController {
 
   // UI ===============================================================
 
-  Future<NewAd> adFromInput() async {
-    NewAd ad;
+  Future<NewEvent> eventFromInput() async {
+    NewEvent event;
     // var image;
 
     // /// trying single image
@@ -213,11 +214,11 @@ class NewAdController extends GetxController {
 
     List images = await newAddService.uploadImages(files2);
 
-    List<AdImage> uploadedImages = [];
+    List<EventImage> uploadedImages = [];
 
     for (Upload a in images) {
       var mapFromObject = a.toJson();
-      AdImage imageFromUploadMoedl = AdImage.fromJson(mapFromObject);
+      EventImage imageFromUploadMoedl = EventImage.fromJson(mapFromObject);
       // logger.d(imageFromUploadMoedl.id);
       uploadedImages.add(imageFromUploadMoedl);
     }
@@ -250,7 +251,7 @@ class NewAdController extends GetxController {
     // var ImageId = image.id;
     // var ImageUrl = image.url;
 
-    ad = NewAd(
+    event = NewEvent(
       title: title,
       content: content,
       user: User(id: userId, username: username),
@@ -266,7 +267,7 @@ class NewAdController extends GetxController {
     );
 
     // logger.d(ad.images);
-    return ad;
+    return event;
   }
 
   List<DropdownMenuItem<Category>> MenuItemsList() {

@@ -4,7 +4,7 @@ import 'package:eventy_app/models/event.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-import 'package:eventy_app/controllers/Bindings/Routers.dart';
+// import 'package:eventy_app/routes/route.dart';
 import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
 
@@ -72,7 +72,7 @@ class AuthService {
     token = null;
     // Get.back();
     if (user == null && token == null){
-      Get.offAllNamed(Routers.initialRoute);
+      Get.offAllNamed("/BottomNav");
     }
 
   }
