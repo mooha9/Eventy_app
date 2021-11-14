@@ -12,6 +12,7 @@ import 'package:eventy_app/controllers/auth/signUp_controller.dart';
 class InitialBinding extends Bindings {
   @override
   void dependencies() {
+    // ignore: todo
     // TODO: implement dependencies
     Get.lazyPut<LocalStorage>(() => LocalStorage());
     Get.lazyPut<NewAdController>(() => NewAdController());

@@ -1,20 +1,23 @@
 import 'package:eventy_app/controllers/auth/signin/signin_controller.dart';
+import 'package:eventy_app/util/app_state.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:logger/logger.dart';
 
 class SignIn extends StatelessWidget {
  
-  SignIn ({Key? key}) : super(key: key);
-  final loginFormKey = GlobalKey<FormState>();
 
+  final loginFormKey = GlobalKey<FormState>();
   final _controller = Get.put(SignInController());
+  
   
   @override
   Widget build(BuildContext context) {
+    var _formKey = _controller.formKey ;
     return Scaffold(
       body: Container(
             decoration: BoxDecoration(
@@ -39,10 +42,10 @@ class SignIn extends StatelessWidget {
             
             SingleChildScrollView(
               child:  GetBuilder<SignInController>(
-    init: SignInController(),
-    builder: (controller) => 
- Column(
-   key: loginFormKey,
+          init: SignInController(),
+          builder: (controller) => 
+               Column(
+   
                 children:[
                   
                   Container(
@@ -51,28 +54,42 @@ class SignIn extends StatelessWidget {
                   margin: EdgeInsets.all(10),
                   child: Material(
                     // shadow
-                    
                     elevation: 5, //shadow
                     shadowColor: Colors.black, //color shadow
                     borderRadius: BorderRadius.circular(32.0),
                     child: TextFormField(
-                      controller: null,
-                      validator: (v) {},
-                      onSaved: (v) {},
+                      onSaved: (value) async {
+                      _controller.identifier = value!.trim();
+                    },
+                          onChanged: (value) {
+                            _controller.identifier = value.trim();
+                            Logger().d("${_controller.identifier}");
+                          },
+                          onTap: () {
+                            Logger().d("${_controller.identifier}");
+
+                            // printInfo(info: "${_controller.identifier}");
+                          },
+                          validator: (value) {
+                            if (value == null) {
+                              Logger().d("ERROR");
+                            }
+                          },
+                          
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(8),
                         //size Text field
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32.0)),
-                        labelText: "USERNAME",
+                        labelText: "EMAIL",
                         labelStyle: TextStyle(fontSize: 15),
-                        hintText: "ahmed220",
+                        hintText: "Email@gmail.com",
                         //for example name
                         hintStyle: TextStyle(fontSize: 15),
-                        // suffixIcon: Icon(Icons.person_outline),
+                        suffixIcon: Icon(Icons.alternate_email_outlined),
                         
                       ),
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.emailAddress,
                     ),
                   ),
                 ),
@@ -91,10 +108,24 @@ class SignIn extends StatelessWidget {
                 shadowColor: Colors.black, //color shadow
                 borderRadius: BorderRadius.circular(32.0),
                 child:  TextFormField(
-                  
-                  controller: null,
-                      validator: (v) {},
-                      onSaved: (v) {},
+                  onSaved: (value) {
+                  _controller.password = value!.trim();
+                        Logger().d("${_controller.password}");
+                      },
+                      onChanged: (value) {
+                        _controller.password = value.trim();
+                        Logger().d("${_controller.password}");
+                      },
+                      onTap: () {
+                        Logger().d("${_controller.password}");
+
+                        // printInfo(info: "${_controller.identifier}");
+                      },
+                    validator: (value) {
+                      if (value == null) {
+                        Logger().d("ERROR");
+                      }
+                    },
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(8),
                       //size Text field
@@ -144,22 +175,34 @@ class SignIn extends StatelessWidget {
              
             Container(
               // ignore: deprecated_member_use
-              child: RaisedButton(
+              child: MaterialButton(
                 elevation: 20,
-                  onPressed: _controller.nextAction,
                   color: Color(0xff2f9d80),
                   padding: EdgeInsets.fromLTRB(50, 15, 50, 15),
                   splashColor: Color(0xff4ABD9F),
-                  child: Text(
-                    "SIGN IN",
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
+                  child:Obx(
+                    () { 
+                      if (controller.appState() == AppState.LOADING) {
+                        return Center(
+                            child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ));
+                      } else {
+                        // Logger().d(
+                        //     "// controller.appState.value = AppState.LOADING; LIST ${controller.appState.value}");
+                        // Logger().d(" ${controller.isPreesed.value.toString()}");
+
+                        return Text(
+                            "SIGN IN",
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          );
+                  }
+                  }
+            ),
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(50.0),
-                    side: BorderSide(color: Color(0xff4ABD9F)),
-                  )),
-            ),
-                
+                    side: BorderSide(color: Color(0xff4ABD9F)),),
+                onPressed: () async => loginUser(_formKey))),
 
              SizedBox(
               height: 100,
@@ -197,5 +240,17 @@ class SignIn extends StatelessWidget {
         ),
       ),
     );
+  }
+  loginUser(_formKey) async {
+    Get.put<SignInController>(SignInController());
+
+    if (_formKey.currentState?.validate()) {
+      _formKey.currentState?.save();
+
+      await _controller.signInUser();
+      // await controller.loginUser2();
+      // Logger().d(" loginUser Pressed login value is  : $a");
+
+    }
   }
 }

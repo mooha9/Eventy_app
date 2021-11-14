@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // const BaseUrl = "http://192.168.8.100:1111";
-const BaseUrl = "http://192.168.8.100:1111";
+const BaseUrl = "https://eventy1.herokuapp.com";
 
 // const BaseUrl = "http://localhost:1111";
 const AuthUrlRegister = "/auth/local/register";

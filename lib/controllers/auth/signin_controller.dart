@@ -2,6 +2,7 @@ import 'package:eventy_app/models/event.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+// ignore: unused_import
 import 'package:eventy_app/routes/route.dart';
 import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/services/auth.dart';
@@ -83,6 +84,7 @@ class LoginController extends GetxController {
 
   @override
   void onInit() async {
+    // ignore: todo
     // TODO: implement onInit
     super.onInit();
     Logger().d("onInit Login Controlelr called : ");
@@ -95,11 +97,13 @@ class LoginController extends GetxController {
 
   @override
   void onReady() {
+    // ignore: todo
     // TODO: implement onReady
     super.onReady();
   }
 
   @override
+  // ignore: todo
   // TODO: implement onDelete
   get onDelete => super.onDelete;
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, deprecated_member_use
+
 import 'dart:io';
 
 import 'package:eventy_app/controllers/auth/signin_controller.dart';
@@ -288,6 +290,7 @@ class NewAdController extends GetxController {
 
   @override
   void onClose() {
+    // ignore: todo
     // TODO: implement onClose
     super.onClose();
     cleanControllers();
@@ -295,6 +298,7 @@ class NewAdController extends GetxController {
 
   @override
   void onInit() async {
+    // ignore: todo
     // TODO: implement onInit
     super.onInit();
 

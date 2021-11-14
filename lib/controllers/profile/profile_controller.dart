@@ -83,6 +83,7 @@ class ProfileController extends GetxController {
 
   @override
   void onInit() async {
+    // ignore: todo
     // TODO: implement onInit
     super.onInit();
     await getEventsListForUser();

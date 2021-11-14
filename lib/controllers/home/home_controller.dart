@@ -2,6 +2,7 @@ import 'package:eventy_app/services/home.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:eventy_app/controllers/profile/Profile_controller.dart';
+// ignore: unused_shown_name
 import 'package:eventy_app/models/event.dart' show Event, Category, User;
 
 // import 'package:eventy_app/models/Category.dart';
@@ -106,6 +107,7 @@ class HomeViewController extends GetxController {
 
   @override
   void onInit() async {
+    // ignore: todo
     // TODO: implement onInit
     super.onInit();
 
