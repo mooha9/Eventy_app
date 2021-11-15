@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
 import 'package:eventy_app/routes/route.dart';
-import 'package:eventy_app/controllers/auth/signin/signin_controller.dart';
 import 'package:eventy_app/controllers/home/home_controller.dart';
 import 'package:eventy_app/models/event.dart';
 import 'package:eventy_app/models/new_event.dart';
@@ -41,7 +40,7 @@ class NewAdController extends GetxController {
   DateTime publishedAt = DateTime.now();
   String createdBy = "";
   String updatedBy = "";
-  int? userId;
+  String? userId;
   String? username;
   var contactNumber;
 

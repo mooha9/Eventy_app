@@ -1,6 +1,5 @@
-import 'package:eventy_app/controllers/auth/signin/signin_controller.dart';
+import 'package:eventy_app/controllers/auth/signin_controller.dart';
 import 'package:eventy_app/util/app_state.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
@@ -10,10 +9,7 @@ import 'package:logger/logger.dart';
 
 class SignIn extends StatelessWidget {
  
-
-  final loginFormKey = GlobalKey<FormState>();
-  final _controller = Get.put(SignInController());
-  
+  final _controller = Get.put(LoginController());
   
   @override
   Widget build(BuildContext context) {
@@ -41,8 +37,8 @@ class SignIn extends StatelessWidget {
             ),
             
             SingleChildScrollView(
-              child:  GetBuilder<SignInController>(
-          init: SignInController(),
+              child:  GetBuilder<LoginController>(
+          init: LoginController(),
           builder: (controller) => 
                Column(
    
@@ -57,39 +53,42 @@ class SignIn extends StatelessWidget {
                     elevation: 5, //shadow
                     shadowColor: Colors.black, //color shadow
                     borderRadius: BorderRadius.circular(32.0),
-                    child: TextFormField(
-                      onSaved: (value) async {
-                      _controller.identifier = value!.trim();
-                    },
-                          onChanged: (value) {
-                            _controller.identifier = value.trim();
-                            Logger().d("${_controller.identifier}");
-                          },
-                          onTap: () {
-                            Logger().d("${_controller.identifier}");
-
-                            // printInfo(info: "${_controller.identifier}");
-                          },
-                          validator: (value) {
-                            if (value == null) {
-                              Logger().d("ERROR");
-                            }
-                          },
+                    child: Form(
+                      key: _formKey,
+                      child: TextFormField(
+                        onSaved: (value) async {
+                        _controller.identifier = value!.trim();
+                      },
+                            onChanged: (value) {
+                              _controller.identifier = value.trim();
+                              Logger().d("${_controller.identifier}");
+                            },
+                            onTap: () {
+                              Logger().d("${_controller.identifier}");
+                    
+                              // printInfo(info: "${_controller.identifier}");
+                            },
+                            validator: (value) {
+                              if (value == null) {
+                                Logger().d("ERROR");
+                              }
+                            },
+                            
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(8),
+                          //size Text field
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32.0)),
+                          labelText: "EMAIL",
+                          labelStyle: TextStyle(fontSize: 15),
+                          hintText: "Email@gmail.com",
+                          //for example name
+                          hintStyle: TextStyle(fontSize: 15),
+                          suffixIcon: Icon(Icons.alternate_email_outlined),
                           
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(8),
-                        //size Text field
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32.0)),
-                        labelText: "EMAIL",
-                        labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Email@gmail.com",
-                        //for example name
-                        hintStyle: TextStyle(fontSize: 15),
-                        suffixIcon: Icon(Icons.alternate_email_outlined),
-                        
+                        ),
+                        keyboardType: TextInputType.emailAddress,
                       ),
-                      keyboardType: TextInputType.emailAddress,
                     ),
                   ),
                 ),
@@ -107,45 +106,48 @@ class SignIn extends StatelessWidget {
                 elevation: 5, //shadow
                 shadowColor: Colors.black, //color shadow
                 borderRadius: BorderRadius.circular(32.0),
-                child:  TextFormField(
-                  onSaved: (value) {
-                  _controller.password = value!.trim();
-                        Logger().d("${_controller.password}");
+                child:  Form( 
+                  
+                  child: TextFormField(
+                    onSaved: (value) {
+                    _controller.password = value!.trim();
+                          Logger().d("${_controller.password}");
+                        },
+                        onChanged: (value) {
+                          _controller.password = value.trim();
+                          Logger().d("${_controller.password}");
+                        },
+                        onTap: () {
+                          Logger().d("${_controller.password}");
+                
+                          // printInfo(info: "${_controller.identifier}");
+                        },
+                      validator: (value) {
+                        if (value == null) {
+                          Logger().d("ERROR");
+                        }
                       },
-                      onChanged: (value) {
-                        _controller.password = value.trim();
-                        Logger().d("${_controller.password}");
-                      },
-                      onTap: () {
-                        Logger().d("${_controller.password}");
-
-                        // printInfo(info: "${_controller.identifier}");
-                      },
-                    validator: (value) {
-                      if (value == null) {
-                        Logger().d("ERROR");
-                      }
-                    },
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(8),
-                      //size Text field
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(32.0)),
-                      labelText: "PASSWORD",
-                      labelStyle: TextStyle(fontSize: 15),
-                      hintText: "ENTER YOUR PASSWORD",
-                      //for example name
-                      hintStyle: TextStyle(fontSize: 15),
-                      suffixIcon: IconButton(
-                         onPressed:  _controller.toggleHiddenStatus,
-                            icon: Icon(
-                               _controller.isHidden? Icons.visibility_off : Icons.visibility
-                            ),
-                      )
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(8),
+                        //size Text field
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(32.0)),
+                        labelText: "PASSWORD",
+                        labelStyle: TextStyle(fontSize: 15),
+                        hintText: "ENTER YOUR PASSWORD",
+                        //for example name
+                        hintStyle: TextStyle(fontSize: 15),
+                        suffixIcon: IconButton(
+                           onPressed:  _controller.toggleHiddenStatus,
+                              icon: Icon(
+                                 _controller.isHidden? Icons.visibility_off : Icons.visibility
+                              ),
+                        )
+                      ),
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: _controller.isHidden,
                     ),
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: _controller.isHidden,
-                  ),
+                ),
                 
               ),
             ),
@@ -182,10 +184,13 @@ class SignIn extends StatelessWidget {
                   splashColor: Color(0xff4ABD9F),
                   child:Obx(
                     () { 
-                      if (controller.appState() == AppState.LOADING) {
+                      if (_controller.appState() == AppState.LOADING) {
                         return Center(
+                          widthFactor: 0.3,
+                          heightFactor: 0.5,
                             child: CircularProgressIndicator(
-                          color: Colors.white,
+                              
+                              color: Colors.white,
                         ));
                       } else {
                         // Logger().d(
@@ -242,10 +247,10 @@ class SignIn extends StatelessWidget {
     );
   }
   loginUser(_formKey) async {
-    Get.put<SignInController>(SignInController());
+    Get.put<LoginController>(LoginController());
 
-    if (_formKey.currentState?.validate()) {
-      _formKey.currentState?.save();
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
 
       await _controller.signInUser();
       // await controller.loginUser2();

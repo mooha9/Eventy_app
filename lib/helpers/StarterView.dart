@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:eventy_app/views/pages/home/buttom_navbar.dart';
 // ignore: unused_import
-import 'package:eventy_app/controllers/auth/signin/signin_controller.dart';
 // import 'package:eventy_app/models/Ad.dart';
 
 class StarterView extends StatefulWidget {

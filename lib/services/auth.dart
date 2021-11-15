@@ -7,8 +7,6 @@ import 'package:logger/logger.dart';
 // import 'package:eventy_app/routes/route.dart';
 import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
-
-
 import '../helpers/Constants.dart';
 
 class AuthService {
@@ -46,12 +44,17 @@ class AuthService {
     return null;
   }
 
-  Future<bool> userSignUp({identifier, password, email}) async {
+  Future<bool> userSignUp({identifier, password, email,firstname,lastname,phonenumber,confirmpassword}) async {
     var headers = {'Content-Type': 'application/json'};
     var body = jsonEncode({
-      "username": "$identifier",
+      
+        "firstname": "$firstname",
+      "lastname": "$lastname",
       "email": "$email",
+      "username": "$identifier",
+      "phonenumber": "$phonenumber",
       "password": "$password",
+      "confirmpassword": "$confirmpassword",
     });
     var response = await http.post(Uri.parse('$BaseUrl$AuthUrlRegister'),
         headers: headers, body: body);

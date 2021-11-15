@@ -16,6 +16,7 @@ class LoginController extends GetxController {
    GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   GlobalKey<FormState> get formKey => _formKey;
+   var isHidden = true ;
 
   var isPreesed = false.obs;
   final appState = Rx<AppState>(AppState.IDLE);
@@ -33,7 +34,7 @@ class LoginController extends GetxController {
     _user = await authService.userLogin(identifier, password);
     await Future.delayed(Duration(seconds: 3));
     if (_user != null) {
-      Get.offAndToNamed("/BottomNav");
+      Get.offAllNamed("/BottomNav");
     } else {
       Get.snackbar(
         'Somthing Wrong',
@@ -80,6 +81,22 @@ class LoginController extends GetxController {
     // }
     // // update();
     return _user;
+  }
+  signUp(){
+    Get.toNamed('/SignUp');
+  }
+  
+  void toggleHiddenStatus() {
+    isHidden = !isHidden;
+      if(isHidden){
+      isHidden = true ;
+    }
+    else {
+      isHidden = false ; //or pressedBool.toggle();
+    }
+   
+   
+    update();
   }
 
   @override

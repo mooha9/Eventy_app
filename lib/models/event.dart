@@ -356,7 +356,7 @@ class User {
     this.comments,
   });
 
-  int? id;
+  String? id;
   String? username;
   String? email;
   String? provider;

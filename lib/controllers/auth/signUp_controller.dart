@@ -10,10 +10,11 @@ import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
 import 'package:eventy_app/services/auth.dart';
 
-class SignUpContoller extends GetxController {
-  static SignUpContoller get to => Get.find();
-
-  String email = "", password = "", name = "";
+class SignUpController extends GetxController {
+  static SignUpController get to => Get.find();
+  var isHidden1 = true ;
+  var isHidden2 = true ;
+  String firstname = "", lastname = "", email = "",username = "",phonenumber= "", password = "", confirmpassword = "" ;
   RxBool userLogged = false.obs;
   LocalStorage storage = LocalStorage();
   final AuthService authService = AuthService();
@@ -21,9 +22,13 @@ class SignUpContoller extends GetxController {
   createNewUser() async {
     var url = "$BaseUrl/auth/local/register";
     var body = jsonEncode({
-      "username": "$name",
+      "firstname": "$firstname",
+      "lastname": "$lastname",
       "email": "$email",
+      "username": "$username",
+      "phonenumber": "$phonenumber",
       "password": "$password",
+      "confirmpassword": "$confirmpassword",
     });
     var headers = {'Content-Type': 'application/json'};
 
@@ -43,7 +48,7 @@ class SignUpContoller extends GetxController {
   createNewUser2() async {
 
     var ok = await authService.userSignUp(
-        identifier: name, email: email, password: password);
+        firstname: firstname, lastname:lastname , email: email, identifier:username , phonenumber:phonenumber,password: password,confirmpassword: confirmpassword);
     if (ok) {
       Get.offAndToNamed("/SignIn");
     } else {
@@ -56,6 +61,33 @@ class SignUpContoller extends GetxController {
     }
   }
 
+  next(){
+    Get.toNamed('/SignUp2');
+  }
+
+  void toggleHidden1Status() {
+    isHidden1 = !isHidden1;
+      if(isHidden1){
+      isHidden1 = true ;
+    }
+    else {
+      isHidden1 = false ; //or pressedBool.toggle();
+    }
+   
+    update();
+  }
+
+  void toggleHidden2Status() {
+    isHidden2 = !isHidden2;
+      if(isHidden2){
+      isHidden2 = true ;
+    }
+    else {
+      isHidden2 = false ; //or pressedBool.toggle();
+    }
+   
+    update();
+  }
 // createNewUser2() async {
 //   var url = "$BaseUrl/auth/local/register";
 //
