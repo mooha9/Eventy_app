@@ -248,11 +248,15 @@ class SignIn extends StatelessWidget {
   }
   loginUser(_formKey) async {
     Get.put<LoginController>(LoginController());
+     //test the time request
+      print('======================================================================');
 
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
       await _controller.signInUser();
+           //test the time request
+            print('======================================================================');
       // await controller.loginUser2();
       // Logger().d(" loginUser Pressed login value is  : $a");
 

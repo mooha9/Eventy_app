@@ -1,3 +1,5 @@
+
+
 class User {
     User({
         this.confirmed,
@@ -49,7 +51,7 @@ class User {
     List<Creator>? creator;
     String? userId;
 
-      factory User.fromJson(Map<String, dynamic> json) => User(
+  factory User.fromJson(Map<String, dynamic> json) => User(
         confirmed: json["confirmed"] == null ? null : json["confirmed"],
         blocked: json["blocked"]== null ? null : json["blocked"],
         gender: json["gender"]== null ? null : json["gender"],
@@ -63,50 +65,42 @@ class User {
         provider: json["provider"] == null ? null : json["provider"],
         // role: json["role"] == null ? null : json["role"],
         // role: json["role"] == null ? null : Role.fromJson(json["role"]),
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
-        // countryId: json["countryId"] == null
-        //     ? null
-        //     : CityId.fromJson(json["countryId"]),
-        // profileImage: json["profileImage"] == null
-        //     ? null
-        //     : ProfileImage.fromJson(json["profileImage"]),
-        // cityId: json["cityId"] == null
-        //     ? null
-        //     : CityId.fromJson(json["cityId"]),
-        // cards: List<Card1>.from(
-        //     json["cards"].map((x) => Card1.fromJson(x))),
-        // visitors: List<CityId>.from(json["visitors"].map((x) => CityId.fromJson(x))),    
-        
-        // comments: json["comments"] == null
-        //     ? null
-        //     : List<Comment>.from(
-        //         json["comments"].map((x) => Comment.fromJson(x))),
-        // creator: json["comments"] == null
-        //     ? null
-        //     : List<Creator>.from(
-        //         json["creator"].map((x) => Comment.fromJson(x))),
+        createdAt: json["createdAt"] == null ? null: DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null ? null: DateTime.parse(json["updatedAt"]),
+        countryId: json["countryId"] == null ? null: CityId.fromJson(json["countryId"]),
+        profileImage: json["profileImage"] == null? null: ProfileImage.fromJson(json["profileImage"]),
+        cityId: json["cityId"] == null? null: CityId.fromJson(json["cityId"]),
+        cards: List<Card1>.from(json["cards"].map((x) => Card1.fromJson(x))),
+        visitors: List<CityId>.from(json["visitors"].map((x) => CityId.fromJson(x))),
+        comments: List<Comment>.from(json["comments"].map((x) => Comment.fromJson(x))),    
+        // creator: List<Creator>.from(json["creator"].map((x) => Creator.fromJson(x))),
+        userId: json["userId"] == null ? null : json["userId"],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id == null ? null : id,
-        "username": username == null ? null : username,
-        "email": email == null ? null : email,
-        "provider": provider == null ? null : provider,
         "confirmed": confirmed == null ? null : confirmed,
-        "blocked": blocked,
+        "blocked": blocked == null ? null : blocked,
+        "gender": gender == null ? null : gender,
+        "id": id == null ? null : id,
+        "lastName": lastName == null ? null : lastName,
+        "username": username == null ? null : username,
+        "phoneNumber": phoneNumber == null ? null : phoneNumber,
+        "firstName": firstName == null ? null : firstName,
+        "email": email == null ? null : email,
+        "age": age == null ? null : age,
+        "provider": provider == null ? null : provider,
         // "role": role == null ? null : role,
         // "role": role == null ? null : role!.toJson(),
-
-        "created_at": createdAt == null ? null : createdAt!.toIso8601String(),
-        "updated_at": updatedAt == null ? null : updatedAt!.toIso8601String(),
-        // "comments": comments == null
-        //     ? null
-        //     : List<dynamic>.from(comments!.map((x) => x.toJson())),
+        "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
+        "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
+        "countryId": countryId == null ? null : countryId,
+        "profileImage": profileImage == null ? null : profileImage,
+        "cityId": cityId == null ? null : cityId,
+        "cards": List<dynamic>.from(cards!.map((x) => x.toJson())),
+        "visitors": List<dynamic>.from(visitors!.map((x) => x.toJson())),
+        "comments": List<dynamic>.from(comments!.map((x) => x.toJson())),
+        // "creator": List<dynamic>.from(creator!.map((x) => x.toJson())),
+        "userId": userId == null ? null : userId,   
       };
 }
 
@@ -146,6 +140,38 @@ class Card1 {
     dynamic participant;
     String? usersId;
     String? cardId;
+    
+  factory Card1.fromJson(Map<String, dynamic> json) => Card1(
+        id: json["id"] == null ? null : json["id"],
+        urlWork: json["urlWork"]== null ? null : json["urlWork"],
+        city: json["city"]== null ? null : json["city"],
+        name: json["name"] == null ? null : json["name"],
+        tagLine: json["tagLine"] == null ? null : json["tagLine"],
+        phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
+        email: json["email"] == null ? null : json["email"],
+        category: json["category"] == null ? null : json["category"],
+        publishedAt: json["publishedAt"] == null ? null: DateTime.parse(json["publishedAt"]),
+        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+        usersId: json["usersId"] == null ? null : json["usersId"],
+        cardId: json["cardId"] == null ? null : json["cardId"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id == null ? null : id,
+        "urlWork": urlWork == null ? null : urlWork,
+        "city":city == null ? null : city,
+        "name": name == null ? null: name,
+        "tagLine": tagLine == null ? null: tagLine,
+        "phoneNumber": phoneNumber == null ? null : phoneNumber,
+        "email": email == null ? null : email,
+        "category": category == null ? null : category,
+        "publishedAt": publishedAt == null ? null : publishedAt!.toIso8601String(),
+        "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
+        "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
+        "usersId": usersId == null ? null : usersId,   
+        "cardId": cardId == null ? null : cardId,  
+      };
 }
 
 class CityId {
@@ -172,6 +198,31 @@ class CityId {
     String? cityIdId;
     String? countryName;
     String? userId;
+
+  factory CityId.fromJson(Map<String, dynamic> json) => CityId(
+      id: json["id"] == null ? null : json["id"],
+      cityName: json["cityName"]== null ? null : json["cityName"],
+      publishedAt: json["publishedAt"] == null ? null : DateTime.parse(json["publishedAt"]),
+      createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+      updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+      countryId: json["countryId"] == null ? null : json["countryId"],
+      cityIdId: json["cityIdId"] == null ? null : json["cityIdId"],
+      countryName: json["countryName"]== null ? null : json["countryName"],
+      userId: json["name"] == null ? null : json["userId"],
+    );
+
+  Map<String, dynamic> toJson() => {
+      "id": id == null ? null : id,
+      "cityName": cityName == null ? null : cityName,
+      "publishedAt": publishedAt == null ? null : publishedAt!.toIso8601String(),
+      "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
+      "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
+      "countryId":countryId == null ? null : countryId,
+      "cityIdId": cityIdId == null ? null: cityIdId,
+      "countryName": countryName == null ? null: countryName,
+      "userId": userId == null ? null : userId,
+      
+    };
 }
 
 class Comment {
@@ -202,6 +253,36 @@ class Comment {
     String? profileImage;
     String? userName;
     String? commentId;
+
+    factory Comment.fromJson(Map<String, dynamic> json) => Comment(
+      userId: json["userId"] == null ? null : List<String>.from(json["userId"].map((x) => x)),
+      eventId: json["eventId"] == null ? null : List<String>.from(json["eventId"].map((x) => x)),
+      id: json["id"] == null ? null : json["id"],
+      commment: json["commment"] == null ? null : json["commment"],
+      publishedAt: json["publishedAt"] == null ? null : DateTime.parse(json["publishedAt"]),
+      createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+      updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+      event: json["event"]== null ? null : json["event"],
+      profileImage: json["profileImage"] == null ? null : json["profileImage"],
+      userName: json["userName"] == null ? null : json["userName"],
+      commentId: json["commentId"]== null ? null : json["commentId"],
+    );
+
+  Map<String, dynamic> toJson() => {
+      "userId": userId == null ? null : List<String>.from(userId!.map((x) => x)),
+      "eventId": eventId == null ? null : List<String>.from(eventId!.map((x) => x)),
+      "id": id == null ? null : id,
+      "commment": commment == null ? null : commment,
+      "publishedAt": publishedAt == null ? null : publishedAt!.toIso8601String(),
+      "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
+      "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
+      "event": event == null ? null : event,
+      "profileImage": profileImage == null ? null : profileImage,
+      "userName": userName == null ? null: userName,
+      "commentId": commentId == null ? null: commentId,
+     
+      
+    };
 }
 
 class Creator {
@@ -306,6 +387,41 @@ class ProfileImage {
     DateTime? updatedAt;
     int? v;
     String? profileImageId;
+
+      factory ProfileImage.fromJson(Map<String, dynamic> json) => ProfileImage(
+        id: json["id"] == null ? null : json["id"],
+        name: json["name"] == null ? null : json["name"],
+        alternativeText: json["alternativeText"] == null ? null : json["alternativeText"],
+        caption: json["caption"] == null ? null : json["caption"],
+        hash: json["hash"] == null ? null : json["hash"],
+        ext: json["ext"] == null ? null : json["ext"],
+        mime: json["mime"] == null ? null : json["mime"],
+        size: json["size"] == null ? null : json["size"],
+        width: json["width"] == null ? null : json["width"],
+        height: json["height"] == null ? null : json["height"],
+        url: json["url"] == null ? null : json["url"],
+        formats: json["formats"] == null ? null : json["formats"],
+        related: json["related"] == null ? null : List<String>.from(json["related"].map((x) => x)),
+        provider: json["provider"] == null ? null : json["provider"],
+        createdAt: json["createdAt"] == null ? null: DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null ? null: DateTime.parse(json["updatedAt"]),
+        profileImageId: json["profileImageId"] == null ? null : json["profileImageId"],
+      );
+
+  // Map<String, dynamic> toJson() => {
+  //       "id": id == null ? null : id,
+  //       "provider": provider == null ? null : provider,
+  //       "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
+  //       "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
+  //       "countryId": countryId == null ? null : countryId,
+  //       "profileImage": profileImage == null ? null : profileImage,
+  //       "cityId": cityId == null ? null : cityId,
+  //       "cards": List<dynamic>.from(cards!.map((x) => x.toJson())),
+  //       "visitors": List<dynamic>.from(visitors!.map((x) => x.toJson())),
+  //       "comments": List<dynamic>.from(comments!.map((x) => x.toJson())),
+  //       "creator": List<dynamic>.from(creator!.map((x) => x.toJson())),
+  //       "userId": userId == null ? null : userId,   
+  //     };
 }
 
 class Formats {
