@@ -37,7 +37,7 @@ class LoginController extends GetxController {
       Get.offAllNamed("/BottomNav");
     } else {
       Get.snackbar(
-        'Somthing Wrong',
+        'Email or password is wrong',
         'Make Sure Login Info Is Correct',
         colorText: Colors.white,
         backgroundColor: Colors.red,

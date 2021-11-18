@@ -359,8 +359,8 @@ class _PrivetEventState extends State<PrivetEvent> {
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
                               colors: [
-                                  Color.fromARGB(240,78, 192, 241),
-                                  Color.fromARGB(240,0, 217, 206),
+                                 Color.fromARGB(240,100, 196, 184),
+                                    Color.fromARGB(250,74, 157, 196),
                                   ],
                             )
                             ),

@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+     smartManagement: SmartManagement.full,
      debugShowCheckedModeBanner: false,
      theme: Constants.lightTheme,
      initialRoute: '/Onboarding',

@@ -1,4 +1,4 @@
-import 'package:eventy_app/controllers/auth/signup/signup2_controller.dart';
+import 'package:eventy_app/controllers/auth/signup2_controller.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

@@ -1,16 +1,19 @@
+import 'package:eventy_app/controllers/profile/profile_controller.dart';
 import 'package:eventy_app/util/over_viewdata_event.dart';
 import 'package:eventy_app/views/pages/drawer/app_drawer.dart';
 import 'package:eventy_app/views/pages/home/event_item.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
-class ProfilePage extends StatefulWidget {
-  @override
-  _ProfilePageState createState() => _ProfilePageState();
-}
 
-class _ProfilePageState extends State<ProfilePage> {
+class ProfilePage extends StatelessWidget {
+  final _controller = ProfileController();
+  
   @override
-  Widget build(BuildContext context) => DefaultTabController(
+  Widget build(BuildContext context) {
+    Logger().d("ProfileView list " + "${_controller.eventList.length}");
+  return
+  DefaultTabController(
         initialIndex: 1,
         length: 2,
         child: Scaffold(
@@ -41,8 +44,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircleAvatar(
+                              backgroundColor: Colors.teal,
                               backgroundImage: NetworkImage(
-                                "https://images.unsplash.com/photo-1582330421788-d54dc81b293a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80",
+                              "${_controller.user!.profileImage}",
                               ),
                               radius: 50.0,
                             ),
@@ -50,12 +54,12 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 10.0,
                             ),
                             Text(
-                              "Saleh",
+                               "${_controller.user!.email}",
                               style: TextStyle(
                                   fontSize: 35.0, color: Colors.black),
                             ),
                              Text(
-                              "@saleh1991 ",
+                              "${_controller.user!.username}",
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.grey[700]),
                             ),
@@ -108,6 +112,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       );
+  }
   Widget buildPage1(String text) => Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -130,6 +135,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ))),
         ),
       );
+
   Widget buildPage2(String text) => Center(
         child: Container(
           height: 800.0,

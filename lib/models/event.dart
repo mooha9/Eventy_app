@@ -347,6 +347,7 @@ class User {
     this.id,
     this.username,
     this.email,
+    this.profileImage,
     this.provider,
     this.confirmed,
     this.blocked,
@@ -355,10 +356,11 @@ class User {
     this.updatedAt,
     this.comments,
   });
-
+  
   String? id;
   String? username;
   String? email;
+  String? profileImage;
   String? provider;
   bool? confirmed;
   dynamic blocked;

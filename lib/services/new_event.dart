@@ -130,7 +130,7 @@ class NewEventService {
   Future test() async {
     // ignore: unused_local_variable
     var url = "https://jsonplaceholder.typicode.com/users";
-    var url2 = "$BaseUrl/ads/";
+    var url2 = "$BaseUrl/events/";
     var response = await dio.get(url2);
     if (response.statusCode == 200) {
       log("${response.statusCode}");

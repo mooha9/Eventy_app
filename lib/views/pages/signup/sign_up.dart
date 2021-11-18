@@ -16,6 +16,7 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // ignore: unused_local_variable
   LocalStorage storage = LocalStorage();
 
     return Scaffold(

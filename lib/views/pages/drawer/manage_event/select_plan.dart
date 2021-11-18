@@ -72,7 +72,7 @@ class _SelectPlanState extends State<SelectPlan> {
                             end: Alignment.bottomLeft,
                               colors: [
                                     Color.fromARGB(240,100, 196, 184),
-                                    Color.fromARGB(240,13, 230, 230),
+                                    Color.fromARGB(250,74, 157, 196),
                                      ],
                             )
                             ),
@@ -125,7 +125,7 @@ class _SelectPlanState extends State<SelectPlan> {
                             end: Alignment.bottomLeft,
                               colors: [
                                     Color.fromARGB(240,100, 196, 184),
-                                    Color.fromARGB(240,13, 230, 230),
+                                    Color.fromARGB(250,74, 157, 196),
                                         ],
                             )
                             ),

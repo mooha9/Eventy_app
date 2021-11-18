@@ -54,7 +54,7 @@ class SignUpController extends GetxController {
     } else {
       Get.snackbar(
         'Somthing Wrong',
-        'Make Sure Login Info Is Correct',
+        'Make Sure Sign Up Info Is Correct',
         colorText: Colors.white,
         backgroundColor: Colors.red,
       );

@@ -1,3 +1,4 @@
+import 'package:eventy_app/controllers/profile/profile_controller.dart';
 import 'package:get/get.dart';
 import 'package:eventy_app/controllers/auth/signin_controller.dart';
 import 'package:eventy_app/data/LocalStorage.dart';
@@ -16,10 +17,10 @@ class InitialBinding extends Bindings {
     // TODO: implement dependencies
     Get.lazyPut<LocalStorage>(() => LocalStorage());
     Get.lazyPut<NewAdController>(() => NewAdController());
-    // Get.lazyPut<ProfileController>(() => ProfileController());
-    // Get.lazyPut<AdViewContoller>(() => AdViewContoller());
+    Get.lazyPut<ProfileController>(() => ProfileController());
     Get.lazyPut<LoginController>(() => LoginController());
     Get.lazyPut<SignUpController>(() => SignUpController());
+    // Get.lazyPut<AdViewContoller>(() => AdViewContoller());
     // Get.lazyPut<HomeViewController>(() => HomeViewController());
     // Get.lazyPut<HomeView>(() => HomeView());
     // Get.lazyPut<LoginView>(() => LoginView());

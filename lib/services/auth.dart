@@ -44,11 +44,11 @@ class AuthService {
     return null;
   }
 
-  Future<bool> userSignUp({identifier, password, email,firstname,lastname,phonenumber,confirmpassword}) async {
+  Future<bool> userSignUp({ firstname,lastname,email,phonenumber,identifier,password,confirmpassword}) async {
     var headers = {'Content-Type': 'application/json'};
     var body = jsonEncode({
       
-        "firstname": "$firstname",
+      "firstname": "$firstname",
       "lastname": "$lastname",
       "email": "$email",
       "username": "$identifier",
