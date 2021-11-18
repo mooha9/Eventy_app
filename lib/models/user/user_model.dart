@@ -80,12 +80,16 @@ class User {
         //     : CityId.fromJson(json["cityId"]),
         // cards: List<Card1>.from(
         //     json["cards"].map((x) => Card1.fromJson(x))),
-        // visitors: List<Visitors>.from(json["tags"].map((x) => Tag.fromJson(x))),    
+        // visitors: List<CityId>.from(json["visitors"].map((x) => CityId.fromJson(x))),    
         
         // comments: json["comments"] == null
         //     ? null
         //     : List<Comment>.from(
         //         json["comments"].map((x) => Comment.fromJson(x))),
+        // creator: json["comments"] == null
+        //     ? null
+        //     : List<Creator>.from(
+        //         json["creator"].map((x) => Comment.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
