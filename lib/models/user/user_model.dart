@@ -63,8 +63,6 @@ class User {
         email: json["email"] == null ? null : json["email"],
         age: json["age"] == null ? null : json["age"],
         provider: json["provider"] == null ? null : json["provider"],
-        // role: json["role"] == null ? null : json["role"],
-        // role: json["role"] == null ? null : Role.fromJson(json["role"]),
         createdAt: json["createdAt"] == null ? null: DateTime.parse(json["createdAt"]),
         updatedAt: json["updatedAt"] == null ? null: DateTime.parse(json["updatedAt"]),
         countryId: json["countryId"] == null ? null: CityId.fromJson(json["countryId"]),
@@ -73,7 +71,7 @@ class User {
         cards: List<Card1>.from(json["cards"].map((x) => Card1.fromJson(x))),
         visitors: List<CityId>.from(json["visitors"].map((x) => CityId.fromJson(x))),
         comments: List<Comment>.from(json["comments"].map((x) => Comment.fromJson(x))),    
-        // creator: List<Creator>.from(json["creator"].map((x) => Creator.fromJson(x))),
+        creator: List<Creator>.from(json["creator"].map((x) => Creator.fromJson(x))),
         userId: json["userId"] == null ? null : json["userId"],
       );
 
@@ -89,8 +87,6 @@ class User {
         "email": email == null ? null : email,
         "age": age == null ? null : age,
         "provider": provider == null ? null : provider,
-        // "role": role == null ? null : role,
-        // "role": role == null ? null : role!.toJson(),
         "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
         "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
         "countryId": countryId == null ? null : countryId,
@@ -99,7 +95,7 @@ class User {
         "cards": List<dynamic>.from(cards!.map((x) => x.toJson())),
         "visitors": List<dynamic>.from(visitors!.map((x) => x.toJson())),
         "comments": List<dynamic>.from(comments!.map((x) => x.toJson())),
-        // "creator": List<dynamic>.from(creator!.map((x) => x.toJson())),
+        "creator": List<dynamic>.from(creator!.map((x) => x.toJson())),
         "userId": userId == null ? null : userId,   
       };
 }
@@ -345,6 +341,69 @@ class Creator {
     bool? isPublic;
     int? like;
     String? creatorId;
+
+    factory Creator.fromJson(Map<String, dynamic> json) => Creator(
+      id: json["id"] == null ? null : json["id"],
+      photo: json["photo"] == null ? null : List<String>.from(json["photo"].map((x) => x)),
+      locationName: json["locationName"] == null ? null : json["locationName"],
+      eventTimeEnd: json["eventTimeEnd"]== null ? null : json["eventTimeEnd"],
+      eventName: json["eventName"] == null ? null : json["eventName"],
+      eventDate : json["eventDate"] == null ? null : DateTime.parse(json["eventDate"]),
+      eventTimeStart: json["eventTimeStart"]== null ? null : json["eventTimeStart"],
+      shortNote: json["shortNote"] == null ? null : json["shortNote"],
+      locationLink: json["locationLink"] == null ? null : json["locationLink"],
+      numberOfDays: json["numberOfDays"] == null ? null : json["numberOfDays"],
+      description : json["description"] == null ? null : json["description"],
+      publishedAt: json["publishedAt"] == null ? null : DateTime.parse(json["publishedAt"]),
+      createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+      updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+      mainImage: json["mainImage"] == null ? null : json["mainImage"],
+      locatoinName: json["locatoinName"] == null ? null : json["locatoinName"],
+      locatoinUrl: json["locatoinUrl"] == null ? null : json["locatoinUrl"],
+      numberDays: json["numberDays"] == null ? null : json["numberDays"],
+      timeEnd: json["timeEnd"] == null ? null : json["timeEnd"],
+      timeStart: json["timeStart"] == null ? null : json["timeStart"],
+      eventCreator: json["eventCreator"] == null ? null : json["eventCreator"],
+      visitor: json["visitor"] == null ? null : json["visitor"],
+      participant: json["participant"] == null ? null : json["participant"],
+      eventsCategory: json["eventsCategory"] == null ? null : json["eventsCategory"],
+      isPublic: json["isPublic"] == null ? null : json["isPublic"],
+      like: json["like"] == null ? null : json["like"],
+      creatorId: json["creatorId"] == null ? null : json["creatorId"],
+
+    );
+
+  Map<String, dynamic> toJson() => {
+      "id": id == null ? null : id,
+      "photo": photo == null ? null : List<String>.from(photo!.map((x) => x)),
+      "locationName": locationName == null ? null : locationName,
+      "publishedAt": publishedAt == null ? null : publishedAt!.toIso8601String(),
+      "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
+      "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
+      "eventTimeEnd": eventTimeEnd == null ? null : eventTimeEnd,
+      "eventName": eventName == null ? null : eventName,
+      "eventDate": eventDate == null ? null: eventDate!.toIso8601String(),
+      "eventTimeStart": eventTimeStart == null ? null: eventTimeStart,
+      "shortNote": shortNote == null ? null: shortNote,
+      "locationLink": locationLink == null ? null: locationLink,
+      "numberOfDays": numberOfDays == null ? null: numberOfDays,
+      "description": description == null ? null: description,
+      "mainImage": mainImage == null ? null: mainImage,
+      "locatoinName": locatoinName == null ? null: locatoinName,
+      "locatoinUrl": locatoinUrl == null ? null: locatoinUrl,
+      "numberDays": numberDays == null ? null: numberDays,
+      "timeEnd": timeEnd == null ? null: timeEnd,
+      "timeStart": timeStart == null ? null: timeStart,
+      "eventCreator": eventCreator == null ? null: eventCreator,
+      "visitor": visitor == null ? null: visitor,
+      "participant": participant == null ? null: participant,
+      "eventsCategory": eventsCategory == null ? null: eventsCategory,
+      "isPublic": isPublic == null ? null: isPublic,
+      "like": like == null ? null: like,
+      "creatorId": creatorId == null ? null: creatorId,
+     
+      
+    };
 }
 
 class ProfileImage {
@@ -408,20 +467,25 @@ class ProfileImage {
         profileImageId: json["profileImageId"] == null ? null : json["profileImageId"],
       );
 
-  // Map<String, dynamic> toJson() => {
-  //       "id": id == null ? null : id,
-  //       "provider": provider == null ? null : provider,
-  //       "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
-  //       "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
-  //       "countryId": countryId == null ? null : countryId,
-  //       "profileImage": profileImage == null ? null : profileImage,
-  //       "cityId": cityId == null ? null : cityId,
-  //       "cards": List<dynamic>.from(cards!.map((x) => x.toJson())),
-  //       "visitors": List<dynamic>.from(visitors!.map((x) => x.toJson())),
-  //       "comments": List<dynamic>.from(comments!.map((x) => x.toJson())),
-  //       "creator": List<dynamic>.from(creator!.map((x) => x.toJson())),
-  //       "userId": userId == null ? null : userId,   
-  //     };
+  Map<String, dynamic> toJson() => {
+        "id": id == null ? null : id,
+        "name": name == null ? null : name,
+        "alternativeText": alternativeText == null ? null : alternativeText,
+        "caption": caption == null ? null : caption,
+        "hash": hash == null ? null : hash,
+        "ext": ext == null ? null : ext,
+        "mime": mime == null ? null : mime,
+        "size": size == null ? null : size,
+        "width": width == null ? null : width,
+        "height": height == null ? null : height,
+        "url": url == null ? null : url,
+        "formats": formats == null ? null : formats,
+        "provider": provider == null ? null : provider,
+        "related": related == null ? null : List<String>.from(related!.map((x) => x)),
+        "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
+        "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
+        "profileImageId": profileImageId == null ? null : profileImageId,   
+      };
 }
 
 class Formats {
