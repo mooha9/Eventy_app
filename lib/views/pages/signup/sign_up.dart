@@ -403,16 +403,19 @@ class SignUp extends StatelessWidget {
                                 Container(
                                   // ignore: deprecated_member_use
                                   child: RaisedButton(
-                                    onPressed: () async {
-                                      if (_formKey.currentState!.validate()) {
-                                        _formKey.currentState!.save();
-
-                                        Get.put<SignUpController>(
-                                            SignUpController());
-
-                                        await _controller.createNewUser2();
-                                      }
+                                    onPressed: () {
+                                      Get.toNamed('/SignUp2');
                                     },
+                                    // async {
+                                    //   if (_formKey.currentState!.validate()) {
+                                    //     _formKey.currentState!.save();
+
+                                    //     Get.put<SignUpController>(
+                                    //         SignUpController());
+
+                                    //     await _controller.createNewUser2();
+                                    //   }
+                                    // },
                                     padding:
                                         EdgeInsets.fromLTRB(50, 15, 50, 15),
                                     splashColor: Colors.teal[250],

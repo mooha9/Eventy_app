@@ -1,48 +1,18 @@
+
+import 'package:eventy_app/controllers/card/managecard_controller.dart';
 import 'package:eventy_app/views/pages/drawer/manage_card/create_card.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:eventy_app/models/create_card/card.dart';
-import 'package:http/http.dart' as http;
+
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/state_manager.dart';
+
 // ignore: must_be_immutable
-class ManageCard extends StatefulWidget {
+class ManageCard extends StatelessWidget {
+  
+  final _controller = Get.put(ManageCardContoller());
+
   String id ;
   ManageCard(this.id);
-  @override
-  _ManageCardState createState() => _ManageCardState(this.id);
-}
-
-class _ManageCardState extends State<ManageCard> {
-  String id ;
-  _ManageCardState(this.id);
-  List<DBCard> cards = [];
-  Future getAll() async{
-    var data = await http.get(Uri.parse("https://eventy1.herokuapp.com/cards"));
-    var jsonData = json.decode(data.body);
-    for (var c in jsonData)
-    { 
-      cards.add(DBCard(
-      // c['userName'],
-      c['id'],
-      c['name'],
-      c['category'],
-      c['workType'],
-      c['city'],
-      c['url_work'],
-      c['tagLine'],
-      c['email'],
-      c['phoneNumber']));
-    }
-    return cards;
-  }
-  void edit(){
-    Navigator.push(context, new MaterialPageRoute(builder: (context)=> CreateCard(this.id)));
-  }
-  void delete() async{
-    await http.delete(Uri.parse("https://eventy1.herokuapp.com/cards/${this.id}"));
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +45,7 @@ class _ManageCardState extends State<ManageCard> {
      
       body: Container(
         child: FutureBuilder(
-          future: getAll(),
+          // future: getAll(),
           builder: (BuildContext context, AsyncSnapshot snapshot)
           {
             if(snapshot.data == null)
@@ -150,9 +120,9 @@ class _ManageCardState extends State<ManageCard> {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                TextButton(onPressed: edit, child: Text("Edit")),
+                                TextButton(onPressed: (){}, child: Text("Edit")),
                                 TextButton( onPressed: (){
-                                showDeleteDialog(delete);
+                                _controller.showDeleteDialog;
                               }, child: Text("Delete", style:TextStyle(color: Colors.red,)))
                               ],
                   ),
@@ -189,34 +159,7 @@ class _ManageCardState extends State<ManageCard> {
       ),
     );
   }
-  showDeleteDialog(delete){
-    return showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Delete'),
-              content: Text('Are you sure to delete this card?'),
-              actions: <Widget>[
-                // ignore: deprecated_member_use
-                FlatButton(
-                  color: Colors.teal,
-                  child: Text(
-                    'Cancel',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                // ignore: deprecated_member_use
-                FlatButton(
-                  child: Text('yes, Delete'),
-                  onPressed: delete ,
-                ),
-              ],
-            );
-          });
-  }
+  
 }
 
 

@@ -79,7 +79,7 @@ class SignIn extends StatelessWidget {
                           //size Text field
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(32.0)),
-                          labelText: "EMAIL",
+                          labelText: "EMAIL or USERNAME",
                           labelStyle: TextStyle(fontSize: 15),
                           hintText: "Email@gmail.com",
                           //for example name

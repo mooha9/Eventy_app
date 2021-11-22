@@ -1,63 +1,48 @@
 
-import 'package:eventy_app/views/pages/drawer/manage_card/manage_card.dart';
+// ignore_for_file: deprecated_member_use
+
+// import 'package:eventy_app/models/user/user_model.dart';
+// import 'package:eventy_app/models/event.dart';
+// import 'package:eventy_app/models/user/user_model.dart';
+// import 'package:eventy_app/services/auth.dart';
+// import 'package:eventy_app/views/pages/drawer/manage_card/manage_card.dart';
+import 'dart:io';
+
+import 'package:eventy_app/controllers/card/create_card_controller.dart';
+// import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http ;
-import 'dart:async';
-import 'dart:convert';
-import 'package:eventy_app/models/create_card/card.dart';
+// import 'package:get/get_core/src/get_main.dart';
+// import 'package:get/get_instance/src/extension_instance.dart';
+
+import 'package:eventy_app/models/create_card/card_model.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:image_picker/image_picker.dart';
+
 
 // ignore: must_be_immutable
-class CreateCard extends StatefulWidget {
+class CreateCard extends StatelessWidget {
   String id ;
   CreateCard(this.id);
-  @override
-  _CreateCardState createState() => _CreateCardState(this.id);
+  final _controller = Get.put(CreateCardContoller());
+  File? image ;
+Future pickImage() async {
+  final image = await  ImagePicker().pickImage(source: ImageSource.gallery);
+  if(image == null) return;
+  final imageTamporary = File(image.path);
+  this.image = imageTamporary;
 }
-
-class _CreateCardState extends State<CreateCard> {
-  String id ;
-  _CreateCardState(this.id);
-  DBCard card = DBCard(/*'',*/'','','','','','','','','');
-  
-  Future save() async{
-    if (card.id == ' '){
-       await http.post(Uri.parse("https://eventy1.herokuapp.com/cards/"),
-       headers:<String,String>{'Context-Type':'application/json;charset=UTF-8'},
-       body:<String,String>{
-        //  'userName':card.userName,
-         'category':card.category,'name':card.name,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,});
-    }
-    else{
-       await http.put(Uri.parse("https://eventy1.herokuapp.com/cards/${card.id}"), 
-       headers:{'Context-Type':'application/json;charset=UTF-8'},
-        body:{
-          // 'userName':card.userName,
-        'category':card.category,'name':card.name,'workType':card.workType,'city':card.city,'url_work':card.url_work,'tagLine':card.tagLine,'email':card.email,'phoneNumber':card.phoneNumber,}); 
-    }
-   Navigator.push(context, new MaterialPageRoute(builder: (context)=>ManageCard(this.id)));
-  }
-
-  void initState() {
-    super.initState();
-    if(this.id !=''){
-      getOne();
-    }
-    
-  }
-  void getOne() async{
-   var data = await http.get(Uri.parse("https://eventy1.herokuapp.com/cards/${this.id}"));
-   var c = json.decode(data.body);
-   setState(() {
-        card = DBCard (
-          // c['userName'],
-        c['id'],c['category'],c['name'],c['workType'],c['city'],c['url_work'],c['tagLine'],c['email'], c['phoneNumber'],);
-   });
-  }
   @override
-  
   Widget build(BuildContext context) {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  DBCard card = DBCard('','','','','','','','','','', );
+  // LocalStorage storage = LocalStorage();
+    // ignore: unused_local_variable
+
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -92,294 +77,408 @@ class _CreateCardState extends State<CreateCard> {
         children: <Widget>[
           Container(
               color: Colors.teal[50],
-              child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  children: <Widget>[
-                    SizedBox(height: 10.0),
-                    SizedBox(height: 10.0),
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Visibility(
-                            visible: false,
-                            child: TextField(controller: TextEditingController(text:card.id),)),
-                          Divider(),
-                          SelectCategory(),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Divider(),
-                          TextField(
-                            controller: TextEditingController(text:card.name),
-                            onChanged: (val){
-                              card.name= val;
-                            },
-                            minLines:
-                                1, // any number you need (It works as the rows for the textarea)
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
-                            textAlignVertical: TextAlignVertical.top,
-                            decoration: new InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 0.0),
-                              ),
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      new BorderSide(color: Colors.teal)),
-                              hintText: 'Name',
-                              helperText: 'Write name of your card.',
-                              prefixIcon: const Icon(
-                                Icons.person_outline,
-                                color: Colors.teal,
-                              ),
-                              prefixText: ' ',
-                            ),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Divider(),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          TextField(
-                            controller: TextEditingController(text:card.workType),
-                            onChanged: (val){
-                              card.workType= val;
-                            },
-                            minLines:
-                                1, // any number you need (It works as the rows for the textarea)
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
-                            textAlignVertical: TextAlignVertical.top,
-                            decoration: new InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 0.0),
-                              ),
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      new BorderSide(color: Colors.teal)),
-                              hintText: ' Work Type',
-                              helperText: 'Which filed you work with e.g.Food Truck',
-                              prefixIcon: const Icon(
-                                Icons.category_rounded,
-                                color: Colors.teal,
-                              ),
-                              prefixText: ' ',
-                            ),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Divider(),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          // TextField(
+              child:  Form(
+              key: _formKey,
+              child:
+              //  (SingleChildScrollView(
+              //   child: 
+                GetBuilder<CreateCardContoller>(
+                    init: CreateCardContoller(),
+                    builder: (controller) =>
+                 ListView(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    children: <Widget>[
+                      SizedBox(height: 10.0),
+                      SizedBox(height: 10.0),
+                      Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                        Visibility(
+                          visible: false,
+                          child: TextFormField(
+                            controller: TextEditingController(text:card.category),
                             
-                          //   minLines:
-                          //       1, // any number you need (It works as the rows for the textarea)
-                          //   keyboardType: TextInputType.multiline,
-                          //   maxLines: null,
-                          //   textAlignVertical: TextAlignVertical.top,
-                          //   decoration: new InputDecoration(
-                          //     enabledBorder: const OutlineInputBorder(
-                          //       borderSide: const BorderSide(
-                          //           color: Colors.grey, width: 0.0),
-                          //     ),
-                          //     border: OutlineInputBorder(
-                          //         borderSide:
-                          //             new BorderSide(color: Colors.teal)),
-                          //     hintText: 'Logo',
-                          //     helperText: 'Insert png logo.',
-                          //     prefixIcon: const Icon(
-                          //       Icons.stream_rounded,
-                          //       color: Colors.teal,
-                          //     ),
-                          //     prefixText: ' ',
-                          //   ),
-                          // ),
-                          // SizedBox(
-                          //   height: 3,
-                          // ),
-                          // Divider(),
-                          // SizedBox(
-                          //   height: 3,
-                          // ),
-                          TextField(
-                            controller: TextEditingController(text:card.city),
-                            onChanged: (val){
-                              card.city= val;
-                            },
-                            minLines:
-                                1, // any number you need (It works as the rows for the textarea)
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
-                            textAlignVertical: TextAlignVertical.top,
-                            decoration: new InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 0.0),
+                            )),
+                            
+                            SelectCategory(),
+                            
+                            Obx(()=>_controller.selectedImagePath.value == ""?
+                              Text("select the logo "):
+                              Image.file(File(_controller.selectedImagePath.value))
+                            
                               ),
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      new BorderSide(color: Colors.teal)),
-                              hintText: 'City',
-                              helperText: 'Insert city name.',
-                              prefixIcon: const Icon(
-                                Icons.location_pin,
-                                color: Colors.teal,
-                              ),
-                              prefixText: ' ',
+                              SizedBox(
+                              height: 3,
                             ),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Divider(),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          TextField(
-                            controller: TextEditingController(text:card.url_work),
-                            onChanged: (val){
-                              card.url_work= val;
-                            },
-                            minLines:
-                                1, // any number you need (It works as the rows for the textarea)
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
-                            textAlignVertical: TextAlignVertical.top,
-                            decoration: new InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 0.0),
+                               Obx(()=>Text(_controller.selectedImageSize.value == ""?"":
+                                    _controller.selectedImageSize.value, style: TextStyle(fontWeight: FontWeight.bold),)
+                            
                               ),
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      new BorderSide(color: Colors.teal)),
-                              hintText: 'URL',
-                              helperText: 'Link for your work.',
-                              prefixIcon: const Icon(
-                                Icons.link,
-                                color: Colors.teal,
+                               RaisedButton(onPressed: (){
+                            
+                                _controller.getImage(ImageSource.gallery);
+                              },
+                            
+                                child: Text("select logo", style: TextStyle(color: Colors.white),),
                               ),
-                              prefixText: ' ',
+                            
+                            SizedBox(
+                              height: 3,
                             ),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Divider(),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          TextField(
-                            controller: TextEditingController(text:card.tagLine),
-                            onChanged: (val){
-                              card.tagLine= val;
-                            },
-                            minLines:
-                                1, // any number you need (It works as the rows for the textarea)
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
-                            textAlignVertical: TextAlignVertical.top,
-                            decoration: new InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 0.0),
+                            Divider(),
+                            
+                            TextFormField(
+                              controller: TextEditingController(text:card.name),
+                              onChanged: (value){
+                                card.name= value;
+                              },
+                              onSaved: (value) {
+                                    CreateCardContoller.to .name = value!;
+                                  },
+                                  onTap: () {
+                                    _formKey.currentState!.save();
+                                    if (_controller.name.isNotEmpty)
+                                      print(_controller.name);
+
+                                    if (_controller.name.isEmpty)
+                                      print("NO FIRSTNAME");
+                                  },
+                                  
+                              minLines:
+                                  1, // any number you need (It works as the rows for the textarea)
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              textAlignVertical: TextAlignVertical.top,
+                              decoration: new InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 0.0),
+                                ),
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        new BorderSide(color: Colors.teal)),
+                                hintText: 'Name',
+                                helperText: 'Write name of your card.',
+                                prefixIcon: const Icon(
+                                  Icons.person_outline,
+                                  color: Colors.teal,
+                                ),
+                                prefixText: ' ',
                               ),
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      new BorderSide(color: Colors.teal)),
-                              hintText: 'Tagline',
-                              helperText:
-                                  'Write a short note e.g. Ready To Setup Light For Events.',
-                              prefixIcon: const Icon(
-                                Icons.sell_outlined,
-                                color: Colors.teal,
-                              ),
-                              prefixText: ' ',
                             ),
-                          ), SizedBox(
-                            height: 3,
-                          ),
-                          Divider(),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          TextField(
-                            controller: TextEditingController(text:card.phoneNumber),
-                            onChanged: (val){
-                              card.phoneNumber= val;
-                            },
-                            minLines:
-                                1, // any number you need (It works as the rows for the textarea)
-                            keyboardType: TextInputType.number,
-                            maxLines: null,
-                            textAlignVertical: TextAlignVertical.top,
-                            decoration: new InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 0.0),
-                              ),
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      new BorderSide(color: Colors.teal)),
-                              hintText: 'Email',
-                              helperText: 'Insert email.',
-                              prefixIcon: const Icon(
-                                Icons.alternate_email,
-                                color: Colors.teal,
-                              ),
-                              prefixText: ' ',
+                            SizedBox(
+                              height: 3,
                             ),
-                          
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Divider(),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          TextField(
-                            controller: TextEditingController(text:card.phoneNumber),
-                            onChanged: (val){
-                              card.phoneNumber= val;
-                            },
-                            minLines:
-                                1, // any number you need (It works as the rows for the textarea)
-                            keyboardType: TextInputType.number,
-                            maxLines: null,
-                            textAlignVertical: TextAlignVertical.top,
-                            decoration: new InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 0.0),
-                              ),
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      new BorderSide(color: Colors.teal)),
-                              hintText: 'Contact',
-                              helperText: 'Insert phone number.',
-                              prefixIcon: const Icon(
-                                Icons.phone,
-                                color: Colors.teal,
-                              ),
-                              prefixText: ' ',
+                            Divider(),
+                            SizedBox(
+                              height: 3,
                             ),
-                          
-                          ),
-                          SizedBox(
-                            height: 120,
-                          ),
-                        ])
-                  ])),
+                            TextFormField(
+                              controller: TextEditingController(text:card.workType),
+                             
+                              onSaved: (value) {
+                                    CreateCardContoller.to.workType = value!;
+                                  },
+                                  onTap: () {
+                                    _formKey.currentState!.save();
+                                    if (_controller.workType.isNotEmpty)
+                                      print(_controller.workType);
+
+                                    if (_controller.workType.isEmpty)
+                                      print("NO workType");
+                                  },
+                              onChanged: (val){
+                                card.workType= val;
+                              },
+                              minLines:
+                                  1, // any number you need (It works as the rows for the textarea)
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              textAlignVertical: TextAlignVertical.top,
+                              decoration: new InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 0.0),
+                                ),
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        new BorderSide(color: Colors.teal)),
+                                hintText: ' Work Type',
+                                helperText: 'Which filed you work with e.g.Food Truck',
+                                prefixIcon: const Icon(
+                                  Icons.category_rounded,
+                                  color: Colors.teal,
+                                ),
+                                prefixText: ' ',
+                              ),
+                            ),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            Divider(),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            // TextFormField(
+                              
+                            //   minLines:
+                            //       1, // any number you need (It works as the rows for the textarea)
+                            //   keyboardType: TextInputType.multiline,
+                            //   maxLines: null,
+                            //   textAlignVertical: TextAlignVertical.top,
+                            //   decoration: new InputDecoration(
+                            //     enabledBorder: const OutlineInputBorder(
+                            //       borderSide: const BorderSide(
+                            //           color: Colors.grey, width: 0.0),
+                            //     ),
+                            //     border: OutlineInputBorder(
+                            //         borderSide:
+                            //             new BorderSide(color: Colors.teal)),
+                            //     hintText: 'Logo',
+                            //     helperText: 'Insert png logo.',
+                            //     prefixIcon: const Icon(
+                            //       Icons.stream_rounded,
+                            //       color: Colors.teal,
+                            //     ),
+                            //     prefixText: ' ',
+                            //   ),
+                            // ),
+                            // SizedBox(
+                            //   height: 3,
+                            // ),
+                            // Divider(),
+                            // SizedBox(
+                            //   height: 3,
+                            // ),
+                            TextFormField(
+                              controller: TextEditingController(text:card.city),
+                              onChanged: (val){
+                                card.city= val;
+                              },
+                               onSaved: (value) {
+                                    CreateCardContoller.to.city = value!;
+                                  },
+                                  onTap: () {
+                                    _formKey.currentState!.save();
+                                    if (_controller.city.isNotEmpty)
+                                      print(_controller.city);
+
+                                    if (_controller.city.isEmpty)
+                                      print("NO city");
+                                  },
+                              
+                              minLines:
+                                  1, // any number you need (It works as the rows for the textarea)
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              textAlignVertical: TextAlignVertical.top,
+                              decoration: new InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 0.0),
+                                ),
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        new BorderSide(color: Colors.teal)),
+                                hintText: 'City',
+                                helperText: 'Insert city name.',
+                                prefixIcon: const Icon(
+                                  Icons.location_pin,
+                                  color: Colors.teal,
+                                ),
+                                prefixText: ' ',
+                              ),
+                            ),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            Divider(),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            TextFormField(
+                              controller: TextEditingController(text:card.url_work),
+                              onChanged: (val){
+                                card.url_work= val;
+                              },
+                               
+                               onSaved: (value) {
+                                    CreateCardContoller.to.url_work = value!;
+                                  },
+                                  onTap: () {
+                                    _formKey.currentState!.save();
+                                    if (_controller.url_work.isNotEmpty)
+                                      print(_controller.url_work);
+
+                                    if (_controller.url_work.isEmpty)
+                                      print("NO url_work");
+                                  },
+                              minLines:
+                                  1, // any number you need (It works as the rows for the textarea)
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              textAlignVertical: TextAlignVertical.top,
+                              decoration: new InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 0.0),
+                                ),
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        new BorderSide(color: Colors.teal)),
+                                hintText: 'URL',
+                                helperText: 'Link for your work.',
+                                prefixIcon: const Icon(
+                                  Icons.link,
+                                  color: Colors.teal,
+                                ),
+                                prefixText: ' ',
+                              ),
+                            ),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            Divider(),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            TextFormField(
+                              controller: TextEditingController(text:card.tagLine),
+                              onChanged: (val){
+                                card.tagLine= val;
+                              },
+                               onSaved: (value) {
+                                    CreateCardContoller.to.tagLine = value!;
+                                  },
+                                  onTap: () {
+                                    _formKey.currentState!.save();
+                                    if (_controller.tagLine.isNotEmpty)
+                                      print(_controller.tagLine);
+
+                                    if (_controller.tagLine.isEmpty)
+                                      print("NO tagLine");
+                                  },
+                              minLines:
+                                  1, // any number you need (It works as the rows for the textarea)
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              textAlignVertical: TextAlignVertical.top,
+                              decoration: new InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 0.0),
+                                ),
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        new BorderSide(color: Colors.teal)),
+                                hintText: 'Tagline',
+                                helperText:
+                                    'Write a short note e.g. Ready To Setup Light For Events.',
+                                prefixIcon: const Icon(
+                                  Icons.sell_outlined,
+                                  color: Colors.teal,
+                                ),
+                                prefixText: ' ',
+                              ),
+                            ), SizedBox(
+                              height: 3,
+                            ),
+                            Divider(),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            TextFormField(
+                              controller: TextEditingController(text:card.email),
+                              onChanged: (val){
+                                card.email= val;
+                              },
+                              onSaved: (value) {
+                                    CreateCardContoller.to.email = value!;
+                                  },
+                                  onTap: () {
+                                    _formKey.currentState!.save();
+                                    if (_controller.email.isNotEmpty)
+                                      print(_controller.email);
+
+                                    if (_controller.email.isEmpty)
+                                      print("NO email");
+                                  },
+                              minLines:
+                                  1, // any number you need (It works as the rows for the textarea)
+                              keyboardType: TextInputType.number,
+                              maxLines: null,
+                              textAlignVertical: TextAlignVertical.top,
+                              decoration: new InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 0.0),
+                                ),
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        new BorderSide(color: Colors.teal)),
+                                hintText: 'Email',
+                                helperText: 'Insert email.',
+                                prefixIcon: const Icon(
+                                  Icons.alternate_email,
+                                  color: Colors.teal,
+                                ),
+                                prefixText: ' ',
+                              ),
+                            
+                            ),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            Divider(),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            TextFormField(
+                              controller: TextEditingController(text:card.phoneNumber),
+                              onChanged: (val){
+                                card.phoneNumber= val;
+                              },
+                              onSaved: (value) {
+                                    CreateCardContoller.to.phoneNumber = value!;
+                                  },
+                                  onTap: () {
+                                    _formKey.currentState!.save();
+                                    if (_controller.phoneNumber.isNotEmpty)
+                                      print(_controller.phoneNumber);
+
+                                    if (_controller.phoneNumber.isEmpty)
+                                      print("NO phoneNumber");
+                                  },
+                              minLines:
+                                  1, // any number you need (It works as the rows for the textarea)
+                              keyboardType: TextInputType.number,
+                              maxLines: null,
+                              textAlignVertical: TextAlignVertical.top,
+                              decoration: new InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 0.0),
+                                ),
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        new BorderSide(color: Colors.teal)),
+                                hintText: 'Contact',
+                                helperText: 'Insert phone number.',
+                                prefixIcon: const Icon(
+                                  Icons.phone,
+                                  color: Colors.teal,
+                                ),
+                                prefixText: ' ',
+                              ),
+                            
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                    
+              
           Positioned(
-            bottom: 40,
+            bottom: 90,
             left: 110,
             child: Container(
               height: 60,
@@ -400,7 +499,17 @@ class _CreateCardState extends State<CreateCard> {
                     ],
                   )),
               child: TextButton(
-                  onPressed: save ,
+                  onPressed:()
+                  async {
+                                      if (_formKey.currentState!.validate()) {
+                                        _formKey.currentState!.save();
+
+                                        Get.put<CreateCardContoller>(
+                                            CreateCardContoller());
+
+                                        await _controller.createNewCard2();
+                                      }
+                                    },  
                   child: Text(
                     "Save",
                     style: TextStyle(
@@ -418,11 +527,32 @@ class _CreateCardState extends State<CreateCard> {
                   )),
             ),
           ),
+          SizedBox(
+                              height: 50,
+                            ),
         ],
       ),
+                    ],
+                 )
+                )
+              )
+              )
+          //     )
+          // ),
+        ]
+      )
+
     );
   }
 }
+
+
+
+
+
+
+
+
 
 class SelectCategory extends StatefulWidget {
   const SelectCategory({Key? key}) : super(key: key);
@@ -461,6 +591,8 @@ class _SelectCategoryState extends State<SelectCategory> {
               ],
             ),
           ),
+
+          
         if (dropdownValue == 'Activity Owner')
           Container(
             height: 240.0,
@@ -558,3 +690,7 @@ class _SelectCategoryState extends State<SelectCategory> {
     );
   }
 }
+  
+  
+    
+

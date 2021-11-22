@@ -40,7 +40,7 @@ class NewEventService {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      Logger().d("createNewAd  json result :$data");
+      Logger().d("createNewEvent  json result :$data");
     }
   }
 
@@ -129,7 +129,7 @@ class NewEventService {
 
   Future test() async {
     // ignore: unused_local_variable
-    var url = "https://jsonplaceholder.typicode.com/users";
+    var url = "$BaseUrl/users";
     var url2 = "$BaseUrl/events/";
     var response = await dio.get(url2);
     if (response.statusCode == 200) {

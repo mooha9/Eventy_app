@@ -13,7 +13,7 @@ import 'package:eventy_app/controllers/home/home_controller.dart';
 import 'package:eventy_app/models/event.dart';
 import 'package:eventy_app/models/new_event.dart';
 import 'package:eventy_app/models/UploadModel.dart';
-import 'package:eventy_app/services/new_event.dart';
+import 'package:eventy_app/services/new_event_service.dart';
 import 'package:eventy_app/util/alerts.dart';
 import 'package:eventy_app/util/app_state.dart';
 
