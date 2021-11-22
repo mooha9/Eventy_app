@@ -1,5 +1,5 @@
 
-import 'package:eventy_app/controllers/card/managecard_controller.dart';
+import 'package:eventy_app/controllers/card/manage_card_controller.dart';
 import 'package:eventy_app/views/pages/drawer/manage_card/create_card.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:eventy_app/models/create_card/card_model.dart';
+import 'package:eventy_app/models/card/card_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;

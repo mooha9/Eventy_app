@@ -16,7 +16,7 @@ import 'package:flutter/cupertino.dart';
 // import 'package:get/get_core/src/get_main.dart';
 // import 'package:get/get_instance/src/extension_instance.dart';
 
-import 'package:eventy_app/models/create_card/card_model.dart';
+import 'package:eventy_app/models/card/card_model.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
