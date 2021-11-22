@@ -43,7 +43,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return ManageCard('');
+                    return ManageCard();
                   },
                 ),
               );

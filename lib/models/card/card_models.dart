@@ -1,3 +1,9 @@
+
+import 'dart:convert';
+
+Card1 card1FromJson(String str) => Card1.fromJson(json.decode(str));
+
+String card1ToJson(Card1 data) => json.encode(data.toJson());
 class Card1 {
     Card1({
         this.id,
@@ -34,6 +40,38 @@ class Card1 {
     dynamic participant;
     UsersId? usersId;
     String? cardId;
+    
+    factory Card1.fromJson(Map<String, dynamic> json) => Card1(
+        id: json["id"] == null ? null : json["id"],
+        urlWork: json["urlWork"]== null ? null : json["urlWork"],
+        city: json["city"]== null ? null : json["city"],
+        name: json["name"] == null ? null : json["name"],
+        tagLine: json["tagLine"] == null ? null : json["tagLine"],
+        phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
+        email: json["email"] == null ? null : json["email"],
+        category: json["category"] == null ? null : json["category"],
+        publishedAt: json["publishedAt"] == null ? null: DateTime.parse(json["publishedAt"]),
+        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+        usersId: json["usersId"] == null ? null : json["usersId"],
+        cardId: json["cardId"] == null ? null : json["cardId"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id == null ? null : id,
+        "urlWork": urlWork == null ? null : urlWork,
+        "city":city == null ? null : city,
+        "name": name == null ? null: name,
+        "tagLine": tagLine == null ? null: tagLine,
+        "phoneNumber": phoneNumber == null ? null : phoneNumber,
+        "email": email == null ? null : email,
+        "category": category == null ? null : category,
+        "publishedAt": publishedAt == null ? null : publishedAt!.toIso8601String(),
+        "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
+        "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
+        "usersId": usersId == null ? null : usersId,   
+        "cardId": cardId == null ? null : cardId,  
+      };
 }
 
 class UsersId {

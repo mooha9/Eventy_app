@@ -11,8 +11,6 @@ class ManageCard extends StatelessWidget {
   
   final _controller = Get.put(ManageCardContoller());
 
-  String id ;
-  ManageCard(this.id);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,7 +143,7 @@ class ManageCard extends StatelessWidget {
              Navigator.of(context).push(
             MaterialPageRoute(
               builder: (BuildContext context) {
-                return CreateCard(this.id);
+                return CreateCard();
               },
             ),
           );

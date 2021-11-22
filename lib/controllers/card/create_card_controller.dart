@@ -6,8 +6,9 @@ import 'dart:io';
 
 import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
+// import 'package:eventy_app/models/card/card_models.dart';
 import 'package:eventy_app/services/new_card_service.dart';
-// import 'package:eventy_app/views/pages/drawer/manage_card/create_card.dart';
+// import 'package:eventy_app/views/pages/drawer/manage_event/privet_event.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -16,12 +17,19 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:http/http.dart' as http ;
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
+// import 'package:eventy_app/views/pages/drawer/manage_card/create_card.dart';
 // import 'dart:async';
 // import 'dart:convert';
 class CreateCardContoller extends GetxController {
   static CreateCardContoller get to => Get.find();
   var selectedImagePath = ''.obs;
   var selectedImageSize = ''.obs;
+  var dropdownValue = 'Service Provider'.obs.string;
+  
+  var item = ['Service Provider','Activity Owner','Official Sponser'];
+  
+  
+ 
 
 
   void getImage (ImageSource imageSource) async{
@@ -35,6 +43,8 @@ class CreateCardContoller extends GetxController {
         Get.snackbar("Error", "No Logo Selected");
       }
   }
+  
+  // Card1 card1 = Card1('','','','','','','','','','', );
 
   String id = "",
       category = "",
@@ -42,7 +52,7 @@ class CreateCardContoller extends GetxController {
       workType = "",
       city = "",
       logo = "",
-      url_work = "",
+      urlWork = "",
       tagLine = "",
       email = "" ,
       phoneNumber="";
@@ -60,7 +70,7 @@ class CreateCardContoller extends GetxController {
       "workType": "$workType",
       "city": "$city",
       "logo": "$logo",
-      "url_work": "$url_work",
+      "urlWork": "$urlWork",
       "tagLine": "$tagLine",
       "email": "$email",
       "phoneNumber": "$phoneNumber",
@@ -88,23 +98,48 @@ class CreateCardContoller extends GetxController {
         workType: workType,
         city: city,
         logo: logo,
-        url_work: url_work,
+        urlWork: urlWork,
         tagLine: tagLine,
         email: email,
         phoneNumber:phoneNumber
         );
     if (ok) {
-      Get.toNamed("/SignUp2");
+      Get.toNamed("/ManageCard");
     } else {
       Get.snackbar(
         'Somthing Wrong',
-        'Make Sure Sign Up Info Is Correct',
+        'Make Sure Card Info Is Correct',
         colorText: Colors.white,
         backgroundColor: Colors.red,
       );
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // next() {
   //   Get.toNamed('/SignUp2');
   // }
@@ -127,6 +162,11 @@ class CreateCardContoller extends GetxController {
 //     Logger().d(response.reasonPhrase);
 //   }
 // }
+
+
+
+
+
 
 
   // Future save() async{

@@ -39,7 +39,7 @@ class Routes {
         GetPage(name: "/Search", page: ()=> SearchPage()),
         GetPage(name: "/Card", page: ()=> CardPage()),
         GetPage(name: "/Profile", page: ()=> ProfilePage()),
-        GetPage(name: "/ManageCard", page: ()=> ManageCard('')),
+        GetPage(name: "/ManageCard", page: ()=> ManageCard()),
         GetPage(name: "/ManageEvent", page: ()=> ManageEvent()),
         GetPage(name: "/Participate", page: ()=> Participate()),
         GetPage(name: "/Setting", page: ()=> Setting()),
@@ -50,7 +50,7 @@ class Routes {
         GetPage(name: "/PrivetEvent", page: ()=> PrivetEvent()),
         GetPage(name: "/NotificationPage", page: ()=> NotificationPage()),
         GetPage(name: "/CreatorNotification", page: ()=> CreatorNotification()),
-        GetPage(name: "/CreateCard", page: ()=> CreateCard('')),
+        GetPage(name: "/CreateCard", page: ()=> CreateCard()),
         GetPage(name: "/ChooseParticipate", page: ()=> ChooseParticipate()),
         GetPage(name: "/EventDetails", page: ()=> EventDetails()),
       

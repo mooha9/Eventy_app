@@ -9,6 +9,8 @@
 import 'dart:io';
 
 import 'package:eventy_app/controllers/card/create_card_controller.dart';
+// import 'package:eventy_app/models/card/card_models.dart';
+// import 'package:eventy_app/util/over_viewdata_card.dart';
 // import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -16,7 +18,7 @@ import 'package:flutter/cupertino.dart';
 // import 'package:get/get_core/src/get_main.dart';
 // import 'package:get/get_instance/src/extension_instance.dart';
 
-import 'package:eventy_app/models/card/card_model.dart';
+// import 'package:eventy_app/models/card/card_models.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -26,23 +28,15 @@ import 'package:image_picker/image_picker.dart';
 
 // ignore: must_be_immutable
 class CreateCard extends StatelessWidget {
-  String id ;
-  CreateCard(this.id);
   final _controller = Get.put(CreateCardContoller());
-  File? image ;
-Future pickImage() async {
-  final image = await  ImagePicker().pickImage(source: ImageSource.gallery);
-  if(image == null) return;
-  final imageTamporary = File(image.path);
-  this.image = imageTamporary;
-}
+  
+
   @override
   Widget build(BuildContext context) {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  DBCard card = DBCard('','','','','','','','','','', );
-  // LocalStorage storage = LocalStorage();
+  
+    // LocalStorage storage = LocalStorage();
     // ignore: unused_local_variable
-
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -93,15 +87,81 @@ Future pickImage() async {
                       Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                        Visibility(
-                          visible: false,
-                          child: TextFormField(
-                            controller: TextEditingController(text:card.category),
                             
-                            )),
+                        // Visibility(
+                        //   visible: false,
+                        //   child: TextFormField(
+                        //     controller: TextEditingController(text:_controller.category),
+                        //     )),
                             
-                            SelectCategory(),
-                            
+                            // SelectCategory(),
+              Obx(()=>
+                _controller.dropdownValue == ""? 
+                Column(
+          children: [
+        
+          Container(
+            height: 240.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: _controller.dropdownValue == 'Service Provider'? Colors.teal[300]:Color.fromARGB(200, 212, 175, 55),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 4,
+                  blurRadius: 5,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            width: MediaQuery.of(context).size.width,
+            child: Stack(
+              children: <Widget>[
+               
+              ],
+            ))])
+          :
+                 DropdownButton(
+                
+                value: _controller.dropdownValue ,
+                icon: const Icon(Icons.arrow_drop_down),
+                iconSize: 24,
+                elevation: 16,
+                style: const TextStyle(color: Colors.black87),
+                underline: Container(
+                  height: 2,
+                  color: Colors.teal,
+                ),
+
+                items:_controller.item.map((String item) {
+                  return DropdownMenuItem(
+                    value: _controller.item ,
+                    child: Text(item),
+                  );
+                }).toList(),
+
+
+                onChanged: (value){
+                    _controller.dropdownValue =  _controller.dropdownValue ;
+                  },
+                
+                  // setState(() {
+                  //   dropdownValue = newValue!;
+              
+                  // });
+                
+                          )
+                          
+              ),
+
+
+
+
+
+
+                             SizedBox(
+                              height: 30,
+                            ),
                             Obx(()=>_controller.selectedImagePath.value == ""?
                               Text("select the logo "):
                               Image.file(File(_controller.selectedImagePath.value))
@@ -128,12 +188,12 @@ Future pickImage() async {
                             Divider(),
                             
                             TextFormField(
-                              controller: TextEditingController(text:card.name),
+                              controller: TextEditingController(text:_controller.name),
                               onChanged: (value){
-                                card.name= value;
+                                _controller.name= value;
                               },
                               onSaved: (value) {
-                                    CreateCardContoller.to .name = value!;
+                                    CreateCardContoller.to.name = value!;
                                   },
                                   onTap: () {
                                     _formKey.currentState!.save();
@@ -174,7 +234,7 @@ Future pickImage() async {
                               height: 3,
                             ),
                             TextFormField(
-                              controller: TextEditingController(text:card.workType),
+                              controller: TextEditingController(text:_controller.workType),
                              
                               onSaved: (value) {
                                     CreateCardContoller.to.workType = value!;
@@ -188,7 +248,7 @@ Future pickImage() async {
                                       print("NO workType");
                                   },
                               onChanged: (val){
-                                card.workType= val;
+                                _controller.workType= val;
                               },
                               minLines:
                                   1, // any number you need (It works as the rows for the textarea)
@@ -251,9 +311,9 @@ Future pickImage() async {
                             //   height: 3,
                             // ),
                             TextFormField(
-                              controller: TextEditingController(text:card.city),
+                              controller: TextEditingController(text:_controller.city),
                               onChanged: (val){
-                                card.city= val;
+                                _controller.city= val;
                               },
                                onSaved: (value) {
                                     CreateCardContoller.to.city = value!;
@@ -297,21 +357,21 @@ Future pickImage() async {
                               height: 3,
                             ),
                             TextFormField(
-                              controller: TextEditingController(text:card.url_work),
+                              controller: TextEditingController(text:_controller.urlWork),
                               onChanged: (val){
-                                card.url_work= val;
+                                _controller.urlWork= val;
                               },
                                
                                onSaved: (value) {
-                                    CreateCardContoller.to.url_work = value!;
+                                    CreateCardContoller.to.urlWork = value!;
                                   },
                                   onTap: () {
                                     _formKey.currentState!.save();
-                                    if (_controller.url_work.isNotEmpty)
-                                      print(_controller.url_work);
+                                    if (_controller.urlWork.isNotEmpty)
+                                      print(_controller.urlWork);
 
-                                    if (_controller.url_work.isEmpty)
-                                      print("NO url_work");
+                                    if (_controller.urlWork.isEmpty)
+                                      print("NO urlWork");
                                   },
                               minLines:
                                   1, // any number you need (It works as the rows for the textarea)
@@ -343,9 +403,9 @@ Future pickImage() async {
                               height: 3,
                             ),
                             TextFormField(
-                              controller: TextEditingController(text:card.tagLine),
+                              controller: TextEditingController(text:_controller.tagLine),
                               onChanged: (val){
-                                card.tagLine= val;
+                                _controller.tagLine= val;
                               },
                                onSaved: (value) {
                                     CreateCardContoller.to.tagLine = value!;
@@ -388,9 +448,9 @@ Future pickImage() async {
                               height: 3,
                             ),
                             TextFormField(
-                              controller: TextEditingController(text:card.email),
+                              controller: TextEditingController(text:_controller.email),
                               onChanged: (val){
-                                card.email= val;
+                                _controller.email= val;
                               },
                               onSaved: (value) {
                                     CreateCardContoller.to.email = value!;
@@ -434,9 +494,9 @@ Future pickImage() async {
                               height: 3,
                             ),
                             TextFormField(
-                              controller: TextEditingController(text:card.phoneNumber),
+                              controller: TextEditingController(text:_controller.phoneNumber),
                               onChanged: (val){
-                                card.phoneNumber= val;
+                                _controller.phoneNumber= val;
                               },
                               onSaved: (value) {
                                     CreateCardContoller.to.phoneNumber = value!;
@@ -554,17 +614,9 @@ Future pickImage() async {
 
 
 
-class SelectCategory extends StatefulWidget {
-  const SelectCategory({Key? key}) : super(key: key);
- 
-  @override
-  State<SelectCategory> createState() => _SelectCategoryState();
-}
-
-/// This is the private State class that goes with MyStatefulWidget.
-class _SelectCategoryState extends State<SelectCategory> {
-  String dropdownValue = 'Service Provider';
-
+// ignore: must_be_immutable
+class SelectCategory extends StatelessWidget {
+ String dropdownValue = 'Service Provider';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -653,34 +705,7 @@ class _SelectCategoryState extends State<SelectCategory> {
             SizedBox(
               width: 10,
             ),
-            DropdownButton<String>(
-              
-              value: dropdownValue,
-              icon: const Icon(Icons.arrow_drop_down),
-              iconSize: 24,
-              elevation: 16,
-              style: const TextStyle(color: Colors.black87),
-              underline: Container(
-                height: 2,
-                color: Colors.teal,
-              ),
-              onChanged: (String? newValue) {
-                setState(() {
-                  dropdownValue = newValue!;
-
-                });
-              },
-              items: <String>[
-                'Service Provider',
-                'Activity Owner',
-                'Official Sponser'
-              ].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
+            
             SizedBox(
               width: 50,
             ),
