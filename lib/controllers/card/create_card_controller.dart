@@ -1,14 +1,8 @@
-// ignore_for_file: deprecated_member_use
-
 import 'dart:convert';
-
 import 'dart:io';
-
 import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
-// import 'package:eventy_app/models/card/card_models.dart';
 import 'package:eventy_app/services/new_card_service.dart';
-// import 'package:eventy_app/views/pages/drawer/manage_event/privet_event.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -17,23 +11,35 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:http/http.dart' as http ;
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
-// import 'package:eventy_app/views/pages/drawer/manage_card/create_card.dart';
-// import 'dart:async';
-// import 'dart:convert';
+
 class CreateCardContoller extends GetxController {
   static CreateCardContoller get to => Get.find();
+  List item =<String> ['Service Provider','Activity Owner','Official Sponser'];
+  String? selectedValue;
+  
   var selectedImagePath = ''.obs;
   var selectedImageSize = ''.obs;
-  var dropdownValue = 'Service Provider'.obs.string;
+
+
+  void onSelected (String value){
+    selectedValue = value ;
+    update();
+  }
   
-  var item = ['Service Provider','Activity Owner','Official Sponser'];
+
+  void filedcontent (String value){
+    category = value ;
+    update();
+  }
+   
   
-  
+ 
  
 
 
   void getImage (ImageSource imageSource) async{
 
+      // ignore: deprecated_member_use
       final pickedFile= await ImagePicker().getImage(source: imageSource);
       if(pickedFile!= null){
         selectedImagePath.value = pickedFile.path;
@@ -46,8 +52,8 @@ class CreateCardContoller extends GetxController {
   
   // Card1 card1 = Card1('','','','','','','','','','', );
 
-  String id = "",
-      category = "",
+  String? id = "".obs.string,
+      category = "".obs.string,
       name = "",
       workType = "",
       city = "",
