@@ -58,10 +58,7 @@ class CreateCard extends StatelessWidget {
               color: Colors.teal[50],
               child:  Form(
               key: _formKey,
-              child:
-              //  (SingleChildScrollView(
-              //   child: 
-                GetBuilder<CreateCardContoller>(
+              child:GetBuilder<CreateCardContoller>(
                     init: CreateCardContoller(),
                     builder: (controller) =>
                  ListView(
@@ -94,7 +91,8 @@ class CreateCard extends StatelessWidget {
             ),
             width: MediaQuery.of(context).size.width,
             child: Stack(
-              children: <Widget>[Padding(
+              children: <Widget>[
+                        Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
                               height: 240,
@@ -108,17 +106,25 @@ class CreateCard extends StatelessWidget {
                                   Text("  "+_controller.city.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),),
                                   SizedBox(height: 5,),
                                   Text("   "+_controller.tagLine.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
-                                  SizedBox(height:  80,),
-                                  
-                                  
-                                  
+                                  SizedBox(height:  75,),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              height: 240,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
                                   Text("   "+_controller.email.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
                                   SizedBox(height: 5,),
                                   Text("   "+_controller.urlWork.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
                                   SizedBox(height: 8,),
                                   Text("   "+_controller.phoneNumber.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
                                   SizedBox(height: 5,),
-                                  
                                   
                                 ],
                               ),
@@ -148,59 +154,36 @@ class CreateCard extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                                 
-                                // Padding(
-                                //   padding: const EdgeInsets.fromLTRB(100, 80, 20, 40),
-                                //   child:
-                                   
-                                // ),
-                                  // Obx(()=> Text("   "+_controller.filedcontent.ValueListenableBuilder(
-                                  //   valueListenable:  null,
-                                  //   builder: (BuildContext context, dynamic value, Widget? child) {
-                                  //     return  Container();
-                                  //   },
-                                  // ),() ,style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),)),
-
-                              
-                              
-                            ],
+                              ],
                           )
               ],
             ))]),
           SizedBox(
             height: 20,
-          ),
-      
+          ),      
           Row(
-              
-              mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            //  Obx(()=>Text(_controller.selectedImageSize.value == ""?"":
-            //       _controller.selectedImageSize.value, style: TextStyle(fontWeight: FontWeight.bold),)
-          
-            // ),
              SizedBox(
-              width: 20,
-            ),
+              width: 10,
+                ),
               Container(
                 height: 50,
                 width: 200,
                 child: Expanded(
-                  
+                  // ignore: deprecated_member_use
                   child: RaisedButton(
-                    
-                    onPressed: (){
+                    color: Colors.teal[700],
+                  onPressed: (){
                   _controller.getImage(ImageSource.gallery);
                             },
                   child: Text("select logo", style: TextStyle(color: Colors.white),),
-                            ),
-                            
+                            ),                            
                 ),
               ),
               SizedBox(
-              width: 20,
-            ),
-              
+              width: 10,
+            ),              
             ],
           ),
           SizedBox(
@@ -430,8 +413,7 @@ class CreateCard extends StatelessWidget {
                 color: Colors.teal,
               ),
               prefixText: ' ',
-            ),
-          
+            ),          
           )
           , SizedBox(
             height: 3,
@@ -522,8 +504,7 @@ class CreateCard extends StatelessWidget {
                 color: Colors.teal,
               ),
               prefixText: ' ',
-            ),
-          
+            ),          
           ),
           SizedBox(
             height: 5,
@@ -542,21 +523,14 @@ class CreateCard extends StatelessWidget {
             SizedBox(
               width: 10,
             ),
-             DropdownButton<String>(
-              
+             DropdownButton<String>(              
               hint: Text('Category'),
               underline:SizedBox(),
               value: _controller.selectedValue,
               onChanged: (newValue) {
                 _controller.onSelected(newValue!);
                 CreateCardContoller.to.category = newValue;
-                 _formKey.currentState!.save();
-                 
-                //  if (_controller.category.isNotEmpty)
-                //     print(_controller.category);
-
-                //   if (_controller.category.isEmpty)
-                //     print("NO Category");
+                 _formKey.currentState!.save();              
               },
               elevation: 10,
               items:
@@ -578,6 +552,8 @@ class CreateCard extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
+          
+          
           Positioned(
             bottom: 90,
             left: 110,
@@ -638,8 +614,6 @@ class CreateCard extends StatelessWidget {
                 )
               )
               )
-          //     )
-          // ),
         ]
       )
 

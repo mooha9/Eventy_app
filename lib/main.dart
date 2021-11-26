@@ -13,12 +13,24 @@ class MyApp extends StatelessWidget {
      smartManagement: SmartManagement.full,
      debugShowCheckedModeBanner: false,
      theme: Constants.lightTheme,
-     initialRoute: '/Onboarding',
      // StartPage(),
+     initialRoute: '/Onboarding',
+     
      getPages: Routes.routes
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // class StartPage extends StatelessWidget {
 //   @override
