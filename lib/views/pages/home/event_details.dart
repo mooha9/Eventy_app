@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:eventy_app/util/over_viewdata_event.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class EventDetails extends StatefulWidget {
+class EventDetails extends GetView {
   @override
-  _EventDetailsState createState() => _EventDetailsState();
-}
 
-class _EventDetailsState extends State<EventDetails> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.teal[50],
             appBar: AppBar(
               backgroundColor: Colors.teal[100],
               toolbarHeight: 50,
@@ -280,7 +278,7 @@ class _EventDetailsState extends State<EventDetails> {
    buildImage() {
     return Container(
       height: 240.0,
-      width: MediaQuery.of(context).size.width,
+      // width: MediaQuery.of(context).size.width,
       child: Stack(
         children: <Widget>[
           ClipRRect(
@@ -288,7 +286,7 @@ class _EventDetailsState extends State<EventDetails> {
             child: Image.network(
               "${events.toList()[0]["img"]}",
               height: 240.0,
-              width: MediaQuery.of(context).size.width,
+              // width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
             ),
           ),

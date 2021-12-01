@@ -226,13 +226,13 @@ class NewAdController extends GetxController {
     // logger.d(list.length);
 
     //  get User name
-    username = await Get.find<LoginController>()
+    username = await Get.find<SignInController>()
         .getLoggedInUserObject()
         .then((value) => value!.username);
 
     //  get user Id
 
-    userId = await Get.find<LoginController>()
+    userId = await Get.find<SignInController>()
         .getLoggedInUserObject()
         .then((value) => value!.id);
 

@@ -41,8 +41,8 @@ class _StarterViewState extends State<StarterView> {
   }
 
   void initValues() async {
-    isLogged = Get.find<LoginController>().userLogged.value ;
-    user =  await Get.find<LoginController>().getLoggedInUserObject();
+    isLogged = Get.find<SignInController>().userLogged.value ;
+    user =  await Get.find<SignInController>().getLoggedInUserObject();
     // isUser = Get.put<LoginController>(LoginController()).user;
     if (user != null) {
       Logger().d("user ${user!.email}");

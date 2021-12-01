@@ -1,29 +1,43 @@
+// import 'package:eventy_app/controllers/auth/signin_controller.dart';
+import 'package:eventy_app/controllers/auth/signin_controller.dart';
 import 'package:eventy_app/controllers/profile/profile_controller.dart';
 import 'package:eventy_app/util/over_viewdata_event.dart';
 import 'package:eventy_app/views/pages/drawer/app_drawer.dart';
 import 'package:eventy_app/views/pages/home/event_item.dart';
+// import 'package:eventy_app/views/pages/signin/sign_in.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:logger/logger.dart';
+import 'package:flutter/cupertino.dart';
 
-
-class ProfilePage extends StatelessWidget {
-  final _controller = ProfileController();
+class ProfilePage extends GetView<ProfileController> {
+  // final _controller = ProfileController();
   
   @override
   Widget build(BuildContext context) {
-    Logger().d("ProfileView list " + "${_controller.eventList.length}");
-  return
+    
+    Get.put<SignInController>(SignInController());
+    Logger().d("ProfileView list " + "${controller.cardList.length}");
+  
+
+  return GetBuilder<ProfileController>(
+                    init: ProfileController(),
+                    builder: (controller) =>
+  
   DefaultTabController(
+    
         initialIndex: 1,
         length: 2,
         child: Scaffold(
+          
           endDrawer: AppDrawer(
             
           ),
           backgroundColor: Colors.teal[50],
           appBar: AppBar(
             backgroundColor: Colors.teal[100],
-            toolbarHeight: 300,
+            toolbarHeight: 250,
             elevation: 10,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
@@ -40,26 +54,30 @@ class ProfilePage extends StatelessWidget {
                       height: 350.0,
                       child: Center(
                         child: Column(
+                          
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            
                             CircleAvatar(
                               backgroundColor: Colors.teal,
                               backgroundImage: NetworkImage(
-                              "${_controller.user!.profileImage}",
+                              "${ controller.user!.profileImage?.name}",
                               ),
                               radius: 50.0,
+                              foregroundColor: Colors.red
                             ),
                             SizedBox(
                               height: 10.0,
                             ),
                             Text(
-                               "${_controller.user!.email}",
+                              
+                               "${controller.user!.firstName}",
                               style: TextStyle(
                                   fontSize: 35.0, color: Colors.black),
                             ),
                              Text(
-                              "${_controller.user!.username}",
+                              "@${controller.user!.username}",
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.grey[700]),
                             ),
@@ -67,7 +85,7 @@ class ProfilePage extends StatelessWidget {
                               height: 10.0,
                             ),
                             Text(
-                              "I love a cofee ",
+                              "${controller.user?.bio}",
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black),
                             ),
@@ -89,16 +107,16 @@ class ProfilePage extends StatelessWidget {
               tabs: [
                 Tab(
                     icon: Icon(
-                      Icons.history_rounded,
+                      Icons.festival_rounded,
                       color: Colors.black54,
                     ),
-                    text: 'History'),
+                    text: 'My Events'),
                 Tab(
                     icon: Icon(
                       Icons.credit_card,
                       color: Colors.black54,
                     ),
-                    text: 'Card'),
+                    text: 'My Cards'),
               ],
             ),
             titleSpacing: 20,
@@ -110,8 +128,10 @@ class ProfilePage extends StatelessWidget {
               buildPage2('Card'),
             ],
           ),
-        ),
+        ),)
       );
+  }
+ 
   }
   Widget buildPage1(String text) => Center(
         child: Padding(
@@ -143,4 +163,4 @@ class ProfilePage extends StatelessWidget {
           child: Card(),
         ),
       );
-}
+

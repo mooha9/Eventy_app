@@ -2,17 +2,13 @@ import 'package:eventy_app/views/pages/home/slider_category.dart';
 import 'package:eventy_app/views/pages/home/top_event.dart';
 import 'package:eventy_app/util/over_viewdata_event.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'event_item.dart';
 import 'notifications.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends GetView {
   @override
-  _HomePageState createState() => _HomePageState();
-  
-}
 
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[50],

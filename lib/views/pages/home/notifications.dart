@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class NotificationPage extends StatefulWidget {
+class NotificationPage extends GetView {
   @override
-  _NotificationPageState createState() => _NotificationPageState();
-}
 
-class _NotificationPageState extends State<NotificationPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[50],

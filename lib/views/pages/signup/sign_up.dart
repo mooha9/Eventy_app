@@ -1,10 +1,12 @@
 import 'package:eventy_app/controllers/auth/signup_controller.dart';
 import 'package:eventy_app/data/LocalStorage.dart';
+import 'package:eventy_app/util/app_state.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:logger/logger.dart';
 
@@ -403,27 +405,42 @@ class SignUp extends StatelessWidget {
                                 Container(
                                   // ignore: deprecated_member_use
                                   child: RaisedButton(
-                                    onPressed: () {
-                                      Get.toNamed('/SignUp2');
-                                    },
-                                    // async {
-                                    //   if (_formKey.currentState!.validate()) {
-                                    //     _formKey.currentState!.save();
-
-                                    //     Get.put<SignUpController>(
-                                    //         SignUpController());
-
-                                    //     await _controller.createNewUser2();
-                                    //   }
+                                    onPressed: () 
+                                    // {
+                                    //   Get.toNamed('/SignUp2');
                                     // },
+                                    async {
+                                      if (_formKey.currentState!.validate()) {
+                                        _formKey.currentState!.save();
+
+                                        Get.put<SignUpController>(
+                                            SignUpController());
+
+                                        await _controller.createNewUser2();
+                                        
+                                      }
+                                      
+                                    },
                                     padding:
                                         EdgeInsets.fromLTRB(50, 15, 50, 15),
                                     splashColor: Colors.teal[250],
-                                    child: Text(
-                                      "NEXT",
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.white),
-                                    ),
+                                    child:Obx(
+                                              () { 
+                                                if (_controller.appState2() == AppState.LOADING) {
+                                                  return Center(
+                                                    widthFactor: 0.3,
+                                                    heightFactor: 0.5,
+                                                      child: CircularProgressIndicator(
+                                                        
+                                                        color: Colors.white,
+                                                  ));
+                                                } else {
+                                                  return Text("NEXT",
+                                                  style: TextStyle(
+                                                      fontSize: 20, color: Colors.white),
+                                                );
+                                            }
+                                        }),
                                     shape: RoundedRectangleBorder(
                                       borderRadius:
                                           new BorderRadius.circular(50.0),

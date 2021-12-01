@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class SearchPage extends StatefulWidget {
+class SearchPage extends GetView {
   @override
-  _SearchPageState createState() => _SearchPageState();
-}
 
-class _SearchPageState extends State<SearchPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[50],
@@ -38,9 +35,9 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
       body: Container(
-        constraints: BoxConstraints.tightFor(width: 500),
+        constraints: BoxConstraints.tightFor(width: 500,height: 40),
         //width text field
-        margin: EdgeInsets.all(30),
+        margin: EdgeInsets.all(20),
         child: Material(
           // shadow
           elevation: 5, //shadow
@@ -52,8 +49,8 @@ class _SearchPageState extends State<SearchPage> {
               //size Text field
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-              labelText: "Search for the event",
-              labelStyle: TextStyle(fontSize: 20),
+              labelText: "Search for event or person",
+              labelStyle: TextStyle(fontSize: 15),
               suffixIcon: Icon(Icons.search),
             ),
             keyboardType: TextInputType.text,

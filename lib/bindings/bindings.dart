@@ -15,14 +15,14 @@ class InitialBinding extends Bindings {
   void dependencies() {
     // ignore: todo
     // TODO: implement dependencies
-    Get.lazyPut<LocalStorage>(() => LocalStorage());
-    Get.lazyPut<NewAdController>(() => NewAdController());
-    Get.lazyPut<ProfileController>(() => ProfileController());
-    Get.lazyPut<LoginController>(() => LoginController());
+   
+    Get.lazyPut<SignInController>(() => SignInController());
     Get.lazyPut<SignUpController>(() => SignUpController());
+    Get.lazyPut<LocalStorage>(() => LocalStorage());
+    Get.lazyPut<ProfileController>(()=>ProfileController());
+    Get.lazyPut<NewAdController>(() => NewAdController());
     // Get.lazyPut<AdViewContoller>(() => AdViewContoller());
     // Get.lazyPut<HomeViewController>(() => HomeViewController());
     // Get.lazyPut<HomeView>(() => HomeView());
-    // Get.lazyPut<LoginView>(() => LoginView());
   }
 }

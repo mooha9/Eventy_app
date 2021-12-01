@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:eventy_app/controllers/profile/profile_controller.dart';
+// import 'package:eventy_app/controllers/profile/profile_controller.dart';
 import 'package:eventy_app/helpers/Constants.dart';
 import 'package:eventy_app/models/event.dart';
 
@@ -156,11 +156,11 @@ class Alerts {
       ),
       confirm: TextButton(
         onPressed: () async {
-           Get.put<ProfileController>(ProfileController());
+          //  Get.put<ProfileController>(ProfileController());
 
-          await Get.find<ProfileController>().deleteEvent(model.id!);
-          Get.back();
-           Get.find<ProfileController>().update();
+          // await Get.find<ProfileController>().deleteEvent(model.id!);
+          // Get.back();
+          //  Get.find<ProfileController>().update();
 
 
         },

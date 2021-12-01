@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 
-class CardItem extends StatelessWidget {
+class CardItem extends GetView {
   final Map card;
   CardItem({required this.card});
   

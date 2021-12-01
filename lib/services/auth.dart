@@ -44,7 +44,10 @@ class AuthService {
     return null;
   }
 
-  Future<bool> userSignUp({ firstname,lastname,email,phonenumber,identifier,password,confirmpassword}) async {
+  Future<bool> userSignUp({ firstname,lastname,email,phonenumber,identifier,password,confirmpassword
+  // , country, city, gender, age
+  
+  }) async {
     var headers = {'Content-Type': 'application/json'};
     var body = jsonEncode({
       
@@ -55,6 +58,10 @@ class AuthService {
       "phonenumber": "$phonenumber",
       "password": "$password",
       "confirmpassword": "$confirmpassword",
+      // "country": "$country",
+      // "city": "$city",
+      // "gender": "$gender",
+      // "age": "$age",
     });
     var response = await http.post(Uri.parse('$BaseUrl$AuthUrlRegister'),
         headers: headers, body: body);

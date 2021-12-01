@@ -1,10 +1,17 @@
 import 'package:eventy_app/routes/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'bindings/bindings.dart';
 import 'helpers/consts/app_colors.dart';
 
 
-void main() => runApp(MyApp());
+void main() async {
+  await GetStorage.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  InitialBinding().dependencies();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -15,7 +22,7 @@ class MyApp extends StatelessWidget {
      theme: Constants.lightTheme,
      // StartPage(),
      initialRoute: '/Onboarding',
-     
+     initialBinding: InitialBinding(),
      getPages: Routes.routes
     );
   }

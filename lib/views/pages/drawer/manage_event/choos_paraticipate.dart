@@ -81,8 +81,9 @@ byID() {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Person ID :',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
               SizedBox(height: 10,),
+              Text('Person ID :',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+              SizedBox(height: 15,),
               TextField(
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -93,7 +94,7 @@ byID() {
                     ),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 30,),
             
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -130,8 +131,9 @@ selectParticipate() {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Select what you need from other \nto participate you :',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
               SizedBox(height: 10,),
+              Text('Select what you need from other \nto participate you :',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+              SizedBox(height: 15,),
               Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
@@ -157,18 +159,25 @@ selectParticipate() {
                     onChanged: (value) => print(value),
                   ),
                 ),
-                SizedBox(height: 10,),
-                Center(
-                  
-                  child: IconButton(
-                    onPressed: (){},
-                    icon:Icon(Icons.add_circle),
-                    color: Colors.teal,
-                    iconSize: 50,
-                    splashRadius: 30,
+                SizedBox(height: 20,),
+                
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    maxLines:6,
                     
-                    )),
-                    SizedBox(height: 10,),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      
+                      hintText: 'Write discription for your needs',
+                      prefixIcon: const Icon(
+                            Icons.description ,
+                            color: Colors.teal,
+                          ),
+                    ),
+                  ),
+                ),  
+                SizedBox(height: 20,),
                     // ignore: deprecated_member_use
                     Center(
                       // ignore: deprecated_member_use

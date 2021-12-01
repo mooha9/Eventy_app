@@ -1,4 +1,5 @@
 import 'package:eventy_app/controllers/auth/signin_controller.dart';
+import 'package:eventy_app/models/card/card_models.dart';
 import 'package:eventy_app/models/event.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
@@ -6,16 +7,50 @@ import 'package:eventy_app/services/profile.dart';
 
 class ProfileController extends GetxController {
   final profileService = ProfileService();
-
+  
   List<Event> eventList = <Event>[];
+  List<Card1> cardList = <Card1>[];
   List<Comment> commentList = <Comment>[];
 
-  // int userId = 4;
   User? user = User();
+
+
+
+    // Future<List<User>?> getInfoForUser() async {
+    // Logger().d("getInfoForUser ");
+    // user = await Get.find<LoginController>().getLoggedInUserObject();
+
+    // var userId = user!.id!;
+    // Logger().d(userId.toString());
+    // }
+
+    Future<List<Card1>?> getCardsListForUser() async {
+    Logger().d("getCardsListForUser ");
+    user = await Get.find<SignInController>().getLoggedInUserObject();
+    var userId = user!.id!;
+    Logger().d(userId.toString());
+    
+    try {
+      await profileService.getCardsForUser(userId).then((value) {
+        cardList.clear();
+
+        cardList = value!.map((element) => Card1.fromJson(element)).toList();
+        cardList.forEach((Card1 element) {
+          // Logger().d("${element.title}");
+        });
+        // Logger().d("FILTER LIST ${_Events.length}");
+      });
+    } catch (e) {
+      Logger().d(e);
+    }
+    update();
+
+    return cardList;
+  }
 
   Future<List<Event>?> getEventsListForUser() async {
     Logger().d("getEventsListForUser ");
-    user = await Get.find<LoginController>().getLoggedInUserObject();
+    user = await Get.find<SignInController>().getLoggedInUserObject();
 
     var userId = user!.id!;
     Logger().d(userId.toString());
@@ -38,6 +73,8 @@ class ProfileController extends GetxController {
     return eventList;
   }
 
+
+
   Future deleteEvent(int eventId) async {
     Logger().d("deleteEvent ");
 
@@ -57,6 +94,16 @@ class ProfileController extends GetxController {
 
     return eventList;
   }
+
+  @override
+  void onInit() async {
+    // ignore: todo
+    // TODO: implement onInit
+    super.onInit();
+    await getEventsListForUser();
+    // await getCommentsForUser(userId);
+  }
+
 
   // Future<List<Comment>?> getCommentsForUser(int userId) async {
   //   Logger().d("getCommentsForUser ");
@@ -81,12 +128,4 @@ class ProfileController extends GetxController {
   //   return commentList;
   // }
 
-  @override
-  void onInit() async {
-    // ignore: todo
-    // TODO: implement onInit
-    super.onInit();
-    await getEventsListForUser();
-    // await getCommentsForUser(userId);
-  }
 }

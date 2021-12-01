@@ -1,15 +1,12 @@
 import 'package:eventy_app/util/over_viewdata_card.dart';
 import 'package:eventy_app/views/pages/home/card_item.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 
-class CardPage extends StatefulWidget {
+class CardPage extends GetView {
   @override
-  _CardPageState createState() => _CardPageState();
-}
 
-class _CardPageState extends State<CardPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[50],
@@ -43,9 +40,9 @@ class _CardPageState extends State<CardPage> {
       body:Stack(
         children:[
         Container(
-              constraints: BoxConstraints.tightFor(width: 500),
-              //width text field
-              margin: EdgeInsets.all(30),
+              constraints: BoxConstraints.tightFor(width: 500,height: 40),
+        //width text field
+        margin: EdgeInsets.all(20),
               child: Material(
                 // shadow
                 elevation: 5, //shadow
@@ -53,12 +50,12 @@ class _CardPageState extends State<CardPage> {
                 borderRadius: BorderRadius.circular(32.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(8),
+                    contentPadding: EdgeInsets.all(5),
                     //size Text field
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),
-                    labelText: "Search for the card",
-                    labelStyle: TextStyle(fontSize: 20),
+                    labelText: "Search card",
+                    labelStyle: TextStyle(fontSize: 15),
                     suffixIcon: Icon(Icons.credit_card_outlined),
                   ),
                   keyboardType: TextInputType.text,
@@ -74,7 +71,7 @@ class _CardPageState extends State<CardPage> {
                 padding: EdgeInsets.only(right: 20.0),
               ),
              SizedBox(height: 10.0),
-              cardList(),
+              // cardList(),
               SizedBox(height: 10.0),
             ],
           ),

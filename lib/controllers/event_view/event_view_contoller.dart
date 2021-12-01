@@ -95,7 +95,7 @@ class EventViewContoller extends GetxController {
 
   Future<NewComment> createNewCommentObject(event) async {
     NewComment comment;
-    User? user = await Get.find<LoginController>().getLoggedInUserObject();
+    User? user = await Get.find<SignInController>().getLoggedInUserObject();
 
     comment = NewComment(
         commentText: commentText,

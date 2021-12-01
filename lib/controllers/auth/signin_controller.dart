@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 // ignore: unused_import
-import 'package:eventy_app/routes/route.dart';
 import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/services/auth.dart';
 import 'package:eventy_app/util/app_state.dart';
 
-class LoginController extends GetxController {
+class SignInController extends GetxController {
+
   String identifier = "", password = "", name = "";
   RxBool userLogged = false.obs;
   LocalStorage storage = LocalStorage();
@@ -82,6 +82,8 @@ class LoginController extends GetxController {
     // // update();
     return _user;
   }
+
+  
   signUp(){
     Get.toNamed('/SignUp');
   }

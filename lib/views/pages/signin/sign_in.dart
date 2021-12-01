@@ -7,13 +7,11 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:logger/logger.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends GetView<SignInController> {
  
-  final _controller = Get.put(LoginController());
-  
   @override
   Widget build(BuildContext context) {
-    var _formKey = _controller.formKey ;
+    var _formKey = controller.formKey ;
     return Scaffold(
       body: Container(
             decoration: BoxDecoration(
@@ -37,8 +35,8 @@ class SignIn extends StatelessWidget {
             ),
             
             SingleChildScrollView(
-              child:  GetBuilder<LoginController>(
-          init: LoginController(),
+              child:  GetBuilder<SignInController>(
+          init: SignInController(),
           builder: (controller) => 
                Column(
    
@@ -57,14 +55,14 @@ class SignIn extends StatelessWidget {
                       key: _formKey,
                       child: TextFormField(
                         onSaved: (value) async {
-                        _controller.identifier = value!.trim();
+                        controller.identifier = value!.trim();
                       },
                             onChanged: (value) {
-                              _controller.identifier = value.trim();
-                              Logger().d("${_controller.identifier}");
+                              controller.identifier = value.trim();
+                              Logger().d("${controller.identifier}");
                             },
                             onTap: () {
-                              Logger().d("${_controller.identifier}");
+                              Logger().d("${controller.identifier}");
                     
                               // printInfo(info: "${_controller.identifier}");
                             },
@@ -110,15 +108,15 @@ class SignIn extends StatelessWidget {
                   
                   child: TextFormField(
                     onSaved: (value) {
-                    _controller.password = value!.trim();
-                          Logger().d("${_controller.password}");
+                    controller.password = value!.trim();
+                          Logger().d("${controller.password}");
                         },
                         onChanged: (value) {
-                          _controller.password = value.trim();
-                          Logger().d("${_controller.password}");
+                          controller.password = value.trim();
+                          Logger().d("${controller.password}");
                         },
                         onTap: () {
-                          Logger().d("${_controller.password}");
+                          Logger().d("${controller.password}");
                 
                           // printInfo(info: "${_controller.identifier}");
                         },
@@ -138,14 +136,14 @@ class SignIn extends StatelessWidget {
                         //for example name
                         hintStyle: TextStyle(fontSize: 15),
                         suffixIcon: IconButton(
-                           onPressed:  _controller.toggleHiddenStatus,
+                           onPressed:  controller.toggleHiddenStatus,
                               icon: Icon(
-                                 _controller.isHidden? Icons.visibility_off : Icons.visibility
+                                 controller.isHidden? Icons.visibility_off : Icons.visibility
                               ),
                         )
                       ),
                       keyboardType: TextInputType.visiblePassword,
-                      obscureText: _controller.isHidden,
+                      obscureText: controller.isHidden,
                     ),
                 ),
                 
@@ -184,7 +182,7 @@ class SignIn extends StatelessWidget {
                   splashColor: Color(0xff4ABD9F),
                   child:Obx(
                     () { 
-                      if (_controller.appState() == AppState.LOADING) {
+                      if (controller.appState() == AppState.LOADING) {
                         return Center(
                           widthFactor: 0.3,
                           heightFactor: 0.5,
@@ -224,7 +222,7 @@ class SignIn extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: _controller.signUp,
+                    onPressed: controller.signUp,
                     child: Text(
                               'SIGN UP',
                       textAlign: TextAlign.left,
@@ -247,14 +245,14 @@ class SignIn extends StatelessWidget {
     );
   }
   loginUser(_formKey) async {
-    Get.put<LoginController>(LoginController());
+    Get.put<SignInController>(SignInController());
      //test the time request
       print('======================================================================');
 
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
-      await _controller.signInUser();
+      await controller.signInUser();
            //test the time request
             print('======================================================================');
       // await controller.loginUser2();

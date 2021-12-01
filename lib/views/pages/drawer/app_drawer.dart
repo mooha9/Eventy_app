@@ -1,3 +1,4 @@
+import 'package:eventy_app/views/pages/drawer/history/history.dart';
 import 'package:eventy_app/views/pages/drawer/manage_card/manage_card.dart';
 import 'package:eventy_app/views/pages/drawer/manage_event/manage_event.dart';
 import 'package:eventy_app/views/pages/drawer/participate_event/participate.dart';
@@ -24,32 +25,8 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
-          ListTile(
-            title: Text(
-              'Manage card',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            leading: Icon(
-              Icons.credit_card,
-              size: 30,
-              color: Colors.teal[400],
-            ),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return ManageCard();
-                  },
-                ),
-              );
-            },
-          ),
-          Divider(),
           ListTile(
             title: Text(
               'Manage event',
@@ -74,12 +51,34 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           Divider(),
-          SizedBox(
-            height: 20,
-          ),
           ListTile(
             title: Text(
-              'Participate with Event',
+              'Manage card',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            leading: Icon(
+              Icons.credit_card,
+              size: 30,
+              color: Colors.teal[400],
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return ManageCard();
+                  },
+                ),
+              );
+            },
+          ),
+          Divider(),
+          
+          ListTile(
+            title: Text(
+              'Event Participate',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -101,9 +100,30 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           Divider(),
-          SizedBox(
-            height: 20,
+          ListTile(
+            title: Text(
+              'History',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            leading: Icon(
+              Icons.history_rounded,
+              size: 30,
+              color: Colors.teal[400],
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return History();
+                  },
+                ),
+              );
+            },
           ),
+           Divider(),
           ListTile(
             title: Text(
               'Setting',

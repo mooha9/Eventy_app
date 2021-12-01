@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:eventy_app/util/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -10,20 +11,22 @@ import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
 import 'package:eventy_app/services/auth.dart';
 
+
+
 class SignUpController extends GetxController {
   static SignUpController get to => Get.find();
+  var isLoading = false.obs;
   var isHidden1 = true;
   var isHidden2 = true;
-  String firstname = "",
-      lastname = "",
-      email = "",
-      username = "",
-      phonenumber = "",
-      password = "",
-      confirmpassword = "";
+  String firstname = "",lastname = "",email = "",username = "",phonenumber = "",password = "",confirmpassword = ""
+  // ,country = "",city = "",gender = "",age = ""
+  ;
   RxBool userLogged = false.obs;
   LocalStorage storage = LocalStorage();
   final AuthService authService = AuthService();
+
+  final appState2 = Rx<AppState>(AppState.IDLE);
+  var isPreesed = false.obs;
 
   createNewUser() async {
     var url = "$BaseUrl/auth/local/register";
@@ -35,6 +38,10 @@ class SignUpController extends GetxController {
       "phonenumber": "$phonenumber",
       "password": "$password",
       "confirmpassword": "$confirmpassword",
+      // "country":"$country",
+      // "city":"$city",
+      // "gender":"$gender",
+      // "age": "$age",
     });
     var headers = {'Content-Type': 'application/json'};
 
@@ -52,6 +59,8 @@ class SignUpController extends GetxController {
   }
 
   createNewUser2() async {
+    appState2.value = AppState.LOADING;
+    isPreesed.value = true;
     var ok = await authService.userSignUp(
         firstname: firstname,
         lastname: lastname,
@@ -59,7 +68,12 @@ class SignUpController extends GetxController {
         identifier: username,
         phonenumber: phonenumber,
         password: password,
-        confirmpassword: confirmpassword);
+        confirmpassword: confirmpassword,
+        // country: country,
+        // city: city,
+        // gender: gender, 
+        // age: age,
+        );
     if (ok) {
       Get.toNamed("/SignUp2");
     } else {
@@ -70,11 +84,9 @@ class SignUpController extends GetxController {
         backgroundColor: Colors.red,
       );
     }
+    appState2.value = AppState.DONE;
+    isPreesed.value = false;
   }
-
-  // next() {
-  //   Get.toNamed('/SignUp2');
-  // }
 
   void toggleHidden1Status() {
     isHidden1 = !isHidden1;
@@ -97,6 +109,7 @@ class SignUpController extends GetxController {
 
     update();
   }
+
 // createNewUser2() async {
 //   var url = "$BaseUrl/auth/local/register";
 //

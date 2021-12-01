@@ -19,6 +19,7 @@ class _PublicEventState extends State<PublicEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.teal[50],
             appBar: AppBar(
               title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -327,7 +328,7 @@ class _PublicEventState extends State<PublicEvent> {
                 
                 Divider(),
                  Text(
-                  "Service Provider:",
+                  "Service Provider :",
                   style: TextStyle(
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,
@@ -337,7 +338,7 @@ class _PublicEventState extends State<PublicEvent> {
                 SizedBox(height: 10.0),
                 Divider(),
                  Text(
-                  "Activity Owner:",
+                  "Activity Owner :",
                   style: TextStyle(
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,
@@ -347,7 +348,7 @@ class _PublicEventState extends State<PublicEvent> {
                 SizedBox(height: 10.0),
                 Divider(),
                  Text(
-                  "Official Sponsors:",
+                  "Official Sponsors :",
                   style: TextStyle(
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,

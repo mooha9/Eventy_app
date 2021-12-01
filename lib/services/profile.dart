@@ -20,6 +20,21 @@ class ProfileService {
       Logger().d("Error Geting Data");
     }
   }
+
+  Future<List<dynamic>?> getCardsForUser(userId) async {
+    var url = "$BaseUrl/cards?user.id=$userId";
+    var response = await http.get(Uri.parse("$url"), headers: headersNoAuth);
+    final data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      Logger().d("$data");
+
+      return data;
+    } else {
+      Logger().d("Error Geting Data");
+    }
+  }
+
+  
   Future<dynamic> deleteEvent(eventId) async {
     var url = "$BaseUrl/Events/$eventId";
     var userToken = await AuthService().getLoggedUserId();

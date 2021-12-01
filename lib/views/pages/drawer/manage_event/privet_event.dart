@@ -19,6 +19,7 @@ class _PrivetEventState extends State<PrivetEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.teal[50],
             appBar: AppBar(
               title: Row(
           mainAxisAlignment: MainAxisAlignment.center,

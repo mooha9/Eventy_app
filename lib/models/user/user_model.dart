@@ -459,7 +459,7 @@ class ProfileImage {
         width: json["width"] == null ? null : json["width"],
         height: json["height"] == null ? null : json["height"],
         url: json["url"] == null ? null : json["url"],
-        formats: json["formats"] == null ? null : json["formats"],
+       formats: json["formats"] == null ? null : Formats.fromJson(json["formats"]),
         related: json["related"] == null ? null : List<String>.from(json["related"].map((x) => x)),
         provider: json["provider"] == null ? null : json["provider"],
         createdAt: json["createdAt"] == null ? null: DateTime.parse(json["createdAt"]),
@@ -479,7 +479,7 @@ class ProfileImage {
         "width": width == null ? null : width,
         "height": height == null ? null : height,
         "url": url == null ? null : url,
-        "formats": formats == null ? null : formats,
+       "formats": formats == null ? null : formats!.toJson(),
         "provider": provider == null ? null : provider,
         "related": related == null ? null : List<String>.from(related!.map((x) => x)),
         "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
@@ -500,6 +500,20 @@ class Formats {
     Large? large;
     Large? medium;
     Large? small;
+
+    factory Formats.fromJson(Map<String, dynamic> json) => Formats(
+    thumbnail: json["thumbnail"] == null ? null : Large.fromJson(json["thumbnail"]),
+    large: json["large"] == null ? null : Large.fromJson(json["large"]),
+    medium: json["medium"] == null ? null : Large.fromJson(json["medium"]),
+    small: json["small"] == null ? null : Large.fromJson(json["small"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "thumbnail": thumbnail == null ? null : thumbnail!.toJson(),
+    "large": large == null ? null : large!.toJson(),
+    "medium": medium == null ? null : medium!.toJson(),
+    "small": small == null ? null : small!.toJson(),
+  };
 }
 
 class Large {
@@ -524,6 +538,30 @@ class Large {
     double? size;
     dynamic path;
     String? url;
+
+    factory Large.fromJson(Map<String, dynamic> json) => Large(
+    name: json["name"] == null ? null : json["name"],
+    hash: json["hash"] == null ? null : json["hash"],
+    ext: json["ext"] == null ? null : json["ext"],
+    mime: json["mime"] == null ? null : json["mime"],
+    width: json["width"] == null ? null : json["width"],
+    height: json["height"] == null ? null : json["height"],
+    size: json["size"] == null ? null : json["size"].toDouble(),
+    path: json["path"],
+    url: json["url"] == null ? null : json["url"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "name": name == null ? null : name,
+    "hash": hash == null ? null : hash,
+    "ext": ext == null ? null : ext,
+    "mime": mime == null ? null : mime,
+    "width": width == null ? null : width,
+    "height": height == null ? null : height,
+    "size": size == null ? null : size,
+    "path": path,
+    "url": url == null ? null : url,
+  };
 }
 
 class Role {

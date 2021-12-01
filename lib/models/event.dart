@@ -5,8 +5,8 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:convert';
+import 'package:eventy_app/models/user/user_model.dart';
 
-import 'UploadModel.dart';
 
 Event EventFromJson(String str) => Event.fromJson(json.decode(str));
 
@@ -316,7 +316,7 @@ class Comment {
     // this.user,
   });
 
-  int? id;
+  String? id;
   String? commentText;
   DateTime? publishedAt;
   DateTime? createdAt;
@@ -324,7 +324,7 @@ class Comment {
   // User? user;
 
   factory Comment.fromJson(Map<String, dynamic> json) => Comment(
-        id: json["id"],
+        id: json["id"] == null ? null : json["id"],
         commentText: json["CommentText"] == null ? null : json["CommentText"],
         // user: json["user"] == null ? null : User.fromJson(json["user"]),
         publishedAt: DateTime.parse(json["published_at"]),
@@ -345,7 +345,9 @@ class Comment {
 class User {
   User({
     this.id,
+    this.firstName,
     this.username,
+    this.bio,
     this.email,
     this.profileImage,
     this.provider,
@@ -359,8 +361,10 @@ class User {
   
   String? id;
   String? username;
+  String? firstName;
+  String? bio;
   String? email;
-  String? profileImage;
+  ProfileImage? profileImage;
   String? provider;
   bool? confirmed;
   dynamic blocked;
@@ -373,6 +377,9 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"] == null ? null : json["id"],
         username: json["username"] == null ? null : json["username"],
+        firstName: json["firstName"] == null ? null : json["firstName"],
+        bio: json["bio"] == null ? null : json["bio"],
+        profileImage: json["profileImage"] == null? null: ProfileImage.fromJson(json["profileImage"]),
         email: json["email"] == null ? null : json["email"],
         provider: json["provider"] == null ? null : json["provider"],
         confirmed: json["confirmed"] == null ? null : json["confirmed"],
@@ -394,13 +401,15 @@ class User {
   Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
         "username": username == null ? null : username,
+        "firstName": firstName == null ? null : firstName,
+        "bio": bio == null ? null : bio,
+        "profileImage": profileImage == null ? null : profileImage!.name,
         "email": email == null ? null : email,
         "provider": provider == null ? null : provider,
         "confirmed": confirmed == null ? null : confirmed,
         "blocked": blocked,
         // "role": role == null ? null : role,
         // "role": role == null ? null : role!.toJson(),
-
         "created_at": createdAt == null ? null : createdAt!.toIso8601String(),
         "updated_at": updatedAt == null ? null : updatedAt!.toIso8601String(),
         "comments": comments == null
