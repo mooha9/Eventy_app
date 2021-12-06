@@ -53,10 +53,10 @@ class NewCardService {
   var token;
   LocalStorage storage = LocalStorage();
  
-  Future<bool> cardCreate({ id,category,name,workType,phonenumber,city,email,logo,urlWork,tagLine,username,phoneNumber}) async {
+  Future<bool> cardCreate({ category,name,workType,city,email,logo,urlWork,tagLine,phoneNumber}) async {
     var headers = {'Content-Type': 'application/json'};
     var body = jsonEncode({
-      "id":"$id",
+      
       "category": "$category",
       "name": "$name",
       "workType": "$workType",
@@ -65,7 +65,7 @@ class NewCardService {
       "urlWork": "$urlWork",
       "tagLine": "$tagLine",
       "email": "$email",
-      "phonenumber": "$phonenumber",
+      "phonenumber": "$phoneNumber",
       
     });
     var response = await http.post(Uri.parse('$BaseUrl/cards'),

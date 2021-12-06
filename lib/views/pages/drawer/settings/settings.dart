@@ -1,12 +1,19 @@
+import 'package:eventy_app/controllers/auth/signin_controller.dart';
+import 'package:eventy_app/controllers/profile/profile_controller.dart';
 import 'package:eventy_app/views/pages/drawer/settings/profile_edit.dart';
 import 'package:eventy_app/views/pages/drawer/settings/profile_privacy.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Setting extends StatelessWidget {
+class Setting extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+
+   Get.put<SignInController>(SignInController());
+    return GetBuilder<ProfileController>(
+                    init: ProfileController(),
+                    builder: (controller) =>
+      Scaffold(
         backgroundColor: Colors.teal[50],
         appBar: AppBar(
           backgroundColor: Colors.teal[100],
@@ -43,10 +50,13 @@ class Setting extends StatelessWidget {
                 child: Row(
                   children: [
                     CircleAvatar(
-                      radius: 50,
-                      backgroundColor: Colors.teal,
-                      
-                    ),
+                              backgroundColor: Colors.teal,
+                              backgroundImage: NetworkImage(
+                              "${controller.user!.profileImage?.name}",
+                              ),
+                              radius: 50.0,
+                              foregroundColor: Colors.red
+                            ),
                     SizedBox(
                       width: 20,
                     ),
@@ -54,7 +64,7 @@ class Setting extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Saleh',
+                          "${controller.user!.firstName}",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -62,7 +72,7 @@ class Setting extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          "I love coffee",
+                          "${controller.user!.bio}",
                           style: TextStyle(color: Colors.grey, fontSize: 14),
                         ),
                       ],
@@ -76,14 +86,7 @@ class Setting extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Text('Account',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              ),
+             
               SizedBox(
                 height: 10,
               ),            ListTile(
@@ -180,7 +183,8 @@ class Setting extends StatelessWidget {
                           FlatButton(
                             child: Text('Logout'),
                             onPressed:(){
-                                  Get.offAllNamed("/SignIn");
+                             Get.offAndToNamed("/SignIn");
+                                  //Get.offAllNamed("/SignIn");
                             }
                           ),
                           ],
@@ -196,7 +200,7 @@ class Setting extends StatelessWidget {
             ],
           ),
         ),
-      );
+    ));
   }
  
   // showLogoutDealog() {

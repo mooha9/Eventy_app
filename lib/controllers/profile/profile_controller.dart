@@ -16,13 +16,6 @@ class ProfileController extends GetxController {
 
 
 
-    // Future<List<User>?> getInfoForUser() async {
-    // Logger().d("getInfoForUser ");
-    // user = await Get.find<LoginController>().getLoggedInUserObject();
-
-    // var userId = user!.id!;
-    // Logger().d(userId.toString());
-    // }
 
     Future<List<Card1>?> getCardsListForUser() async {
     Logger().d("getCardsListForUser ");
@@ -73,6 +66,13 @@ class ProfileController extends GetxController {
     return eventList;
   }
 
+    // Future<List<User>?> getInfoForUser() async {
+    // Logger().d("getInfoForUser ");
+    // user = await Get.find<LoginController>().getLoggedInUserObject();
+
+    // var userId = user!.id!;
+    // Logger().d(userId.toString());
+    // }
 
 
   Future deleteEvent(int eventId) async {

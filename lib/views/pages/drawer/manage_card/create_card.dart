@@ -148,9 +148,10 @@ class CreateCard extends StatelessWidget {
                                     SizedBox(height: 5,),
                                     Obx(()=>_controller.selectedImagePath.value == ""?
                                           Text(""):
-                                          Image.file(File(_controller.selectedImagePath.value),width: 120,height: 120,)
-                                          //  _controller.selectedImagePath.value ==_controller.logo
+                                          Image.file(File(_controller.selectedImagePath.value ),width: 120,height: 120, ),
+                                          
                                           ),
+                                            
                                   ],
                                 ),
                               ),
@@ -170,15 +171,17 @@ class CreateCard extends StatelessWidget {
               Container(
                 height: 50,
                 width: 200,
-                child: Expanded(
-                  // ignore: deprecated_member_use
-                  child: RaisedButton(
+                child: RaisedButton(
                     color: Colors.teal[700],
+                    
                   onPressed: (){
                   _controller.getImage(ImageSource.gallery);
+                  _controller.selectedImagePath.value == _controller.logo;
                             },
+                            
+                            
                   child: Text("select logo", style: TextStyle(color: Colors.white),),
-                            ),                            
+                                                     
                 ),
               ),
               SizedBox(
@@ -530,7 +533,8 @@ class CreateCard extends StatelessWidget {
               onChanged: (newValue) {
                 _controller.onSelected(newValue!);
                 CreateCardContoller.to.category = newValue;
-                 _formKey.currentState!.save();              
+                 _formKey.currentState!.save(); 
+                 print(_controller.category);             
               },
               elevation: 10,
               items:
@@ -554,10 +558,7 @@ class CreateCard extends StatelessWidget {
           ),
           
           
-          Positioned(
-            bottom: 90,
-            left: 110,
-            child: Container(
+           Container(
               height: 60,
               width: 200,
               decoration: const BoxDecoration(
@@ -603,7 +604,7 @@ class CreateCard extends StatelessWidget {
                     ),
                   )),
             ),
-          ),
+        
           SizedBox(
             height: 50,
           ),

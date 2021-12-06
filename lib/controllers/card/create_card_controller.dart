@@ -51,17 +51,17 @@ class CreateCardContoller extends GetxController {
   }
   
   // Card1 card1 = Card1('','','','','','','','','','', );
-
-  String? id = "".obs.string,
+    final logo = "".obs;
+  String? 
       category = "".obs.string,
       name = "",
       workType = "",
       city = "",
-      logo = "",
+      
       urlWork = "",
       tagLine = "",
       email = "" ,
-      phoneNumber="";
+      phoneNumber = "";
 
   RxBool userLogged = false.obs;
   LocalStorage storage = LocalStorage();
@@ -70,7 +70,7 @@ class CreateCardContoller extends GetxController {
   createNewCard() async {
     var url = "$BaseUrl/cards";
     var body = jsonEncode({
-      "id": "$id",
+
       "category": "$category",
       "name": "$name",
       "workType": "$workType",
@@ -98,7 +98,7 @@ class CreateCardContoller extends GetxController {
 
   createNewCard2() async {
     var ok = await  cardService.cardCreate(
-        id: id,
+
         category: category,
         name: name,
         workType: workType,
@@ -120,6 +120,8 @@ class CreateCardContoller extends GetxController {
       );
     }
   }
+
+  
 }
 
 

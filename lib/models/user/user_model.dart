@@ -1,30 +1,7 @@
 
 
 class User {
-    User({
-        this.confirmed,
-        this.blocked,
-        this.gender,
-        this.id,
-        this.lastName,
-        this.username,
-        this.phoneNumber,
-        this.firstName,
-        this.email,
-        this.age,
-        this.provider,
-        this.createdAt,
-        this.updatedAt,
-        this.v,
-        this.countryId,
-        this.profileImage,
-        this.role,
-        this.cityId,
-        this.cards,
-        this.visitors,
-        this.comments,
-        this.creator,
-        this.userId,
+    User({this.confirmed,this.blocked, this.gender, this.id,this.lastName,this.username,this.phoneNumber, this.firstName,this.email,this.age,this.provider,this.createdAt,this.updatedAt,this.v,this.countryId,this.profileImage,this.role,this.cityId,this.cards,this.visitors,this.comments,this.creator,this.userId,
     });
 
     bool? confirmed;

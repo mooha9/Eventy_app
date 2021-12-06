@@ -3,11 +3,12 @@ import 'package:eventy_app/views/pages/drawer/manage_card/manage_card.dart';
 import 'package:eventy_app/views/pages/drawer/manage_event/manage_event.dart';
 import 'package:eventy_app/views/pages/drawer/participate_event/participate.dart';
 import 'package:flutter/material.dart';
-import 'package:eventy_app/views/pages/drawer/settings/settings.dart';
+// import 'package:eventy_app/views/pages/drawer/settings/settings.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class AppDrawer extends StatelessWidget {
-  const AppDrawer({Key? key}) : super(key: key);
-
+class AppDrawer extends GetView {
+ 
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -138,13 +139,7 @@ class AppDrawer extends StatelessWidget {
               color: Colors.teal[400],
             ),
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return Setting();
-                  },
-                ),
-              );
+              Get.toNamed("/Setting");
             },
           ),
           Divider(),
