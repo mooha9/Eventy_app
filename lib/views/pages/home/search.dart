@@ -49,7 +49,7 @@ class SearchPage extends GetView {
               //size Text field
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-              labelText: "Search for event or person",
+              labelText: "Search for users",
               labelStyle: TextStyle(fontSize: 15),
               suffixIcon: Icon(Icons.search),
             ),

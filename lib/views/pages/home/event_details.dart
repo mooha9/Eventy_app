@@ -249,8 +249,8 @@ class EventDetails extends GetView {
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
                               colors: [
-                                    Color.fromARGB(240,78, 197, 241),
-                                  Color.fromARGB(240,13, 242, 201),
+                                      Color.fromARGB(240,100, 196, 184),
+                                      Color.fromARGB(250,74, 157, 196),
                                         ],
                             )
                             ),

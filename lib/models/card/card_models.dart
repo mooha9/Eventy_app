@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 
+
 Card1 card1FromJson(String str) => Card1.fromJson(json.decode(str));
 
 String card1ToJson(Card1 data) => json.encode(data.toJson());
@@ -56,7 +57,7 @@ class Card1 {
         publishedAt: json["publishedAt"] == null ? null: DateTime.parse(json["publishedAt"]),
         createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
         updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
-        usersId: json["usersId"] == null ? null : json["usersId"],
+        usersId: json["usersId"] == null ? null : UsersId.fromJson(json["usersId"]),
         cardId: json["cardId"] == null ? null : json["cardId"],
       );
 
@@ -84,6 +85,7 @@ class UsersId {
         this.blocked,
         this.gender,
         this.id,
+        this.bio,
         this.lastName,
         this.username,
         this.phoneNumber,
@@ -105,6 +107,7 @@ class UsersId {
     bool? blocked;
     String? gender;
     String? id;
+    String? bio;
     String? lastName;
     String? username;
     int? phoneNumber;
@@ -120,6 +123,43 @@ class UsersId {
     String? role;
     String? cityId;
     String? usersIdId;
+
+    factory UsersId.fromJson(Map<String, dynamic> json) => UsersId(
+        id: json["id"] == null ? null : json["id"],
+        username: json["username"] == null ? null : json["username"],
+        firstName: json["firstName"] == null ? null : json["firstName"],
+        bio: json["bio"] == null ? null : json["bio"],
+        
+        email: json["email"] == null ? null : json["email"],
+        provider: json["provider"] == null ? null : json["provider"],
+        confirmed: json["confirmed"] == null ? null : json["confirmed"],
+        blocked: json["blocked"],
+        // role: json["role"] == null ? null : json["role"],
+        // role: json["role"] == null ? null : Role.fromJson(json["role"]),
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id == null ? null : id,
+        "username": username == null ? null : username,
+        "firstName": firstName == null ? null : firstName,
+        "bio": bio == null ? null : bio,
+        "profileImage": profileImage == null ? null : profileImage!.name,
+        "email": email == null ? null : email,
+        "provider": provider == null ? null : provider,
+        "confirmed": confirmed == null ? null : confirmed,
+        "blocked": blocked,
+        // "role": role == null ? null : role,
+        // "role": role == null ? null : role!.toJson(),
+        "created_at": createdAt == null ? null : createdAt!.toIso8601String(),
+        "updated_at": updatedAt == null ? null : updatedAt!.toIso8601String(),
+       
+      };
 }
 
 class ProfileImage {

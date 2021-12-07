@@ -4,12 +4,9 @@ import 'package:eventy_app/controllers/auth/signin_controller.dart';
 import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
 import 'package:eventy_app/models/card/card_models.dart';
-// import 'package:eventy_app/models/event.dart';
 import 'package:eventy_app/services/new_card_service.dart';
 import 'package:eventy_app/util/alerts.dart';
 import 'package:eventy_app/util/app_state.dart';
-import 'package:eventy_app/views/pages/home/buttom_navbar.dart';
-import 'package:eventy_app/views/pages/home/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -109,29 +106,29 @@ class CreateCardContoller extends GetxController {
     //
   }
 
-  createNewCard2() async {
-    var ok = await  cardService.cardCreate(
-        category: category,
-        name: name,
-        workType: workType,
-        city: city,
-        logo: logo,
-        urlWork: urlWork,
-        tagLine: tagLine,
-        email: email,
-        phoneNumber:phoneNumber
-        );
-    if (ok) {
-      Get.toNamed("/BottomNav");
-    } else {
-      Get.snackbar(
-        'Somthing Wrong',
-        'Make Sure Card Info Is Correct',
-        colorText: Colors.white,
-        backgroundColor: Colors.red,
-      );
-    }
-  }
+  // createNewCard2() async {
+  //   var ok = await  cardService.cardCreate(
+  //       category: category,
+  //       name: name,
+  //       workType: workType,
+  //       city: city,
+  //       logo: logo,
+  //       urlWork: urlWork,
+  //       tagLine: tagLine,
+  //       email: email,
+  //       phoneNumber:phoneNumber
+  //       );
+  //   if (ok) {
+  //     Get.toNamed("/BottomNav");
+  //   } else {
+  //     Get.snackbar(
+  //       'Somthing Wrong',
+  //       'Make Sure Card Info Is Correct',
+  //       colorText: Colors.white,
+  //       backgroundColor: Colors.red,
+  //     );
+  //   }
+  // }
 
 
 
@@ -178,6 +175,7 @@ class CreateCardContoller extends GetxController {
       // usersId: UsersId(id: id, username: username),
         category: category,
         name: name,
+        usersId: UsersId(id: id, username: username),
         workType: workType,
         city: city,
         logo: logo,

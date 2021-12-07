@@ -22,31 +22,31 @@ class NewCardService {
 
   /// ===============================================================================================
 
-  Future createNewCard(Map<String, dynamic> body,{ category,name,workType,city,email,logo,urlWork,tagLine,phoneNumber}) async {
+  Future createNewCard(Map<String, dynamic> body) async {
     var url = "$BaseUrl/cards";
-    var body = jsonEncode({
-      "category": "$category",
-      "name": "$name",
-      "workType": "$workType",
-      "city": "$city",
-      "logo": "$logo",
-      "urlWork": "$urlWork",
-      "tagLine": "$tagLine",
-      "email": "$email",
-      "phoneNumber": "$phoneNumber",
-    });
-    var headers = {'Content-Type': 'application/json'};
+    String userToken = await authService.getLoggedUserId();
+   
+    var headers = {
+      'Authorization': 'Bearer $userToken',
+      'Content-Type': 'application/json'
+    };
 
-    var response =await http
-    .post(Uri.parse("$url"), headers: headers, body: body);
-    final data = jsonDecode(response.body);
+    final String encodedData = json.encode(body);
+    Logger().d(encodedData);
+    
+
+    var response = await http
+        .post(Uri.parse("$url"), headers: headers, body: encodedData)
+        .catchError((dynamic e) {
+      Logger().d("Error");
+      Logger().d("${e.toString()}");
+    });
+    Logger().d(response.statusCode);
 
     if (response.statusCode == 200) {
-      var jwtToken = data['jwt'];
-      storage.saveToken("jwt", jwtToken);
-      Logger().d(data['jwt']);
+      final data = jsonDecode(response.body);
+      Logger().d("createNewAd  json result :$data");
     }
-    
     
     // String userToken = await authService.getLoggedUserId();
     // Logger().d(body);
@@ -57,8 +57,6 @@ class NewCardService {
     //   'Authorization': 'Bearer $userToken',
     //   'Content-Type': 'application/json'
     // };
-    final String encodedData = json.encode(body);
-    Logger().d(encodedData);
 
     // var response = await http
     //     .post(Uri.parse("$url"), headers: headers, body: encodedData)
@@ -66,44 +64,44 @@ class NewCardService {
     //   Logger().d("Error");
     //   Logger().d("${e.toString()}");
     // });
-    Logger().d(response.statusCode);
+    // Logger().d(response.statusCode);
 
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      Logger().d("createNewCard  json result :$data");
-    }
+    // if (response.statusCode == 200) {
+    //   final data = jsonDecode(response.body);
+    //   Logger().d("createNewCard  json result :$data");
+    // }
   }
 
   var token;
   LocalStorage storage = LocalStorage();
  
-  Future<bool> cardCreate({ category,name,workType,city,email,logo,urlWork,tagLine,phoneNumber}) async {
-    var headers = {'Content-Type': 'application/json'};
-    var body = jsonEncode({
+  // Future<bool> cardCreate({ category,name,workType,city,email,logo,urlWork,tagLine,phoneNumber}) async {
+  //   var headers = {'Content-Type': 'application/json'};
+  //   var body = jsonEncode({
       
-      "category": "$category",
-      "name": "$name",
-      "workType": "$workType",
-      "city": "$city",
-      "logo": "$logo",
-      "urlWork": "$urlWork",
-      "tagLine": "$tagLine",
-      "email": "$email",
-      "phonenumber": "$phoneNumber",
+  //     "category": "$category",
+  //     "name": "$name",
+  //     "workType": "$workType",
+  //     "city": "$city",
+  //     "logo": "$logo",
+  //     "urlWork": "$urlWork",
+  //     "tagLine": "$tagLine",
+  //     "email": "$email",
+  //     "phonenumber": "$phoneNumber",
       
-    });
-    var response = await http.post(Uri.parse('$BaseUrl/cards'),
-        headers: headers, body: body);
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
+  //   });
+  //   var response = await http.post(Uri.parse('$BaseUrl/cards'),
+  //       headers: headers, body: body);
+  //   if (response.statusCode == 200) {
+  //     final data = jsonDecode(response.body);
 
-      Logger().d("userSignUp  json result : $data");
-      // Logger().d("getUserApi  json result : ${data.runtimeType}");
-      // Logger().d("getUserApi  json result : ${a.email}");
-      return true;
-    }
-    return false;
-  }
+  //     Logger().d("userSignUp  json result : $data");
+  //     // Logger().d("getUserApi  json result : ${data.runtimeType}");
+  //     // Logger().d("getUserApi  json result : ${a.email}");
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
 
   
