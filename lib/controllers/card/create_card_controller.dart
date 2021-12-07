@@ -1,8 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:eventy_app/controllers/auth/signin_controller.dart';
 import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
+import 'package:eventy_app/models/card/card_models.dart';
+// import 'package:eventy_app/models/event.dart';
 import 'package:eventy_app/services/new_card_service.dart';
+import 'package:eventy_app/util/alerts.dart';
+import 'package:eventy_app/util/app_state.dart';
+import 'package:eventy_app/views/pages/home/buttom_navbar.dart';
+import 'package:eventy_app/views/pages/home/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -14,12 +21,17 @@ import 'package:logger/logger.dart';
 
 class CreateCardContoller extends GetxController {
   static CreateCardContoller get to => Get.find();
+  var logger = Logger();
   List item =<String> ['Service Provider','Activity Owner','Official Sponser'];
   String? selectedValue;
-  
+  GlobalKey<FormState> get formKey => _formKey;
+  final GlobalObjectKey<FormState> _formKey =
+      GlobalObjectKey<FormState>("_UploadFormState");
+  final appState = Rx<AppState>(AppState.IDLE);
   var selectedImagePath = ''.obs;
   var selectedImageSize = ''.obs;
 
+  NewCardService newAddService = NewCardService();
 
   void onSelected (String value){
     selectedValue = value ;
@@ -33,7 +45,7 @@ class CreateCardContoller extends GetxController {
   }
    
   
- 
+
  
 
 
@@ -51,17 +63,19 @@ class CreateCardContoller extends GetxController {
   }
   
   // Card1 card1 = Card1('','','','','','','','','','', );
-    final logo = "".obs;
+    
   String? 
+      logo = "".obs.string,
       category = "".obs.string,
       name = "",
       workType = "",
       city = "",
-      
       urlWork = "",
       tagLine = "",
       email = "" ,
-      phoneNumber = "";
+      phoneNumber = "",
+      username ,
+      id;
 
   RxBool userLogged = false.obs;
   LocalStorage storage = LocalStorage();
@@ -70,7 +84,6 @@ class CreateCardContoller extends GetxController {
   createNewCard() async {
     var url = "$BaseUrl/cards";
     var body = jsonEncode({
-
       "category": "$category",
       "name": "$name",
       "workType": "$workType",
@@ -98,7 +111,6 @@ class CreateCardContoller extends GetxController {
 
   createNewCard2() async {
     var ok = await  cardService.cardCreate(
-
         category: category,
         name: name,
         workType: workType,
@@ -110,7 +122,7 @@ class CreateCardContoller extends GetxController {
         phoneNumber:phoneNumber
         );
     if (ok) {
-      Get.toNamed("/ManageCard");
+      Get.toNamed("/BottomNav");
     } else {
       Get.snackbar(
         'Somthing Wrong',
@@ -121,7 +133,65 @@ class CreateCardContoller extends GetxController {
     }
   }
 
+
+
+  Future<bool> sendToServer() async {
+    
+    if (_formKey.currentState!.validate()) {
+     
+      formKey.currentState!.save();
+
+      try {
+        appState.value = AppState.LOADING;
+        
+        var newCard = await cardFromInput();
+        var mapFromObject = newCard.toJson(); //todo uncommit
+        // logger.d(mapFromObject.length);
+        await newAddService.createNewCard(mapFromObject);
+        appState.value = AppState.DONE;
+
+        // await showOkMessage();
+        // Get.back();
+        await Get.offAllNamed("/BottomNav");
+      } on Exception catch (_) {
+        await Alerts.showNotOkMessageCard();
+
+        appState.value = AppState.ERROR;
+      }
+      return true;
+    }
+    return false;
+  }
   
+  Future<Card1> cardFromInput() async {
+     Card1 card;
+    
+    username = await Get.find<SignInController>()
+        .getLoggedInUserObject()
+        .then((value) => value!.username);
+
+    id = await Get.find<SignInController>()
+        .getLoggedInUserObject()
+        .then((value) => value!.id);
+
+    card = Card1(
+      // usersId: UsersId(id: id, username: username),
+        category: category,
+        name: name,
+        workType: workType,
+        city: city,
+        logo: logo,
+        urlWork: urlWork,
+        tagLine: tagLine,
+        email: email,
+        phoneNumber:phoneNumber
+
+    );
+
+  
+    return card;
+  }
+
 }
 
 

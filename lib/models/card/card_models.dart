@@ -7,6 +7,7 @@ String card1ToJson(Card1 data) => json.encode(data.toJson());
 class Card1 {
     Card1({
         this.id,
+        this.logo,
         this.urlWork,
         this.city,
         this.workType,
@@ -25,6 +26,7 @@ class Card1 {
     });
 
     String?id;
+    String? logo;
     String? urlWork;
     String? city;
     String? workType;
@@ -46,6 +48,7 @@ class Card1 {
         urlWork: json["urlWork"]== null ? null : json["urlWork"],
         city: json["city"]== null ? null : json["city"],
         name: json["name"] == null ? null : json["name"],
+        logo: json["logo"]== null ? null : json["logo"],
         tagLine: json["tagLine"] == null ? null : json["tagLine"],
         phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
         email: json["email"] == null ? null : json["email"],
@@ -61,6 +64,7 @@ class Card1 {
         "id": id == null ? null : id,
         "urlWork": urlWork == null ? null : urlWork,
         "city":city == null ? null : city,
+        "logo":logo == null ? null : logo,
         "name": name == null ? null: name,
         "tagLine": tagLine == null ? null: tagLine,
         "phoneNumber": phoneNumber == null ? null : phoneNumber,

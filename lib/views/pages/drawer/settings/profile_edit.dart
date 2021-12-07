@@ -62,6 +62,7 @@ class ProfileEdit extends GetView<ProfileController> {
                   SizedBox(
             height: 20,
           ),
+                 // ignore: deprecated_member_use
                  RaisedButton(
                     color: Colors.teal[700],
                   onPressed: (){

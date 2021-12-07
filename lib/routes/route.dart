@@ -1,11 +1,10 @@
+import 'package:eventy_app/views/pages/drawer/create_card/create_card.dart';
 import 'package:eventy_app/views/pages/home/cards.dart';
 import 'package:eventy_app/views/pages/drawer/manage_event/choos_paraticipate.dart';
-import 'package:eventy_app/views/pages/drawer/manage_card/create_card.dart';
 import 'package:eventy_app/views/pages/drawer/manage_event/creator_notifications.dart';
 import 'package:eventy_app/views/pages/home/event_details.dart';
 import 'package:eventy_app/views/pages/home/favorites.dart';
 import 'package:eventy_app/views/pages/home/home.dart';
-import 'package:eventy_app/views/pages/drawer/manage_card/manage_card.dart';
 import 'package:eventy_app/views/pages/drawer/manage_event/manage_event.dart';
 import 'package:eventy_app/views/pages/home/notifications.dart';
 import 'package:eventy_app/views/pages/drawer/participate_event/participate.dart';
@@ -39,7 +38,6 @@ class Routes {
         GetPage(name: "/Search", page: ()=> SearchPage()),
         GetPage(name: "/Card", page: ()=> CardPage()),
         GetPage(name: "/Profile", page: ()=> ProfilePage()),
-        GetPage(name: "/ManageCard", page: ()=> ManageCard()),
         GetPage(name: "/ManageEvent", page: ()=> ManageEvent()),
         GetPage(name: "/Participate", page: ()=> Participate()),
         GetPage(name: "/Setting", page: ()=> Setting()),

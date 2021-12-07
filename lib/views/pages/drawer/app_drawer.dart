@@ -1,5 +1,4 @@
 import 'package:eventy_app/views/pages/drawer/history/history.dart';
-import 'package:eventy_app/views/pages/drawer/manage_card/manage_card.dart';
 import 'package:eventy_app/views/pages/drawer/manage_event/manage_event.dart';
 import 'package:eventy_app/views/pages/drawer/participate_event/participate.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class AppDrawer extends GetView {
           ),
           ListTile(
             title: Text(
-              'Manage event',
+              'Manage events',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -54,7 +53,7 @@ class AppDrawer extends GetView {
           Divider(),
           ListTile(
             title: Text(
-              'Manage card',
+              'Create card',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -66,13 +65,8 @@ class AppDrawer extends GetView {
               color: Colors.teal[400],
             ),
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return ManageCard();
-                  },
-                ),
-              );
+              
+              Get.toNamed("/CreateCard");
             },
           ),
           Divider(),

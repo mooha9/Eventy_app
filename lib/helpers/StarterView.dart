@@ -35,9 +35,7 @@ class _StarterViewState extends State<StarterView> {
     // var isUserThere = Get.find<LoginController>().userLogged.value == false;
     // return isUserThere ? LoginView() : baseView();
 
-    return BottomNav(
-
-    );
+    return BottomNav();
   }
 
   void initValues() async {

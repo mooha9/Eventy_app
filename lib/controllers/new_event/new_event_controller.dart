@@ -161,7 +161,7 @@ class NewAdController extends GetxController {
 
   Future<bool> sendToServer() async {
     if (files2.length == 0 || formKey.currentState!.validate() == false) {
-      Alerts.showNotOkMessage();
+      Alerts.showNotOkMessageEvent();
     }
     if (formKey.currentState!.validate()) {
       _formKey.currentState!.save();
@@ -179,7 +179,7 @@ class NewAdController extends GetxController {
         // Get.back();
         await Get.offAndToNamed('');
       } on Exception catch (_) {
-        await Alerts.showNotOkMessage();
+        await Alerts.showNotOkMessageEvent();
 
         appState.value = AppState.ERROR;
       }

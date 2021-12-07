@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:eventy_app/controllers/card/create_card_controller.dart';
+import 'package:eventy_app/util/alerts.dart';
+import 'package:eventy_app/util/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,7 +20,8 @@ class CreateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalObjectKey<FormState> _formKey =
+      GlobalObjectKey<FormState>("_UploadFormState");
   
     // ignore: unused_local_variable
     return Scaffold(
@@ -171,6 +174,7 @@ class CreateCard extends StatelessWidget {
               Container(
                 height: 50,
                 width: 200,
+                // ignore: deprecated_member_use
                 child: RaisedButton(
                     color: Colors.teal[700],
                     
@@ -201,6 +205,11 @@ class CreateCard extends StatelessWidget {
             onChanged: (value){
               _controller.name= value;
             },
+            validator: (value) {
+                        return value!.length < 7
+                            ? 'Name must be greater than 7 characters'
+                            : null;
+                      },
             onSaved: (value) {
                   CreateCardContoller.to.name = value!;
                 },
@@ -250,6 +259,11 @@ class CreateCard extends StatelessWidget {
             onChanged: (val){
               _controller.city= val;
             },
+             validator: (value) {
+                        return value!.length < 5
+                            ? 'Name must be greater than 5 characters'
+                            : null;
+                      },
               onSaved: (value) {
                   CreateCardContoller.to.city = value!;
                 },
@@ -294,6 +308,11 @@ class CreateCard extends StatelessWidget {
             onSaved: (value) {
                   CreateCardContoller.to.workType = value!;
                 },
+                 validator: (value) {
+                        return value!.length < 7
+                            ? 'Work Type must be greater than 7 characters'
+                            : null;
+                      },
                 onTap: () {
                   _formKey.currentState!.save();
                   if (_controller.workType.toString().isNotEmpty)
@@ -339,6 +358,11 @@ class CreateCard extends StatelessWidget {
             onChanged: (val){
               _controller.tagLine= val;
             },
+             validator: (value) {
+                        return value!.length < 10
+                            ? 'TagLine must be greater than 10 characters'
+                            : null;
+                      },
               onSaved: (value) {
                   CreateCardContoller.to.tagLine = value!;
                 },
@@ -385,6 +409,11 @@ class CreateCard extends StatelessWidget {
             onChanged: (val){
               _controller.email= val;
             },
+             validator: (value) {
+                        return value!.length < 7
+                            ? 'Email must be greater than 7 characters'
+                            : null;
+                      },
             onSaved: (value) {
                   CreateCardContoller.to.email = value!;
                 },
@@ -476,6 +505,11 @@ class CreateCard extends StatelessWidget {
             onChanged: (val){
               _controller.phoneNumber= val;
             },
+             validator: (value) {
+                        return value!.length < 10
+                            ? 'Phone Number must be greater than 10 intigers'
+                            : null;
+                      },
             onSaved: (value) {
                   CreateCardContoller.to.phoneNumber = value!;
                 },
@@ -536,6 +570,7 @@ class CreateCard extends StatelessWidget {
                  _formKey.currentState!.save(); 
                  print(_controller.category);             
               },
+              
               elevation: 10,
               items:
               _controller.item.map(
@@ -546,6 +581,7 @@ class CreateCard extends StatelessWidget {
                   );
                 },
               ).toList(),
+              
               ),
                  ]
           ),
@@ -577,18 +613,20 @@ class CreateCard extends StatelessWidget {
                     ],
                   )),
               child: TextButton(
-                  onPressed:()
-                  async {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-
-                      Get.put<CreateCardContoller>(
-                          CreateCardContoller());
-
-                      await _controller.createNewCard2();
+                 child: Obx(
+                  () {
+                    if (controller.appState() == AppState.LOADING) {
+                      return CircularProgressIndicator(
+                        color: Colors.white,
+                      );
                     }
-                  },  
-                  child: Text(
+                    // if (controller.appState() == AppState.ERROR) {
+                    //   return FlatButton(
+                    // child: Text('try again',style: fontStyle,),
+                    //     onPressed: () async => controller.sendToServer(),
+                    //   );
+                    // }
+                    return Text(
                     "Save",
                     style: TextStyle(
                       fontSize: 20.0,
@@ -602,7 +640,43 @@ class CreateCard extends StatelessWidget {
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
-                  )),
+                  );
+                  },
+                ),
+               
+               
+                onPressed: () async {
+                  var ok = await controller.sendToServer();
+                  if (ok) await Alerts.showOkMessageCard();
+                }
+
+                  // onPressed:()
+                  // async {
+                  //   if (_formKey.currentState!.validate()) {
+                  //     _formKey.currentState!.save();
+
+                  //     Get.put<CreateCardContoller>(
+                  //         CreateCardContoller());
+
+                  //     await _controller.createNewCard2();
+                  //   }
+                  // },  
+                  // child: Text(
+                  //   "Save",
+                  //   style: TextStyle(
+                  //     fontSize: 20.0,
+                  //     shadows: <Shadow>[
+                  //       Shadow(
+                  //         offset: Offset(3.0, 2.0),
+                  //         blurRadius: 4.0,
+                  //         color: Color.fromARGB(255, 0, 0, 0),
+                  //       ),
+                  //     ],
+                  //     color: Colors.white,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // )
+                  ),
             ),
         
           SizedBox(

@@ -13,11 +13,11 @@ class Alerts {
       "",
       "",
       titleText: Text(
-        "تمام",
+        "Done",
         style: fontStyle.copyWith(color: Colors.white),
       ),
       messageText: Text(
-        "تم رفع الإعلان بنجاح",
+        "The event is uploaded",
         style: fontStyle.copyWith(color: Colors.white),
       ),
       backgroundColor: Colors.green,
@@ -42,16 +42,84 @@ class Alerts {
       colorText: Colors.white,
     );
   }
-  static showNotOkMessage() async {
+  static showNotOkMessageEvent() async {
     Get.snackbar(
       "",
       "",
       titleText: Text(
-        "خطأ",
+        "Error",
         style: fontStyle.copyWith(color: Colors.white),
       ),
       messageText: Text(
-        "يجب عليك إختيار صورة  قبل رفع الإعلان والتأكد من ملء جميع الحقول",
+        "make sure you upload the photos",
+        style: fontStyle.copyWith(color: Colors.white),
+      ),
+      backgroundColor: Colors.red,
+      icon: Icon(
+        Icons.error,
+        color: Colors.white,
+      ),
+      snackPosition: SnackPosition.TOP,
+      duration: Duration(seconds: 3),
+      backgroundGradient: LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [
+          Colors.red,
+          // Colors.green.shade200,
+          // Colors.green.shade300,
+          // Colors.green.shade400,
+          // Colors.green.shade500,
+          Colors.red.shade800,
+        ],
+      ),
+      colorText: Colors.white,
+    );
+  }
+static showOkMessageCard() async {
+    Get.snackbar(
+      "",
+      "",
+      titleText: Text(
+        "Done",
+        style: fontStyle.copyWith(color: Colors.white),
+      ),
+      messageText: Text(
+        "The Card is uploaded",
+        style: fontStyle.copyWith(color: Colors.white),
+      ),
+      backgroundColor: Colors.green,
+      icon: Icon(
+        Icons.done_rounded,
+        color: Colors.white,
+      ),
+      snackPosition: SnackPosition.TOP,
+      duration: Duration(seconds: 3),
+      backgroundGradient: LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [
+          Colors.green,
+          // Colors.green.shade200,
+          // Colors.green.shade300,
+          // Colors.green.shade400,
+          // Colors.green.shade500,
+          Colors.green.shade800,
+        ],
+      ),
+      colorText: Colors.white,
+    );
+  }
+  static showNotOkMessageCard() async {
+    Get.snackbar(
+      "",
+      "",
+      titleText: Text(
+        "Error",
+        style: fontStyle.copyWith(color: Colors.white),
+      ),
+      messageText: Text(
+        "make sure you upload the photo ",
         style: fontStyle.copyWith(color: Colors.white),
       ),
       backgroundColor: Colors.red,
@@ -82,11 +150,11 @@ class Alerts {
       "",
       "",
       titleText: Text(
-        "تمام",
+        "Done",
         style: fontStyle.copyWith(color: Colors.white),
       ),
       messageText: Text(
-        "تم إضافه التعليق بنجاح",
+        "Comment is send",
         style: fontStyle.copyWith(color: Colors.white),
       ),
       backgroundColor: Colors.green,
@@ -116,11 +184,11 @@ class Alerts {
       "",
       "",
       titleText: Text(
-        "خطأ",
+        "Error",
         style: fontStyle.copyWith(color: Colors.white),
       ),
       messageText: Text(
-        "لم يتم التعليق ",
+        "No comment add ",
         style: fontStyle.copyWith(color: Colors.white),
       ),
       backgroundColor: Colors.red,
@@ -148,10 +216,10 @@ class Alerts {
 
   static showDeleteConfirm(Event model) async {
     return await Get.defaultDialog(
-      title: "تنبيه",
+      title: "Attention",
       titleStyle: fontStyle.copyWith(color: Colors.blue),
       content: Text(
-        "حذف الإعلان",
+        "Delete Comment",
         style: fontStyle,
       ),
       confirm: TextButton(
@@ -164,11 +232,11 @@ class Alerts {
 
 
         },
-        child: Text("نعم"),
+        child: Text("Yes"),
       ),
       cancel: TextButton(
         onPressed: () => Get.back(),
-        child: Text("لا"),
+        child: Text("No"),
       ),
     );
   }

@@ -22,26 +22,50 @@ class NewCardService {
 
   /// ===============================================================================================
 
-  Future createNewCard(Map<String, dynamic> body) async {
-    var url = "$BaseUrl/cards/";
-    String userToken = await authService.getLoggedUserId();
+  Future createNewCard(Map<String, dynamic> body,{ category,name,workType,city,email,logo,urlWork,tagLine,phoneNumber}) async {
+    var url = "$BaseUrl/cards";
+    var body = jsonEncode({
+      "category": "$category",
+      "name": "$name",
+      "workType": "$workType",
+      "city": "$city",
+      "logo": "$logo",
+      "urlWork": "$urlWork",
+      "tagLine": "$tagLine",
+      "email": "$email",
+      "phoneNumber": "$phoneNumber",
+    });
+    var headers = {'Content-Type': 'application/json'};
+
+    var response =await http
+    .post(Uri.parse("$url"), headers: headers, body: body);
+    final data = jsonDecode(response.body);
+
+    if (response.statusCode == 200) {
+      var jwtToken = data['jwt'];
+      storage.saveToken("jwt", jwtToken);
+      Logger().d(data['jwt']);
+    }
+    
+    
+    // String userToken = await authService.getLoggedUserId();
     // Logger().d(body);
     // Logger().d(userToken.toString());
     // Logger().d(userToken.runtimeType);
 
-    var headers = {
-      'Authorization': 'Bearer $userToken',
-      'Content-Type': 'application/json'
-    };
+    // var headers = {
+    //   'Authorization': 'Bearer $userToken',
+    //   'Content-Type': 'application/json'
+    // };
     final String encodedData = json.encode(body);
     Logger().d(encodedData);
 
-    var response = await http
-        .post(Uri.parse("$url"), headers: headers, body: encodedData)
-        .catchError((dynamic e) {
-      Logger().d("Error");
-      Logger().d("${e.toString()}");
-    });
+    // var response = await http
+    //     .post(Uri.parse("$url"), headers: headers, body: encodedData)
+    //     .catchError((dynamic e) {
+    //   Logger().d("Error");
+    //   Logger().d("${e.toString()}");
+    // });
     Logger().d(response.statusCode);
 
     if (response.statusCode == 200) {
