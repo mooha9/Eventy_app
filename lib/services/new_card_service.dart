@@ -8,13 +8,6 @@ import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
 import '../helpers/Constants.dart';
 
-// import 'dart:io';
-// import 'package:eventy_app/models/event.dart';
-// import 'package:eventy_app/models/UploadModel.dart';
-// import 'package:get/get.dart';
-// import 'package:eventy_app/routes/route.dart';
-// import 'package:http_parser/http_parser.dart';
-
 
 class NewCardService {
   AuthService authService = AuthService();
@@ -35,9 +28,7 @@ class NewCardService {
     Logger().d(encodedData);
     
 
-    var response = await http
-        .post(Uri.parse("$url"), headers: headers, body: encodedData)
-        .catchError((dynamic e) {
+    var response = await http.post(Uri.parse("$url"), headers: headers, body: encodedData).catchError((dynamic e) {
       Logger().d("Error");
       Logger().d("${e.toString()}");
     });
@@ -45,7 +36,10 @@ class NewCardService {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      Logger().d("createNewAd  json result :$data");
+      Logger().d("createNewCard  json result :$data");
+    }
+    else{
+      print('faild');
     }
     
     // String userToken = await authService.getLoggedUserId();
@@ -72,6 +66,7 @@ class NewCardService {
     // }
   }
 
+  
   var token;
   LocalStorage storage = LocalStorage();
  

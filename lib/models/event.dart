@@ -73,8 +73,7 @@ class Event {
         EventImages: List<EventImage>.from(
             json["Event_images"].map((x) => EventImage.fromJson(x))),
         tags: List<Tag>.from(json["tags"].map((x) => Tag.fromJson(x))),
-        comments: List<Comment>.from(
-            json["comments"].map((x) => Comment.fromJson(x))),
+        comments: List<Comment>.from(json["comments"].map((x) => Comment.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -328,8 +327,8 @@ class Comment {
         commentText: json["CommentText"] == null ? null : json["CommentText"],
         // user: json["user"] == null ? null : User.fromJson(json["user"]),
         publishedAt: DateTime.parse(json["published_at"]),
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
+       createdAt: json["created_at"] == null? null: DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null? null: DateTime.parse(json["updated_at"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -386,15 +385,9 @@ class User {
         blocked: json["blocked"],
         // role: json["role"] == null ? null : json["role"],
         // role: json["role"] == null ? null : Role.fromJson(json["role"]),
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
-        comments: json["comments"] == null
-            ? null
-            : List<Comment>.from(
+        createdAt: json["created_at"] == null? null: DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null? null: DateTime.parse(json["updated_at"]),
+        comments: json["comments"] == null? null: List<Comment>.from(
                 json["comments"].map((x) => Comment.fromJson(x))),
       );
 

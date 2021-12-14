@@ -1,10 +1,15 @@
 // import 'package:eventy_app/controllers/auth/signin_controller.dart';
-import 'package:eventy_app/controllers/auth/signin_controller.dart';
-import 'package:eventy_app/controllers/profile/profile_controller.dart';
-import 'package:eventy_app/util/over_viewdata_event.dart';
-import 'package:eventy_app/views/pages/drawer/app_drawer.dart';
-import 'package:eventy_app/views/pages/home/event_item.dart';
+// import 'package:eventy_app/util/over_viewdata_event.dart';
+// import 'package:eventy_app/views/pages/home/event_item.dart';
 // import 'package:eventy_app/views/pages/signin/sign_in.dart';
+// ignore_for_file: unnecessary_import, unused_import, unused_element, dead_code
+
+import 'dart:io';
+
+import 'package:eventy_app/controllers/auth/signin_controller.dart';
+import 'package:eventy_app/controllers/card/create_card_controller.dart';
+import 'package:eventy_app/controllers/profile/profile_controller.dart';
+import 'package:eventy_app/views/pages/drawer/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -12,7 +17,6 @@ import 'package:logger/logger.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProfilePage extends GetView<ProfileController> {
-  // final _controller = ProfileController();
   
   @override
   Widget build(BuildContext context) {
@@ -22,8 +26,8 @@ class ProfilePage extends GetView<ProfileController> {
   
 
   return GetBuilder<ProfileController>(
-                    init: ProfileController(),
-                    builder: (controller) =>
+    init: ProfileController(),
+    builder: (controller) =>
   
   DefaultTabController(
     
@@ -61,7 +65,9 @@ class ProfilePage extends GetView<ProfileController> {
                             
                             CircleAvatar(
                               backgroundColor: Colors.teal,
-                              backgroundImage: NetworkImage(
+                              backgroundImage: 
+                              
+                              NetworkImage(
                               "${ controller.user!.profileImage?.name}",
                               ),
                               radius: 50.0,
@@ -124,8 +130,8 @@ class ProfilePage extends GetView<ProfileController> {
           
           body: TabBarView(
             children: [
-              buildPage1('History'),
-              buildPage2('Card'),
+              buildPage1('My Events'),
+              buildPage2(context),
             ],
           ),
         ),)
@@ -133,34 +139,146 @@ class ProfilePage extends GetView<ProfileController> {
   }
  
   }
-  Widget buildPage1(String text) => Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-              height: 800.0,
-              margin: new EdgeInsets.symmetric(vertical: 2.0),
-              child: GridView.builder(
-                  itemCount: events.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    Map event = events[index];
-                    return EventItem(
-                      event: event,
-                    );
-                  },
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 450,
-                    childAspectRatio: 4 / 2,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                  ))),
-        ),
-      );
+  Widget buildPage1(String text) {
+    
+  return GetBuilder<ProfileController>(builder: (c) {
+      Logger().d(c.eventList.length);
+      if (c.eventList.length == 0) {
+        return Container(
+          child: Center(
+              child: Text(
+            "You don't have events",
+            
+          )),
+        );
+      }
 
-  Widget buildPage2(String text) => Center(
-        child: Container(
-          height: 800.0,
-          margin: new EdgeInsets.symmetric(vertical: 2.0),
-          child: Card(),
-        ),
-      );
+      return Container(
+          child: Center(
+              child: Text(
+            "Loading..",
+            
+          )),
+        );
+       });}
+  
 
+final _controller = Get.put(CreateCardContoller());
+final GlobalObjectKey<FormState> _formKey = GlobalObjectKey<FormState>("_UploadFormState");
+ 
+  Widget buildPage2(BuildContext context) {
+    
+  return GetBuilder<ProfileController>(builder: (c) {
+   
+     return Padding(
+       padding: const EdgeInsets.all(20.0),
+       child: Container(
+    height: 250.0,
+    
+    child: ListView(
+         scrollDirection: Axis.horizontal,
+        children:[
+          // SizedBox(width: 20,),
+          
+          Column(
+                children: [
+                Container(
+                  height: 240.0,
+                  width:388,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.teal[300],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 4,
+                        blurRadius: 5,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                 
+                  child: Stack(
+                    children: <Widget>[
+                              Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Container(
+                                    height: 240,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: 5,),
+                                        Text("Mohammed Alfayez"+_controller.cardName.toString() ,style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),                                  
+                                        SizedBox(height: 10,),
+                                        Text("Qassim - Buraydah"+_controller.city.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),),
+                                        SizedBox(height: 5,),
+                                        Text("Photographer for events"+_controller.tagLine.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
+                                        SizedBox(height:  75,),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Container(
+                                    height: 240,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text("alfayez355@gmail.com"+_controller.email.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                        SizedBox(height: 5,),
+                                        Text("https://twitter.com/M_7d_f"+_controller.urlWork.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                        SizedBox(height: 8,),
+                                        Text("0546436737"+_controller.phoneNumber.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                        SizedBox(height: 5,),
+                                        
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 30,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(15.0),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(height: 10,),
+                                          Text("Serveic Provider"+_controller.category.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600,color: Colors.grey[800]),),
+                                          SizedBox(height: 5,),
+                                          Text("Photographer"+_controller.workType.toString(),style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),),
+                                          SizedBox(height: 5,),
+                                          Image.asset("/Users/mohammedalfayez/Desktop/Eventy_main/Eventy_app/assets/images/cardLogo.png",width: 120,height: 120,)
+                                          // Obx(()=>_controller.selectedImagePath.value == ""?
+                                                
+                                          //       Image.file(File("Eventy_app/assets/images/cardLogo.png")):
+                                          //       Text("")
+                                          //       ),
+                                        ],
+                                      ),
+                                    ),
+                                    ],
+                                )
+                    ],
+                  ))]),
+                  
+        ]   ),
+  ),
+     );
+  return Container(
+          child: Center(
+              child: Text(
+            "Loading..",
+            
+          )),
+        );
+           
+      
+}
+  );}    

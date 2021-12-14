@@ -3,6 +3,7 @@
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/state_manager.dart';
+// ignore: unnecessary_import
 import 'package:get/utils.dart';
 // import 'package:http/http.dart' as http ;
 class SignUp2Controller extends GetxController {    

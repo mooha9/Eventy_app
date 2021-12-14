@@ -4,11 +4,14 @@ import 'package:eventy_app/controllers/card/create_card_controller.dart';
 import 'package:eventy_app/util/alerts.dart';
 import 'package:eventy_app/util/app_state.dart';
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
 import 'package:flutter/rendering.dart';
+// ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+// ignore: unnecessary_import
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -104,7 +107,7 @@ class CreateCard extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(height: 5,),
-                                  Text(" "+_controller.name.toString() ,style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),                                  
+                                  Text(" "+_controller.cardName.toString() ,style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),                                  
                                   SizedBox(height: 10,),
                                   Text("  "+_controller.city.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),),
                                   SizedBox(height: 5,),
@@ -201,9 +204,9 @@ class CreateCard extends StatelessWidget {
             height: 3,
           ),
           TextFormField(
-            controller: TextEditingController(text:_controller.name),
+            controller: TextEditingController(text:_controller.cardName),
             onChanged: (value){
-              _controller.name= value;
+              _controller.cardName= value;
             },
             validator: (value) {
                         return value!.length < 7
@@ -211,14 +214,14 @@ class CreateCard extends StatelessWidget {
                             : null;
                       },
             onSaved: (value) {
-                  CreateCardContoller.to.name = value!;
+                  CreateCardContoller.to.cardName = value!;
                 },
                 onTap: () {
                   _formKey.currentState!.save();
-                  if (_controller.name.toString().isNotEmpty)
-                    print(_controller.name);
+                  if (_controller.cardName.toString().isNotEmpty)
+                    print(_controller.cardName);
 
-                  if (_controller.name.toString().isEmpty)
+                  if (_controller.cardName.toString().isEmpty)
                     print("NO FIRSTNAME");
                 },
                 

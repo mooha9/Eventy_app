@@ -9,7 +9,7 @@ class ProfileController extends GetxController {
   final profileService = ProfileService();
   
   List<Event> eventList = <Event>[];
-  List<Card1> cardList = <Card1>[];
+  List<NewCard> cardList = <NewCard>[];
   List<Comment> commentList = <Comment>[];
 
   User? user = User();
@@ -17,7 +17,7 @@ class ProfileController extends GetxController {
 
 
 
-    Future<List<Card1>?> getCardsListForUser() async {
+    Future<List<NewCard>?> getCardsListForUser() async {
     Logger().d("getCardsListForUser ");
     user = await Get.find<SignInController>().getLoggedInUserObject();
     var userId = user!.id!;
@@ -27,11 +27,10 @@ class ProfileController extends GetxController {
       await profileService.getCardsForUser(userId).then((value) {
         cardList.clear();
 
-        cardList = value!.map((element) => Card1.fromJson(element)).toList();
-        cardList.forEach((Card1 element) {
-          // Logger().d("${element.title}");
+        cardList = value!.map((element) => NewCard.fromJson(element)).toList();
+        cardList.forEach((NewCard element) {
+         
         });
-        // Logger().d("FILTER LIST ${_Events.length}");
       });
     } catch (e) {
       Logger().d(e);

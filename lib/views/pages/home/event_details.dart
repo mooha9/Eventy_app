@@ -1,6 +1,14 @@
+// ignore_for_file: unnecessary_import, duplicate_ignore
+
+// ignore: unused_import
+import 'dart:io';
+
+import 'package:eventy_app/controllers/card/create_card_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:eventy_app/util/over_viewdata_event.dart';
+// ignore: unnecessary_import
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class EventDetails extends GetView {
@@ -70,14 +78,14 @@ class EventDetails extends GetView {
                           children: [
                                   Icon(     
                           Icons.location_pin,
-                          color: Colors.grey[700],
+                          color: Colors.blue[700],
                           size: 15.0,
                           ),
                              Text(
                                 "${events[0]["location"]}",
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.grey[700],
+                                  color: Colors.blue[700],
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -206,7 +214,8 @@ class EventDetails extends GetView {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                buildUsersList(),
+                SizedBox(height: 5,),
+                serviceProviderList(),
                 SizedBox(height: 10.0),
                 Divider(),
                  Text(
@@ -216,7 +225,8 @@ class EventDetails extends GetView {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                buildUsersList(),
+                SizedBox(height: 5,),
+                activityOwnerList(),
                 SizedBox(height: 10.0),
                 Divider(),
                  Text(
@@ -226,7 +236,8 @@ class EventDetails extends GetView {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                 buildUsersList(),
+                SizedBox(height: 5,),
+                 officialSponsorsList(),
                 SizedBox(height: 80.0),
                 Divider(),
                 
@@ -278,6 +289,7 @@ class EventDetails extends GetView {
    buildImage() {
     return Container(
       height: 240.0,
+      width: 288,
       // width: MediaQuery.of(context).size.width,
       child: Stack(
         children: <Widget>[
@@ -286,6 +298,7 @@ class EventDetails extends GetView {
             child: Image.network(
               "${events.toList()[0]["img"]}",
               height: 240.0,
+               width: 388,
               // width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
             ),
@@ -318,89 +331,75 @@ class EventDetails extends GetView {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
            children: [
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+             InkWell(
+               child: Container(
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                         borderRadius: BorderRadius.circular(15),
+                         child: Image.network(
+                "${events.toList()[0]["img"]}",
+                height: 240.0,
+                width: 150,
+                fit: BoxFit.cover,
+                         ),
+                       ),
+               ),
              ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+             InkWell(
+               child: Container(
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                         borderRadius: BorderRadius.circular(15),
+                         child: Image.network(
+                "${events.toList()[0]["img"]}",
+                height: 240.0,
+                width: 150,
+                fit: BoxFit.cover,
+                         ),
+                       ),
+               ),
              ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+             InkWell(
+               child: Container(
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                         borderRadius: BorderRadius.circular(15),
+                         child: Image.network(
+                "${events.toList()[0]["img"]}",
+                height: 240.0,
+                width: 150,
+                fit: BoxFit.cover,
+                         ),
+                       ),
+               ),
              ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+             InkWell(
+               child: Container(
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                         borderRadius: BorderRadius.circular(15),
+                         child: Image.network(
+                "${events.toList()[0]["img"]}",
+                height: 240.0,
+                width: 150,
+                fit: BoxFit.cover,
+                         ),
+                       ),
+               ),
              ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+             InkWell(
+               child: Container(
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                         borderRadius: BorderRadius.circular(15),
+                         child: Image.network(
+                "${events.toList()[0]["img"]}",
+                height: 240.0,
+                width: 150,
+                fit: BoxFit.cover,
+                         ),
+                       ),
+               ),
              ),
         ],
       ),
@@ -454,113 +453,327 @@ comments() {
   
   );
 }
+serviceProviderList(){
+  final _controller = Get.put(CreateCardContoller());
 
-buildUsersList() {
-  return Container(
-      height: 80.0,
-      width: 200,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-           children: [
-             InkWell(
-               onTap: (){
 
-               },
-               child: Container(
-                 margin: EdgeInsets.all(10),
-                child:ClipRRect(
-                         borderRadius: BorderRadius.circular(100),
-                         child: Image.network(
-                "${events.toList()[0]["img"]}",
-                height:100,
-                width: 60,
-                fit: BoxFit.cover,
-                         ),
-                       ),
-               ),
-             ),
+  return 
+ Container(
+    height: 250.0,
+    
+    child: ListView(
+       scrollDirection: Axis.horizontal,
+      children:[
+        // SizedBox(width: 20,),
+        
+        Column(
+              children: [
+              Container(
+                height: 240.0,
+                width:388,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.teal[300],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 4,
+                      blurRadius: 5,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+               
+                child: Stack(
+                  children: <Widget>[
+                            Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  height: 240,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: 5,),
+                                      Text("Mohammed Alfayez"+_controller.cardName.toString() ,style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),                                  
+                                      SizedBox(height: 10,),
+                                      Text("Qassim - Buraydah"+_controller.city.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),),
+                                      SizedBox(height: 5,),
+                                      Text("Photographer for events"+_controller.tagLine.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
+                                      SizedBox(height:  75,),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  height: 240,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("alfayez355@gmail.com"+_controller.email.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                      SizedBox(height: 5,),
+                                      Text("https://twitter.com/M_7d_f"+_controller.urlWork.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                      SizedBox(height: 8,),
+                                      Text("0546436737"+_controller.phoneNumber.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                      SizedBox(height: 5,),
+                                      
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 30,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        SizedBox(height: 10,),
+                                        Text("Serveic Provider"+_controller.category.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600,color: Colors.grey[800]),),
+                                        SizedBox(height: 5,),
+                                        Text("Photographer"+_controller.workType.toString(),style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),),
+                                        SizedBox(height: 5,),
+                                        Image.asset("/Users/mohammedalfayez/Desktop/Eventy_main/Eventy_app/assets/images/cardLogo.png",width: 120,height: 120,)
+                                        // Obx(()=>_controller.selectedImagePath.value == ""?
+                                              
+                                        //       Image.file(File("Eventy_app/assets/images/cardLogo.png")):
+                                        //       Text("")
+                                        //       ),
+                                      ],
+                                    ),
+                                  ),
+                                  ],
+                              )
+                  ],
+                ))]),
+                
+      ]   ),
+  );
+           
+      
+}
 
-            Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
 
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
+officialSponsorsList(){
+  final _controller = Get.put(CreateCardContoller());
 
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
 
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
+  return 
+ Container(
+    height: 250.0,
+    
+    child: ListView(
+       scrollDirection: Axis.horizontal,
+      children:[
+        // SizedBox(width: 20,),
+        
+        Column(
+              children: [
+              Container(
+                height: 240.0,
+                width:388,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color:Color.fromARGB(200, 212, 175, 55),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 4,
+                      blurRadius: 5,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+               
+                child: Stack(
+                  children: <Widget>[
+                            Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  height: 240,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: 5,),
+                                      Text("Mohammed Alfayez"+_controller.cardName.toString() ,style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),                                  
+                                      SizedBox(height: 10,),
+                                      Text("Qassim - Buraydah"+_controller.city.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),),
+                                      SizedBox(height: 5,),
+                                      Text("Photographer for events"+_controller.tagLine.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
+                                      SizedBox(height:  75,),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  height: 240,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("alfayez355@gmail.com"+_controller.email.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                      SizedBox(height: 5,),
+                                      Text("https://twitter.com/M_7d_f"+_controller.urlWork.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                      SizedBox(height: 8,),
+                                      Text("0546436737"+_controller.phoneNumber.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                      SizedBox(height: 5,),
+                                      
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 30,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        SizedBox(height: 10,),
+                                        Text("Official Sponser"+_controller.category.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600,color: Colors.grey[800]),),
+                                        SizedBox(height: 5,),
+                                        Text("Photographer"+_controller.workType.toString(),style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),),
+                                        SizedBox(height: 5,),
+                                        Image.asset("/Users/mohammedalfayez/Desktop/Eventy_main/Eventy_app/assets/images/cardLogo.png",width: 120,height: 120,)
+                                        // Obx(()=>_controller.selectedImagePath.value == ""?
+                                              
+                                        //       Image.file(File("Eventy_app/assets/images/cardLogo.png")):
+                                        //       Text("")
+                                        //       ),
+                                      ],
+                                    ),
+                                  ),
+                                  ],
+                              )
+                  ],
+                ))]),
+                
+      ]   ),
+  );
+           
+      
+}
 
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
 
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
+activityOwnerList() {
+  final _controller = Get.put(CreateCardContoller());
 
-           ],
-           )
-      );
+
+  return 
+ Container(
+    height: 250.0,
+    
+    child: ListView(
+       scrollDirection: Axis.horizontal,
+      children:[
+        // SizedBox(width: 20,),
+        
+        Column(
+              children: [
+              Container(
+                height: 240.0,
+                width:388,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color:Colors.blue[300],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 4,
+                      blurRadius: 5,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+               
+                child: Stack(
+                  children: <Widget>[
+                             Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  height: 240,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: 5,),
+                                      Text("Mohammed Alfayez"+_controller.cardName.toString() ,style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),                                  
+                                      SizedBox(height: 10,),
+                                      Text("Qassim - Buraydah"+_controller.city.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),),
+                                      SizedBox(height: 5,),
+                                      Text("Photographer for events"+_controller.tagLine.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
+                                      SizedBox(height:  75,),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  height: 240,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("alfayez355@gmail.com"+_controller.email.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                      SizedBox(height: 5,),
+                                      Text("https://twitter.com/M_7d_f"+_controller.urlWork.toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                      SizedBox(height: 8,),
+                                      Text("0546436737"+_controller.phoneNumber.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,color: Colors.blue[900]),),
+                                      SizedBox(height: 5,),
+                                      
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 30,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        SizedBox(height: 10,),
+                                        Text("Activity Owner"+_controller.category.toString(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600,color: Colors.grey[800]),),
+                                        SizedBox(height: 5,),
+                                        Text("Photographer"+_controller.workType.toString(),style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),),
+                                        SizedBox(height: 5,),
+                                        Image.asset("/Users/mohammedalfayez/Desktop/Eventy_main/Eventy_app/assets/images/cardLogo.png",width: 120,height: 120,)
+                                        // Obx(()=>_controller.selectedImagePath.value == ""?
+                                              
+                                        //       Image.file(File("Eventy_app/assets/images/cardLogo.png")):
+                                        //       Text("")
+                                        //       ),
+                                      ],
+                                    ),
+                                  ),
+                                  ],
+                              )
+                                
+                  ],
+                ))]),
+                
+      ]   ),
+  );
+           
+      
 }
 

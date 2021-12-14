@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: unnecessary_import
+
 import 'package:flutter/material.dart';
 import 'package:eventy_app/util/over_viewdata_event.dart';
 import 'package:flutter/rendering.dart';
@@ -312,36 +314,7 @@ class _PrivetEventState extends State<PrivetEvent> {
                 SizedBox(height: 10.0),
                 
                 Divider(),
-                 Text(
-                  "Service Provider:",
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                buildUsersList(),
-                SizedBox(height: 10.0),
-                Divider(),
-                 Text(
-                  "Activity Owner:",
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                buildUsersList(),
-                SizedBox(height: 10.0),
-                Divider(),
-                 Text(
-                  "Official Sponsors:",
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                 buildUsersList(),
-                SizedBox(height: 80.0),
-                Divider(),
+                SizedBox(height: 70.0),
 ])
             ), Positioned(
                           bottom: 40,
@@ -396,13 +369,14 @@ class _PrivetEventState extends State<PrivetEvent> {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
+            child: Center(
+              child:
+              Text(
+                'Selecte Main image'
+              ),
             ),
-          ),
+            ),
+          
         ],
       ),
     );
@@ -416,17 +390,22 @@ class _PrivetEventState extends State<PrivetEvent> {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
            children: [
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+             InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
              ),
              Container(
                margin: EdgeInsets.all(10),

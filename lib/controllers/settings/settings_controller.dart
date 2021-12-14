@@ -4,6 +4,7 @@ import 'dart:io';
 // import 'package:eventy_app/models/event.dart';
 import 'package:eventy_app/services/profile.dart';
 import 'package:get/get.dart';
+// ignore: unnecessary_import
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'package:logger/logger.dart';

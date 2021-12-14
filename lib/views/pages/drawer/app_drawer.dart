@@ -4,6 +4,7 @@ import 'package:eventy_app/views/pages/drawer/participate_event/participate.dart
 import 'package:flutter/material.dart';
 // import 'package:eventy_app/views/pages/drawer/settings/settings.dart';
 import 'package:get/get.dart';
+// ignore: unnecessary_import
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class AppDrawer extends GetView {

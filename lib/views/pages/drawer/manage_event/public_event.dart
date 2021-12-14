@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:eventy_app/views/pages/drawer/manage_event/choos_paraticipate.dart';
 import 'package:eventy_app/views/pages/drawer/manage_event/creator_notifications.dart';
 import 'package:flutter/material.dart';

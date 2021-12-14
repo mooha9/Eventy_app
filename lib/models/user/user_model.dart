@@ -1,7 +1,33 @@
 
 
+import 'package:eventy_app/models/card/card_models.dart';
+
 class User {
-    User({this.confirmed,this.blocked, this.gender, this.id,this.lastName,this.username,this.phoneNumber, this.firstName,this.email,this.age,this.provider,this.createdAt,this.updatedAt,this.v,this.countryId,this.profileImage,this.role,this.cityId,this.cards,this.visitors,this.comments,this.creator,this.userId,
+    User({
+    
+      this.confirmed,
+      this.blocked, 
+      this.gender, 
+      this.id,
+      this.lastName,
+      this.username,
+      this.phoneNumber,
+      this.firstName,
+      this.email,
+      this.age,
+      this.provider,
+      this.createdAt,
+      this.updatedAt,
+      this.v,
+      this.countryId,
+      this.profileImage,
+      this.role,
+      this.cityId,
+      this.cards,
+      this.visitors,
+      this.comments,
+      this.creator,
+      this.userId,
     });
 
     bool? confirmed;
@@ -22,7 +48,7 @@ class User {
     ProfileImage? profileImage;
     Role? role;
     CityId? cityId;
-    List<Card1>? cards;
+    List<NewCard>? cards;
     List<CityId>? visitors;
     List<Comment>? comments;
     List<Creator>? creator;
@@ -45,7 +71,7 @@ class User {
         countryId: json["countryId"] == null ? null: CityId.fromJson(json["countryId"]),
         profileImage: json["profileImage"] == null? null: ProfileImage.fromJson(json["profileImage"]),
         cityId: json["cityId"] == null? null: CityId.fromJson(json["cityId"]),
-        cards: List<Card1>.from(json["cards"].map((x) => Card1.fromJson(x))),
+        cards: List<NewCard>.from(json["cards"].map((x) => NewCard.fromJson(x))),
         visitors: List<CityId>.from(json["visitors"].map((x) => CityId.fromJson(x))),
         comments: List<Comment>.from(json["comments"].map((x) => Comment.fromJson(x))),    
         creator: List<Creator>.from(json["creator"].map((x) => Creator.fromJson(x))),
@@ -77,75 +103,7 @@ class User {
       };
 }
 
-class Card1 {
-    Card1({
-        this.id,
-        this.urlWork,
-        this.city,
-        this.workType,
-        this.name,
-        this.tagLine,
-        this.phoneNumber,
-        this.email,
-        this.category,
-        this.publishedAt,
-        this.createdAt,
-        this.updatedAt,
-        this.v,
-        this.participant,
-        this.usersId,
-        this.cardId,
-    });
 
-    String? id;
-    String? urlWork;
-    String? city;
-    String? workType;
-    String? name;
-    String? tagLine;
-    String? phoneNumber;
-    String? email;
-    String? category;
-    DateTime? publishedAt;
-    DateTime? createdAt;
-    DateTime? updatedAt;
-    int? v;
-    dynamic participant;
-    String? usersId;
-    String? cardId;
-    
-  factory Card1.fromJson(Map<String, dynamic> json) => Card1(
-        id: json["id"] == null ? null : json["id"],
-        urlWork: json["urlWork"]== null ? null : json["urlWork"],
-        city: json["city"]== null ? null : json["city"],
-        name: json["name"] == null ? null : json["name"],
-        tagLine: json["tagLine"] == null ? null : json["tagLine"],
-        phoneNumber: json["phoneNumber"] == null ? null : json["phoneNumber"],
-        email: json["email"] == null ? null : json["email"],
-        category: json["category"] == null ? null : json["category"],
-        publishedAt: json["publishedAt"] == null ? null: DateTime.parse(json["publishedAt"]),
-        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
-        updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
-        usersId: json["usersId"] == null ? null : json["usersId"],
-        cardId: json["cardId"] == null ? null : json["cardId"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id == null ? null : id,
-        "urlWork": urlWork == null ? null : urlWork,
-        "city":city == null ? null : city,
-        "name": name == null ? null: name,
-        "tagLine": tagLine == null ? null: tagLine,
-        "phoneNumber": phoneNumber == null ? null : phoneNumber,
-        "email": email == null ? null : email,
-        "category": category == null ? null : category,
-        "publishedAt": publishedAt == null ? null : publishedAt!.toIso8601String(),
-        "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
-        "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
-        "usersId": usersId == null ? null : usersId,   
-        "cardId": cardId == null ? null : cardId,  
-      };
-}
 
 class CityId {
     CityId({

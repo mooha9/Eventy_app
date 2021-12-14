@@ -1,9 +1,10 @@
-import 'dart:convert';
+// ignore_for_file: unnecessary_import
+
 import 'dart:io';
 import 'package:eventy_app/controllers/auth/signin_controller.dart';
 import 'package:eventy_app/data/LocalStorage.dart';
-import 'package:eventy_app/helpers/Constants.dart';
 import 'package:eventy_app/models/card/card_models.dart';
+import 'package:eventy_app/models/event.dart';
 import 'package:eventy_app/services/new_card_service.dart';
 import 'package:eventy_app/util/alerts.dart';
 import 'package:eventy_app/util/app_state.dart';
@@ -12,7 +13,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:http/http.dart' as http ;
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
 
@@ -22,8 +22,7 @@ class CreateCardContoller extends GetxController {
   List item =<String> ['Service Provider','Activity Owner','Official Sponser'];
   String? selectedValue;
   GlobalKey<FormState> get formKey => _formKey;
-  final GlobalObjectKey<FormState> _formKey =
-      GlobalObjectKey<FormState>("_UploadFormState");
+  final GlobalObjectKey<FormState> _formKey = GlobalObjectKey<FormState>("_UploadFormState");
   final appState = Rx<AppState>(AppState.IDLE);
   var selectedImagePath = ''.obs;
   var selectedImageSize = ''.obs;
@@ -41,13 +40,7 @@ class CreateCardContoller extends GetxController {
     update();
   }
    
-  
-
- 
-
-
   void getImage (ImageSource imageSource) async{
-
       // ignore: deprecated_member_use
       final pickedFile= await ImagePicker().getImage(source: imageSource);
       if(pickedFile!= null){
@@ -59,12 +52,10 @@ class CreateCardContoller extends GetxController {
       }
   }
   
-  // Card1 card1 = Card1('','','','','','','','','','', );
-    
   String? 
       logo = "".obs.string,
       category = "".obs.string,
-      name = "",
+      cardName = "",
       workType = "",
       city = "",
       urlWork = "",
@@ -77,58 +68,6 @@ class CreateCardContoller extends GetxController {
   RxBool userLogged = false.obs;
   LocalStorage storage = LocalStorage();
   final NewCardService cardService = NewCardService();
-
-  createNewCard() async {
-    var url = "$BaseUrl/cards";
-    var body = jsonEncode({
-      "category": "$category",
-      "name": "$name",
-      "workType": "$workType",
-      "city": "$city",
-      "logo": "$logo",
-      "urlWork": "$urlWork",
-      "tagLine": "$tagLine",
-      "email": "$email",
-      "phoneNumber": "$phoneNumber",
-    });
-    var headers = {'Content-Type': 'application/json'};
-
-    var response =
-        await http.post(Uri.parse("$url"), headers: headers, body: body);
-    final data = jsonDecode(response.body);
-
-    if (response.statusCode == 200) {
-      var jwtToken = data['jwt'];
-      storage.saveToken("jwt", jwtToken);
-      Logger().d(data['jwt']);
-    }
-    // Logger().d(data);
-    //
-  }
-
-  // createNewCard2() async {
-  //   var ok = await  cardService.cardCreate(
-  //       category: category,
-  //       name: name,
-  //       workType: workType,
-  //       city: city,
-  //       logo: logo,
-  //       urlWork: urlWork,
-  //       tagLine: tagLine,
-  //       email: email,
-  //       phoneNumber:phoneNumber
-  //       );
-  //   if (ok) {
-  //     Get.toNamed("/BottomNav");
-  //   } else {
-  //     Get.snackbar(
-  //       'Somthing Wrong',
-  //       'Make Sure Card Info Is Correct',
-  //       colorText: Colors.white,
-  //       backgroundColor: Colors.red,
-  //     );
-  //   }
-  // }
 
 
 
@@ -160,8 +99,8 @@ class CreateCardContoller extends GetxController {
     return false;
   }
   
-  Future<Card1> cardFromInput() async {
-     Card1 card;
+  Future<NewCard> cardFromInput() async {
+     NewCard card;
     
     username = await Get.find<SignInController>()
         .getLoggedInUserObject()
@@ -171,14 +110,12 @@ class CreateCardContoller extends GetxController {
         .getLoggedInUserObject()
         .then((value) => value!.id);
 
-    card = Card1(
-      // usersId: UsersId(id: id, username: username),
-        category: category,
-        name: name,
-        usersId: UsersId(id: id, username: username),
-        workType: workType,
+    card = NewCard(
+        cardsCategory: CardsCategory(fieldWork: workType,cardsCategoryId: category),
+        cardName: cardName,
+        usersId: User(id: id, username: username),
         city: city,
-        logo: logo,
+        logo: Logo(name:selectedImagePath.value) ,
         urlWork: urlWork,
         tagLine: tagLine,
         email: email,
@@ -200,6 +137,58 @@ class CreateCardContoller extends GetxController {
 
 
 
+
+  // createNewCard() async {
+  //   var url = "$BaseUrl/cards";
+  //   var body = jsonEncode({
+  //     "category": "$category",
+  //     "cardName": "$cardName",
+  //     "workType": "$workType",
+  //     "city": "$city",
+  //     "logo": "$logo",
+  //     "urlWork": "$urlWork",
+  //     "tagLine": "$tagLine",
+  //     "email": "$email",
+  //     "phoneNumber": "$phoneNumber",
+  //   });
+  //   var headers = {'Content-Type': 'application/json'};
+
+  //   var response =
+  //       await http.post(Uri.parse("$url"), headers: headers, body: body);
+  //   final data = jsonDecode(response.body);
+
+  //   if (response.statusCode == 200) {
+  //     var jwtToken = data['jwt'];
+  //     storage.saveToken("jwt", jwtToken);
+  //     Logger().d(data['jwt']);
+  //   }
+  //   // Logger().d(data);
+  //   //
+  // }
+
+  // createNewCard2() async {
+  //   var ok = await  cardService.cardCreate(
+  //       category: category,
+  //       name: name,
+  //       workType: workType,
+  //       city: city,
+  //       logo: logo,
+  //       urlWork: urlWork,
+  //       tagLine: tagLine,
+  //       email: email,
+  //       phoneNumber:phoneNumber
+  //       );
+  //   if (ok) {
+  //     Get.toNamed("/BottomNav");
+  //   } else {
+  //     Get.snackbar(
+  //       'Somthing Wrong',
+  //       'Make Sure Card Info Is Correct',
+  //       colorText: Colors.white,
+  //       backgroundColor: Colors.red,
+  //     );
+  //   }
+  // }
 
 
 

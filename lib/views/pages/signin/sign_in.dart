@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:eventy_app/controllers/auth/signin_controller.dart';
 import 'package:eventy_app/util/app_state.dart';
 import 'package:flutter/material.dart';
