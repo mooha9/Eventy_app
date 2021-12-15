@@ -3,7 +3,7 @@
 import 'package:eventy_app/views/pages/drawer/manage_event/choos_paraticipate.dart';
 import 'package:eventy_app/views/pages/drawer/manage_event/creator_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:eventy_app/util/over_viewdata_event.dart';
+// import 'package:eventy_app/util/over_viewdata_event.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -479,15 +479,24 @@ class _PublicEventState extends State<PublicEvent> {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
-            ),
-          ),
+           InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
+             ),
+          
         ],
       ),
     );
@@ -501,41 +510,73 @@ class _PublicEventState extends State<PublicEvent> {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
            children: [
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+            InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
              ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+            InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
              ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+             InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
+             ),
+             InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
              ),
         ],
       ),

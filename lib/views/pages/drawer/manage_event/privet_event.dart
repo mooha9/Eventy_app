@@ -3,7 +3,7 @@
 // ignore_for_file: unnecessary_import
 
 import 'package:flutter/material.dart';
-import 'package:eventy_app/util/over_viewdata_event.dart';
+
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -367,15 +367,23 @@ class _PrivetEventState extends State<PrivetEvent> {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Center(
-              child:
-              Text(
-                'Selecte Main image'
-              ),
-            ),
-            ),
+           InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
+             ),
           
         ],
       ),
@@ -407,29 +415,56 @@ class _PrivetEventState extends State<PrivetEvent> {
                        ),
                ),
              ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+            InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
              ),
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height: 240.0,
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
+             InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
+             ),
+             InkWell(
+               splashColor: Colors.black12,
+               child: Container(
+                 color: Colors.teal[200],
+                 margin: EdgeInsets.all(10),
+                child:ClipRRect(
+                  
+                         borderRadius: BorderRadius.circular(15),
+                         child: Center(
+                child:
+                Text(
+                  'Selecte images'
+                ),
+                         ),
+                       ),
+               ),
              ),
         ],
       ),
@@ -467,116 +502,6 @@ class _PrivetEventState extends State<PrivetEvent> {
 }
 }
   
-
-buildUsersList() {
-  return Container(
-      height: 80.0,
-      width: 200,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-           children: [
-             InkWell(
-               onTap: (){
-
-               },
-               child: Container(
-                 margin: EdgeInsets.all(10),
-                child:ClipRRect(
-                         borderRadius: BorderRadius.circular(100),
-                         child: Image.network(
-                "${events.toList()[0]["img"]}",
-                height:100,
-                width: 60,
-                fit: BoxFit.cover,
-                         ),
-                       ),
-               ),
-             ),
-
-            Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-             Container(
-               margin: EdgeInsets.all(10),
-              child:ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "${events.toList()[0]["img"]}",
-              height:100,
-              width: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-             ),
-
-           ],
-           )
-      );
-      
-}
 
    class SelectCategory extends StatefulWidget {
   const SelectCategory({Key? key}) : super(key: key);
