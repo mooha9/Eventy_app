@@ -19,67 +19,69 @@ import 'package:logger/logger.dart';
 class CreateCardContoller extends GetxController {
   static CreateCardContoller get to => Get.find();
   var logger = Logger();
-  List item =<String> ['Service Provider','Activity Owner','Official Sponser'];
+  List item = <String>[
+    'Service Provider',
+    'Activity Owner',
+    'Official Sponser',
+    'Security'
+  ];
   String? selectedValue;
   GlobalKey<FormState> get formKey => _formKey;
-  final GlobalObjectKey<FormState> _formKey = GlobalObjectKey<FormState>("_UploadFormState");
+  final GlobalObjectKey<FormState> _formKey =
+      GlobalObjectKey<FormState>("_UploadFormState");
   final appState = Rx<AppState>(AppState.IDLE);
   var selectedImagePath = ''.obs;
   var selectedImageSize = ''.obs;
 
   NewCardService newAddService = NewCardService();
 
-  void onSelected (String value){
-    selectedValue = value ;
+  void onSelected(String value) {
+    selectedValue = value;
     update();
   }
-  
 
-  void filedcontent (String value){
-    category = value ;
+  void filedcontent(String value) {
+    category = value;
     update();
   }
-   
-  void getImage (ImageSource imageSource) async{
-      // ignore: deprecated_member_use
-      final pickedFile= await ImagePicker().getImage(source: imageSource);
-      if(pickedFile!= null){
-        selectedImagePath.value = pickedFile.path;
-        selectedImageSize.value = ((File(selectedImagePath.value)).lengthSync()/1024/1024).toStringAsFixed(2)+"Mb";
-      }
-      else{
-        Get.snackbar("Error", "No Logo Selected");
-      }
+
+  void getImage(ImageSource imageSource) async {
+    // ignore: deprecated_member_use
+    final pickedFile = await ImagePicker().getImage(source: imageSource);
+    if (pickedFile != null) {
+      selectedImagePath.value = pickedFile.path;
+      selectedImageSize.value =
+          ((File(selectedImagePath.value)).lengthSync() / 1024 / 1024)
+                  .toStringAsFixed(2) +
+              "Mb";
+    } else {
+      Get.snackbar("Error", "No Logo Selected");
+    }
   }
-  
-  String? 
-      logo = "".obs.string,
+
+  String? logo = "".obs.string,
       category = "".obs.string,
       cardName = "",
       workType = "",
       city = "",
       urlWork = "",
       tagLine = "",
-      email = "" ,
+      email = "",
       phoneNumber = "",
-      username ,
+      username,
       id;
 
   RxBool userLogged = false.obs;
   LocalStorage storage = LocalStorage();
   final NewCardService cardService = NewCardService();
 
-
-
   Future<bool> sendToServer() async {
-    
     if (_formKey.currentState!.validate()) {
-     
       formKey.currentState!.save();
 
       try {
         appState.value = AppState.LOADING;
-        
+
         var newCard = await cardFromInput();
         var mapFromObject = newCard.toJson(); //todo uncommit
         // logger.d(mapFromObject.length);
@@ -98,10 +100,10 @@ class CreateCardContoller extends GetxController {
     }
     return false;
   }
-  
+
   Future<NewCard> cardFromInput() async {
-     NewCard card;
-    
+    NewCard card;
+
     username = await Get.find<SignInController>()
         .getLoggedInUserObject()
         .then((value) => value!.username);
@@ -111,22 +113,19 @@ class CreateCardContoller extends GetxController {
         .then((value) => value!.id);
 
     card = NewCard(
-        cardsCategory: CardsCategory(fieldWork: workType,cardsCategoryId: category),
+        cardsCategory:
+            CardsCategory(fieldWork: workType, cardsCategoryId: category),
         cardName: cardName,
         usersId: User(id: id, username: username),
         city: city,
-        logo: Logo(name:selectedImagePath.value) ,
+        logo: Logo(name: selectedImagePath.value),
         urlWork: urlWork,
         tagLine: tagLine,
         email: email,
-        phoneNumber:phoneNumber
+        phoneNumber: phoneNumber);
 
-    );
-
-  
     return card;
   }
-
 }
 
 
