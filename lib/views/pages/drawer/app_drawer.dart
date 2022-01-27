@@ -7,8 +7,9 @@ import 'package:get/get.dart';
 // ignore: unnecessary_import
 import 'package:get/get_state_manager/get_state_manager.dart';
 
+import 'my_participation/participate.dart';
+
 class AppDrawer extends GetView {
- 
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -66,12 +67,10 @@ class AppDrawer extends GetView {
               color: Colors.teal[400],
             ),
             onTap: () {
-              
               Get.toNamed("/CreateCard");
             },
           ),
           Divider(),
-          
           ListTile(
             title: Text(
               'Event Participate',
@@ -90,6 +89,30 @@ class AppDrawer extends GetView {
                 MaterialPageRoute(
                   builder: (BuildContext context) {
                     return Participate();
+                  },
+                ),
+              );
+            },
+          ),
+          Divider(),
+          ListTile(
+            title: Text(
+              'My Participation',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            leading: Icon(
+              Icons.assistant_rounded,
+              size: 30,
+              color: Colors.teal[400],
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return MyParticipate();
                   },
                 ),
               );
@@ -119,7 +142,7 @@ class AppDrawer extends GetView {
               );
             },
           ),
-           Divider(),
+          Divider(),
           ListTile(
             title: Text(
               'Setting',
