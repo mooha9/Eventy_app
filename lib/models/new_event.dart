@@ -43,7 +43,6 @@ class NewEvent {
     String? title,
     String? content,
     String? contactNumber,
-
     User? user,
     List<EventImage>? images,
     List<Tag>? tags,
@@ -72,7 +71,8 @@ class NewEvent {
   factory NewEvent.fromJson(Map<String, dynamic> json) => NewEvent(
         title: json["title"] == null ? null : json["title"],
         content: json["content"] == null ? null : json["content"],
-    contactNumber: json["contactNumber"] == null ? null : json["contactNumber"],
+        contactNumber:
+            json["contactNumber"] == null ? null : json["contactNumber"],
         user: json["user"] == null ? null : json["user"],
         tags: List<Tag>.from(json["tags"].map((x) => Tag.fromJson(x))),
         category: json["category"] == null ? null : json["category"],
@@ -99,9 +99,9 @@ class NewEvent {
         // "Event_images": images == null
         //     ? null
         //     : List<EventImage>.from(images!.map((x) => x.toJson())),
-    "Event_images": List<dynamic>.from(images!.map((x) => x.toJson())),
+        "Event_images": List<dynamic>.from(images!.map((x) => x.toJson())),
 
-    "category": category == null ? null : category!.toJson(),
+        "category": category == null ? null : category!.toJson(),
         "comments": comments == null
             ? null
             : List<String>.from(comments!.map((x) => x)),

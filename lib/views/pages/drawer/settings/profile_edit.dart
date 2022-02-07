@@ -9,9 +9,8 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileEdit extends GetView<ProfileController> {
-   final _controller = Get.put(SettingController());
+  final _controller = Get.put(SettingController());
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[50],
@@ -27,9 +26,8 @@ class ProfileEdit extends GetView<ProfileController> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
             Padding(
-              padding: const EdgeInsets.only(right:30.0),
+              padding: const EdgeInsets.only(right: 30.0),
               child: Text(
                 'Edit Profile  ',
                 style: TextStyle(
@@ -38,7 +36,6 @@ class ProfileEdit extends GetView<ProfileController> {
                 ),
               ),
             ),
-            
           ],
         ),
       ),
@@ -47,31 +44,37 @@ class ProfileEdit extends GetView<ProfileController> {
           SizedBox(
             height: 60,
           ),
-           Obx(()=>_controller.selectedImagePath.value == ""?
-                                          Text(""):
-                                          Image.file(File(_controller.selectedImagePath.value),width: 120,height: 120,)
-                                          //  _controller.selectedImagePath.value ==_controller.logo
-                                          ),
+          Obx(() => _controller.selectedImagePath.value == ""
+                  ? Text("")
+                  : Image.file(
+                      File(_controller.selectedImagePath.value),
+                      width: 120,
+                      height: 120,
+                    )
+              //  _controller.selectedImagePath.value ==_controller.logo
+              ),
           CircleAvatar(
-                              backgroundColor: Colors.teal,
-                              backgroundImage: NetworkImage(
-                              "${controller.user!.profileImage?.name}",
-                              ),
-                              radius: 60.0,
-                              foregroundColor: Colors.red
-                            ),
-                  SizedBox(
+              backgroundColor: Colors.teal,
+              backgroundImage: NetworkImage(
+                "${controller.user!.profileImage?.name}",
+              ),
+              radius: 60.0,
+              foregroundColor: Colors.red),
+          SizedBox(
             height: 20,
           ),
-                 // ignore: deprecated_member_use
-                 RaisedButton(
-                    color: Colors.teal[700],
-                  onPressed: (){
-                  _controller.getImage(ImageSource.gallery);
-                            },
-                  child: Text("change image", style: TextStyle(color: Colors.white),),
-                            ),
-                  SizedBox(
+          // ignore: deprecated_member_use
+          RaisedButton(
+            color: Colors.teal[700],
+            onPressed: () {
+              _controller.getImage(ImageSource.gallery);
+            },
+            child: Text(
+              "change image",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          SizedBox(
             height: 40,
           ),
           Center(),
@@ -85,8 +88,9 @@ class ProfileEdit extends GetView<ProfileController> {
               shadowColor: Colors.black, //color shadow
               borderRadius: BorderRadius.circular(32.0),
               child: TextField(
-                 controller: TextEditingController()..text = "${controller.user!.firstName}",
-                  onChanged: (text) => {},
+                controller: TextEditingController()
+                  ..text = "${controller.user!.firstName}",
+                onChanged: (text) => {},
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(8),
                   //size Text field
@@ -94,7 +98,7 @@ class ProfileEdit extends GetView<ProfileController> {
                       borderRadius: BorderRadius.circular(32.0)),
                   labelText: "change name",
                   labelStyle: TextStyle(fontSize: 15),
-                  
+
                   //for example name
                   hintStyle: TextStyle(fontSize: 15),
                 ),
@@ -112,8 +116,9 @@ class ProfileEdit extends GetView<ProfileController> {
               shadowColor: Colors.black, //color shadow
               borderRadius: BorderRadius.circular(32.0),
               child: TextField(
-                controller: TextEditingController()..text = "${controller.user!.bio}",
-                  onChanged: (text) => {},
+                controller: TextEditingController()
+                  ..text = "${controller.user!.bio}",
+                onChanged: (text) => {},
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(8),
                   //size Text field
@@ -121,7 +126,7 @@ class ProfileEdit extends GetView<ProfileController> {
                       borderRadius: BorderRadius.circular(32.0)),
                   labelText: "change bio descreption",
                   labelStyle: TextStyle(fontSize: 15),
-                  
+
                   //for example name
                   hintStyle: TextStyle(fontSize: 15),
                 ),
@@ -133,32 +138,34 @@ class ProfileEdit extends GetView<ProfileController> {
             height: 100,
           ),
           Container(
-                            height: 60,
-                            width: 200,
-                            decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20.0),
-                            bottomRight: Radius.circular(20.0),
-                            topLeft: Radius.circular(20.0),
-                            bottomLeft: Radius.circular(20.0)),
-                            shape: BoxShape.rectangle,
-                           color: Colors.teal
-                            ),
-                            child: TextButton( 
-                              onPressed: (){},
-                              child: Text("SAVE", style: TextStyle(
-                              fontSize: 20.0,
-                               shadows: <Shadow>[
-                                Shadow(
-                                  offset: Offset(3.0, 2.0),
-                                  blurRadius: 4.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ],
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),)),
-                            ),
+            height: 60,
+            width: 200,
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0),
+                    topLeft: Radius.circular(20.0),
+                    bottomLeft: Radius.circular(20.0)),
+                shape: BoxShape.rectangle,
+                color: Colors.teal),
+            child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  "SAVE",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(3.0, 2.0),
+                        blurRadius: 4.0,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ],
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+          ),
         ],
       ),
     );

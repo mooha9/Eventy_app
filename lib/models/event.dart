@@ -7,7 +7,6 @@
 import 'dart:convert';
 import 'package:eventy_app/models/user/user_model.dart';
 
-
 Event EventFromJson(String str) => Event.fromJson(json.decode(str));
 
 EventImage imagesFromEvent(String str) => EventImage.fromJson(json.decode(str));
@@ -24,7 +23,6 @@ class Event {
     this.title,
     this.content,
     this.contactNumber,
-
     this.user,
     this.category,
     this.publishedAt,
@@ -55,7 +53,8 @@ class Event {
         id: json["id"] == null ? null : json["id"],
         title: json["title"] == null ? null : json["title"],
         content: json["content"] == null ? null : json["content"],
-    contactNumber: json["contactNumber"] == null ? null : json["contactNumber"],
+        contactNumber:
+            json["contactNumber"] == null ? null : json["contactNumber"],
         likes: json["likes"] == null ? null : json["likes"],
         user: json["user"] == null ? null : User.fromJson(json["user"]),
         category: json["category"] == null
@@ -73,7 +72,8 @@ class Event {
         EventImages: List<EventImage>.from(
             json["Event_images"].map((x) => EventImage.fromJson(x))),
         tags: List<Tag>.from(json["tags"].map((x) => Tag.fromJson(x))),
-        comments: List<Comment>.from(json["comments"].map((x) => Comment.fromJson(x))),
+        comments: List<Comment>.from(
+            json["comments"].map((x) => Comment.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -307,11 +307,11 @@ class Category {
 
 class Comment {
   Comment({
-     this.id,
-     this.commentText,
-     this.publishedAt,
-     this.createdAt,
-     this.updatedAt,
+    this.id,
+    this.commentText,
+    this.publishedAt,
+    this.createdAt,
+    this.updatedAt,
     // this.user,
   });
 
@@ -327,8 +327,12 @@ class Comment {
         commentText: json["CommentText"] == null ? null : json["CommentText"],
         // user: json["user"] == null ? null : User.fromJson(json["user"]),
         publishedAt: DateTime.parse(json["published_at"]),
-       createdAt: json["created_at"] == null? null: DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null? null: DateTime.parse(json["updated_at"]),
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -357,7 +361,7 @@ class User {
     this.updatedAt,
     this.comments,
   });
-  
+
   String? id;
   String? username;
   String? firstName;
@@ -378,16 +382,24 @@ class User {
         username: json["username"] == null ? null : json["username"],
         firstName: json["firstName"] == null ? null : json["firstName"],
         bio: json["bio"] == null ? null : json["bio"],
-        profileImage: json["profileImage"] == null? null: ProfileImage.fromJson(json["profileImage"]),
+        profileImage: json["profileImage"] == null
+            ? null
+            : ProfileImage.fromJson(json["profileImage"]),
         email: json["email"] == null ? null : json["email"],
         provider: json["provider"] == null ? null : json["provider"],
         confirmed: json["confirmed"] == null ? null : json["confirmed"],
         blocked: json["blocked"],
         // role: json["role"] == null ? null : json["role"],
         // role: json["role"] == null ? null : Role.fromJson(json["role"]),
-        createdAt: json["created_at"] == null? null: DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null? null: DateTime.parse(json["updated_at"]),
-        comments: json["comments"] == null? null: List<Comment>.from(
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+        comments: json["comments"] == null
+            ? null
+            : List<Comment>.from(
                 json["comments"].map((x) => Comment.fromJson(x))),
       );
 

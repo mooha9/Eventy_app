@@ -33,13 +33,14 @@ class HomeViewController extends GetxController {
 
   List<Event> get eventsListFilter => _eventsListFilter;
 
-
   Future<List<Category>?> getCategoryList() async {
     try {
       homeService.getCategories().then((value) {
         // _categories.clear();
 
-        _categories = value!.map((dynamic element) => Category.fromJson(element)).toList();
+        _categories = value!
+            .map((dynamic element) => Category.fromJson(element))
+            .toList();
       });
     } catch (e) {
       Logger().d(e);
@@ -57,7 +58,8 @@ class HomeViewController extends GetxController {
     try {
       await homeService.getEventsWithFilter(catId).then((value) {
         _eventsListFilter.clear();
-        _eventsListFilter = value!.map((element) => Event.fromJson(element)).toList();
+        _eventsListFilter =
+            value!.map((element) => Event.fromJson(element)).toList();
         _eventsListFilter.forEach((Event element) {
           // Logger().d("${element.eventImages!.length}");
         });

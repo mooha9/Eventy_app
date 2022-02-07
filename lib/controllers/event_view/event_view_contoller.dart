@@ -85,7 +85,6 @@ class EventViewContoller extends GetxController {
       await Alerts.showOkMessageComment();
       update();
       Get.toNamed("/BottomNav");
-
     } else {
       Logger().d("response.statusCode !!${response.statusCode.toString()}  ");
       await Alerts.showNotOkMessageComment();

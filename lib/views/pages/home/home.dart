@@ -8,7 +8,6 @@ import 'notifications.dart';
 
 class HomePage extends GetView {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[50],
@@ -38,21 +37,19 @@ class HomePage extends GetView {
                 color: Colors.black45,
               ),
               onPressed: () {
-               Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (BuildContext context) {
-                return NotificationPage();
-              },
-            ),
-          );
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return NotificationPage();
+                    },
+                  ),
+                );
               },
             ),
           ],
         ),
       ),
-      body: Stack(
-        children:[
-
+      body: Stack(children: [
         ListView(
           padding: EdgeInsets.only(left: 20.0),
           children: <Widget>[
@@ -68,11 +65,9 @@ class HomePage extends GetView {
             SizedBox(height: 1.0),
             nearEventsList(),
             SizedBox(height: 10.0),
-            
           ],
         ),
-        ] 
-      ),
+      ]),
     );
   }
 }
@@ -144,5 +139,3 @@ nearEventsList() {
         },
       ));
 }
-
-

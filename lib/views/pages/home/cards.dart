@@ -3,10 +3,8 @@ import 'package:eventy_app/views/pages/home/card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-
 class CardPage extends GetView {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[50],
@@ -37,48 +35,45 @@ class CardPage extends GetView {
           ],
         ),
       ),
-      body:Stack(
-        children:[
+      body: Stack(children: [
         Container(
-              constraints: BoxConstraints.tightFor(width: 500,height: 40),
-        //width text field
-        margin: EdgeInsets.all(20),
-              child: Material(
-                // shadow
-                elevation: 5, //shadow
-                shadowColor: Colors.black, //color shadow
-                borderRadius: BorderRadius.circular(32.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(5),
-                    //size Text field
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                    labelText: "Search card",
-                    labelStyle: TextStyle(fontSize: 15),
-                    suffixIcon: Icon(Icons.credit_card_outlined),
-                  ),
-                  keyboardType: TextInputType.text,
-                ),
+          constraints: BoxConstraints.tightFor(width: 500, height: 40),
+          //width text field
+          margin: EdgeInsets.all(20),
+          child: Material(
+            // shadow
+            elevation: 5, //shadow
+            shadowColor: Colors.black, //color shadow
+            borderRadius: BorderRadius.circular(32.0),
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(5),
+                //size Text field
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32.0)),
+                labelText: "Search card",
+                labelStyle: TextStyle(fontSize: 15),
+                suffixIcon: Icon(Icons.credit_card_outlined),
               ),
-            ),  
+              keyboardType: TextInputType.text,
+            ),
+          ),
+        ),
         Padding(
-          padding: const EdgeInsets.only(top:80.0),
+          padding: const EdgeInsets.only(top: 80.0),
           child: ListView(
             padding: EdgeInsets.only(left: 20.0),
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(right: 20.0),
               ),
-             SizedBox(height: 10.0),
+              SizedBox(height: 10.0),
               // cardList(),
               SizedBox(height: 10.0),
             ],
           ),
         ),
-        ] 
-      ),
-        
+      ]),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 10),
         child: FloatingActionButton(
@@ -90,7 +85,6 @@ class CardPage extends GetView {
           backgroundColor: Colors.teal[200],
         ),
       ),
-
     );
   }
 }

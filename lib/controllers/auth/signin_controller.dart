@@ -8,15 +8,14 @@ import 'package:eventy_app/services/auth.dart';
 import 'package:eventy_app/util/app_state.dart';
 
 class SignInController extends GetxController {
-
   String identifier = "", password = "", name = "";
   RxBool userLogged = false.obs;
   LocalStorage storage = LocalStorage();
   User? _user;
-   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   GlobalKey<FormState> get formKey => _formKey;
-   var isHidden = true ;
+  var isHidden = true;
 
   var isPreesed = false.obs;
   final appState = Rx<AppState>(AppState.IDLE);
@@ -65,17 +64,17 @@ class SignInController extends GetxController {
 
   Future<User?> getLoggedInUserObject() async {
     // try {
-      Map<String, dynamic> res = await authService.getMe();
-      User? user_FromJson = User.fromJson(res);
+    Map<String, dynamic> res = await authService.getMe();
+    User? user_FromJson = User.fromJson(res);
 
-      // if (user_FromJson !=null ) {
-        _user = user_FromJson;
-        Logger().d("user_FromJson : ${_user!.email}");
+    // if (user_FromJson !=null ) {
+    _user = user_FromJson;
+    Logger().d("user_FromJson : ${_user!.email}");
 
-      // } else {
-      //   Logger().d("user is null");
-      //   return null;
-      // }
+    // } else {
+    //   Logger().d("user is null");
+    //   return null;
+    // }
     // } catch (e) {
     //   Logger().d(e.toString());
     // }
@@ -83,21 +82,18 @@ class SignInController extends GetxController {
     return _user;
   }
 
-  
-  signUp(){
+  signUp() {
     Get.toNamed('/SignUp');
   }
-  
+
   void toggleHiddenStatus() {
     isHidden = !isHidden;
-      if(isHidden){
-      isHidden = true ;
+    if (isHidden) {
+      isHidden = true;
+    } else {
+      isHidden = false; //or pressedBool.toggle();
     }
-    else {
-      isHidden = false ; //or pressedBool.toggle();
-    }
-   
-   
+
     update();
   }
 

@@ -44,13 +44,19 @@ class AuthService {
     return null;
   }
 
-  Future<bool> userSignUp({ firstname,lastname,email,phonenumber,identifier,password,confirmpassword
-  // , country, city, gender, age
-  
-  }) async {
+  Future<bool> userSignUp(
+      {firstname,
+      lastname,
+      email,
+      phonenumber,
+      identifier,
+      password,
+      confirmpassword
+      // , country, city, gender, age
+
+      }) async {
     var headers = {'Content-Type': 'application/json'};
     var body = jsonEncode({
-      
       "firstname": "$firstname",
       "lastname": "$lastname",
       "email": "$email",
@@ -76,18 +82,17 @@ class AuthService {
     return false;
   }
 
-   signOutUser() async {
+  signOutUser() async {
     await LocalStorage().deleteToken();
     user = null;
     token = null;
     // Get.back();
-    if (user == null && token == null){
+    if (user == null && token == null) {
       Get.offAllNamed("/BottomNav");
     }
-
   }
 
-   getLoggedUserId() async {
+  getLoggedUserId() async {
     var isUserLogged = await storage.readToken();
     if (isUserLogged != 0) {
       token = isUserLogged;

@@ -7,7 +7,6 @@ import 'package:eventy_app/helpers/Constants.dart';
 import 'auth.dart';
 
 class ProfileService {
-
   Future<List<dynamic>?> getEventsForUser(userId) async {
     var url = "$BaseUrl/Events?user.id=$userId";
     var response = await http.get(Uri.parse("$url"), headers: headersNoAuth);
@@ -34,7 +33,6 @@ class ProfileService {
     }
   }
 
-  
   Future<dynamic> deleteEvent(eventId) async {
     var url = "$BaseUrl/Events/$eventId";
     var userToken = await AuthService().getLoggedUserId();

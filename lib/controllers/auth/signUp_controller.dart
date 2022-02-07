@@ -11,16 +11,20 @@ import 'package:eventy_app/data/LocalStorage.dart';
 import 'package:eventy_app/helpers/Constants.dart';
 import 'package:eventy_app/services/auth.dart';
 
-
-
 class SignUpController extends GetxController {
   static SignUpController get to => Get.find();
   var isLoading = false.obs;
   var isHidden1 = true;
   var isHidden2 = true;
-  String firstname = "",lastname = "",email = "",username = "",phonenumber = "",password = "",confirmpassword = ""
-  // ,country = "",city = "",gender = "",age = ""
-  ;
+  String firstname = "",
+      lastname = "",
+      email = "",
+      username = "",
+      phonenumber = "",
+      password = "",
+      confirmpassword = ""
+      // ,country = "",city = "",gender = "",age = ""
+      ;
   RxBool userLogged = false.obs;
   LocalStorage storage = LocalStorage();
   final AuthService authService = AuthService();
@@ -62,18 +66,18 @@ class SignUpController extends GetxController {
     appState2.value = AppState.LOADING;
     isPreesed.value = true;
     var ok = await authService.userSignUp(
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        identifier: username,
-        phonenumber: phonenumber,
-        password: password,
-        confirmpassword: confirmpassword,
-        // country: country,
-        // city: city,
-        // gender: gender, 
-        // age: age,
-        );
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      identifier: username,
+      phonenumber: phonenumber,
+      password: password,
+      confirmpassword: confirmpassword,
+      // country: country,
+      // city: city,
+      // gender: gender,
+      // age: age,
+    );
     if (ok) {
       Get.toNamed("/SignUp2");
     } else {

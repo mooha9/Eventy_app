@@ -18,7 +18,6 @@ import 'package:eventy_app/util/alerts.dart';
 import 'package:eventy_app/util/app_state.dart';
 
 class NewAdController extends GetxController {
-
   static NewAdController to = Get.find();
   var logger = Logger();
 

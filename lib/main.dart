@@ -14,7 +14,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  @override
+  
   Widget build(BuildContext context) {
     return GetMaterialApp(
      smartManagement: SmartManagement.full,
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
 
 
 // class StartPage extends StatelessWidget {
-//   @override
+//   
 //   Widget build(BuildContext context) {
 //        return SignIn();
 //   }
@@ -77,7 +77,7 @@ return MaterialApp (
 
 
 class HomeScreen extends StatefulWidget {
-@override
+
   _HomeScreen createState()=> _HomeScreen();
 }
 
@@ -116,7 +116,7 @@ int _selectedPageIndex=0;
    });
   }
 
-  @override
+  
     Widget build(BuildContext context) {
       return DefaultTabController(
       length: 5,

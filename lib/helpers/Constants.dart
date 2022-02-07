@@ -16,8 +16,6 @@ const Map<String, String> headersNoAuth = {
   "Accept": "application/json"
 };
 
-
-
 const kPrimaryColor = Color(0xFF0473C0);
 const kPrimaryColorShadow = Color(0xFF7B94B1);
 const kPrimaryLightColor = Color(0xFFFFECDF);

@@ -25,7 +25,7 @@ class _ProfilePrivacyState extends State<ProfilePrivacy> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-               padding: const EdgeInsets.only(right:45.0),
+              padding: const EdgeInsets.only(right: 45.0),
               child: Text(
                 'Privacy  ',
                 style: TextStyle(
@@ -34,7 +34,6 @@ class _ProfilePrivacyState extends State<ProfilePrivacy> {
                 ),
               ),
             ),
-            
           ],
         ),
       ),

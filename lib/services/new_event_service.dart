@@ -67,7 +67,8 @@ class NewEventService {
 
     Logger().d("files count in body in map ${formData.files.length}");
 
-    Response response = await dio.post(url, data: formData, options: Options(headers: headers));
+    Response response =
+        await dio.post(url, data: formData, options: Options(headers: headers));
     if (response.statusCode == 200) {
       log("${response.statusCode}");
       log("${response.data.runtimeType}");
@@ -94,8 +95,12 @@ class NewEventService {
     var formData = FormData();
 
     for (var file in pickedFiles) {
-       formData.files.addAll([
-        MapEntry("files", await MultipartFile.fromFile(file.path,filename: file.path.split("/").last, contentType: MediaType('image', 'jpg'))),
+      formData.files.addAll([
+        MapEntry(
+            "files",
+            await MultipartFile.fromFile(file.path,
+                filename: file.path.split("/").last,
+                contentType: MediaType('image', 'jpg'))),
       ]);
       Logger().d(file.path);
       Logger().d(formData.files[0].value);
@@ -104,11 +109,12 @@ class NewEventService {
     String userToken = await authService.getLoggedUserId();
     var headers = {
       'Authorization':
-      // 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImlhdCI6MTYyMzc0NDU4NiwiZXhwIjoxNjI2MzM2NTg2fQ.cXInAifRBjoT8bx_50uKbKBQMdkdgFgyaGYX9-OkvAk',
-      'Bearer $userToken',
+          // 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImlhdCI6MTYyMzc0NDU4NiwiZXhwIjoxNjI2MzM2NTg2fQ.cXInAifRBjoT8bx_50uKbKBQMdkdgFgyaGYX9-OkvAk',
+          'Bearer $userToken',
       'Content-Type': 'multipart/form-data'
     };
-    Response response = await dio.post(url, data: formData, options: Options(headers: headers));
+    Response response =
+        await dio.post(url, data: formData, options: Options(headers: headers));
     if (response.statusCode == 200) {
       log("${response.statusCode}");
       log("${response.data.runtimeType}");
@@ -124,7 +130,6 @@ class NewEventService {
     } else {
       Logger().d("uploadImage  json result :");
     }
-
   }
 
   Future test() async {

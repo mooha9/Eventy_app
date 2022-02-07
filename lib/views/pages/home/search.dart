@@ -3,7 +3,6 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 class SearchPage extends GetView {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[50],
@@ -35,7 +34,7 @@ class SearchPage extends GetView {
         ),
       ),
       body: Container(
-        constraints: BoxConstraints.tightFor(width: 500,height: 40),
+        constraints: BoxConstraints.tightFor(width: 500, height: 40),
         //width text field
         margin: EdgeInsets.all(20),
         child: Material(

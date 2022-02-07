@@ -5,9 +5,6 @@ import 'package:eventy_app/helpers/Constants.dart';
 import 'package:eventy_app/models/event.dart';
 
 class Alerts {
-
-
-
   static showOkMessageEvent() async {
     Get.snackbar(
       "",
@@ -42,6 +39,7 @@ class Alerts {
       colorText: Colors.white,
     );
   }
+
   static showNotOkMessageEvent() async {
     Get.snackbar(
       "",
@@ -76,7 +74,8 @@ class Alerts {
       colorText: Colors.white,
     );
   }
-static showOkMessageCard() async {
+
+  static showOkMessageCard() async {
     Get.snackbar(
       "",
       "",
@@ -110,6 +109,7 @@ static showOkMessageCard() async {
       colorText: Colors.white,
     );
   }
+
   static showNotOkMessageCard() async {
     Get.snackbar(
       "",
@@ -179,6 +179,7 @@ static showOkMessageCard() async {
       colorText: Colors.white,
     );
   }
+
   static showNotOkMessageComment() async {
     Get.snackbar(
       "",
@@ -229,8 +230,6 @@ static showOkMessageCard() async {
           // await Get.find<ProfileController>().deleteEvent(model.id!);
           // Get.back();
           //  Get.find<ProfileController>().update();
-
-
         },
         child: Text("Yes"),
       ),
@@ -240,6 +239,4 @@ static showOkMessageCard() async {
       ),
     );
   }
-
-
 }

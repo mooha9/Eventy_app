@@ -24,7 +24,7 @@ class _ManageEventState extends State<ManageEvent> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-               padding: const EdgeInsets.only(right:45.0),
+              padding: const EdgeInsets.only(right: 45.0),
               child: Text(
                 'Manage Event  ',
                 style: TextStyle(
@@ -36,23 +36,25 @@ class _ManageEventState extends State<ManageEvent> {
           ],
         ),
       ),
-      body: 
-      Container(
+      body: Container(
         child: Center(
-          child: Text("You Don't Have Any Event To Manage", style: TextStyle(fontSize: 15),),
+          child: Text(
+            "You Don't Have Any Event To Manage",
+            style: TextStyle(fontSize: 15),
+          ),
         ),
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 10),
         child: FloatingActionButton(
           onPressed: () {
-             Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (BuildContext context) {
-                return SelectPlan();
-              },
-            ),
-          );
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return SelectPlan();
+                },
+              ),
+            );
           },
           child: const Icon(
             Icons.add,

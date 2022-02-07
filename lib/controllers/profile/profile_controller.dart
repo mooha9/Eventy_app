@@ -7,30 +7,25 @@ import 'package:eventy_app/services/profile.dart';
 
 class ProfileController extends GetxController {
   final profileService = ProfileService();
-  
+
   List<Event> eventList = <Event>[];
   List<NewCard> cardList = <NewCard>[];
   List<Comment> commentList = <Comment>[];
 
   User? user = User();
 
-
-
-
-    Future<List<NewCard>?> getCardsListForUser() async {
+  Future<List<NewCard>?> getCardsListForUser() async {
     Logger().d("getCardsListForUser ");
     user = await Get.find<SignInController>().getLoggedInUserObject();
     var userId = user!.id!;
     Logger().d(userId.toString());
-    
+
     try {
       await profileService.getCardsForUser(userId).then((value) {
         cardList.clear();
 
         cardList = value!.map((element) => NewCard.fromJson(element)).toList();
-        cardList.forEach((NewCard element) {
-         
-        });
+        cardList.forEach((NewCard element) {});
       });
     } catch (e) {
       Logger().d(e);
@@ -65,14 +60,13 @@ class ProfileController extends GetxController {
     return eventList;
   }
 
-    // Future<List<User>?> getInfoForUser() async {
-    // Logger().d("getInfoForUser ");
-    // user = await Get.find<LoginController>().getLoggedInUserObject();
+  // Future<List<User>?> getInfoForUser() async {
+  // Logger().d("getInfoForUser ");
+  // user = await Get.find<LoginController>().getLoggedInUserObject();
 
-    // var userId = user!.id!;
-    // Logger().d(userId.toString());
-    // }
-
+  // var userId = user!.id!;
+  // Logger().d(userId.toString());
+  // }
 
   Future deleteEvent(int eventId) async {
     Logger().d("deleteEvent ");
@@ -102,7 +96,6 @@ class ProfileController extends GetxController {
     await getEventsListForUser();
     // await getCommentsForUser(userId);
   }
-
 
   // Future<List<Comment>?> getCommentsForUser(int userId) async {
   //   Logger().d("getCommentsForUser ");

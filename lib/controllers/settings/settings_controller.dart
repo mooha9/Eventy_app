@@ -13,19 +13,18 @@ class SettingController extends GetxController {
   final profileService = ProfileService();
   var selectedImagePath = ''.obs;
   var selectedImageSize = ''.obs;
-  
 
-
-  void getImage (ImageSource imageSource) async{
-
-      // ignore: deprecated_member_use
-      final pickedFile= await ImagePicker().getImage(source: imageSource);
-      if(pickedFile!= null){
-        selectedImagePath.value = pickedFile.path;
-        selectedImageSize.value = ((File(selectedImagePath.value)).lengthSync()/1024/1024).toStringAsFixed(2)+"Mb";
-      }
-      else{
-        Get.snackbar("Error", "No Logo Selected");
-      }
+  void getImage(ImageSource imageSource) async {
+    // ignore: deprecated_member_use
+    final pickedFile = await ImagePicker().getImage(source: imageSource);
+    if (pickedFile != null) {
+      selectedImagePath.value = pickedFile.path;
+      selectedImageSize.value =
+          ((File(selectedImagePath.value)).lengthSync() / 1024 / 1024)
+                  .toStringAsFixed(2) +
+              "Mb";
+    } else {
+      Get.snackbar("Error", "No Logo Selected");
+    }
   }
 }

@@ -5,8 +5,6 @@ import 'package:logger/logger.dart';
 import 'package:eventy_app/helpers/Constants.dart';
 
 class HomeService {
-
-
   Future<List<dynamic>?> getCategories() async {
     var url = "$BaseUrl/categories";
     var response = await http.get(Uri.parse("$url"), headers: headersNoAuth);
@@ -35,7 +33,7 @@ class HomeService {
     }
   }
 
-  Future<List<dynamic>?> getAllEvents () async {
+  Future<List<dynamic>?> getAllEvents() async {
     // var url = "$BaseUrl/Events?category.id=2";
     var url = "$BaseUrl/Events";
     var response = await http.get(Uri.parse("$url"), headers: headersNoAuth);

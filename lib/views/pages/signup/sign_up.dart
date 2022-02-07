@@ -407,11 +407,11 @@ class SignUp extends StatelessWidget {
                                 Container(
                                   // ignore: deprecated_member_use
                                   child: RaisedButton(
-                                    onPressed: () 
-                                    // {
-                                    //   Get.toNamed('/SignUp2');
-                                    // },
-                                    async {
+                                    onPressed: ()
+                                        // {
+                                        //   Get.toNamed('/SignUp2');
+                                        // },
+                                        async {
                                       if (_formKey.currentState!.validate()) {
                                         _formKey.currentState!.save();
 
@@ -419,30 +419,29 @@ class SignUp extends StatelessWidget {
                                             SignUpController());
 
                                         await _controller.createNewUser2();
-                                        
                                       }
-                                      
                                     },
                                     padding:
                                         EdgeInsets.fromLTRB(50, 15, 50, 15),
                                     splashColor: Colors.teal[250],
-                                    child:Obx(
-                                              () { 
-                                                if (_controller.appState2() == AppState.LOADING) {
-                                                  return Center(
-                                                    widthFactor: 0.3,
-                                                    heightFactor: 0.5,
-                                                      child: CircularProgressIndicator(
-                                                        
-                                                        color: Colors.white,
-                                                  ));
-                                                } else {
-                                                  return Text("NEXT",
-                                                  style: TextStyle(
-                                                      fontSize: 20, color: Colors.white),
-                                                );
-                                            }
-                                        }),
+                                    child: Obx(() {
+                                      if (_controller.appState2() ==
+                                          AppState.LOADING) {
+                                        return Center(
+                                            widthFactor: 0.3,
+                                            heightFactor: 0.5,
+                                            child: CircularProgressIndicator(
+                                              color: Colors.white,
+                                            ));
+                                      } else {
+                                        return Text(
+                                          "NEXT",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white),
+                                        );
+                                      }
+                                    }),
                                     shape: RoundedRectangleBorder(
                                       borderRadius:
                                           new BorderRadius.circular(50.0),

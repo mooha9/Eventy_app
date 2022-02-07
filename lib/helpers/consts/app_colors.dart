@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  
   //Colors for theme
   static Color lightPrimary = Color(0xfffcfcff);
   static Color darkPrimary = Colors.black;
@@ -9,7 +8,6 @@ class Constants {
   static Color? darkAccent = Colors.teal[50];
   static Color? lightBG = Colors.teal[200];
   static Color darkBG = Colors.black;
-
 
   static Color buttonPrimary = Colors.teal;
 
@@ -24,7 +22,7 @@ class Constants {
     cursorColor: lightAccent,
     scaffoldBackgroundColor: lightBG,
     // ignore: deprecated_member_use
-    buttonColor : buttonPrimary ,
+    buttonColor: buttonPrimary,
     appBarTheme: AppBarTheme(
       elevation: 0,
       // ignore: deprecated_member_use
@@ -38,9 +36,8 @@ class Constants {
     ),
   );
 
+  //dark theme
 
-  //dark theme 
-  
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     backgroundColor: darkBG,

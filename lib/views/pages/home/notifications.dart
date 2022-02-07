@@ -3,7 +3,6 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 class NotificationPage extends GetView {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[50],
@@ -11,11 +10,11 @@ class NotificationPage extends GetView {
         backgroundColor: Colors.teal[100],
         toolbarHeight: 90,
         elevation: 10,
-         shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        bottom: Radius.circular(30),
-      ),
-    ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -32,7 +31,7 @@ class NotificationPage extends GetView {
             SizedBox(width: 5.0),
             Icon(
               Icons.notifications,
-              color: Color.fromARGB(240,74, 189, 159),
+              color: Color.fromARGB(240, 74, 189, 159),
               size: 33,
             ),
           ],
