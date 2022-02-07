@@ -1,8 +1,8 @@
-import 'package:eventy_app/views/pages/home/home.dart';
-import 'package:eventy_app/views/pages/home/profile.dart';
-import 'package:eventy_app/views/pages/home/cards.dart';
-import 'package:eventy_app/views/pages/home/favorites.dart';
-import 'package:eventy_app/views/pages/home/search.dart';
+import 'package:EventySA/views/pages/home/home.dart';
+import 'package:EventySA/views/pages/home/profile.dart';
+import 'package:EventySA/views/pages/home/cards.dart';
+import 'package:EventySA/views/pages/home/favorites.dart';
+import 'package:EventySA/views/pages/home/search.dart';
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 

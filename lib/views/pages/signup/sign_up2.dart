@@ -1,4 +1,4 @@
-import 'package:eventy_app/controllers/auth/signup2_controller.dart';
+import 'package:EventySA/controllers/auth/signup2_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 

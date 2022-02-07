@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:eventy_app/models/event.dart';
+import 'package:EventySA/models/event.dart';
 
 NewEvent newEventFromJson(String str) => NewEvent.fromJson(json.decode(str));
 

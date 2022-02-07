@@ -1,9 +1,9 @@
-import 'package:eventy_app/controllers/auth/signin_controller.dart';
-import 'package:eventy_app/models/card/card_models.dart';
-import 'package:eventy_app/models/event.dart';
+import 'package:EventySA/controllers/auth/signin_controller.dart';
+import 'package:EventySA/models/card/card_models.dart';
+import 'package:EventySA/models/event.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:eventy_app/services/profile.dart';
+import 'package:EventySA/services/profile.dart';
 
 class ProfileController extends GetxController {
   final profileService = ProfileService();

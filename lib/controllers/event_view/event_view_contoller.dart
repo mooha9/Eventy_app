@@ -5,14 +5,14 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 // ignore: unused_import
-import 'package:eventy_app/routes/route.dart';
-import 'package:eventy_app/controllers/auth/signin_controller.dart';
-import 'package:eventy_app/helpers/Constants.dart';
-import 'package:eventy_app/models/event.dart';
-import 'package:eventy_app/models/new_comment.dart';
-import 'package:eventy_app/services/auth.dart';
-import 'package:eventy_app/util/alerts.dart';
-import 'package:eventy_app/util/app_state.dart';
+import 'package:EventySA/routes/route.dart';
+import 'package:EventySA/controllers/auth/signin_controller.dart';
+import 'package:EventySA/helpers/Constants.dart';
+import 'package:EventySA/models/event.dart';
+import 'package:EventySA/models/new_comment.dart';
+import 'package:EventySA/services/auth.dart';
+import 'package:EventySA/util/alerts.dart';
+import 'package:EventySA/util/app_state.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EventViewContoller extends GetxController {

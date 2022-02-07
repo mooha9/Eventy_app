@@ -1,7 +1,7 @@
 // ignore_for_file: unnecessary_import
 
-import 'package:eventy_app/controllers/auth/signin_controller.dart';
-import 'package:eventy_app/util/app_state.dart';
+import 'package:EventySA/controllers/auth/signin_controller.dart';
+import 'package:EventySA/util/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';

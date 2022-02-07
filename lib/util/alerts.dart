@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:eventy_app/controllers/profile/profile_controller.dart';
-import 'package:eventy_app/helpers/Constants.dart';
-import 'package:eventy_app/models/event.dart';
+// import 'package:EventySA/controllers/profile/profile_controller.dart';
+import 'package:EventySA/helpers/Constants.dart';
+import 'package:EventySA/models/event.dart';
 
 class Alerts {
   static showOkMessageEvent() async {

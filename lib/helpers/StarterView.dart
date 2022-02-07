@@ -1,11 +1,11 @@
-import 'package:eventy_app/controllers/auth/signin_controller.dart';
-import 'package:eventy_app/models/event.dart';
+import 'package:EventySA/controllers/auth/signin_controller.dart';
+import 'package:EventySA/models/event.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:eventy_app/views/pages/home/buttom_navbar.dart';
+import 'package:EventySA/views/pages/home/buttom_navbar.dart';
 // ignore: unused_import
-// import 'package:eventy_app/models/Ad.dart';
+// import 'package:EventySA/models/Ad.dart';
 
 class StarterView extends StatefulWidget {
   @override

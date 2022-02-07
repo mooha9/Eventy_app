@@ -1,4 +1,4 @@
-import 'package:eventy_app/views/pages/drawer/manage_event/select_plan.dart';
+import 'package:EventySA/views/pages/drawer/manage_event/select_plan.dart';
 import 'package:flutter/material.dart';
 
 class ManageEvent extends StatefulWidget {

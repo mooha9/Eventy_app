@@ -1,6 +1,6 @@
-import 'package:eventy_app/views/pages/home/slider_category.dart';
-import 'package:eventy_app/views/pages/home/top_event.dart';
-import 'package:eventy_app/util/over_viewdata_event.dart';
+import 'package:EventySA/views/pages/home/slider_category.dart';
+import 'package:EventySA/views/pages/home/top_event.dart';
+import 'package:EventySA/util/over_viewdata_event.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'event_item.dart';

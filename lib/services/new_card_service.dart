@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:eventy_app/services/auth.dart';
+import 'package:EventySA/services/auth.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-import 'package:eventy_app/data/LocalStorage.dart';
-import 'package:eventy_app/helpers/Constants.dart';
+import 'package:EventySA/data/LocalStorage.dart';
+import 'package:EventySA/helpers/Constants.dart';
 import '../helpers/Constants.dart';
 
 class NewCardService {

@@ -1,15 +1,15 @@
 import 'dart:convert';
 
-import 'package:eventy_app/util/app_state.dart';
+import 'package:EventySA/util/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 // ignore: unused_import
-import 'package:eventy_app/routes/route.dart';
-import 'package:eventy_app/data/LocalStorage.dart';
-import 'package:eventy_app/helpers/Constants.dart';
-import 'package:eventy_app/services/auth.dart';
+import 'package:EventySA/routes/route.dart';
+import 'package:EventySA/data/LocalStorage.dart';
+import 'package:EventySA/helpers/Constants.dart';
+import 'package:EventySA/services/auth.dart';
 
 class SignUpController extends GetxController {
   static SignUpController get to => Get.find();

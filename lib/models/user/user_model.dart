@@ -1,4 +1,4 @@
-import 'package:eventy_app/models/card/card_models.dart';
+import 'package:EventySA/models/card/card_models.dart';
 
 class User {
   User({

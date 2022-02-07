@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:eventy_app/models/event.dart';
+import 'package:EventySA/models/event.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-// import 'package:eventy_app/routes/route.dart';
-import 'package:eventy_app/data/LocalStorage.dart';
-import 'package:eventy_app/helpers/Constants.dart';
+// import 'package:EventySA/routes/route.dart';
+import 'package:EventySA/data/LocalStorage.dart';
+import 'package:EventySA/helpers/Constants.dart';
 import '../helpers/Constants.dart';
 
 class AuthService {

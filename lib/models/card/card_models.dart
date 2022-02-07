@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:eventy_app/models/event.dart';
+import 'package:EventySA/models/event.dart';
 
 NewCard card1FromJson(String str) => NewCard.fromJson(json.decode(str));
 

@@ -1,4 +1,4 @@
-import 'package:eventy_app/models/onboarding/onboardingInfo.dart';
+import 'package:EventySA/models/onboarding/onboardingInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/state_manager.dart';

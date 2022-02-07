@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:eventy_app/controllers/card/create_card_controller.dart';
-import 'package:eventy_app/util/alerts.dart';
-import 'package:eventy_app/util/app_state.dart';
+import 'package:EventySA/controllers/card/create_card_controller.dart';
+import 'package:EventySA/util/alerts.dart';
+import 'package:EventySA/util/app_state.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import
 import 'package:flutter/rendering.dart';

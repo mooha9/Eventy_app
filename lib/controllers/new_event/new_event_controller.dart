@@ -2,20 +2,20 @@
 
 import 'dart:io';
 
-import 'package:eventy_app/controllers/auth/signin_controller.dart';
+import 'package:EventySA/controllers/auth/signin_controller.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
-import 'package:eventy_app/routes/route.dart';
-import 'package:eventy_app/controllers/home/home_controller.dart';
-import 'package:eventy_app/models/event.dart';
-import 'package:eventy_app/models/new_event.dart';
-import 'package:eventy_app/models/UploadModel.dart';
-import 'package:eventy_app/services/new_event_service.dart';
-import 'package:eventy_app/util/alerts.dart';
-import 'package:eventy_app/util/app_state.dart';
+import 'package:EventySA/routes/route.dart';
+import 'package:EventySA/controllers/home/home_controller.dart';
+import 'package:EventySA/models/event.dart';
+import 'package:EventySA/models/new_event.dart';
+import 'package:EventySA/models/UploadModel.dart';
+import 'package:EventySA/services/new_event_service.dart';
+import 'package:EventySA/util/alerts.dart';
+import 'package:EventySA/util/app_state.dart';
 
 class NewAdController extends GetxController {
   static NewAdController to = Get.find();

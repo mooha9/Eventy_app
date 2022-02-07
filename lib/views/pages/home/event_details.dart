@@ -3,9 +3,9 @@
 // ignore: unused_import
 import 'dart:io';
 
-import 'package:eventy_app/controllers/card/create_card_controller.dart';
+import 'package:EventySA/controllers/card/create_card_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:eventy_app/util/over_viewdata_event.dart';
+import 'package:EventySA/util/over_viewdata_event.dart';
 // ignore: unnecessary_import
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -611,7 +611,7 @@ serviceProviderList() {
                           )
                           // Obx(()=>_controller.selectedImagePath.value == ""?
 
-                          //       Image.file(File("Eventy_app/assets/images/cardLogo.png")):
+                          //       Image.file(File("EventySA/assets/images/cardLogo.png")):
                           //       Text("")
                           //       ),
                         ],
@@ -777,7 +777,7 @@ officialSponsorsList() {
                           )
                           // Obx(()=>_controller.selectedImagePath.value == ""?
 
-                          //       Image.file(File("Eventy_app/assets/images/cardLogo.png")):
+                          //       Image.file(File("EventySA/assets/images/cardLogo.png")):
                           //       Text("")
                           //       ),
                         ],
@@ -942,7 +942,7 @@ activityOwnerList() {
                           )
                           // Obx(()=>_controller.selectedImagePath.value == ""?
 
-                          //       Image.file(File("Eventy_app/assets/images/cardLogo.png")):
+                          //       Image.file(File("EventySA/assets/images/cardLogo.png")):
                           //       Text("")
                           //       ),
                         ],

@@ -1,8 +1,8 @@
 import 'dart:io';
-// import 'package:eventy_app/controllers/auth/signin_controller.dart';
-// import 'package:eventy_app/models/card/card_models.dart';
-// import 'package:eventy_app/models/event.dart';
-import 'package:eventy_app/services/profile.dart';
+// import 'package:EventySA/controllers/auth/signin_controller.dart';
+// import 'package:EventySA/models/card/card_models.dart';
+// import 'package:EventySA/models/event.dart';
+import 'package:EventySA/services/profile.dart';
 import 'package:get/get.dart';
 // ignore: unnecessary_import
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';

@@ -1,4 +1,4 @@
-import 'package:eventy_app/routes/route.dart';
+import 'package:EventySA/routes/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
 import 'dart:js';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:eventy_app/util/const.dart';
+import 'package:EventySA/util/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 

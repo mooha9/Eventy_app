@@ -1,5 +1,5 @@
-import 'package:eventy_app/views/pages/drawer/manage_event/privet_event.dart';
-import 'package:eventy_app/views/pages/drawer/manage_event/public_event.dart';
+import 'package:EventySA/views/pages/drawer/manage_event/privet_event.dart';
+import 'package:EventySA/views/pages/drawer/manage_event/public_event.dart';
 import 'package:flutter/material.dart';
 
 class SelectPlan extends StatefulWidget {

@@ -1,14 +1,14 @@
-import 'package:eventy_app/controllers/profile/profile_controller.dart';
+import 'package:EventySA/controllers/profile/profile_controller.dart';
 import 'package:get/get.dart';
-import 'package:eventy_app/controllers/auth/signin_controller.dart';
-import 'package:eventy_app/data/LocalStorage.dart';
-import 'package:eventy_app/controllers/auth/signup_controller.dart';
-// import 'package:eventy_app/lib/views/pages/home/home.dart';
-// import 'package:Eventy_app/lib/views/pages/signin/sign_in.dart';
-// import 'package:eventy_app/controllers/AdViewContoller/AdViewContoller.dart';
-// import 'package:eventy_app/controllers/HomeController/HomeController.dart';
-import 'package:eventy_app/controllers/new_event/new_event_controller.dart';
-// import 'package:eventy_app/controllers/ProfileController/ProfileController.dart';
+import 'package:EventySA/controllers/auth/signin_controller.dart';
+import 'package:EventySA/data/LocalStorage.dart';
+import 'package:EventySA/controllers/auth/signup_controller.dart';
+// import 'package:EventySA/lib/views/pages/home/home.dart';
+// import 'package:EventySA/lib/views/pages/signin/sign_in.dart';
+// import 'package:EventySA/controllers/AdViewContoller/AdViewContoller.dart';
+// import 'package:EventySA/controllers/HomeController/HomeController.dart';
+import 'package:EventySA/controllers/new_event/new_event_controller.dart';
+// import 'package:EventySA/controllers/ProfileController/ProfileController.dart';
 
 class InitialBinding extends Bindings {
   @override

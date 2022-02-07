@@ -1,4 +1,4 @@
-import 'package:eventy_app/views/pages/home/event_details.dart';
+import 'package:EventySA/views/pages/home/event_details.dart';
 import 'package:flutter/material.dart';
 import 'event_details.dart';
 

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-import 'package:eventy_app/helpers/Constants.dart';
+import 'package:EventySA/helpers/Constants.dart';
 
 import 'auth.dart';
 

@@ -5,7 +5,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:convert';
-import 'package:eventy_app/models/user/user_model.dart';
+import 'package:EventySA/models/user/user_model.dart';
 
 Event EventFromJson(String str) => Event.fromJson(json.decode(str));
 

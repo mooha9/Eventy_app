@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-import 'package:eventy_app/helpers/Constants.dart';
+import 'package:EventySA/helpers/Constants.dart';
 
 class HomeService {
   Future<List<dynamic>?> getCategories() async {

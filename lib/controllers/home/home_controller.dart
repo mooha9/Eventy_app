@@ -1,13 +1,13 @@
-import 'package:eventy_app/services/home.dart';
+import 'package:EventySA/services/home.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:eventy_app/controllers/profile/Profile_controller.dart';
+import 'package:EventySA/controllers/profile/Profile_controller.dart';
 // ignore: unused_shown_name
-import 'package:eventy_app/models/event.dart' show Event, Category, User;
+import 'package:EventySA/models/event.dart' show Event, Category, User;
 
-// import 'package:eventy_app/models/Category.dart';
-// import 'package:eventy_app/services/Home%20Service.dart';
-import 'package:eventy_app/util/app_state.dart';
+// import 'package:EventySA/models/Category.dart';
+// import 'package:EventySA/services/Home%20Service.dart';
+import 'package:EventySA/util/app_state.dart';
 
 class HomeViewController extends GetxController {
   final homeService = HomeService();

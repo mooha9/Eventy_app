@@ -6,9 +6,9 @@ import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:logger/logger.dart';
-import 'package:eventy_app/helpers/Constants.dart';
-import 'package:eventy_app/models/UploadModel.dart';
-import 'package:eventy_app/services/auth.dart';
+import 'package:EventySA/helpers/Constants.dart';
+import 'package:EventySA/models/UploadModel.dart';
+import 'package:EventySA/services/auth.dart';
 
 class NewEventService {
   AuthService authService = AuthService();

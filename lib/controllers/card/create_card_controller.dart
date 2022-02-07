@@ -1,13 +1,13 @@
 // ignore_for_file: unnecessary_import
 
 import 'dart:io';
-import 'package:eventy_app/controllers/auth/signin_controller.dart';
-import 'package:eventy_app/data/LocalStorage.dart';
-import 'package:eventy_app/models/card/card_models.dart';
-import 'package:eventy_app/models/event.dart';
-import 'package:eventy_app/services/new_card_service.dart';
-import 'package:eventy_app/util/alerts.dart';
-import 'package:eventy_app/util/app_state.dart';
+import 'package:EventySA/controllers/auth/signin_controller.dart';
+import 'package:EventySA/data/LocalStorage.dart';
+import 'package:EventySA/models/card/card_models.dart';
+import 'package:EventySA/models/event.dart';
+import 'package:EventySA/services/new_card_service.dart';
+import 'package:EventySA/util/alerts.dart';
+import 'package:EventySA/util/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';

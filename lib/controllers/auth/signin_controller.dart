@@ -1,11 +1,11 @@
-import 'package:eventy_app/models/event.dart';
+import 'package:EventySA/models/event.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 // ignore: unused_import
-import 'package:eventy_app/data/LocalStorage.dart';
-import 'package:eventy_app/services/auth.dart';
-import 'package:eventy_app/util/app_state.dart';
+import 'package:EventySA/data/LocalStorage.dart';
+import 'package:EventySA/services/auth.dart';
+import 'package:EventySA/util/app_state.dart';
 
 class SignInController extends GetxController {
   String identifier = "", password = "", name = "";

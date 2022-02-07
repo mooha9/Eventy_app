@@ -1,15 +1,15 @@
-// import 'package:eventy_app/controllers/auth/signin_controller.dart';
-// import 'package:eventy_app/util/over_viewdata_event.dart';
-// import 'package:eventy_app/views/pages/home/event_item.dart';
-// import 'package:eventy_app/views/pages/signin/sign_in.dart';
+// import 'package:EventySA/controllers/auth/signin_controller.dart';
+// import 'package:EventySA/util/over_viewdata_event.dart';
+// import 'package:EventySA/views/pages/home/event_item.dart';
+// import 'package:EventySA/views/pages/signin/sign_in.dart';
 // ignore_for_file: unnecessary_import, unused_import, unused_element, dead_code
 
 import 'dart:io';
 
-import 'package:eventy_app/controllers/auth/signin_controller.dart';
-import 'package:eventy_app/controllers/card/create_card_controller.dart';
-import 'package:eventy_app/controllers/profile/profile_controller.dart';
-import 'package:eventy_app/views/pages/drawer/app_drawer.dart';
+import 'package:EventySA/controllers/auth/signin_controller.dart';
+import 'package:EventySA/controllers/card/create_card_controller.dart';
+import 'package:EventySA/controllers/profile/profile_controller.dart';
+import 'package:EventySA/views/pages/drawer/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -305,7 +305,7 @@ Widget buildPage2(BuildContext context) {
                               )
                               // Obx(()=>_controller.selectedImagePath.value == ""?
 
-                              //       Image.file(File("Eventy_app/assets/images/cardLogo.png")):
+                              //       Image.file(File("EventySA/assets/images/cardLogo.png")):
                               //       Text("")
                               //       ),
                             ],
