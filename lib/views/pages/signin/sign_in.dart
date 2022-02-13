@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_import
+// ignore_for_file: unnecessary_import, body_might_complete_normally_nullable
 
 import 'package:EventySA/controllers/auth/signin_controller.dart';
 import 'package:EventySA/util/app_state.dart';
