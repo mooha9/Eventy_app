@@ -18,8 +18,6 @@ class Constants {
     primaryColor: lightAccent,
     // ignore: deprecated_member_use
     accentColor: buttonPrimary,
-    // ignore: deprecated_member_use
-    cursorColor: lightAccent,
     scaffoldBackgroundColor: lightBG,
     // ignore: deprecated_member_use
     buttonColor: buttonPrimary,
@@ -33,7 +31,7 @@ class Constants {
           fontWeight: FontWeight.w800,
         ),
       ),
-    ),
+    ), textSelectionTheme: TextSelectionThemeData(cursorColor: lightAccent),
   );
 
   //dark theme
@@ -45,8 +43,6 @@ class Constants {
     // ignore: deprecated_member_use
     accentColor: darkAccent,
     scaffoldBackgroundColor: darkBG,
-    // ignore: deprecated_member_use
-    cursorColor: darkAccent,
     appBarTheme: AppBarTheme(
       elevation: 0,
       // ignore: deprecated_member_use
@@ -57,6 +53,6 @@ class Constants {
           fontWeight: FontWeight.w800,
         ),
       ),
-    ),
+    ), textSelectionTheme: TextSelectionThemeData(cursorColor: darkAccent),
   );
 }

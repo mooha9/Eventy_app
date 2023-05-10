@@ -162,8 +162,8 @@ class Setting extends GetView<ProfileController> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     // ignore: deprecated_member_use
-                                    FlatButton(
-                                      color: Colors.teal,
+                                    TextButton(
+                                      // color: Colors.teal,
                                       child: Text(
                                         'Cancel',
                                         style: TextStyle(color: Colors.white),
@@ -173,7 +173,7 @@ class Setting extends GetView<ProfileController> {
                                       },
                                     ),
                                     // ignore: deprecated_member_use
-                                    FlatButton(
+                                    TextButton(
                                         child: Text('Logout'),
                                         onPressed: () {
                                           Get.offAndToNamed("/SignIn");
@@ -196,7 +196,7 @@ class Setting extends GetView<ProfileController> {
   //             content: Text('Are you sure you want to logout?'),
   //             actions: <Widget>[
   //               // ignore: deprecated_member_use
-  //               FlatButton(
+  //               TextButton(
   //                 color: Colors.teal,
   //                 child: Text(
   //                   'Cancel',
@@ -207,7 +207,7 @@ class Setting extends GetView<ProfileController> {
   //                 },
   //               ),
   //               // ignore: deprecated_member_use
-  //               FlatButton(
+  //               TextButton(
   //                 child: Text('Logout'),
   //                 onPressed:(){}
   //               ),

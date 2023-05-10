@@ -498,7 +498,7 @@ serviceProviderList() {
                           height: 5,
                         ),
                         Text(
-                          "Mohammed Alfayez" + _controller.cardName.toString(),
+                          "Fisal Ali" + _controller.cardName.toString(),
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -506,7 +506,7 @@ serviceProviderList() {
                           height: 10,
                         ),
                         Text(
-                          "Qassim - Buraydah" + _controller.city.toString(),
+                          "Riyadh" + _controller.city.toString(),
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500),
                         ),
@@ -535,7 +535,7 @@ serviceProviderList() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "alfayez355@gmail.com" + _controller.email.toString(),
+                          "Ameer355@gmail.com" + _controller.email.toString(),
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
@@ -545,7 +545,7 @@ serviceProviderList() {
                           height: 5,
                         ),
                         Text(
-                          "https://twitter.com/M_7d_f" +
+                          "https://twitter.com/Am23e4" +
                               _controller.urlWork.toString(),
                           style: TextStyle(
                               fontSize: 12,
@@ -664,7 +664,7 @@ officialSponsorsList() {
                           height: 5,
                         ),
                         Text(
-                          "Mohammed Alfayez" + _controller.cardName.toString(),
+                          "Fisal Saleh Ameer" + _controller.cardName.toString(),
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -672,7 +672,7 @@ officialSponsorsList() {
                           height: 10,
                         ),
                         Text(
-                          "Qassim - Buraydah" + _controller.city.toString(),
+                          "Riyadh " + _controller.city.toString(),
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500),
                         ),
@@ -701,7 +701,7 @@ officialSponsorsList() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "alfayez355@gmail.com" + _controller.email.toString(),
+                          "Ameer355@gmail.com" + _controller.email.toString(),
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
@@ -711,7 +711,7 @@ officialSponsorsList() {
                           height: 5,
                         ),
                         Text(
-                          "https://twitter.com/M_7d_f" +
+                          "https://twitter.com/Am23e4" +
                               _controller.urlWork.toString(),
                           style: TextStyle(
                               fontSize: 12,
@@ -830,7 +830,7 @@ activityOwnerList() {
                           height: 5,
                         ),
                         Text(
-                          "Mohammed Alfayez" + _controller.cardName.toString(),
+                          "Fisal Saleh" + _controller.cardName.toString(),
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -838,7 +838,7 @@ activityOwnerList() {
                           height: 10,
                         ),
                         Text(
-                          "Qassim - Buraydah" + _controller.city.toString(),
+                          "Riyadh" + _controller.city.toString(),
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500),
                         ),
@@ -867,7 +867,7 @@ activityOwnerList() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "alfayez355@gmail.com" + _controller.email.toString(),
+                          "Ameer355@gmail.com" + _controller.email.toString(),
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
@@ -877,7 +877,7 @@ activityOwnerList() {
                           height: 5,
                         ),
                         Text(
-                          "https://twitter.com/M_7d_f" +
+                          "https://twitter.com/Am23e4" +
                               _controller.urlWork.toString(),
                           style: TextStyle(
                               fontSize: 12,

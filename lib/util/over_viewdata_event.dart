@@ -17,7 +17,7 @@ List events = [
     "shortNote": "For Kids",
     "img":
         "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80",
-    "location": "Qassim-Bukiryah",
+    "location": "Riyadh-Bukiryah",
     "time": "8:00-9:45",
     "duration": "One day",
     "date": "2021-4-21",
@@ -53,7 +53,7 @@ List events = [
     "shortNote": "Only University Students",
     "img":
         "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-    "location": "Qassim-University",
+    "location": "Riyadh-University",
     "time": "8:00-9:45",
     "duration": "One day",
     "date": "2021-2-7",

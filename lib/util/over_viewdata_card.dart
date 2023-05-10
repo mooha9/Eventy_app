@@ -1,11 +1,11 @@
 List cards = [
   {
     "id": "1c",
-    "name": "Mohammed Saleh",
+    "name": "Fisal Saleh Saleh",
     "Tagline.": "Photographer For Any Event",
     "logo":
         "https://www.meritnation.com/blog/wp-content/upLoads/3_vintage-camera-png-icon-camera-png-10.png",
-    "location": "Qassim",
+    "location": "Riyadh",
     "link": "https://www.pexels.com/@eberhardgross",
     "service": "photo",
     "qr_code": "assets/images/qrcode_2868271_.png",

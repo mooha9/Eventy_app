@@ -3,6 +3,7 @@
 import 'package:EventySA/controllers/auth/signin_controller.dart';
 import 'package:EventySA/util/app_state.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -110,9 +111,9 @@ class SignIn extends GetView<SignInController> {
                               // printInfo(info: "${_controller.identifier}");
                             },
                             validator: (value) {
-                              if (value == null) {
-                                Logger().d("ERROR");
-                              }
+                              // if (value == null) {
+                              //   Logger().d("ERROR");
+                              // }
                             },
                             decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(8),
@@ -191,7 +192,11 @@ class SignIn extends GetView<SignInController> {
                               borderRadius: new BorderRadius.circular(50.0),
                               side: BorderSide(color: Color(0xff4ABD9F)),
                             ),
-                            onPressed: () async => loginUser(_formKey))),
+                            onPressed: () {
+                               Get.offAllNamed("/BottomNav");
+                            }))])
+                            // async => loginUser(_formKey
+                            )),
                     SizedBox(
                       height: 100,
                     ),
@@ -221,12 +226,8 @@ class SignIn extends GetView<SignInController> {
                     ),
                   ],
                 ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+                    ));
+            
   }
 
   loginUser(_formKey) async {

@@ -491,8 +491,8 @@ class _PublicEventState extends State<PublicEvent> {
             content: Text('Are you sure to share your event?'),
             actions: <Widget>[
               // ignore: deprecated_member_use
-              FlatButton(
-                color: Colors.teal,
+              TextButton(
+                // color: Colors.teal,
                 child: Text(
                   'Cancel',
                   style: TextStyle(color: Colors.white),
@@ -502,7 +502,7 @@ class _PublicEventState extends State<PublicEvent> {
                 },
               ),
               // ignore: deprecated_member_use
-              FlatButton(
+              TextButton(
                 child: Text('yes, Share'),
                 onPressed: () {},
               ),

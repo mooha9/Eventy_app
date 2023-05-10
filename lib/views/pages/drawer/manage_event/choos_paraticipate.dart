@@ -107,20 +107,20 @@ byID() {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             // ignore: deprecated_member_use
-            FlatButton(
-              height: 50,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(10),
-                  top: Radius.circular(10),
-                ),
-              ),
+            TextButton(
+              // height: 50,
+              // shape: RoundedRectangleBorder(
+              //   borderRadius: BorderRadius.vertical(
+              //     bottom: Radius.circular(10),
+              //     top: Radius.circular(10),
+              //   ),
+              // ),
               child: Text(
                 'Next',
                 style: TextStyle(fontSize: 20.0),
               ),
-              color: Colors.teal,
-              textColor: Colors.white,
+              // color: Colors.teal,
+              // textColor: Colors.white,
               onPressed: () {},
             ),
             SizedBox(
@@ -200,20 +200,20 @@ selectParticipate() {
         // ignore: deprecated_member_use
         Center(
           // ignore: deprecated_member_use
-          child: FlatButton(
-            height: 50,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(10),
-                top: Radius.circular(10),
-              ),
-            ),
+          child: TextButton(
+            // height: 50,
+            // shape: RoundedRectangleBorder(
+            //   borderRadius: BorderRadius.vertical(
+            //     bottom: Radius.circular(10),
+            //     top: Radius.circular(10),
+            //   ),
+            // ),
             child: Text(
               'Share to participate ',
               style: TextStyle(fontSize: 20.0),
             ),
-            color: Colors.teal,
-            textColor: Colors.white,
+            // color: Colors.teal,
+            // textColor: Colors.white,
             onPressed: () {},
           ),
         ),

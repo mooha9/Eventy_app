@@ -189,7 +189,7 @@ Widget buildPage2(BuildContext context) {
                               height: 5,
                             ),
                             Text(
-                              "Mohammed Alfayez" +
+                              "Fisal Saleh Ameer" +
                                   _controller.cardName.toString(),
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
@@ -198,7 +198,7 @@ Widget buildPage2(BuildContext context) {
                               height: 10,
                             ),
                             Text(
-                              "Qassim - Buraydah" + _controller.city.toString(),
+                              "Riyadh " + _controller.city.toString(),
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w500),
                             ),
@@ -227,7 +227,7 @@ Widget buildPage2(BuildContext context) {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "alfayez355@gmail.com" +
+                              "Ameer355@gmail.com" +
                                   _controller.email.toString(),
                               style: TextStyle(
                                   fontSize: 12,
@@ -238,7 +238,7 @@ Widget buildPage2(BuildContext context) {
                               height: 5,
                             ),
                             Text(
-                              "https://twitter.com/M_7d_f" +
+                              "https://twitter.com/Am23e4" +
                                   _controller.urlWork.toString(),
                               style: TextStyle(
                                   fontSize: 12,

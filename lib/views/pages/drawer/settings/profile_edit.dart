@@ -64,8 +64,8 @@ class ProfileEdit extends GetView<ProfileController> {
             height: 20,
           ),
           // ignore: deprecated_member_use
-          RaisedButton(
-            color: Colors.teal[700],
+          ElevatedButton(
+            // color: Colors.teal[700],
             onPressed: () {
               _controller.getImage(ImageSource.gallery);
             },

@@ -301,8 +301,8 @@ class CreateCard extends StatelessWidget {
                                         height: 50,
                                         width: 200,
                                         // ignore: deprecated_member_use
-                                        child: RaisedButton(
-                                          color: Colors.teal[700],
+                                        child: ElevatedButton(
+                                          // color: Colors.teal[700],
                                           onPressed: () {
                                             _controller
                                                 .getImage(ImageSource.gallery);
@@ -782,7 +782,7 @@ class CreateCard extends StatelessWidget {
                                           );
                                         }
                                         // if (controller.appState() == AppState.ERROR) {
-                                        //   return FlatButton(
+                                        //   return TextButton(
                                         // child: Text('try again',style: fontStyle,),
                                         //     onPressed: () async => controller.sendToServer(),
                                         //   );

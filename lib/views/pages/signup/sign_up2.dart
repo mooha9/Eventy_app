@@ -185,18 +185,18 @@ class SignUp2 extends StatelessWidget {
                       ),
                       Container(
                         // ignore: deprecated_member_use
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: _controller.next,
-                          padding: EdgeInsets.fromLTRB(50, 15, 50, 15),
-                          splashColor: Colors.teal[250],
+                          // padding: EdgeInsets.fromLTRB(50, 15, 50, 15),
+                          // splashColor: Colors.teal[250],
                           child: Text(
                             "SIGN UP",
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(50.0),
-                            side: BorderSide(color: Colors.teal),
-                          ),
+                          // shape: RoundedRectangleBorder(
+                          //   borderRadius: new BorderRadius.circular(50.0),
+                          //   side: BorderSide(color: Colors.teal),
+                          // ),
                         ),
                       ),
 

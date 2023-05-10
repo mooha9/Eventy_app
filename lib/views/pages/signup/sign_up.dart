@@ -406,7 +406,7 @@ class SignUp extends StatelessWidget {
                               children: [
                                 Container(
                                   // ignore: deprecated_member_use
-                                  child: RaisedButton(
+                                  child: ElevatedButton(
                                     onPressed: ()
                                         // {
                                         //   Get.toNamed('/SignUp2');
@@ -421,9 +421,9 @@ class SignUp extends StatelessWidget {
                                         await _controller.createNewUser2();
                                       }
                                     },
-                                    padding:
-                                        EdgeInsets.fromLTRB(50, 15, 50, 15),
-                                    splashColor: Colors.teal[250],
+                                    // padding:
+                                    //     EdgeInsets.fromLTRB(50, 15, 50, 15),
+                                    // splashColor: Colors.teal[250],
                                     child: Obx(() {
                                       if (_controller.appState2() ==
                                           AppState.LOADING) {
@@ -442,11 +442,11 @@ class SignUp extends StatelessWidget {
                                         );
                                       }
                                     }),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(50.0),
-                                      side: BorderSide(color: Colors.teal),
-                                    ),
+                                    // shape: RoundedRectangleBorder(
+                                    //   borderRadius:
+                                    //       new BorderRadius.circular(50.0),
+                                    //   side: BorderSide(color: Colors.teal),
+                                    // ),
                                   ),
                                 ),
                               ],
